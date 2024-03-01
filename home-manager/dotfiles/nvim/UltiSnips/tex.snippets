@@ -1,0 +1,833 @@
+# dmyTRUEk's snippets for LaTeX
+#
+# snippet modificators:
+#   b -> will work only at begin of line
+#   i -> inword, so that `text/` + <F8> -> `text\frac{...}{...}`
+#   r -> regex name
+#     abc?d? = [ab, abc, abcd]
+
+
+
+priority 3
+snippet 1/2 "1/2 -> \frac{1}{2}" i
+\frac{1}{2}
+endsnippet
+
+priority 3
+snippet "1/sq?r?t?2" "1/2 -> \frac{1}{2}" ir
+\frac{1}{\sqrt{2}}
+endsnippet
+
+
+
+# AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+priority 2
+snippet ab "above = overset{...}{...}"
+\overset{$1}{$2} $0
+endsnippet
+
+priority 3
+snippet abs "|...|" i
+\abs{$1}$0
+endsnippet
+
+priority 4
+snippet abs2 "|...|^2" i
+\abs{$1}^2$0
+endsnippet
+
+priority 3
+snippet "angs?" "Angstroms" ir
+\text{\r{A}}
+endsnippet
+
+priority 3
+snippet avg "average" i
+\left\langle $1 \right\rangle $0
+endsnippet
+
+
+
+# BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+priority 2
+snippet be "begin{...} ... end{}" b
+\begin{$1}
+    $2
+\end{$1}$0
+endsnippet
+
+priority 2
+snippet bb "big brackets ( )" i
+\qty($1)$0
+endsnippet
+
+priority 3
+snippet bbc "big brackets { }" i
+\qty\\{$1\\}$0
+endsnippet
+
+priority 3
+snippet bbs "big brackets [ ]" i
+\qty[$1]$0
+endsnippet
+
+priority 3
+snippet bbt "big brackets < > (avg)" i
+\left<$1\right>$0
+endsnippet
+
+priority 3
+snippet bel "below = underset{...}{...}" i
+\underset{$1}{$2}$0
+endsnippet
+
+
+
+# CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+priority 2
+snippet ca "cases = begin{cases} ... end{}"
+\begin{cases}
+    $1
+\end{cases}
+endsnippet
+
+priority 2
+snippet ce "center = begin{center} ... end{}" b
+\begin{center}
+    $1
+\end{center}$0
+endsnippet
+
+priority 4
+snippet "compl?e?x?" "complex numbers symbol = C" ir
+\mathbb{C}
+endsnippet
+
+# also named `vp`
+priority 2
+snippet cp "cross product = [A x B]" i
+\left[ $1 \times $2 \right] $0
+endsnippet
+
+
+
+# DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+#snippet d "differential = dx" i
+#\dd{$1}$0
+#endsnippet
+
+priority 3
+snippet deg "degree symbol = ^o" i
+\text{°}$0
+endsnippet
+
+priority 3
+snippet det "matrix determinant" i
+\mdet{$1}$0
+endsnippet
+
+#priority 3
+#snippet div "divergence" i
+#div
+#endsnippet
+
+priority 2
+snippet ds "displaystyle = make formuls big if they are small" i
+\displaystyle $0
+endsnippet
+
+
+
+# EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+priority 2
+snippet ec "equation+cases = begin{equation+cases} ... end{}" b
+\begin{equation}
+\begin{cases}
+    $1
+\end{cases}
+\end{equation}$0
+endsnippet
+
+priority 2
+snippet eq "equation = begin{equation} ... end{}" b
+\begin{equation}
+    $1
+\end{equation}$0
+endsnippet
+
+priority 3
+snippet equ "equivalent = ≡"
+\equiv
+endsnippet
+
+priority 7
+snippet eqbydef "equal by def = =_{def}"
+\underset{def}{=}
+endsnippet
+
+priority 2
+snippet es "equation+split = begin{equation+split} ... end{}" b
+\begin{equation}
+\begin{split}
+    $1
+\end{split}
+\end{equation}$0
+endsnippet
+
+priority 2
+snippet "exp?" "exp = e^{...}" ir
+e^{$1}$0
+endsnippet
+
+
+
+# FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+priority 3
+snippet fig "image = begin{figure} ... end{}" b
+\begin{figure} [H]
+    \centering
+    \includegraphics[scale=.9]{$1}
+    \caption{$2}
+    \label{$3}
+\end{figure}$0
+endsnippet
+
+priority 2
+snippet fo "small formula $...$" i
+\$$1\$$0
+endsnippet
+
+priority 3
+snippet fol "follows = =>"
+\quad\Rightarrow\quad
+endsnippet
+
+priority 4
+snippet foll "long follows = ==>"
+\qquad\Rightarrow\qquad
+endsnippet
+
+
+
+# GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+priority 3
+snippet "grad?" "gradient = nabla vector" i
+\overrightarrow{\nabla}$0
+endsnippet
+
+
+
+# HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+priority 2
+snippet ha "hat (operator) = A^" i
+\hat{$1}$0
+endsnippet
+
+priority 2
+snippet hb "hbar = ℏ" i
+\hbar
+endsnippet
+
+priority 3
+snippet "half?" "... / 2" ir
+\frac{$1}{2}$0
+endsnippet
+
+
+
+# IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+priority 1
+snippet i "\item ..."
+\item $0
+endsnippet
+
+priority 3
+snippet inf "infinity" i
+\infty
+endsnippet
+
+priority 3
+snippet ins "insertion"
+\Bigg| \ $1 \ \Bigg| $0
+endsnippet
+
+priority 3
+snippet int "integral" i
+\int\limits_{$1}^{$2}\dd{$3} $0
+endsnippet
+
+priority 5
+snippet intii "integral" i
+\int\limits_{-\infty}^{+\infty}\dd{$1} $0
+endsnippet
+
+priority 5
+snippet intzi "integral" i
+\int\limits_{0}^{+\infty}\dd{$1} $0
+endsnippet
+
+priority 3
+snippet inv "1 / ..." i
+\frac{1}{$1}$0
+endsnippet
+
+priority 2
+snippet it "itemize = begin{itemize} ... end{}" b
+\begin{itemize}
+\item $1
+\end{itemize}$0
+endsnippet
+
+
+
+# JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+
+
+
+# KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+
+
+
+# LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+priority 3
+snippet lap "laplace = Δ" i
+\Delta
+endsnippet
+
+priority 2
+snippet le "left equation = begin{fleqn+eqn}" b
+\begin{fleqn} [\parindent]
+\begin{equation}
+    $1
+\end{equation}
+\end{fleqn}$0
+endsnippet
+
+priority 3
+snippet lim "limits when = ---...--->"
+\underset{$1}{\rightarrow} $0
+endsnippet
+
+
+
+# MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+priority 2
+snippet ma "matrix" i
+\mqty($1)$0
+endsnippet
+
+priority 3
+snippet mas "matrix" i
+\mqty[$1]$0
+endsnippet
+
+
+
+# NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+priority 2
+snippet en "enumerate = begin{enumerate} ... end{}" b
+\begin{enumerate}
+\item $1
+\end{enumerate}$0
+endsnippet
+
+priority 2
+snippet np "newpage" b
+\newpage
+endsnippet
+
+priority 3
+snippet num "42.0 * 10^{76}" i
+$1\cdot 10^{$2}$0
+endsnippet
+
+
+
+# OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
+
+
+# PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+
+
+
+# QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+
+
+
+# RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+#priority 3
+#snippet rot "rotor (curl)" i
+#rot
+#endsnippet
+
+
+
+# SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+priority 2
+snippet se "section{...}" b
+\section{$1}
+$0
+endsnippet
+
+priority 2
+snippet sp "split = begin{split} ... end{}" b
+\begin{split}
+    $1
+\end{split}
+endsnippet
+
+priority 2
+snippet "sqr?t?" "sqrt" ir
+\sqrt{$1}$0
+endsnippet
+
+priority 2
+snippet ss "subsection{...}" b
+\subsection{$1}
+$0
+endsnippet
+
+priority 2
+snippet s2 "subsection{...}" b
+\subsection{$1}
+$0
+endsnippet
+
+priority 2
+snippet s3 "subsubsection{...}" b
+\subsubsection{$1}
+$0
+endsnippet
+
+priority 3
+snippet sss "subsubsection{...}" b
+\subsubsection{$1}
+$0
+endsnippet
+
+priority 3
+snippet sum "sum" i
+\sum\limits_{$1}^{$2} $0
+endsnippet
+
+
+
+# TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+priority 5
+snippet "tabl?e?" "table = begin{center+tabular} ... end{}" br
+\begin{table} [H]
+\begin{center}
+\begin{tabular} {|c|c|}
+    \hline
+    $1
+    \hline
+\end{tabular}
+\caption{}
+\end{center}
+\end{table}$0
+endsnippet
+
+priority 2
+snippet ti "tilde" i
+\tilde$0
+endsnippet
+
+priority 3
+snippet "tikz?" "TIKZ image" rb
+\begin{figure} [H]
+\begin{center}
+\begin{tikzpicture}
+    $1
+\end{tikzpicture}
+\caption{}
+\end{center}
+\end{figure}$0
+endsnippet
+
+priority 2
+snippet to "\to" i
+\to$0
+endsnippet
+
+priority 5
+snippet today "Today Date" i
+`date +%4Y.%2m.%2d`
+endsnippet
+
+priority 3
+snippet toi "-> ∞" i
+\to\infty$0
+endsnippet
+
+priority 3
+snippet to0 "-> 0" i
+\to 0$0
+endsnippet
+
+
+
+# UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+
+
+
+# VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+priority 1
+snippet v "vector" i
+\vec$0
+endsnippet
+
+priority 2
+snippet ve "long vector" i
+\overrightarrow{$1}$0
+endsnippet
+
+# also named `cp`
+priority 2
+snippet vp "vector product = [A x B]" i
+\left[ $1 \times $2 \right] $0
+endsnippet
+
+priority 2
+snippet vs "vspace" i
+\vspace{$1}$0
+endsnippet
+
+
+
+# WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+
+
+# XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+# YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+
+
+
+# ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+
+
+
+# SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS
+priority 2
+snippet 1/ "1 / ..." i
+\frac{1}{$1}$0
+endsnippet
+
+priority 1
+snippet / "\frac{}{}" i
+\frac{$1}{$2}$0
+endsnippet
+
+priority 1
+snippet + "\dagger" i
+\dagger$0
+endsnippet
+
+priority 1
+snippet * "\cdot" i
+\cdot$0
+endsnippet
+
+priority 3
+snippet ... "... -> …" i
+…$0
+endsnippet
+
+
+
+# GREEK LETTERS GREEK LETTERS GREEK LETTERS GREEK LETTERS GREEK LETTERS
+priority 1
+snippet a "alpha" i
+\alpha
+endsnippet
+
+priority 1
+snippet A "Alpha" i
+\Alpha
+endsnippet
+
+priority 1
+snippet b "beta" i
+\beta
+endsnippet
+
+priority 1
+snippet B "Beta" i
+\Beta
+endsnippet
+
+# TODO: remove it?
+priority 1
+snippet c "gamma" i
+\gamma
+endsnippet
+
+priority 1
+snippet C "Gamma" i
+\Gamma
+endsnippet
+
+priority 1
+snippet d "delta" i
+\delta
+endsnippet
+
+priority 1
+snippet D "Delta" i
+\Delta
+endsnippet
+
+priority 1
+snippet e "epsilon" i
+\varepsilon
+endsnippet
+
+priority 1
+snippet E "Epsilon" i
+\Epsilon
+endsnippet
+
+priority 2
+snippet "eta?" "eta" ir
+\eta
+endsnippet
+
+priority 2
+snippet "Eta?" "eta" ir
+\Eta
+endsnippet
+
+priority 1
+snippet f "phi" i
+\varphi
+endsnippet
+
+priority 1
+snippet F "Phi" i
+\Phi
+endsnippet
+
+priority 1
+snippet g "gamma" i
+\gamma
+endsnippet
+
+priority 1
+snippet G "Gamma" i
+\Gamma
+endsnippet
+
+priority 1
+snippet h "chi" i
+\chi
+endsnippet
+
+priority 1
+snippet H "Chi" i
+\Chi
+endsnippet
+
+# priority 1
+# snippet i "iota" i
+# \iota
+# endsnippet
+
+# priority 1
+# snippet I "Iota" i
+# \Iota
+# endsnippet
+
+#priority 1
+#snippet j "alpha" i
+#\alpha
+#endsnippet
+
+#priority 1
+#snippet J "Alpha" i
+#\Alpha
+#endsnippet
+
+priority 1
+snippet k "kappa" i
+\varkappa
+endsnippet
+
+priority 1
+snippet K "Kappa" i
+\Kappa
+endsnippet
+
+priority 1
+snippet l "lambda" i
+\lambda
+endsnippet
+
+priority 1
+snippet L "Lambda" i
+\Lambda
+endsnippet
+
+priority 1
+snippet m "mu" i
+\mu
+endsnippet
+
+priority 1
+snippet M "Mu" i
+\Mu
+endsnippet
+
+priority 1
+snippet n "nu" i
+\nu
+endsnippet
+
+priority 1
+snippet N "Nu" i
+\Nu
+endsnippet
+
+priority 1
+snippet o "omega" i
+\omega
+endsnippet
+
+priority 1
+snippet O "Omega" i
+\Omega
+endsnippet
+
+priority 1
+snippet p "psi" i
+\psi
+endsnippet
+
+priority 1
+snippet P "Psi" i
+\Psi
+endsnippet
+
+priority 2
+snippet pi "pi" i
+\pi
+endsnippet
+
+priority 2
+snippet Pi "Pi" i
+\Pi
+endsnippet
+
+# priority 1
+#snippet q "alpha" i
+#\alpha
+#endsnippet
+
+#priority 1
+#snippet Q "Alpha" i
+#\Alpha
+#endsnippet
+
+priority 1
+snippet r "rho" i
+\rho
+endsnippet
+
+priority 1
+snippet R "Rho" i
+\Rho
+endsnippet
+
+priority 1
+snippet s "sigma" i
+\sigma
+endsnippet
+
+priority 1
+snippet S "Sigma" i
+\Sigma
+endsnippet
+
+priority 1
+snippet t "theta" i
+\theta
+endsnippet
+
+priority 1
+snippet T "Theta" i
+\Theta
+endsnippet
+
+priority 2
+snippet "tau?" "tau" ir
+\tau
+endsnippet
+
+priority 2
+snippet "Tau?" "Tau" ir
+\Tau
+endsnippet
+
+priority 1
+snippet u "upsilon" i
+\upsilon
+endsnippet
+
+priority 1
+snippet U "Upsilon" i
+\Upsilon
+endsnippet
+
+#priority 1
+#snippet v "nu" i
+#\nu
+#endsnippet
+
+#priority 1
+#snippet V "Nu" i
+#\Nu
+#endsnippet
+
+priority 1
+snippet w "omega" i
+\omega
+endsnippet
+
+priority 1
+snippet W "Omega" i
+\Omega
+endsnippet
+
+priority 1
+snippet x "xi" i
+\xi
+endsnippet
+
+priority 1
+snippet X "Xi" i
+\Xi
+endsnippet
+
+#priority 1
+#snippet y "alpha" i
+#\alpha
+#endsnippet
+
+#priority 1
+#snippet Y "Alpha" i
+#\Alpha
+#endsnippet
+
+priority 1
+snippet z "zeta" i
+\zeta
+endsnippet
+
+priority 1
+snippet Z "Zeta" i
+\Zeta
+endsnippet
+

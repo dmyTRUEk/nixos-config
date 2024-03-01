@@ -1,0 +1,56 @@
+# dmyTRUEk's swayimg config
+
+[general]
+scale = fit
+fullscreen = yes
+antialiasing = no
+background = 000000
+
+[list]
+order = alpha
+loop = yes
+recursive = no
+all = yes
+
+[font]
+name = JetBrains Mono
+size = 16
+color = #ff00ff
+
+[info]
+mode = off
+
+[keys]
+q = exit
+
+h = step_left
+j = step_down
+k = step_up
+l = step_right
+Shift+h = step_left 50
+Shift+j = step_down 50
+Shift+k = step_up 50
+Shift+l = step_right 50
+
+i = zoom 10
+o = zoom -10
+Shift+i = zoom 50
+Shift+o = zoom -50
+
+a = antialiasing
+
+n = next_file
+p = prev_file
+bracketleft = next_dir
+bracketright = prev_dir
+
+# `b` mnemonics: about
+b = info
+s = zoom fix
+
+Shift+space = animation
+
+space = animation
+comma = next_frame
+period = prev_frame
+

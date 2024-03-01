@@ -1,0 +1,66 @@
+# dmyTRUEk's Zathura config file
+
+
+# OPTIONS:
+
+set selection-clipboard clipboard
+set font "JetBrains Mono"
+set guioptions "sv"
+
+set window-title-basename true
+set statusbar-home-tilde true
+
+set zoom-step 10
+set zoom-center true
+
+
+
+# MAPS:
+
+unmap q
+map Q quit
+
+map i zoom in
+map o zoom out
+# TODO: make this work:
+# map <S-i> zoom in 50
+# map <S-o> zoom out 50
+
+unmap d
+map d scroll half-down
+map u scroll half-up
+
+unmap <C-d>
+map <C-d> toggle_page_mode
+
+map <C-o> jumplist backward
+map <C-i> jumplist forward
+
+
+
+# COLORS:
+
+#set recolor true
+set recolor-keephue true
+set recolor-darkcolor "#f9f5d7"
+set recolor-lightcolor "#282828"
+
+set highlight-transparency 0.1
+set highlight-color "#b57614"
+set highlight-active-color "#b8bb26"
+#set highlight-fg "#ff00ff"
+
+set default-bg "#242424"
+#set default-fg "#ff0000"
+
+set statusbar-bg "#282828"
+set statusbar-fg "#f9f5d7"
+
+set inputbar-bg "#282828"
+set inputbar-fg "#f9f5d7"
+
+set notification-bg "#282828"
+set notification-fg "#f9f5d7"
+set notification-error-bg "#9d0006"
+set notification-warning-bg "#b57614"
+
