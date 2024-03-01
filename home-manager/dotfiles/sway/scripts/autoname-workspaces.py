@@ -42,8 +42,8 @@ WINDOW_ICONS: dict[str, str] = {
 }
 
 DEFAULT_ICON: str = "?"
-ICONS_SEPARATOR: str = " "*1
-NUMBER_ICONS_SEPARATOR: str = " "*2
+ICONS_SEPARATOR: str = " "*0
+NUMBER_ICONS_SEPARATOR: str = "-"*1
 
 NUMBER_TO_JP: dict[int, str] = {
     1: "一",

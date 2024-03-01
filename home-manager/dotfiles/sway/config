@@ -33,7 +33,8 @@ set $menu_apps anyrun
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/art/solis-2560x1440.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/marigold_myshko_dm_crop.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/games/elden-ring.png
-set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/sonny-boy-bg-spamton.png
+#set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/sonny-boy-bg-spamton.png
+set $wallpaper $HOME/Sway_Wallpaper_Blue_1920x1080.png
 
 # Lockscreen
 set $lock_command exec sh -c $HOME/.config/sway/scripts/lock_screen_manually.sh
@@ -429,37 +430,39 @@ $btrbindsym $mod+n move position center
 ## Resizing containers
 $btrbindsym $mod+i mode "resize"
 mode "resize" {
-set $resize_step_small 16px
-set $resize_step_big 128px
+	set $resize_step_small 16px
+	set $resize_step_big 128px
 
-# Return to default mode
-bindsym Return mode "default"
-bindsym Escape mode "default"
+	# Return to default mode
+	#bindsym Return mode "default"
+	# TODO: enable
+	#bindsym Escape mode "default"
 
-# Small step:
-$btrbindsym $right resize grow   width  $resize_step_big
-$btrbindsym $left  resize shrink width  $resize_step_big
-$btrbindsym $up    resize grow   height $resize_step_big
-$btrbindsym $down  resize shrink height $resize_step_big
-# Same, with arrow keys
-bindsym Right resize grow   width  $resize_step_big
-bindsym Left  resize shrink width  $resize_step_big
-bindsym Up    resize grow   height $resize_step_big
-bindsym Down  resize shrink height $resize_step_big
+	# Small step:
+	$btrbindsym $right resize grow   width  $resize_step_big
+	$btrbindsym $left  resize shrink width  $resize_step_big
+	$btrbindsym $up    resize grow   height $resize_step_big
+	$btrbindsym $down  resize shrink height $resize_step_big
+	# Same, with arrow keys
+	# TODO: enable
+	# bindsym Right resize grow   width  $resize_step_big
+	# bindsym Left  resize shrink width  $resize_step_big
+	# bindsym Up    resize grow   height $resize_step_big
+	# bindsym Down  resize shrink height $resize_step_big
 
-# Big step:
-$btrbindsym Shift+$right resize grow   width  $resize_step_small
-$btrbindsym Shift+$left  resize shrink width  $resize_step_small
-$btrbindsym Shift+$up    resize grow   height $resize_step_small
-$btrbindsym Shift+$down  resize shrink height $resize_step_small
-# Same, with arrow keys
-bindsym Shift+Right resize grow   width  $resize_step_small
-bindsym Shift+Left  resize shrink width  $resize_step_small
-bindsym Shift+Up    resize grow   height $resize_step_small
-bindsym Shift+Down  resize shrink height $resize_step_small
+	# Big step:
+	$btrbindsym Shift+$right resize grow   width  $resize_step_small
+	$btrbindsym Shift+$left  resize shrink width  $resize_step_small
+	$btrbindsym Shift+$up    resize grow   height $resize_step_small
+	$btrbindsym Shift+$down  resize shrink height $resize_step_small
+	# Same, with arrow keys
+	bindsym Shift+Right resize grow   width  $resize_step_small
+	bindsym Shift+Left  resize shrink width  $resize_step_small
+	bindsym Shift+Up    resize grow   height $resize_step_small
+	bindsym Shift+Down  resize shrink height $resize_step_small
 
-# Move to Center
-$btrbindsym c       move position center
+	# Move to Center
+	$btrbindsym c       move position center
 }
 
 
@@ -508,7 +511,7 @@ bar {
     swaybar_command waybar
 }
 # hide waybar
-$btrbindsym $mod+g exec killall -SIGUSR1 waybar
+$btrbindsym $mod+g exec killall -SIGUSR1 .waybar-wrapped
 
 
 

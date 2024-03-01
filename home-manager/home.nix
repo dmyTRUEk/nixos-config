@@ -56,6 +56,8 @@
 		config_path = "${config.home.homeDirectory}/.config";
 	in {
 		"${config_path}/nvim/init.lua".source = mkOutOfStoreSymlink "${dotfiles_path}/nvim/init.lua";
+		"${config_path}/sway".source = mkOutOfStoreSymlink "${dotfiles_path}/sway";
+		"${config_path}/waybar".source = mkOutOfStoreSymlink "${dotfiles_path}/waybar";
 	};
 
 	programs = {
@@ -182,9 +184,16 @@
 			};
 		};
 		ripgrep.enable = true;
+		direnv = {
+			enable = true;
+			enableZshIntegration = true;
+		};
 	};
 
-	wayland.windowManager.sway.extraConfig = builtins.readFile ./dotfiles/sway/config;
+	wayland.windowManager.sway = {
+		enable = true;
+		#extraConfig = builtins.readFile ./dotfiles/sway/config;
+	};
 
 	home.packages = with pkgs; [
 		tree
@@ -203,22 +212,28 @@
 		slurp
 		telegram-desktop
 		ranger
-		#python3
-		#python311Packages.i3ipc
+		(python3.withPackages (python-pkgs: [
+			python-pkgs.i3ipc
+		]))
 		killall
 		# steam # the meme
 		gcc
-		lua-language-server
-		nil # nix language server (rust btw)
 		lsd # modern ls (rust btw)
 		hyperfine # (rust btw)
-		python3
+		libnotify # for notify-send
+
+		# LSP:
+		lua-language-server
+		nil # nix language server (rust btw)
+		ruff-lsp
 
 		# fonts:
 		jetbrains-mono # pretty ok monospace font
 		# for icons
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 		#font-awesome # for icons
+		source-han-serif
+		source-han-sans
 		corefonts  # Microsoft's TrueType core fonts for the Web
 		vistafonts # Some TrueType fonts from Microsoft Windows Vista (Calibri, Cambria, Candara, Consolas, Constantia, Corbel)
 	];

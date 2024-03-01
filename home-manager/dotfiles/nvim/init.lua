@@ -575,7 +575,8 @@ require('lazy').setup {
 		init = function()
 			local lsp_server_names = {
 				'rust_analyzer', -- TODO: enable `clippy`
-				'pyright',
+				--'pyright',
+				'ruff_lsp',
 				'lua_ls',
 				'clangd',
 				'nil_ls',
