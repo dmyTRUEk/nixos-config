@@ -65,22 +65,17 @@
 		auto-optimise-store = true;
 	};
 
-	boot.loader = {
-		efi.canTouchEfiVariables = true;
-		systemd-boot = {
-			enable = true;
-			memtest86.enable = true;
+	boot = {
+		loader = {
+			efi.canTouchEfiVariables = true;
+			systemd-boot = {
+				enable = true;
+				memtest86.enable = true;
+			};
 		};
-	};
-
-	# for obs virtual camera
-	boot.extraModulePackages = with config.boot.kernelPackages; [
-		v4l2loopback
-	];
-
-	networking = {
-		hostName = "acer-nixos"; # TODO: MOVE SOMEWHERE?? (to be cross pc compatible)
-		networkmanager.enable = true;
+		extraModulePackages = with config.boot.kernelPackages; [
+			v4l2loopback # for obs virtual camera
+		];
 	};
 
 	time.timeZone = "Europe/Kyiv";
@@ -96,9 +91,18 @@
 			LC_NUMERIC        = "uk_UA.UTF-8";
 			LC_PAPER          = "uk_UA.UTF-8";
 			LC_TELEPHONE      = "uk_UA.UTF-8";
-			LC_TIME           = "uk_UA.UTF-8";
+			LC_TIME           = "en_US.UTF-8";
 		};
 	};
+
+	networking = {
+		hostName = "acer-nixos"; # TODO: MOVE SOMEWHERE?? (to be cross pc compatible)
+		networkmanager.enable = true;
+	};
+
+	systemd.extraConfig = ''
+		DefaultTimeoutStopSec=10s
+	'';
 
 	services.xserver = {
 		enable = true; # TODO: dont enable or why i need it?
@@ -106,11 +110,19 @@
 			layout = "us";
 			options = "caps:swapescape,ctrl:swap_lalt_lctrl";
 		};
-		displayManager.sddm = {
-			enable = true;
-			wayland.enable = true;
-			#theme = "chili";
+		displayManager = {
+			defaultSession = "sway";
+			sddm = {
+				enable = true;
+				wayland.enable = true;
+				theme = "chili";
+			};
+			#gdm = {
+			#	enable = true;
+			#	#wayland = false;
+			#};
 		};
+		desktopManager.xfce.enable = true;
 	};
 
 	users = {
@@ -125,6 +137,7 @@
 					"wheel"          # for sudo
 					"networkmanager" # for network
 					"video"          # for brightness/light
+					"libvirtd"       # for virtualisation/VMs/gnome-boxes
 				];
 				packages = with pkgs; [];
 			};
@@ -180,7 +193,7 @@
 		#wget curl
 		dua
 
-		#sddm-chili-theme
+		sddm-chili-theme
 
 		home-manager
 		# everything else goes to home-manager (HM)
@@ -197,4 +210,28 @@
 		# If you want to use JACK applications, uncomment this
 		#jack.enable = true;
 	};
+
+	security.polkit.enable = true;
+
+	virtualisation.libvirtd = {
+		enable = true;
+		#qemu = {
+		#	package = pkgs.qemu_kvm;
+		#	runAsRoot = true;
+		#	swtpm.enable = true;
+		#	ovmf = {
+		#		enable = true;
+		#		packages = [(pkgs.unstable.OVMF.override {
+		#			secureBoot = true;
+		#			tpmSupport = true;
+		#		}).fd];
+		#	};
+		#};
+	};
+
+	# Enabling realtime may improve latency and reduce stuttering, specially in high load scenarios.
+	# Enabling this option allows any program run by the "users" group to request real-time priority.
+	#security.pam.loginLimits = [
+	#	{ domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+	#];
 }

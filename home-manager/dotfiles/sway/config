@@ -436,7 +436,7 @@ mode "resize" {
 	# Return to default mode
 	#bindsym Return mode "default"
 	# TODO: enable
-	#bindsym Escape mode "default"
+	bindsym Escape mode "default"
 
 	# Small step:
 	$btrbindsym $right resize grow   width  $resize_step_big
@@ -523,20 +523,20 @@ $btrbindsym $mod+g exec killall -SIGUSR1 .waybar-wrapped
 #include @sysconfdir@/sway/config.d/*
 
 # Polkit Authentication - for apps that requests password
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Sddm - for lock screen
 #exec systemctl enable sddm.service
 
 # User defined services (located in ~/.config/systemd/user/)
-exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
+#exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
 
 # Mako - notification manager
 # config file in: ~/.config/mako/config
-exec mako
+#exec mako
 
 # Dropbox
-exec dropbox
+#exec dropbox
 
 # KDE Connect
 #exec kdeconnect-indicator
@@ -546,7 +546,7 @@ exec dropbox
 #exec wl-paste -t text --watch clipman store
 #exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
-exec gammastep
+#exec gammastep
 
 exec_always "pkill autoname-worksp; $HOME/.config/home-manager/home-manager/dotfiles/sway/scripts/autoname-workspaces.py"
 

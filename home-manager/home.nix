@@ -53,12 +53,55 @@
 	let
 		inherit (config.lib.file) mkOutOfStoreSymlink;
 		dotfiles_path = ./dotfiles;
-		config_path = "${config.home.homeDirectory}/.config";
-	in {
-		"${config_path}/nvim/init.lua".source = mkOutOfStoreSymlink "${dotfiles_path}/nvim/init.lua";
-		"${config_path}/sway".source = mkOutOfStoreSymlink "${dotfiles_path}/sway";
-		"${config_path}/waybar".source = mkOutOfStoreSymlink "${dotfiles_path}/waybar";
-	};
+		config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor): use /.
+		setup_simple_symlinks = builtins.foldl' (acc: elem: acc // {
+			"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
+		}) {};
+		setup_complex_symlinks = lib.mapAttrs' (name: value: lib.nameValuePair
+			"${config_path}/${name}".source
+			mkOutOfStoreSymlink "${dotfiles_path}/${value}"
+		);
+	in (
+		setup_simple_symlinks [
+			"alacritty"
+			"anyrun"
+			"gammastep"
+			"imv"
+			"kitty"
+			"mako"
+			"nvim/init.lua" # TODO: refactor?
+			"nvim/lua"
+			#"ranger" # TODO: fix?
+			"sway"
+			"swayimg"
+			"swaylock"
+			"waybar"
+			"zathura"
+		]
+		//
+		setup_complex_symlinks {}
+	);
+
+	home.pointerCursor =
+		let
+		getFrom = url: hash: name: {
+			inherit name;
+			gtk.enable = true;
+			x11.enable = true;
+			size = 48;
+			package =
+				pkgs.runCommand "moveUp" {} ''
+				mkdir -p $out/share/icons
+				ln -s ${pkgs.fetchzip {
+					inherit url hash;
+				}} $out/share/icons/${name}
+			'';
+		};
+	in
+		getFrom
+		"https://github.com/ful1e5/BreezeX_Cursor/releases/download/v2.0.0/BreezeX-Black.tar.gz"
+		"sha256-5su79uUG9HLeAqXDUJa/VhpbYyy9gFj/VdtRPY0yUL4="
+		"BreezeX-Black";
 
 	programs = {
 		#home-manager.enable = true; # enable to self-host?
@@ -75,6 +118,11 @@
 			enable = true;
 			userName = "dmyTRUEk";
 			userEmail = "25669613+dmyTRUEk@users.noreply.github.com";
+			extraConfig = {
+				credential.helper = "${
+					pkgs.git.override { withLibsecret = true; }
+				}/bin/git-credential-libsecret";
+			};
 		};
 		zsh = {
 			enable = true;
@@ -101,10 +149,15 @@
 				# lsd
 				l = "lsd";
 				la = "lsd -A";
-				ll = "lsd -Al";
+				ll = "lsd -al";
 
 				mkdir = "mkdir -p";
-				cl = "clear"; # TODO
+				cl = ''
+					clear
+					if git rev-parse --git-dir > /dev/null 2>&1; then # is git repo
+						git status
+					fi
+				'';
 
 				cdd = "cd ~/.config/home-manager";
 				cdc = "cd ~/.config/home-manager";
@@ -158,11 +211,28 @@
 				dv = "yt-dlp";
 				dm = "yt-dlp -x --audio-format mp3 --embed-thumbnail --embed-metadata";
 				dm_without_covers = "yt-dlp -x --audio-format mp3 --embed-metadata";
+				random_hash = ''
+					function random_hash {
+						local default_len=6
+						local hash_len=$default_len
+						if [[ -n $1 ]]; then
+							local hash_len=$1
+						fi
+						echo $(date +%s%N | sha512sum | cut -c -$hash_len)
+					}
+				'';
 
 				nixi = "nix repl"; # nix interactive
 				nic = "nvim ~/.config/home-manager/nixos/configuration.nix";
 				nih = "nvim ~/.config/home-manager/home-manager/home.nix";
 				nif = "nvim ~/.config/home-manager/flake.nix";
+				nf = "nvim flake.nix";
+				nfl = "nvim flake.lock";
+
+				nn = "nvim ~/.config/home-manager/home-manager/dotfiles/nvim/init.lua";
+				ns = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/config";
+				nw = "nvim ~/.config/home-manager/home-manager/dotfiles/waybar/config";
+				nzh = "nvim ~/.zsh_history";
 			};
 		};
 		waybar.enable = true;
@@ -196,36 +266,49 @@
 	};
 
 	home.packages = with pkgs; [
-		tree
-		neofetch
+		# "LIBS":
 		pulseaudio  # provides pactl, to change volume by fn keys
-		pavucontrol # gui to control volume
 		playerctl
-		#light # TODO(fix): grant access to "video" group?
 		gammastep
 		mako
-		kitty
-		btop
+		#light # TODO(fix): grant access to "video" group?
 		wl-clipboard
 		grim
-		jq
 		slurp
-		telegram-desktop
+		libnotify # for notify-send
+
+		# CLI:
+		tree
+		neofetch
+		btop
+		jq
 		ranger
 		(python3.withPackages (python-pkgs: [
 			python-pkgs.i3ipc
 		]))
 		killall
-		# steam # the meme
 		gcc
 		lsd # modern ls (rust btw)
 		hyperfine # (rust btw)
-		libnotify # for notify-send
+		skim # (rust btw)
+		rustup
+		lshw # ls hardware
+		glxinfo # gpu info
+
+		# GUI:
+		pavucontrol # gui to control volume
+		kitty
+		telegram-desktop
+		# steam # the meme
+		krita
+		swayimg
+		gnome.gnome-boxes
 
 		# LSP:
-		lua-language-server
-		nil # nix language server (rust btw)
-		ruff-lsp
+		lua-language-server # lua
+		nil # nix (rust btw)
+		pyright # python
+		#ruff-lsp # python # TODO: setup it for lints
 
 		# fonts:
 		jetbrains-mono # pretty ok monospace font
@@ -236,6 +319,11 @@
 		source-han-sans
 		corefonts  # Microsoft's TrueType core fonts for the Web
 		vistafonts # Some TrueType fonts from Microsoft Windows Vista (Calibri, Cambria, Candara, Consolas, Constantia, Corbel)
+
+		# cursors:
+		#vimix-cursors
+		#vimix-cursor-theme
+		# TODO: kde/breeze cursor
 	];
 
 	fonts.fontconfig.enable = true;
@@ -247,11 +335,28 @@
 	# TODO: enable?
 	#environment.variables.NIXOS_OZONE_WL = "1";
 
-	# TODO: enable?
-	#xdg.portal = {
-	#	enable = true;
-	#	extraPortals = [ 
-	#		pkgs.xdg-desktop-portal-gtk 
-	#	];
-	#};
+	services = {
+		gnome-keyring.enable = true;
+		dropbox.enable = true;
+	};
+
+	xdg.portal = {
+		enable = true;
+		#wlr.enable = true;
+		xdgOpenUsePortal = true;
+		configPackages = [
+			pkgs.sway
+		];
+		# TODO: enable?
+		config = {
+			sway = {
+				default = [ "gtk" ];
+				"org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+			};
+			common = { default = [ "gtk" ]; };
+		};
+		extraPortals = [ # deprecated?
+			pkgs.xdg-desktop-portal-gtk
+		];
+	};
 }

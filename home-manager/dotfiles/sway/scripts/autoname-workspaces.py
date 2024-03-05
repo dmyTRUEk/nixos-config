@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#! /usr/bin/env nix-shell
+#! nix-shell -i python3 -p python3Packages.i3ipc
 
 '''
 This script requires i3ipc-python package (install it from a system package manager or pip).
@@ -42,8 +43,8 @@ WINDOW_ICONS: dict[str, str] = {
 }
 
 DEFAULT_ICON: str = "?"
-ICONS_SEPARATOR: str = " "*0
-NUMBER_ICONS_SEPARATOR: str = "-"*1
+ICONS_SEPARATOR: str = " "*1
+NUMBER_ICONS_SEPARATOR: str = " "*2
 
 NUMBER_TO_JP: dict[int, str] = {
     1: "一",

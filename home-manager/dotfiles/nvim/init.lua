@@ -11,6 +11,9 @@ vim_globals = {
 
 	-- Set `mapleader` before `lazy` so that mappings are correct.
 	mapleader = ' ',
+
+	-- disable default vim-surround keybinds.
+	surround_no_mappings = 1,
 }
 
 for name, value in pairs(vim_globals) do
@@ -68,6 +71,8 @@ options = {
 	-- use ukr in normal mode
 	--langmap = [[ʼ~,аf,б\,,вd,гu,дl,еt,є',ж\;,зp,иb,іs,ї],йq,кr,лk,мv,нy,оj,пg,рh,сc,тn,уe,фa,х[,цw,чx,шi,щo,ьm,ю.,яz,АF,Б<,ВD,ГU,ДL,ЕT,Є",Ж:,ЗP,ИB,ІS,Ї},ЙQ,КR,ЛK,МV,НY,ОJ,ПG,РH,СC,ТN,УE,ФA,Х{,ЦW,ЧX,ШI,ЩO,ЬM,Ю>,ЯZ]],
 	langmap = [[йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ї],фa,іs,вd,аf,пg,рh,оj,лk,дl,ж\;,є',яz,чx,сc,мv,иb,тn,ьm,б\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ї},ФA,ІS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Є",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>]],
+
+	--mouse = 'a',
 }
 for name, value in pairs(options) do
 	-- TODO: wrap in "try/catch"
@@ -91,15 +96,15 @@ keybinds_swap_nv = {
 
 keybinds_nv = {
 	['-'] = '$', -- better $
+
+	['<c-j>'] = '<c-d>zz', -- better move half-page down
+	['<c-k>'] = '<c-u>zz', -- better move half-page up
 }
 
 keybinds_n = {
 	Q = '', -- unmap ex mode
 	U = '<c-r>', -- better redo
 	Y = 'y$', -- better copy till end of line
-
-	['<c-j>'] = '<c-d>zz', -- better move half-page down
-	['<c-k>'] = '<c-u>zz', -- better move half-page up
 
 	['<c-p>'] = '$p', -- paste at end of line
 	['<a-p>'] = '^P', -- paste at begin of line
@@ -168,6 +173,16 @@ keybinds_n = {
 	cc3b = 'yiw3bviwp3wviwp',
 	cc3W = 'yiW3WviWp4BviWp',
 	cc3B = 'yiW3BviWp3WviWp',
+
+	-- vim-surround
+	ds  = '<Plug>Dsurround',
+	cs  = '<Plug>Csurround',
+	cS  = '<Plug>CSurround',
+	ys  = '<Plug>Ysurround',
+	yS  = '<Plug>YSurround',
+	yss = '<Plug>Yssurround',
+	ySs = '<Plug>YSsurround',
+	ySS = '<Plug>YSsurround',
 } -- end of `keybinds_n`
 
 keybinds_i = {
@@ -206,6 +221,12 @@ keybinds_n_c = {
 -- TODO: test if `x` or `v` is needed
 keybinds_v = {
 	S = ':sort<cr>',
+
+	-- my maps for vim-surround
+	s = '<Plug>VSurround',
+	gs = '<Plug>VgSurround',
+
+	x = '<Plug>(Exchange)',
 } -- end of `keybinds_v`
 
 
@@ -575,11 +596,11 @@ require('lazy').setup {
 		init = function()
 			local lsp_server_names = {
 				'rust_analyzer', -- TODO: enable `clippy`
-				--'pyright',
-				'ruff_lsp',
+				'pyright', -- python
+				--'ruff_lsp', -- python linter -- TODO: setup
 				'lua_ls',
-				'clangd',
-				'nil_ls',
+				'clangd', -- c/c++
+				'nil_ls', -- nix
 			}
 			local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 			for _, lsp_server_name in pairs(lsp_server_names) do
@@ -780,124 +801,6 @@ end
 
 
 
--- require 'dmytruek.blockmark'
-local api = vim.api
-
-local queries = {
-	lua = {
-		comment = '-- ',
-		queries = {
-			[[
-				(function_declaration
-					name: (identifier) @name
-				) @body
-			]],
-			[[
-				(assignment_statement
-					(variable_list name: (_) @name)
-					(expression_list value: (_) @body)
-				)
-			]],
-			[[
-				(for_statement
-					clause: (for_generic_clause) @name
-				) @body
-			]],
-			[[
-				(field
-					name: (identifier) @name
-				) @body
-			]],
-			-- [[
-			-- 	(field
-					
-			-- 	)
-			-- ]]
-		},
-	},
-	-- rust = {
-	-- 	comment = '// ',
-	-- 	queries = {
-	-- 		[[
-	--			
-	-- 		]],
-	-- 	},
-	-- },
-	-- cpp = {
-	-- 	comment = "// ",
-	-- 	queries = {
-	-- 		[[
-	-- 			(namespace_definition
-	-- 				name: (_) @name
-	-- 				body: (_) @body)
-	-- 		]],
-	-- 	},
-	-- },
-}
-
-local parsed_queries = {}
-for lang, qdef in pairs(queries) do
-	for _, query_code in ipairs(qdef.queries) do
-		local q = vim.treesitter.query.parse(lang, query_code)
-		for id, name in pairs(q.captures) do
-			q[name .. '_cap_id'] = id
-		end
-		q.comment = qdef.comment
-		table.insert(parsed_queries, q)
-	end
-end
-
-local ns = api.nvim_create_namespace('blockmark')
-
-local function update_extmarks(bufnr)
-	api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
-	-- local lang = vim.treesitter.language.get_lang(vim.bo[bufnr].filetype)
-	-- vim.print({ lang = lang })
-	local node = vim.treesitter.get_node()
-	if not node then
-		return
-	end
-	local tree = node:tree()
-
-	for _, query in ipairs(parsed_queries) do
-		for pattern, match, metadata in query:iter_matches(tree:root(), bufnr) do
-			local body_node = match[query.body_cap_id]
-			local body_srow, body_scol = body_node:start()
-			local body_erow, body_ecol = body_node:end_()
-			if body_erow - body_srow >= 1 then
-				local name_node = match[query.name_cap_id]
-				local name_srow, name_scol = name_node:start()
-				local name_erow, name_ecol = name_node:end_()
-				local name_content = api.nvim_buf_get_text(
-					bufnr,
-					name_srow, name_scol,
-					name_erow, name_ecol,
-					{}
-				)[1]
-				local erow, ecol = match[query.body_cap_id]:end_()
-				api.nvim_buf_set_extmark(bufnr, ns, erow, ecol, {
-					virt_text = {
-						{ query.comment .. 'end of ', 'Comment' },
-						{ name_content, 'Constant' },
-					},
-				})
-			end
-		end
-	end
-end
-
-vim.api.nvim_create_autocmd({
-	"BufEnter",
-	"BufWinEnter",
-	"TextChanged",
-	"TextChangedI",
-}, {
-	pattern = { "*.lua", "*.cpp" },
-	callback = function(ev)
-		local bufnr = ev.buf
-		vim.schedule(function()
-			update_extmarks(bufnr)
-		end)
-	end,
-})
+-- TODO: load by lazy?
+require 'dmytruek.blockmark'
 
