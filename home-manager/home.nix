@@ -124,21 +124,8 @@
 				}/bin/git-credential-libsecret";
 			};
 		};
-		zsh = {
+		fish = {
 			enable = true;
-			enableAutosuggestions = true;
-			syntaxHighlighting.enable = true;
-			oh-my-zsh = {
-				enable = true;
-				theme = "robbyrussell";
-				plugins = [
-					"history-substring-search"
-					"colored-man-pages"
-					# "zsh-autosuggestions"
-					# "zsh-syntax-highlighting"
-					"rust"
-				];
-			};
 			shellAliases = {
 				# neovim
 				neovim = "nvim";
@@ -152,15 +139,10 @@
 				ll = "lsd -al";
 
 				mkdir = "mkdir -p";
-				cl = ''
-					clear
-					if git rev-parse --git-dir > /dev/null 2>&1; then # is git repo
-						git status
-					fi
-				'';
+				cl = "clear ; git status || clear";
 
+				#"-" = "cd -";
 				cdd = "cd ~/.config/home-manager";
-				cdc = "cd ~/.config/home-manager";
 				".." = "cd ..";
 				"..." = "cd ../..";
 				"..2" = "cd ../..";
@@ -211,29 +193,34 @@
 				dv = "yt-dlp";
 				dm = "yt-dlp -x --audio-format mp3 --embed-thumbnail --embed-metadata";
 				dm_without_covers = "yt-dlp -x --audio-format mp3 --embed-metadata";
-				random_hash = ''
-					function random_hash {
-						local default_len=6
-						local hash_len=$default_len
-						if [[ -n $1 ]]; then
-							local hash_len=$1
-						fi
-						echo $(date +%s%N | sha512sum | cut -c -$hash_len)
-					}
-				'';
+				#random_hash = "";
 
 				nixi = "nix repl"; # nix interactive
 				nic = "nvim ~/.config/home-manager/nixos/configuration.nix";
 				nih = "nvim ~/.config/home-manager/home-manager/home.nix";
 				nif = "nvim ~/.config/home-manager/flake.nix";
-				nf = "nvim flake.nix";
-				nfl = "nvim flake.lock";
 
 				nn = "nvim ~/.config/home-manager/home-manager/dotfiles/nvim/init.lua";
 				ns = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/config";
 				nw = "nvim ~/.config/home-manager/home-manager/dotfiles/waybar/config";
-				nzh = "nvim ~/.zsh_history";
+				#nf = "nvim ~/.config/home-manager/home-manager/dotfiles/fish";
+				nfh = "nvim ~/.local/share/fish/fish_history";
+
+				fumo = "fortune | fumosay | lolcat";
 			};
+			shellInit = ''
+				fish_add_path -m ~/.local/bin
+				function fish_greeting
+				end
+				#function random_hash
+				#	local default_len=6
+				#	local hash_len=$default_len
+				#	if [[ -n $1 ]]; then
+				#		local hash_len=$1
+				#	fi
+				#	echo $(date +%s%N | sha512sum | cut -c -$hash_len)
+				#end
+			'';
 		};
 		waybar.enable = true;
 		firefox = {
@@ -254,15 +241,16 @@
 			};
 		};
 		ripgrep.enable = true;
-		direnv = {
+		direnv.enable = true;
+		nix-index = {
 			enable = true;
-			enableZshIntegration = true;
+			enableFishIntegration = true;
 		};
 	};
 
 	wayland.windowManager.sway = {
 		enable = true;
-		#extraConfig = builtins.readFile ./dotfiles/sway/config;
+		wrapperFeatures.gtk = true;
 	};
 
 	home.packages = with pkgs; [
@@ -294,15 +282,19 @@
 		rustup
 		lshw # ls hardware
 		glxinfo # gpu info
+		fortune
+		#cowsay
+		lolcat
 
 		# GUI:
 		pavucontrol # gui to control volume
 		kitty
 		telegram-desktop
-		# steam # the meme
+		#steam # the meme
 		krita
 		swayimg
 		gnome.gnome-boxes
+		libreoffice
 
 		# LSP:
 		lua-language-server # lua
@@ -343,7 +335,7 @@
 	xdg.portal = {
 		enable = true;
 		#wlr.enable = true;
-		xdgOpenUsePortal = true;
+		#xdgOpenUsePortal = true;
 		configPackages = [
 			pkgs.sway
 		];
@@ -353,7 +345,7 @@
 				default = [ "gtk" ];
 				"org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
 			};
-			common = { default = [ "gtk" ]; };
+			common.default = [ "gtk" ];
 		};
 		extraPortals = [ # deprecated?
 			pkgs.xdg-desktop-portal-gtk

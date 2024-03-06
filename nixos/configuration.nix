@@ -122,11 +122,11 @@
 			#	#wayland = false;
 			#};
 		};
-		desktopManager.xfce.enable = true;
+		#desktopManager.xfce.enable = true;
 	};
 
 	users = {
-		defaultUserShell = pkgs.zsh;
+		defaultUserShell = pkgs.fish;
 		users = {
 			myshko = {
 				#initialPassword = "12";
@@ -137,9 +137,11 @@
 					"wheel"          # for sudo
 					"networkmanager" # for network
 					"video"          # for brightness/light
-					"libvirtd"       # for virtualisation/VMs/gnome-boxes
+					#"libvirtd"      # for virtualisation/VMs/gnome-boxes
 				];
-				packages = with pkgs; [];
+				packages = with pkgs; [
+					# move `sway` here?
+				];
 			};
 		};
 	};
@@ -150,22 +152,7 @@
 			defaultEditor = true;
 		};
 
-		zsh = {
-			enable = true;
-			autosuggestions.enable = true;
-			syntaxHighlighting.enable = true;
-			ohMyZsh = {
-				enable = true;
-				theme = "robbyrussell";
-				plugins = [
-					"history-substring-search"
-					"colored-man-pages"
-					# "zsh-autosuggestions"
-					# "zsh-syntax-highlighting"
-					#"rust" # TODO: move to home-manager
-				];
-			};
-		};
+		fish.enable = true;
 
 		git = {
 			enable = true;
@@ -188,7 +175,7 @@
 
 	environment.systemPackages = with pkgs; [
 		# vim -> neovim
-		# zsh
+		# fish
 		# git
 		#wget curl
 		dua
@@ -213,21 +200,21 @@
 
 	security.polkit.enable = true;
 
-	virtualisation.libvirtd = {
-		enable = true;
-		#qemu = {
-		#	package = pkgs.qemu_kvm;
-		#	runAsRoot = true;
-		#	swtpm.enable = true;
-		#	ovmf = {
-		#		enable = true;
-		#		packages = [(pkgs.unstable.OVMF.override {
-		#			secureBoot = true;
-		#			tpmSupport = true;
-		#		}).fd];
-		#	};
-		#};
-	};
+	#virtualisation.libvirtd = {
+	#	enable = true;
+	#	#qemu = {
+	#	#	package = pkgs.qemu_kvm;
+	#	#	runAsRoot = true;
+	#	#	swtpm.enable = true;
+	#	#	ovmf = {
+	#	#		enable = true;
+	#	#		packages = [(pkgs.unstable.OVMF.override {
+	#	#			secureBoot = true;
+	#	#			tpmSupport = true;
+	#	#		}).fd];
+	#	#	};
+	#	#};
+	#};
 
 	# Enabling realtime may improve latency and reduce stuttering, specially in high load scenarios.
 	# Enabling this option allows any program run by the "users" group to request real-time priority.

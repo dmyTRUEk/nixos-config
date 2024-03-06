@@ -42,6 +42,8 @@ local queries = {
 			-- 		TODO
 			-- 	)
 			-- ]],
+			-- TODO: end of function call/params
+			-- TODO: end of if
 		},
 	},
 	nix = {
@@ -54,14 +56,51 @@ local queries = {
 			]],
 		}
 	},
-	-- rust = {
-	-- 	comment = '// ',
-	-- 	queries = {
-	-- 		[[
-	--			TODO
-	-- 		]],
-	-- 	},
-	-- },
+	rust = {
+		comment = '// ',
+		queries = {
+			[[
+				(function_item
+					name: (identifier) @name
+				) @body
+			]],
+			[[
+				(struct_item
+					name: (type_identifier) @name
+				) @body
+			]],
+			[[
+				(enum_item
+					name: (type_identifier) @name
+				) @body
+			]],
+			[[
+				(for_expression
+					pattern: (identifier) @name
+				) @body
+			]],
+			[[
+				(if_expression
+					condition: (binary_expression) @name
+				) @body
+			]],
+			[[
+				(let_declaration
+					pattern: (identifier) @name
+				) @body
+			]],
+			-- [[
+			-- 	(block
+			-- 		pattern: (identifier) @name
+			-- 	) @body
+			-- ]],
+			[[
+				(mod_item
+					name: (identifier) @name
+				) @body
+			]],
+		},
+	},
 }
 
 local parsed_queries = {}
@@ -121,6 +160,7 @@ vim.api.nvim_create_autocmd({
 	"TextChanged",
 	"TextChangedI",
 }, {
+	-- TODO: just use `queries`
 	pattern = {
 		--"*.c",
 		--"*.cpp",

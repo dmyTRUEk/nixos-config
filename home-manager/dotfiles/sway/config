@@ -34,7 +34,7 @@ set $menu_apps anyrun
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/marigold_myshko_dm_crop.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/games/elden-ring.png
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/sonny-boy-bg-spamton.png
-set $wallpaper $HOME/Sway_Wallpaper_Blue_1920x1080.png
+set $wallpaper $HOME/Pictures/Wallpapers/nix/wallpaper-nix-2_crop.png
 
 # Lockscreen
 set $lock_command exec sh -c $HOME/.config/sway/scripts/lock_screen_manually.sh
@@ -546,7 +546,7 @@ $btrbindsym $mod+g exec killall -SIGUSR1 .waybar-wrapped
 #exec wl-paste -t text --watch clipman store
 #exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
-#exec gammastep
+exec gammastep
 
 exec_always "pkill autoname-worksp; $HOME/.config/home-manager/home-manager/dotfiles/sway/scripts/autoname-workspaces.py"
 

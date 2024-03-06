@@ -11,9 +11,6 @@ vim_globals = {
 
 	-- Set `mapleader` before `lazy` so that mappings are correct.
 	mapleader = ' ',
-
-	-- disable default vim-surround keybinds.
-	surround_no_mappings = 1,
 }
 
 for name, value in pairs(vim_globals) do
@@ -35,6 +32,9 @@ options_enable = {
 	'ignorecase', -- /word will find 'word' or 'Word' or 'WORD'
 	'smartcase', -- when 'ignorecase' & 'smartcase' are both on, if a pattern contains an uppercase letter, it is case sensitive, otherwise, it is not; for example, '/The' would find only 'The', while '/the' would find both 'the' & 'The'
 
+	--'noexpandtab',
+	--'list',
+
 	'linebreak', -- wrap on words (wrap on chars in `breakat`)
 
 	--'langremap', -- ?
@@ -43,6 +43,15 @@ options_enable = {
 for _, name in pairs(options_enable) do
 	-- TODO: wrap in "try/catch"
 	vim.opt[name] = true
+end
+
+options_disable = {
+	--'modeline', -- ?
+}
+-- TODO: move all "executers" (options etc setters) to the bottom/other file?
+for _, name in pairs(options_disable) do
+	-- TODO: wrap in "try/catch"
+	vim.opt[name] = false
 end
 
 
@@ -60,6 +69,7 @@ options = {
 
 	tabstop = 4, -- size of tab used for "rendering"
 	shiftwidth = 4, -- size of tab used for << >> etc
+	--listchars = 'tab:⍿·',
 
 	--timeoutlen = 1000,
 	--ttimeoutlen = 0,
@@ -277,7 +287,7 @@ require('lazy').setup {
 	--'nlknguyen/papercolor-theme',
 	--'kjssad/quantum.vim',
 	{'ellisonleao/gruvbox.nvim',
-		init = function ()
+		init = function()
 			-- TODO:
 			--require 'dmytruek.colorschemes.gruvbox'
 			require('gruvbox').setup {
@@ -311,7 +321,12 @@ require('lazy').setup {
 	{'windwp/nvim-autopairs', opts = { -- close brackets automatically
 		-- TODO
 	}},
-	'tpope/vim-surround', -- surround manager
+	{'tpope/vim-surround',
+		init = function()
+			-- disable default vim-surround keybinds.
+			vim.g.surround_no_mappings = 1
+		end
+	}, -- surround manager
 	'tommcdo/vim-exchange', -- exchange selections
 	'tpope/vim-repeat', -- enable repeat for plugins
 	{'unblevable/quick-scope', -- better find in line
@@ -400,7 +415,14 @@ require('lazy').setup {
 			},
 		},
 	}},
-	--'preservim/nerdtree', -- file manager
+	{'preservim/nerdtree',
+		init = function ()
+			vim.g.NERDTreeSortOrder = { '[[extension]]' }
+			vim.g.NERDTreeNaturalSort = 1
+			vim.g.NERDTreeIgnore = { '\\.bin$', '\\.png$', '\\.jpg$', '\\.jpeg$', '\\.gif$', '\\.webp$' }
+			keybinds_n_c['<leader>n'] = 'NERDTreeToggle'
+		end
+	}, -- file manager
 	--'Xuyuanp/scrollbar.nvim', -- scrollbar
 
 	-- TREESITTER:
@@ -607,7 +629,7 @@ require('lazy').setup {
 				-- print('LSP: setting up', lsp_server_name)
 				require('lspconfig')[lsp_server_name].setup {
 					capabilities = capabilities,
-					on_attach = function (client, bufnr)
+					on_attach = function(client, bufnr)
 						-- TODO: try when nvim 0.10
 						-- print('Inlay hints: trying to attach')
 						if client.server_capabilities.inlayHintProvider then
@@ -636,6 +658,13 @@ require('lazy').setup {
 
 			keybinds_n['ga'] = vim.lsp.buf.code_action
 			keybinds_n['K'] = vim.lsp.buf.hover
+
+			vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+				vim.lsp.diagnostic.on_publish_diagnostics, {
+					-- delay update diagnostics
+					update_in_insert = true,
+				}
+			)
 
 			-- TODO:
 			-- vim.lsp.buf.type_definition
@@ -681,6 +710,30 @@ require('lazy').setup {
 					--{ name = 'snippy' },    -- for snippy users
 					{ name = 'luasnip' },     -- for luasnip users
 					--{ name = 'nvim_lua', option = { include_deprecated = true } }, -- #e1a547
+				},
+				preselect = cmp.PreselectMode.Item,
+				sorting = {
+					priority_weight = 2,
+					comparators = {
+						cmp.config.compare.offset,
+						cmp.config.compare.exact,
+						-- cmp.config.compare.scopes,
+						cmp.config.compare.score,
+						cmp.config.compare.recently_used,
+						--require("cmp-under-comparator").under,
+						cmp.config.compare.locality,
+						cmp.config.compare.kind,
+						-- cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					},
+				},
+				matching = {
+					disallow_fuzzy_matching = true,
+					disallow_fullfuzzy_matching = true,
+					disallow_partial_fuzzy_matching = true,
+					disallow_partial_matching = false,
+					disallow_prefix_unmatching = true,
 				},
 				mapping = {
 					['<cr>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -798,9 +851,91 @@ end
 -- TODO: automatically support ukr layout
 
 
+test_map = {
+	a = 'abc',
+	s = 'def',
+	as = 'ghi',
+	sa = 'jkl',
+	['<leader>a'] = 'mno',
+	['<leader>as'] = 'pqr',
+	['<a-a>'] = 'stu',
+	['<a-s>a'] = 'vw',
+	['<a-as>dm'] = 'xyz',
+}
+
+function translate_keybind(keybind, translation)
+	-- print('\n')
+	-- print(keybind)
+	local keybind_translated = ''
+	local cs_depth = 0     -- control sequence depth:             <c-f> : 0<1c1-1f1>0
+	local is_cs_ca = false -- is control sequence control or alt: <c-f> : 0<1c1-0f0>0
+	--local is_escaped = false -- abc\\def : 0a0b0c0\1\0d0e0f0
+	for i in 1, #keybind do
+		local char = keybind[i]
+		if char == '<' then
+			cs_depth = cs_depth + 1
+			is_cs_ca = true
+		elseif char == '>' then
+			cs_depth = cs_depth - 1
+			is_cs_ca = false
+		-- elseif char == '\\' and not is_escaped then
+		-- 	is_escaped = true
+		elseif not is_cs_ca then
+			if cs_depth < 0 or cs_depth > 1 then error('bad <> sequence') end
+		end
+	end
+	return keybind_translated
+end
+
+translation_eng_to_ukr = {
+	q = 'й',
+	w = 'ц',
+	e = 'у',
+	r = 'к',
+	t = 'е',
+	y = 'н',
+	u = 'г',
+	i = 'ш',
+	o = 'щ',
+	p = 'з',
+	a = 'ф',
+	s = 'і',
+	d = 'в',
+	f = 'а',
+	g = 'п',
+	h = 'р',
+	j = 'о',
+	k = 'л',
+	l = 'д',
+	z = 'я',
+	x = 'ч',
+	c = 'с',
+	v = 'м',
+	b = 'и',
+	n = 'т',
+	m = 'ь',
+}
+
+-- for keybind, action in pairs(test_map) do
+-- 	print(keybind, '->' , translate_keybind(keybind, translation_eng_to_ukr))
+-- end
+
+
+
+-- set tabs EVERYWHERE
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function()
+		vim.opt_local.expandtab = false
+		vim.opt_local.tabstop = options.tabstop
+		vim.opt_local.shiftwidth = options.shiftwidth
+		--vim.opt_local.softtabstop = options.softtabstop
+		--vim.opt_local.smarttab = true
+	end,
+})
 
 
 
 -- TODO: load by lazy?
-require 'dmytruek.blockmark'
+require 'dmytruek.blockmarks'
 
