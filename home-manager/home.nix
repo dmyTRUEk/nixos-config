@@ -54,9 +54,9 @@
 		inherit (config.lib.file) mkOutOfStoreSymlink;
 		dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home-manager/dotfiles";
 		config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor): use /.
-		setup_simple_symlinks = builtins.foldl' (acc: elem: acc // {
-			"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
-		}) {};
+		setup_simple_symlinks = names: lib.mkMerge (builtins.map (name: {
+			"${config_path}/${name}".source = mkOutOfStoreSymlink "${dotfiles_path}/${name}";
+		}) names);
 		#setup_complex_symlinks = lib.mapAttrs' (name: value: lib.nameValuePair
 		#	("${config_path}/${name}".source)
 		#	(mkOutOfStoreSymlink "${dotfiles_path}/${value}")
@@ -270,7 +270,7 @@
 			enable = true;
 			enableFishIntegration = true;
 		};
-		zathura.enable = true;
+		#zathura.enable = true;
 		#steam = {
 		#	enable = true;
 		#	remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -279,7 +279,7 @@
 	};
 
 	wayland.windowManager.sway = {
-		enable = true;
+		#enable = true;
 		wrapperFeatures.gtk = true;
 	};
 
@@ -326,6 +326,7 @@
 		swayimg
 		gnome.gnome-boxes
 		libreoffice
+		zathura
 
 		# LSP:
 		lua-language-server # lua
