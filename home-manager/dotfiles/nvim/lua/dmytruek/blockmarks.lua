@@ -75,6 +75,16 @@ local queries = {
 				) @body
 			]],
 			[[
+				(impl_item
+					trait: (type_identifier) @name
+				) @body
+			]],
+			[[
+				(impl_item
+					type: (type_identifier) @name
+				) @body
+			]],
+			[[
 				(for_expression
 					pattern: (identifier) @name
 				) @body

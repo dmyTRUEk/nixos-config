@@ -73,6 +73,7 @@
 				memtest86.enable = true;
 			};
 		};
+		kernelPackages = pkgs.linuxPackages_latest;
 		extraModulePackages = with config.boot.kernelPackages; [
 			v4l2loopback # for obs virtual camera
 		];
@@ -96,7 +97,7 @@
 	};
 
 	networking = {
-		hostName = "acer-nixos"; # TODO: MOVE SOMEWHERE?? (to be cross pc compatible)
+		hostName = "psyche"; # TODO: MOVE SOMEWHERE?? (to be cross pc compatible)
 		networkmanager.enable = true;
 	};
 

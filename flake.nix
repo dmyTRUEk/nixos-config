@@ -34,7 +34,7 @@
 		# NixOS configuration entrypoint
 		# Available through 'nixos-rebuild --flake .#your-hostname'
 		nixosConfigurations = {
-			acer-nixos = nixpkgs.lib.nixosSystem {
+			psyche = nixpkgs.lib.nixosSystem {
 				# TODO: enable?
 				#system = "x86_64-linux";
 
@@ -49,7 +49,7 @@
 		# Standalone home-manager configuration entrypoint
 		# Available through 'home-manager --flake .#your-username@your-hostname'
 		homeConfigurations = {
-			# or "myshko@acer-nixos"?
+			# or "myshko@psyche"?
 			"myshko" = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs; #d868c3 same?
 				#pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance #d868c3 same?

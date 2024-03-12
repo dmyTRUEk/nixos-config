@@ -548,5 +548,9 @@ $btrbindsym $mod+g exec killall -SIGUSR1 .waybar-wrapped
 
 exec gammastep
 
-exec_always "pkill autoname-worksp; $HOME/.config/home-manager/home-manager/dotfiles/sway/scripts/autoname-workspaces.py"
+# AutoName WorkSpace (ANWS)
+exec $HOME/.config/home-manager/home-manager/dotfiles/sway/scripts/autoname-workspaces.py
+
+# sway relative keyboard (SRK)
+exec_always $HOME/.local/bin/sway-relative-keyboard-rs
 

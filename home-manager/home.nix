@@ -107,7 +107,7 @@
 		#home-manager.enable = true; # enable to self-host?
 		alacritty = {
 			enable = true;
-			settings = builtins.fromTOML (builtins.readFile ./dotfiles/alacritty/alacritty.toml);
+			#settings = builtins.fromTOML (builtins.readFile ./dotfiles/alacritty/alacritty.toml);
 		};
 		neovim = {
 			enable = true;
@@ -199,6 +199,7 @@
 				nic = "nvim ~/.config/home-manager/nixos/configuration.nix";
 				nih = "nvim ~/.config/home-manager/home-manager/home.nix";
 				nif = "nvim ~/.config/home-manager/flake.nix";
+				nixos-gc-5d = "nix-collect-garbage --delete-older-than 5d && sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 5d && sudo nixos-rebuild switch --flake ~/.config/home-manager/";
 
 				nn = "nvim ~/.config/home-manager/home-manager/dotfiles/nvim/init.lua";
 				ns = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/config";
@@ -206,7 +207,30 @@
 				#nf = "nvim ~/.config/home-manager/home-manager/dotfiles/fish";
 				nfh = "nvim ~/.local/share/fish/fish_history";
 
-				fumo = "fortune | fumosay | lolcat";
+				fumo = "gensoquote | fumosay | lolcat";
+
+				# rust related:
+				nc = "nvim Cargo.toml";
+				ncl = "nvim Cargo.lock";
+
+				cc = "cargo clean";
+				ct = "cargo test";
+				ctr = "cargo test --release";
+				ctrn = "RUSTFLAGS='-C target-cpu=native' cargo test --release";
+
+				cr = "cargo run";
+				crr = "cargo run --release";
+				crrn = "RUSTFLAGS='-C target-cpu=native' cargo run --release";
+				#ctcr { ( cargo test && cargo run $@ ) }
+				#ctcrr { ( cargo test && cargo run --release $@ ) }
+				#ctcrrn { ( cargo test && RUSTFLAGS='-C target-cpu=native' cargo run --release $@ ) }
+
+				cb = "cargo build";
+				cbr = "cargo build --release";
+				cbrn = "RUSTFLAGS='-C target-cpu=native' cargo build --release";
+				ctcb = "cargo test && cargo build";
+				ctcbr = "cargo test && cargo build --release";
+				ctcbrn = "cargo test && RUSTFLAGS='-C target-cpu=native' cargo build --release";
 			};
 			shellInit = ''
 				fish_add_path -m ~/.local/bin
@@ -246,6 +270,12 @@
 			enable = true;
 			enableFishIntegration = true;
 		};
+		zathura.enable = true;
+		#steam = {
+		#	enable = true;
+		#	remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+		#	dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+		#};
 	};
 
 	wayland.windowManager.sway = {
@@ -285,6 +315,7 @@
 		fortune
 		#cowsay
 		lolcat
+		tokei
 
 		# GUI:
 		pavucontrol # gui to control volume
@@ -321,7 +352,7 @@
 	fonts.fontconfig.enable = true;
 
 	# Nicely reload system units when changing configs
-	systemd.user.startServices = "sd-switch"; # sd = systemd
+	#systemd.user.startServices = "sd-switch"; # sd = systemd
 
 	# use Wayland where possible (electron)
 	# TODO: enable?
@@ -332,23 +363,64 @@
 		dropbox.enable = true;
 	};
 
-	xdg.portal = {
+	xdg = {
 		enable = true;
-		#wlr.enable = true;
-		#xdgOpenUsePortal = true;
-		configPackages = [
-			pkgs.sway
-		];
-		# TODO: enable?
-		config = {
-			sway = {
-				default = [ "gtk" ];
-				"org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+		mime.enable = true;
+
+		desktopEntries = {
+			neovim-in-alacritty = {
+				name = "NeoVim (in Alacritty)";
+				comment = "Terminal text editor launched in Alacritty terminal emulator";
+				#genericName = "";
+				exec = "alacritty -e nvim";
+				mimeType = [ "text/plain" ];
+				categories = [ "Utility" "TextEditor" ];
+				terminal = false;
+				icon = "terminal";
 			};
-			common.default = [ "gtk" ];
+			ranger-in-kitty = {
+				name = "Ranger (in Kitty)";
+				comment = "Terminal file manager launched in Kitty terminal emulator";
+				#genericName = "";
+				exec = "kitty env RANGER_LOAD_DEFAULT_RC=false ranger %U";
+				mimeType = [ "inode/directory" ];
+				categories = [ "System" "FileTools" "FileManager" "Utility" "Core" ];
+				terminal = false;
+				icon = "user-desktop";
+			};
 		};
-		extraPortals = [ # deprecated?
-			pkgs.xdg-desktop-portal-gtk
-		];
+
+		mimeApps = {
+            enable = true;
+            associations.added = {
+				"x-scheme-handler/tg" = "org.telegram.desktop.desktop";
+                "application/pdf" = "org.pwmt.zathura.desktop";
+            };
+            defaultApplications = {
+				"x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
+                "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+                "text/plain" = [ "neovim-in-alacritty.desktop" ];
+            };
+        };
+
+		portal = {
+			enable = true;
+			#wlr.enable = true;
+			#xdgOpenUsePortal = true;
+			configPackages = [
+				pkgs.sway
+			];
+			# TODO: enable?
+			config = {
+				sway = {
+					default = [ "gtk" ];
+					"org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+				};
+				common.default = [ "gtk" ];
+			};
+			extraPortals = [ # deprecated?
+				pkgs.xdg-desktop-portal-gtk
+			];
+		};
 	};
 }

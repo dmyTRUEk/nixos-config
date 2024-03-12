@@ -143,6 +143,11 @@ keybinds_n = {
 	['d;'] = 'dt;',
 	['y;'] = 'yt;',
 
+	['<leader>;'] = 'm`A;<esc>``',
+	['<leader>:'] = 'm`A:<esc>``',
+	['<leader>,'] = 'm`A,<esc>``',
+	['<leader>.'] = 'm`A.<esc>``',
+
 	--['<leader>e'] = 'm`$x``',
 	--<leader>; m`A;<esc>``
 	--<leader>: m`A:<esc>``
@@ -184,15 +189,6 @@ keybinds_n = {
 	cc3W = 'yiW3WviWp4BviWp',
 	cc3B = 'yiW3BviWp3WviWp',
 
-	-- vim-surround
-	ds  = '<Plug>Dsurround',
-	cs  = '<Plug>Csurround',
-	cS  = '<Plug>CSurround',
-	ys  = '<Plug>Ysurround',
-	yS  = '<Plug>YSurround',
-	yss = '<Plug>Yssurround',
-	ySs = '<Plug>YSsurround',
-	ySS = '<Plug>YSsurround',
 } -- end of `keybinds_n`
 
 keybinds_i = {
@@ -231,37 +227,39 @@ keybinds_n_c = {
 -- TODO: test if `x` or `v` is needed
 keybinds_v = {
 	S = ':sort<cr>',
-
-	-- my maps for vim-surround
-	s = '<Plug>VSurround',
-	gs = '<Plug>VgSurround',
-
-	x = '<Plug>(Exchange)',
 } -- end of `keybinds_v`
-
 
 
 
 autocmds = {
 	{'FileType', {
-		pattern = {'gitcommit', 'markdown', '*.tex'},
-		command = 'setlocal spell',
+		pattern = {
+			'gitcommit',
+			'markdown',
+			'*.tex',
+			'*.txt',
+		},
+		command = 'setlocal spell'
 	}},
 	{{'BufEnter', 'BufLeave', 'BufWinEnter', 'BufWinLeave', 'WinNew', 'WinEnter', 'WinLeave', 'VimResized'}, {
 		callback = function()
 			--TODO:
 			--set_relative_scrolloff()
-		end,
+		end
+	}},
+	{'FileType', {
+		-- set tabs EVERYWHERE
+		pattern = '*',
+		callback = function()
+			vim.opt_local.expandtab = false
+			vim.opt_local.tabstop = options.tabstop
+			vim.opt_local.shiftwidth = options.shiftwidth
+			--vim.opt_local.softtabstop = options.softtabstop
+			--vim.opt_local.smarttab = true
+		end
 	}},
 }
-for _, autocmd in pairs(autocmds) do
-	local events, opts = unpack(autocmd)
-	--local events = autocmd[1]
-	--local opts = autocmd[2]
-	--print_table(events)
-	--print_table(opts)
-	vim.api.nvim_create_autocmd(events, opts)
-end
+
 
 
 
@@ -289,26 +287,24 @@ require('lazy').setup {
 	{'ellisonleao/gruvbox.nvim',
 		init = function()
 			-- TODO:
-			--require 'dmytruek.colorschemes.gruvbox'
-			require('gruvbox').setup {
-				overrides = {
-					Operator = { link = 'GruvboxOrange' }, -- undo italic
-					-- change diagnostic colors:
-					DiagnosticHint = { link = 'GruvboxYellow' },
-					DiagnosticSignHint = { link = 'GruvboxYellowSign' },
-					DiagnosticUnderlineHint = { link = 'GruvboxYellowUnderline' },
-					DiagnosticFloatingHint = { link = 'GruvboxYellow' },
-					DiagnosticVirtualTextHint = { link = 'GruvboxYellow' },
-					-- rust btw
-					--['@lsp.type.comment.rust'] = { link = 'GruvboxYellow' },
-					['@lsp.type.struct.rust'] = { link = 'GruvboxYellow' },
-					-- TODO: special color for traits (interfaces).
-					--['@lsp.type.interface.rust'] = { link = 'GruvboxOrange' },
-					['@lsp.typemod.comment.documentation.rust'] = { link = 'GruvboxOrange' },
-				}
-			}
-
-
+			require 'dmytruek.colorschemes.gruvbox'
+			--require('gruvbox').setup {
+			--	overrides = {
+			--		Operator = { link = 'GruvboxOrange' }, -- undo italic
+			--		-- change diagnostic colors:
+			--		DiagnosticHint = { link = 'GruvboxYellow' },
+			--		DiagnosticSignHint = { link = 'GruvboxYellowSign' },
+			--		DiagnosticUnderlineHint = { link = 'GruvboxYellowUnderline' },
+			--		DiagnosticFloatingHint = { link = 'GruvboxYellow' },
+			--		DiagnosticVirtualTextHint = { link = 'GruvboxYellow' },
+			--		-- rust btw
+			--		--['@lsp.type.comment.rust'] = { link = 'GruvboxYellow' },
+			--		['@lsp.type.struct.rust'] = { link = 'GruvboxYellow' },
+			--		-- TODO: special color for traits (interfaces).
+			--		--['@lsp.type.interface.rust'] = { link = 'GruvboxOrange' },
+			--		['@lsp.typemod.comment.documentation.rust'] = { link = 'GruvboxOrange' },
+			--	}
+			--}
 		end
 	},
 	'rebelot/kanagawa.nvim',
@@ -321,13 +317,110 @@ require('lazy').setup {
 	{'windwp/nvim-autopairs', opts = { -- close brackets automatically
 		-- TODO
 	}},
-	{'tpope/vim-surround',
+	{'tpope/vim-surround', -- surround manager
 		init = function()
-			-- disable default vim-surround keybinds.
+			-- disable default keybinds:
 			vim.g.surround_no_mappings = 1
+			-- set custom maps:
+			keybinds_n['ds'] = '<Plug>Dsurround'
+			keybinds_n['ds'] = '<Plug>Dsurround'
+			keybinds_n['cs'] = '<Plug>Csurround'
+			keybinds_n['cS'] = '<Plug>CSurround'
+			keybinds_n['ys'] = '<Plug>Ysurround'
+			keybinds_n['yS'] = '<Plug>YSurround'
+			keybinds_n['yss'] = '<Plug>Yssurround'
+			keybinds_n['ySs'] = '<Plug>YSsurround'
+			keybinds_n['ySS'] = '<Plug>YSsurround'
+			keybinds_v['s']  = '<Plug>VSurround'
+			keybinds_v['gs'] = '<Plug>VgSurround'
+			local function set(scope, char, surround_expression)
+				vim[scope]['surround_'..vim.fn.char2nr(char)] = surround_expression
+			end
+			local function set_global(char, surround_expression)
+				set('g', char, surround_expression)
+			end
+			local function set_local(char, surround_expression)
+				set('b', char, surround_expression)
+			end
+			autocmds[#autocmds+1] = {'FileType', {
+				pattern = '*',
+				callback = function()
+					-- new line:
+					--set_global([[\<CR>]], '\n\t\r\n')
+					--:echo char2nr("\<CR>") => 13
+					vim.g.surround_13 = '\n\t\r\n'
+					set_global('<', '<\r>')
+					set_global('(', '(\r)')
+					set_global('[', '[\r]')
+					set_global('{', '{\r}')
+					set_global(')', '( \r )')
+					set_global(']', '[ \r ]')
+					set_global('}', '{ \r }')
+				end
+			}}
+			autocmds[#autocmds+1] = {'FileType', {
+				pattern = '*.md',
+				callback = function()
+					set_local('l', '[\r]()')
+					set_local('L', '[](\r)')
+				end
+			}}
+			autocmds[#autocmds+1] = {'FileType', {
+				pattern = '*.py',
+				callback = function()
+					set_local('I', 'Iterator[\r]')
+					set_local('L', 'list[\r]')
+					set_local('T', 'tuple[\r]')
+					set_local('i', 'filter(\r)')
+					set_local('l', 'list(\r)')
+					set_local('m', 'map(\r)')
+					set_local('r', 'range(\r)')
+					set_local('t', '\1Type: \1[\r]')
+				end
+			}}
+			autocmds[#autocmds+1] = {'FileType', {
+				pattern = '*.rust',
+				callback = function()
+					local wrap_in_new  = '\1Container Type: \1::new(\r)'
+					local wrap_in_type = '\1Container Type: \1<\r>'
+					local wrap_in_ok   = 'Ok(\r)'
+					set_local('b', 'Box::new(\r)')
+					set_local('B', 'Box<\r>')
+					set_local('c', wrap_in_new)
+					set_local('C', wrap_in_type)
+					set_local('e', 'Err(\r)')
+					set_local('i', 'if \1If statement: \1 {\n\t\r\n}')
+					set_local('k', wrap_in_ok)
+					set_local('m', '\1Macro name: \1!(\r)')
+					set_local('n', wrap_in_new)
+					set_local('o', wrap_in_ok)
+					set_local('O', 'Option<\r>')
+					set_local('r', 'Result<\r>')
+					set_local('s', 'Some(\r)')
+					set_local('t', wrap_in_new)
+					set_local('T', wrap_in_type)
+					set_local('v', 'vec![\r]')
+					set_local('V', 'Vec<\r>')
+				end
+			}}
+			autocmds[#autocmds+1] = {'FileType', {
+				pattern = '*.tex',
+				callback = function()
+					set_local('l', '\\\1Name: \1{\r}')
+					set_local('L', '\\begin{\1Environment: \1}\r\\end{\1\1}')
+					set_local('b', '\\textbf{\r}')
+					set_local('i', '\\textit{\r}')
+					set_local('u', '\\underline{\r}')
+					set_local('t', '\\text{\r}')
+				end
+			}}
 		end
-	}, -- surround manager
-	'tommcdo/vim-exchange', -- exchange selections
+	},
+	{'tommcdo/vim-exchange', -- exchange selections
+		init = function()
+			keybinds_v['x'] = '<Plug>(Exchange)'
+		end
+	},
 	'tpope/vim-repeat', -- enable repeat for plugins
 	{'unblevable/quick-scope', -- better find in line
 		init = function()
@@ -621,7 +714,7 @@ require('lazy').setup {
 				'pyright', -- python
 				--'ruff_lsp', -- python linter -- TODO: setup
 				'lua_ls',
-				'clangd', -- c/c++
+				--'clangd', -- c/c++
 				'nil_ls', -- nix
 			}
 			local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -632,13 +725,13 @@ require('lazy').setup {
 					on_attach = function(client, bufnr)
 						-- TODO: try when nvim 0.10
 						-- print('Inlay hints: trying to attach')
-						if client.server_capabilities.inlayHintProvider then
-							--inlay_hints.on_attach(client, bufnr)
-							vim.lsp.inlay_hint.enable(bufnr, true)
-							-- print('Inlay hints attached')
-						else
-							-- print('Inlay hints NOT attached')
-						end
+						--if client.server_capabilities.inlayHintProvider then
+						--	--inlay_hints.on_attach(client, bufnr)
+						--	vim.lsp.inlay_hint.enable(bufnr, true)
+						--	-- print('Inlay hints attached')
+						--else
+						--	-- print('Inlay hints NOT attached')
+						--end
 						-- print('Inlay hints: end')
 					end
 				}
@@ -659,7 +752,7 @@ require('lazy').setup {
 			keybinds_n['ga'] = vim.lsp.buf.code_action
 			keybinds_n['K'] = vim.lsp.buf.hover
 
-			vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+			vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 				vim.lsp.diagnostic.on_publish_diagnostics, {
 					-- delay update diagnostics
 					update_in_insert = true,
@@ -720,7 +813,7 @@ require('lazy').setup {
 						-- cmp.config.compare.scopes,
 						cmp.config.compare.score,
 						cmp.config.compare.recently_used,
-						--require("cmp-under-comparator").under,
+						--require('cmp-under-comparator').under,
 						cmp.config.compare.locality,
 						cmp.config.compare.kind,
 						-- cmp.config.compare.sort_text,
@@ -728,13 +821,13 @@ require('lazy').setup {
 						cmp.config.compare.order,
 					},
 				},
-				matching = {
-					disallow_fuzzy_matching = true,
-					disallow_fullfuzzy_matching = true,
-					disallow_partial_fuzzy_matching = true,
-					disallow_partial_matching = false,
-					disallow_prefix_unmatching = true,
-				},
+				-- matching = {
+				-- 	disallow_fuzzy_matching = true,
+				-- 	disallow_fullfuzzy_matching = true,
+				-- 	disallow_partial_fuzzy_matching = true,
+				-- 	disallow_partial_matching = false,
+				-- 	disallow_prefix_unmatching = true,
+				-- },
 				mapping = {
 					['<cr>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 					['<tab>'] = function(fallback)
@@ -807,8 +900,6 @@ vim.cmd.colorscheme('gruvbox')
 
 -- TODO(refactor): unite/simplify?
 keybind_set_n = function(keybind, action) vim.keymap.set('n', keybind, action) end
-keybind_set_n_c = function(keybind, action) vim.keymap.set('n', keybind, ':' .. action .. '<cr>') end
-keybind_set_i = function(keybind, action) vim.keymap.set('i', keybind, action) end
 keybind_set_v = function(keybind, action) vim.keymap.set('v', keybind, action) end
 
 keybind_swap_n = function(kb1, kb2) keybind_set_n(kb1, kb2); keybind_set_n(kb2, kb1) end
@@ -851,6 +942,23 @@ end
 -- TODO: automatically support ukr layout
 
 
+for _, autocmd in pairs(autocmds) do
+	local events, opts = unpack(autocmd)
+	--local events = autocmd[1]
+	--local opts = autocmd[2]
+	--print_table(events)
+	--print_table(opts)
+	-- TODO: wrap in "try/catch"
+	vim.api.nvim_create_autocmd(events, opts)
+end
+
+
+
+-- TODO: load by lazy?
+require 'dmytruek.blockmarks'
+
+
+
 test_map = {
 	a = 'abc',
 	s = 'def',
@@ -863,27 +971,49 @@ test_map = {
 	['<a-as>dm'] = 'xyz',
 }
 
-function translate_keybind(keybind, translation)
-	-- print('\n')
-	-- print(keybind)
-	local keybind_translated = ''
-	local cs_depth = 0     -- control sequence depth:             <c-f> : 0<1c1-1f1>0
-	local is_cs_ca = false -- is control sequence control or alt: <c-f> : 0<1c1-0f0>0
-	--local is_escaped = false -- abc\\def : 0a0b0c0\1\0d0e0f0
-	for i in 1, #keybind do
-		local char = keybind[i]
-		if char == '<' then
-			cs_depth = cs_depth + 1
-			is_cs_ca = true
-		elseif char == '>' then
-			cs_depth = cs_depth - 1
-			is_cs_ca = false
-		-- elseif char == '\\' and not is_escaped then
-		-- 	is_escaped = true
-		elseif not is_cs_ca then
-			if cs_depth < 0 or cs_depth > 1 then error('bad <> sequence') end
+function parse_keybind(keybind_str)
+	-- abc -> {  }
+	local keybind = {}
+	local level = 0 -- triangle brackets level
+	for i = 1, #keybind_str do
+		local c = keybind_str:sub(i, i)
+		-- print(i, c, level)
+		if level < 0 or level > 1 then error('bad <> sequence') end
+		if c == '<' then
+			level = level + 1
+		elseif c == '>' then
+			level = level - 1
+		else
+			if level == 0 then
+				keybind[#keybind+1] = c
+			else
+				-- TODO?
+			end
 		end
 	end
+	return keybind
+end
+
+function translate_keybind(keybind_str, translation)
+	-- TODO: write own/custom keybind parser (into meaningful structure) and then rewrite this function using it?
+	-- error('msg')
+	print('\n')
+	print('keybind_str =', '`'..keybind_str..'`')
+	local keybind_translated = ''
+	-- local keybind = parse_keybind(keybind_str)
+	-- print_table(keybind)
+	keybind_translated = keybind_str:gsub(
+		-- '(<[cCaAsS](-[cCaAsS])*-)(.)(>)',
+		'<([cCaAsS]-)(.)>',
+		function (...)
+			local args = { ... }
+			local len = #args
+			print('args =', args[1], args[len-1], args[len])
+			local c = args[len-1]
+			-- TODO: support uppercase
+			return args[1] .. translation[c] .. '>'
+		end
+	)
 	return keybind_translated
 end
 
@@ -917,25 +1047,6 @@ translation_eng_to_ukr = {
 }
 
 -- for keybind, action in pairs(test_map) do
--- 	print(keybind, '->' , translate_keybind(keybind, translation_eng_to_ukr))
+-- 	print('`'..keybind..'`', '->' , '`'..translate_keybind(keybind, translation_eng_to_ukr)..'`')
 -- end
-
-
-
--- set tabs EVERYWHERE
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "*",
-	callback = function()
-		vim.opt_local.expandtab = false
-		vim.opt_local.tabstop = options.tabstop
-		vim.opt_local.shiftwidth = options.shiftwidth
-		--vim.opt_local.softtabstop = options.softtabstop
-		--vim.opt_local.smarttab = true
-	end,
-})
-
-
-
--- TODO: load by lazy?
-require 'dmytruek.blockmarks'
 
