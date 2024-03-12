@@ -57,10 +57,10 @@
 		setup_simple_symlinks = builtins.foldl' (acc: elem: acc // {
 			"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
 		}) {};
-		setup_complex_symlinks = lib.mapAttrs' (name: value: lib.nameValuePair
-			"${config_path}/${name}".source
-			mkOutOfStoreSymlink "${dotfiles_path}/${value}"
-		);
+		#setup_complex_symlinks = lib.mapAttrs' (name: value: lib.nameValuePair
+		#	("${config_path}/${name}".source)
+		#	(mkOutOfStoreSymlink "${dotfiles_path}/${value}")
+		#);
 	in (
 		setup_simple_symlinks [
 			"alacritty"
@@ -78,8 +78,8 @@
 			"waybar"
 			"zathura"
 		]
-		//
-		setup_complex_symlinks {}
+		#//
+		#setup_complex_symlinks {}
 	);
 
 	home.pointerCursor =
