@@ -51,11 +51,11 @@
 
 	home.file =
 	let
-		#inherit (config.lib.file) mkOutOfStoreSymlink;
+		inherit (config.lib.file) mkOutOfStoreSymlink;
 		dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home-manager/dotfiles";
 		config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor): use /.
 		setup_simple_symlinks = builtins.foldl' (acc: elem: acc // {
-			"${config_path}/${elem}".source = "${dotfiles_path}/${elem}";
+			"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
 		}) {};
 		setup_complex_symlinks = lib.mapAttrs' (name: value: lib.nameValuePair
 			"${config_path}/${name}".source
