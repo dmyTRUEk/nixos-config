@@ -233,6 +233,8 @@
 				ctcbrn = "cargo test && RUSTFLAGS='-C target-cpu=native' cargo build --release";
 			};
 			shellInit = ''
+				# low priority first, high -- last
+				fish_add_path -m ~/.cargo/bin
 				fish_add_path -m ~/.local/bin
 				function fish_greeting
 				end
@@ -244,6 +246,10 @@
 				#	fi
 				#	echo $(date +%s%N | sha512sum | cut -c -$hash_len)
 				#end
+				set __fish_git_prompt_showdirtystate true
+				set __fish_git_prompt_showcolorhints true
+				set __fish_git_prompt_describe_style branch
+				set __fish_git_prompt_showstashstate true
 			'';
 		};
 		waybar.enable = true;
@@ -261,7 +267,7 @@
 				vim_keys = true;
 				update_ms = 100;
 				proc_sorting = "memory";
-				proc_tree = true;
+				#proc_tree = true;
 			};
 		};
 		ripgrep.enable = true;
@@ -270,16 +276,13 @@
 			enable = true;
 			enableFishIntegration = true;
 		};
-		#zathura.enable = true;
-		#steam = {
-		#	enable = true;
-		#	remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-		#	dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-		#};
+		#zathura.enable = true; # dont `.enable` bc of dotfiles symlinks
+		yazi.enable = true;
+		yt-dlp.enable = true;
 	};
 
 	wayland.windowManager.sway = {
-		#enable = true;
+		#enable = true; # dont `.enable` bc of dotfiles symlinks
 		wrapperFeatures.gtk = true;
 	};
 
@@ -321,12 +324,13 @@
 		pavucontrol # gui to control volume
 		kitty
 		telegram-desktop
-		#steam # the meme
 		krita
 		swayimg
 		gnome.gnome-boxes
 		libreoffice
-		zathura
+		zathura # here instead of `.enable` bc of dotfiles symlinks
+		kdenlive
+		vlc
 
 		# LSP:
 		lua-language-server # lua

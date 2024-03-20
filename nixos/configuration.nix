@@ -75,9 +75,12 @@
 		};
 		kernelPackages = pkgs.linuxPackages_latest;
 		extraModulePackages = with config.boot.kernelPackages; [
-			v4l2loopback # for obs virtual camera
+			#v4l2loopback # for obs virtual camera
 		];
 	};
+
+	hardware.bluetooth.enable = true; # enables support for Bluetooth
+	#hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
 	time.timeZone = "Europe/Kyiv";
 
@@ -105,25 +108,28 @@
 		DefaultTimeoutStopSec=10s
 	'';
 
-	services.xserver = {
-		enable = true; # TODO: dont enable or why i need it?
-		xkb = {
-			layout = "us";
-			options = "caps:swapescape,ctrl:swap_lalt_lctrl";
-		};
-		displayManager = {
-			defaultSession = "sway";
-			sddm = {
-				enable = true;
-				wayland.enable = true;
-				theme = "chili";
+	services = {
+		xserver = {
+			enable = true; # TODO: dont enable or why i need it?
+			xkb = {
+				layout = "us";
+				options = "caps:swapescape,ctrl:swap_lalt_lctrl";
 			};
-			#gdm = {
-			#	enable = true;
-			#	#wayland = false;
-			#};
+			displayManager = {
+				defaultSession = "sway";
+				sddm = {
+					enable = true;
+					wayland.enable = true;
+					theme = "chili";
+				};
+				#gdm = {
+				#	enable = true;
+				#	#wayland = false;
+				#};
+			};
+			#desktopManager.xfce.enable = true;
 		};
-		#desktopManager.xfce.enable = true;
+		blueman.enable = true;
 	};
 
 	users = {
@@ -139,6 +145,7 @@
 					"networkmanager" # for network
 					"video"          # for brightness/light
 					#"libvirtd"      # for virtualisation/VMs/gnome-boxes
+					"docker"         # for docker (yeah, i know)
 				];
 				packages = with pkgs; [
 					# move `sway` here?
@@ -172,6 +179,12 @@
 		#};
 
 		light.enable = true; # TODO?: move to HM
+
+		steam = { # the meme
+			enable = true;
+			remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+			dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+		};
 	};
 
 	environment.systemPackages = with pkgs; [
@@ -201,21 +214,24 @@
 
 	security.polkit.enable = true;
 
-	#virtualisation.libvirtd = {
-	#	enable = true;
-	#	#qemu = {
-	#	#	package = pkgs.qemu_kvm;
-	#	#	runAsRoot = true;
-	#	#	swtpm.enable = true;
-	#	#	ovmf = {
-	#	#		enable = true;
-	#	#		packages = [(pkgs.unstable.OVMF.override {
-	#	#			secureBoot = true;
-	#	#			tpmSupport = true;
-	#	#		}).fd];
-	#	#	};
-	#	#};
-	#};
+	virtualisation = {
+		docker.enable = true;
+		#libvirtd = {
+		#	enable = true;
+		#	#qemu = {
+		#	#	package = pkgs.qemu_kvm;
+		#	#	runAsRoot = true;
+		#	#	swtpm.enable = true;
+		#	#	ovmf = {
+		#	#		enable = true;
+		#	#		packages = [(pkgs.unstable.OVMF.override {
+		#	#			secureBoot = true;
+		#	#			tpmSupport = true;
+		#	#		}).fd];
+		#	#	};
+		#	#};
+		#};
+	};
 
 	# Enabling realtime may improve latency and reduce stuttering, specially in high load scenarios.
 	# Enabling this option allows any program run by the "users" group to request real-time priority.

@@ -32,6 +32,7 @@ WINDOW_ICONS: dict[str, str] = {
 	"btop": "󰄪",
 	"discord": "", # 󰙯
 	"firefox": "", # 󰈹
+	"kdenlive": "",
 	"krita": "",
 	"obs": "󰐾", # 󱔛 󰟞 󰐻 󰐾 󰻃 󰠿 󰚀 󱜠
 	"ranger": "", #     
