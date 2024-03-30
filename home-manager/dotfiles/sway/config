@@ -392,7 +392,7 @@ bindsym $mod+F4  workspace number $workspace_4, exec alacritty
 bindsym $mod+F5  workspace number $workspace_v, exec vlc
 bindsym $mod+F6  workspace number $workspace_v, exec helvum
 bindsym $mod+F7  workspace number $workspace_s, exec steam
-bindsym $mod+F8  workspace number $workspace_d, exec com.discordapp.Discord
+bindsym $mod+F8  workspace number $workspace_d, exec discord
 bindsym $mod+F9  workspace number $workspace_x, exec obs
 bindsym $mod+F10 workspace number $workspace_z, exec kitty btop
 
@@ -536,7 +536,7 @@ $btrbindsym $mod+g exec killall -SIGUSR1 .waybar-wrapped
 #exec mako
 
 # Dropbox
-#exec dropbox
+exec dropbox
 
 # KDE Connect
 #exec kdeconnect-indicator

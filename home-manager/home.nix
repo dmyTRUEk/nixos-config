@@ -118,12 +118,13 @@
 			enable = true;
 			userName = "dmyTRUEk";
 			userEmail = "25669613+dmyTRUEk@users.noreply.github.com";
-			extraConfig = {
-				credential.helper = "${
-					pkgs.git.override { withLibsecret = true; }
-				}/bin/git-credential-libsecret";
-			};
+			#extraConfig = {
+			#	credential.helper = "${
+			#		pkgs.git.override { withLibsecret = true; }
+			#	}/bin/git-credential-libsecret";
+			#};
 		};
+		zsh.enable = true;
 		fish = {
 			enable = true;
 			shellAliases = {
@@ -132,11 +133,12 @@
 				n = "nvim";
 				"n." = "nvim .";
 				nd = "nvim -d";
+				nr = "nvim -R"; # open in read-only mode
 
 				# lsd
 				l = "lsd";
 				la = "lsd -A";
-				ll = "lsd -al";
+				ll = "lsd -Al";
 
 				mkdir = "mkdir -p";
 				cl = "clear ; git status || clear";
@@ -186,28 +188,37 @@
 				"grsp." = "git restore --staged --patch .";
 				gs = "git status -u --find-renames=1";
 				gss = "git status";
+				gstash = "git stash push";
+				gstashp = "git stash pop";
 
 				whatismyip = "curl -s https://icanhazip.com";
 				whatismylocalip = "ip addr | grep -oE '192\.168\.[0-9]{1,3}\.[0-9]{1,3}' | head -n 1";
 
 				dv = "yt-dlp";
-				dm = "yt-dlp -x --audio-format mp3 --embed-thumbnail --embed-metadata";
+				dm = "yt-dlp -x --audio-format mp3 --embed-metadata --embed-thumbnail";
 				dm_without_covers = "yt-dlp -x --audio-format mp3 --embed-metadata";
 				#random_hash = "";
 
 				nixi = "nix repl"; # nix interactive
+				nx  = "nvim ~/.config/home-manager/";
 				nic = "nvim ~/.config/home-manager/nixos/configuration.nix";
 				nih = "nvim ~/.config/home-manager/home-manager/home.nix";
 				nif = "nvim ~/.config/home-manager/flake.nix";
-				nixos-gc-5d = "nix-collect-garbage --delete-older-than 5d && sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 5d && sudo nixos-rebuild switch --flake ~/.config/home-manager/";
+				#nixos-gc-5d = "nix-collect-garbage --delete-older-than 5d && sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 5d && sudo nixos-rebuild switch --flake ~/.config/home-manager/";
+				nixos-gc-5d = "nix-collect-garbage --delete-older-than 5d && sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 5d";
+				# TODO: two functions that accept how much delete: time (5d), number (10)
+				# TODO: use `nix store optimise` at the end
+				# TODO: use `nixos-rebuild switch` to "clean up" "boot options"
 
-				nn = "nvim ~/.config/home-manager/home-manager/dotfiles/nvim/init.lua";
-				ns = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/config";
-				nw = "nvim ~/.config/home-manager/home-manager/dotfiles/waybar/config";
+				nn  = "nvim ~/.config/home-manager/home-manager/dotfiles/nvim/init.lua";
+				ns  = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/config";
+				nss = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/scripts/";
+				nw  = "nvim ~/.config/home-manager/home-manager/dotfiles/waybar/config";
+				nanws="nvim ~/.config/home-manager/home-manager/dotfiles/sway/scripts/autoname-workspaces.py";
 				#nf = "nvim ~/.config/home-manager/home-manager/dotfiles/fish";
 				nfh = "nvim ~/.local/share/fish/fish_history";
 
-				fumo = "gensoquote | fumosay | lolcat";
+				nre = "nvim README.md";
 
 				# rust related:
 				nc = "nvim Cargo.toml";
@@ -221,9 +232,9 @@
 				cr = "cargo run";
 				crr = "cargo run --release";
 				crrn = "RUSTFLAGS='-C target-cpu=native' cargo run --release";
-				#ctcr { ( cargo test && cargo run $@ ) }
-				#ctcrr { ( cargo test && cargo run --release $@ ) }
-				#ctcrrn { ( cargo test && RUSTFLAGS='-C target-cpu=native' cargo run --release $@ ) }
+				ctcr = "cargo test && cargo run";
+				ctcrr = "cargo test && cargo run --release";
+				ctcrrn = "cargo test && RUSTFLAGS='-C target-cpu=native' cargo run --release";
 
 				cb = "cargo build";
 				cbr = "cargo build --release";
@@ -231,6 +242,10 @@
 				ctcb = "cargo test && cargo build";
 				ctcbr = "cargo test && cargo build --release";
 				ctcbrn = "cargo test && RUSTFLAGS='-C target-cpu=native' cargo build --release";
+
+				time-elapsed = "command time -f 'time elapsed: %E'";
+
+				fumo = "gensoquote | fumosay | lolcat";
 			};
 			shellInit = ''
 				# low priority first, high -- last
@@ -250,6 +265,9 @@
 				set __fish_git_prompt_showcolorhints true
 				set __fish_git_prompt_describe_style branch
 				set __fish_git_prompt_showstashstate true
+				#function fumo
+				#	gensoquote -c $1 | fumosay -f $1 | lolcat
+				#end
 			'';
 		};
 		waybar.enable = true;
@@ -263,10 +281,11 @@
 		btop = {
 			enable = true;
 			settings = {
-				color_theme = "gruvbox_dark_v2";
 				vim_keys = true;
-				update_ms = 100;
+				color_theme = "gruvbox_dark_v2";
 				proc_sorting = "memory";
+				proc_per_core = true;
+				update_ms = 100;
 				#proc_tree = true;
 			};
 		};
@@ -279,6 +298,8 @@
 		#zathura.enable = true; # dont `.enable` bc of dotfiles symlinks
 		yazi.enable = true;
 		yt-dlp.enable = true;
+		#texlive.enable = true;
+		obs-studio.enable = true;
 	};
 
 	wayland.windowManager.sway = {
@@ -297,6 +318,8 @@
 		grim
 		slurp
 		libnotify # for notify-send
+		polkit_gnome
+		gnome.gnome-keyring
 
 		# CLI:
 		tree
@@ -304,21 +327,28 @@
 		btop
 		jq
 		ranger
-		(python3.withPackages (python-pkgs: [
-			python-pkgs.i3ipc
+		(python3.withPackages (python-pkgs: with python-pkgs; [
+			i3ipc # for ANWS
+			numpy
+			matplotlib
 		]))
 		killall
 		gcc
 		lsd # modern ls (rust btw)
+		dua # disk usage (rust btw)
 		hyperfine # (rust btw)
 		skim # (rust btw)
-		rustup
+		rustup # rust btw
 		lshw # ls hardware
 		glxinfo # gpu info
 		fortune
 		#cowsay
-		lolcat
-		tokei
+		#lolcat -> ur0/lolcat (rust btw)
+		tokei # (rust btw)
+		zip
+		unzip
+		p7zip
+		texliveFull
 
 		# GUI:
 		pavucontrol # gui to control volume
@@ -331,6 +361,10 @@
 		zathura # here instead of `.enable` bc of dotfiles symlinks
 		kdenlive
 		vlc
+		dropbox
+		transmission-gtk
+		zoom-us
+		discord
 
 		# LSP:
 		lua-language-server # lua
@@ -365,7 +399,7 @@
 
 	services = {
 		gnome-keyring.enable = true;
-		dropbox.enable = true;
+		#dropbox.enable = true; # somewhy this doesn't work, so just pkg instead
 	};
 
 	xdg = {
@@ -396,36 +430,16 @@
 		};
 
 		mimeApps = {
-            enable = true;
-            associations.added = {
-				"x-scheme-handler/tg" = "org.telegram.desktop.desktop";
-                "application/pdf" = "org.pwmt.zathura.desktop";
-            };
-            defaultApplications = {
-				"x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
-                "application/pdf" = [ "org.pwmt.zathura.desktop" ];
-                "text/plain" = [ "neovim-in-alacritty.desktop" ];
-            };
-        };
-
-		portal = {
 			enable = true;
-			#wlr.enable = true;
-			#xdgOpenUsePortal = true;
-			configPackages = [
-				pkgs.sway
-			];
-			# TODO: enable?
-			config = {
-				sway = {
-					default = [ "gtk" ];
-					"org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-				};
-				common.default = [ "gtk" ];
+			associations.added = {
+				"x-scheme-handler/tg" = "org.telegram.desktop.desktop";
+				"application/pdf" = "org.pwmt.zathura.desktop";
 			};
-			extraPortals = [ # deprecated?
-				pkgs.xdg-desktop-portal-gtk
-			];
+			defaultApplications = {
+				"x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
+				"application/pdf" = [ "org.pwmt.zathura.desktop" ];
+				"text/plain" = [ "neovim-in-alacritty.desktop" ];
+			};
 		};
 	};
 }

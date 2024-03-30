@@ -75,7 +75,7 @@
 		};
 		kernelPackages = pkgs.linuxPackages_latest;
 		extraModulePackages = with config.boot.kernelPackages; [
-			#v4l2loopback # for obs virtual camera
+			v4l2loopback # for obs virtual camera
 		];
 	};
 
@@ -107,6 +107,21 @@
 	systemd.extraConfig = ''
 		DefaultTimeoutStopSec=10s
 	'';
+	systemd = {
+		user.services.polkit-gnome-authentication-agent-1 = {
+			description = "polkit-gnome-authentication-agent-1";
+			wantedBy = [ "graphical-session.target" ];
+			wants = [ "graphical-session.target" ];
+			after = [ "graphical-session.target" ];
+			serviceConfig = {
+				Type = "simple";
+				ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+				Restart = "on-failure";
+				RestartSec = 1;
+				TimeoutStopSec = 10;
+			};
+		};
+	};
 
 	services = {
 		xserver = {
@@ -117,15 +132,15 @@
 			};
 			displayManager = {
 				defaultSession = "sway";
-				sddm = {
-					enable = true;
-					wayland.enable = true;
-					theme = "chili";
-				};
-				#gdm = {
+				#sddm = {
 				#	enable = true;
-				#	#wayland = false;
+				#	wayland.enable = true;
+				#	theme = "chili";
 				#};
+				gdm = {
+					enable = true;
+					#wayland = false;
+				};
 			};
 			#desktopManager.xfce.enable = true;
 		};
@@ -144,7 +159,7 @@
 					"wheel"          # for sudo
 					"networkmanager" # for network
 					"video"          # for brightness/light
-					#"libvirtd"      # for virtualisation/VMs/gnome-boxes
+					"libvirtd"       # for virtualisation/VMs/gnome-boxes
 					"docker"         # for docker (yeah, i know)
 				];
 				packages = with pkgs; [
@@ -188,13 +203,12 @@
 	};
 
 	environment.systemPackages = with pkgs; [
-		# vim -> neovim
-		# fish
-		# git
+		#vim -> neovim
+		#fish
+		#git
 		#wget curl
-		dua
 
-		sddm-chili-theme
+		#sddm-chili-theme
 
 		home-manager
 		# everything else goes to home-manager (HM)
@@ -216,21 +230,21 @@
 
 	virtualisation = {
 		docker.enable = true;
-		#libvirtd = {
-		#	enable = true;
-		#	#qemu = {
-		#	#	package = pkgs.qemu_kvm;
-		#	#	runAsRoot = true;
-		#	#	swtpm.enable = true;
-		#	#	ovmf = {
-		#	#		enable = true;
-		#	#		packages = [(pkgs.unstable.OVMF.override {
-		#	#			secureBoot = true;
-		#	#			tpmSupport = true;
-		#	#		}).fd];
-		#	#	};
-		#	#};
-		#};
+		libvirtd = {
+			enable = true;
+			#qemu = {
+			#	package = pkgs.qemu_kvm;
+			#	runAsRoot = true;
+			#	swtpm.enable = true;
+			#	ovmf = {
+			#		enable = true;
+			#		packages = [(pkgs.unstable.OVMF.override {
+			#			secureBoot = true;
+			#			tpmSupport = true;
+			#		}).fd];
+			#	};
+			#};
+		};
 	};
 
 	# Enabling realtime may improve latency and reduce stuttering, specially in high load scenarios.
@@ -238,4 +252,26 @@
 	#security.pam.loginLimits = [
 	#	{ domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
 	#];
+
+	xdg = {
+		portal = {
+			enable = true;
+			wlr.enable = true;
+			#xdgOpenUsePortal = true;
+			configPackages = [
+				pkgs.sway
+			];
+			# TODO: enable?
+			config = {
+				sway = {
+					default = [ "gtk" ];
+					"org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+				};
+				common.default = [ "gtk" ];
+			};
+			extraPortals = [ # deprecated?
+				pkgs.xdg-desktop-portal-gtk
+			];
+		};
+	};
 }

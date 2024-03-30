@@ -67,6 +67,7 @@ options = {
 	virtualedit = 'block',
 	scrolloff = 10, -- TODO: use relative
 
+	-- TODO: smart detection of tabs or spaces are used in file
 	tabstop = 4, -- size of tab used for "rendering"
 	shiftwidth = 4, -- size of tab used for << >> etc
 	--listchars = 'tab:⍿·',
@@ -236,7 +237,7 @@ autocmds = {
 		pattern = {
 			'gitcommit',
 			'markdown',
-			'*.tex',
+			'tex',
 			'text',
 		},
 		command = 'setlocal spell'
@@ -249,6 +250,7 @@ autocmds = {
 	}},
 	{'FileType', {
 		-- set tabs EVERYWHERE
+		-- TODO: smart detection of tabs or spaces are used in file
 		pattern = '*',
 		callback = function()
 			vim.opt_local.expandtab = false
@@ -341,14 +343,14 @@ require('lazy').setup {
 				end
 			}}
 			autocmds[#autocmds+1] = {'FileType', {
-				pattern = '*.md',
+				pattern = 'markdown',
 				callback = function()
 					set_local('l', '[\r]()')
 					set_local('L', '[](\r)')
 				end
 			}}
 			autocmds[#autocmds+1] = {'FileType', {
-				pattern = '*.py',
+				pattern = 'python',
 				callback = function()
 					set_local('I', 'Iterator[\r]')
 					set_local('L', 'list[\r]')
@@ -361,7 +363,7 @@ require('lazy').setup {
 				end
 			}}
 			autocmds[#autocmds+1] = {'FileType', {
-				pattern = '*.rust',
+				pattern = 'rust',
 				callback = function()
 					local wrap_in_new  = '\1Container Type: \1::new(\r)'
 					local wrap_in_type = '\1Container Type: \1<\r>'
@@ -386,7 +388,7 @@ require('lazy').setup {
 				end
 			}}
 			autocmds[#autocmds+1] = {'FileType', {
-				pattern = '*.tex',
+				pattern = 'tex',
 				callback = function()
 					set_local('l', '\\\1Name: \1{\r}')
 					set_local('L', '\\begin{\1Environment: \1}\r\\end{\1\1}')

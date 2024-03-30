@@ -51,8 +51,7 @@
 		homeConfigurations = {
 			# or "myshko@psyche"?
 			"myshko" = home-manager.lib.homeManagerConfiguration {
-				inherit pkgs; #d868c3 same?
-				#pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance #d868c3 same?
+				inherit pkgs;
 
 				# TODO: enable?
 				#extraSpecialArgs = { inherit inputs outputs; };
