@@ -46,7 +46,7 @@
 	};
 
 	home = {
-		# TODO: refactor to not write username manually
+		# TODO: refactor to not write username manually?
 		username = "myshko";
 		homeDirectory = "/home/myshko";
 	};
@@ -73,7 +73,7 @@
 			"mako"
 			"nvim/init.lua" # TODO: refactor?
 			"nvim/lua"
-			#"ranger" # TODO: fix?
+			"ranger"
 			"sway"
 			"swayimg"
 			"swaylock"
@@ -345,7 +345,7 @@
 
 	home.packages = with pkgs; [
 		# "LIBS":
-		pulseaudio  # provides pactl, to change volume by fn keys
+		pulseaudio # provides pactl, to change volume by fn keys
 		playerctl
 		gammastep
 		mako
