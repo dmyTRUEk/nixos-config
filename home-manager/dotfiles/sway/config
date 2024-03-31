@@ -30,11 +30,11 @@ set $menu_apps anyrun
 
 # Wallpaper
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/art/vector_control_dreams.jpg
-#set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/art/solis-2560x1440.jpg
+set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/art/solis-2560x1440.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/marigold_myshko_dm_crop.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/games/elden-ring.png
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/sonny-boy-bg-spamton.png
-set $wallpaper $HOME/Pictures/Wallpapers/nix/wallpaper-nix-2_crop.png
+#set $wallpaper $HOME/Pictures/Wallpapers/nix/wallpaper-nix-2_crop.png
 
 # Lockscreen
 set $lock_command exec sh -c $HOME/.config/sway/scripts/lock_screen_manually.sh
