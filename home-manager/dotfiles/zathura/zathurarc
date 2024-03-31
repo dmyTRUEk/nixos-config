@@ -45,9 +45,10 @@ set recolor-keephue true
 set recolor-darkcolor "#f9f5d7"
 set recolor-lightcolor "#282828"
 
-set highlight-transparency 0.1
-set highlight-color "#b57614"
-set highlight-active-color "#b8bb26"
+# eg search result
+set highlight-color rgba(181,118,20,0.3)
+# eg current search result
+set highlight-active-color rgba(184,187,38,0.3)
 #set highlight-fg "#ff00ff"
 
 set default-bg "#242424"
