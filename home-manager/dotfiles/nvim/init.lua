@@ -250,9 +250,9 @@ autocmds = {
 	}},
 	{'FileType', {
 		-- set tabs EVERYWHERE
-		-- TODO: smart detection of tabs or spaces are used in file
 		pattern = '*',
 		callback = function()
+			-- TODO: smart detection of tabs or spaces are used in file
 			vim.opt_local.expandtab = false
 			vim.opt_local.tabstop = options.tabstop
 			vim.opt_local.shiftwidth = options.shiftwidth
@@ -260,6 +260,14 @@ autocmds = {
 			--vim.opt_local.smarttab = true
 		end
 	}},
+	{'FileType', {
+		pattern = "tex",
+		callback = function()
+			-- TODO: refactor
+			require 'dmytruek.latex_autos'
+			vim.cmd("call SetupEverythingForLatex()")
+		end
+	}}
 }
 
 
