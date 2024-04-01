@@ -71,8 +71,7 @@
 			"imv"
 			"kitty"
 			"mako"
-			"nvim/init.lua" # TODO: refactor?
-			"nvim/lua"
+			"nvim"
 			"ranger"
 			"sway"
 			"swayimg"
