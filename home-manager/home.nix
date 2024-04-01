@@ -269,6 +269,14 @@
 				#function fumo
 				#	gensoquote -c $1 | fumosay -f $1 | lolcat
 				#end
+				function yazi_with_cwd_memory
+					set tmp (mktemp -t "yazi-cwd.XXXXX")
+					yazi $argv --cwd-file="$tmp"
+					if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+						cd -- "$cwd"
+					end
+					rm -f -- "$tmp"
+				end
 			'';
 		};
 		waybar.enable = true;
@@ -297,7 +305,7 @@
 			enableFishIntegration = true;
 		};
 		#zathura.enable = true; # dont `.enable` bc of dotfiles symlinks
-		yazi.enable = true;
+		yazi = import ./programs/yazi.nix; # (rust btw)
 		yt-dlp.enable = true;
 		#texlive.enable = true;
 		obs-studio.enable = true;
@@ -452,11 +460,11 @@
 				terminal = false;
 				icon = "terminal";
 			};
-			ranger-in-kitty = {
-				name = "Ranger (in Kitty)";
+			yazi-in-kitty = {
+				name = "Yazi (in Kitty)";
 				comment = "Terminal file manager launched in Kitty terminal emulator";
 				#genericName = "";
-				exec = "kitty env RANGER_LOAD_DEFAULT_RC=false ranger %U";
+				exec = ''kitty --title "yazi_with_cwd_memory" fish -C yazi_with_cwd_memory %U'';
 				mimeType = [ "inode/directory" ];
 				categories = [ "System" "FileTools" "FileManager" "Utility" "Core" ];
 				terminal = false;
@@ -466,6 +474,7 @@
 
 		mimeApps = {
 			enable = true;
+			# TODO: test if yazi opens "folders"
 			associations.added = {
 				"x-scheme-handler/tg" = "org.telegram.desktop.desktop";
 				"application/pdf" = "org.pwmt.zathura.desktop";

@@ -39,6 +39,7 @@ WINDOW_ICONS: dict[str, str] = {
 	"skype": "󰒯", # 
 	"steam": "", # 
 	"telegram": "", # 
+	"yazi": "", #     
 	"zathura": "", # 󰈦
 	"zoom": "󰬇",
 	#     
