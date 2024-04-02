@@ -262,26 +262,8 @@
 		mime.enable = true;
 
 		desktopEntries = {
-			neovim-in-alacritty = {
-				name = "NeoVim (in Alacritty)";
-				comment = "Terminal text editor launched in Alacritty terminal emulator";
-				#genericName = "";
-				exec = "alacritty -e nvim";
-				mimeType = [ "text/plain" ];
-				categories = [ "Utility" "TextEditor" ];
-				terminal = false;
-				icon = "terminal";
-			};
-			yazi-in-kitty = {
-				name = "Yazi (in Kitty)";
-				comment = "Terminal file manager launched in Kitty terminal emulator";
-				#genericName = "";
-				exec = ''kitty --title "yazi_with_cwd_memory" fish -C yazi_with_cwd_memory %U'';
-				mimeType = [ "inode/directory" ];
-				categories = [ "System" "FileTools" "FileManager" "Utility" "Core" ];
-				terminal = false;
-				icon = "user-desktop";
-			};
+			neovim-in-alacritty = import ./desktop-entries/neovim-in-alacritty.nix;
+			yazi-in-kitty = import ./desktop-entries/yazi-in-kitty.nix;
 		};
 
 		mimeApps = {
