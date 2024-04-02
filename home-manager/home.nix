@@ -65,7 +65,6 @@
 		setup_simple_symlinks [
 			"alacritty"
 			"gammastep"
-			"imv"
 			"kitty"
 			"mako"
 			"nvim"
@@ -102,11 +101,11 @@
 		"BreezeX-Black";
 
 	programs = {
+		# IMPORTANT!!!
+		# - DO NOT `.enable` programs that have dotfiles symlinks
+		# IMPORTANT!!!
+
 		#home-manager.enable = true; # enable to self-host?
-		alacritty = {
-			enable = true;
-			#settings = builtins.fromTOML (builtins.readFile ./dotfiles/alacritty/alacritty.toml);
-		};
 		neovim = {
 			enable = true;
 			defaultEditor = true;
@@ -124,7 +123,6 @@
 		};
 		zsh.enable = true;
 		fish = import ./programs/fish.nix;
-		waybar.enable = true;
 		firefox = {
 			enable = true;
 			# TODO: enable somehow?
@@ -143,13 +141,12 @@
 				#proc_tree = true;
 			};
 		};
-		ripgrep.enable = true;
+		ripgrep.enable = true; # (rust btw)
 		direnv.enable = true;
 		nix-index = {
 			enable = true;
 			enableFishIntegration = true;
 		};
-		#zathura.enable = true; # dont `.enable` bc of dotfiles symlinks
 		yazi = import ./programs/yazi.nix; # (rust btw)
 		yt-dlp.enable = true;
 		#texlive.enable = true;
@@ -206,14 +203,16 @@
 		texliveFull
 
 		# GUI:
-		pavucontrol # gui to control volume
+		alacritty # (rust btw)
+		waybar
 		kitty
+		pavucontrol # gui to control volume
 		telegram-desktop
-		krita
 		swayimg
+		krita
 		gnome.gnome-boxes
 		libreoffice
-		zathura # here instead of `.enable` bc of dotfiles symlinks
+		zathura
 		kdenlive
 		vlc
 		dropbox
@@ -225,7 +224,7 @@
 		lua-language-server # lua
 		nil # nix (rust btw)
 		pyright # python
-		#ruff-lsp # python # TODO: setup it for lints
+		#ruff-lsp # python # TODO: setup it for lints, cs it's fast (rust btw)
 
 		# fonts:
 		jetbrains-mono # pretty ok monospace font

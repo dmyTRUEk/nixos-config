@@ -139,7 +139,9 @@
 				#};
 				gdm = {
 					enable = true;
-					#wayland = false;
+					wayland = true;
+					#banner = "Greetings, human.";
+					#hiddenUsers = [];
 				};
 			};
 			#desktopManager.xfce.enable = true;

@@ -36,6 +36,7 @@
 		system = "x86_64-linux";
 		pkgs = nixpkgs.legacyPackages.${system};    #f2ef04 same?
 		#pkgs = import stable { inherit system; };  #f2ef04 same?
+		#pkgs = import nixpkgs { inherit system; }; #f2ef04 same?
 	in {
 		# NixOS configuration entrypoint
 		# Available through 'nixos-rebuild --flake .#your-hostname'
