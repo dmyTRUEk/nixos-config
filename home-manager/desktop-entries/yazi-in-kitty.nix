@@ -1,3 +1,4 @@
+# xdg.desktopEntries.yazi-in-kitty =
 {
 	name = "Yazi (in Kitty)";
 	comment = "Terminal file manager launched in Kitty terminal emulator";

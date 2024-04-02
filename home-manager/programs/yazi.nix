@@ -1,3 +1,4 @@
+# programs.yazi =
 {
 	enable = true;
 	#enableFishIntegration = true; # it's just `yazi_with_cwd_memory`

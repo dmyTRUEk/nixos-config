@@ -1,3 +1,4 @@
+# programs.anyrun =
 { inputs, pkgs, ... }: {
 	enable = true;
 	extraCss = import ./anyrun-theme.nix;
