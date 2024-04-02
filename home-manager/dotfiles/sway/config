@@ -283,7 +283,7 @@ $btrbindsym $mod+Ctrl+Backspace exec \
 # Screenshots
 # screenshot (of current monitor?)
 bindsym Print exec \
-    filename=$HOME/Pictures/Screenshots/Screenshot_$(date +'%Y%m%d_%H%M%S.png') \
+    filename=$HOME/Pictures/Screenshots/2024/Screenshot_$(date +'%Y%m%d_%H%M%S.png') \
     && grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') "$filename" \
     && wl-copy "file://$filename" -t text/uri-list
 # bind to make screenshot when alt is pressed (in tabletop simulator)
@@ -294,7 +294,7 @@ bindsym Print exec \
 
 # screenshot of rectangular selection
 bindsym Control+Print exec \
-    filename=$HOME/Pictures/Screenshots/Screenshot_$(date +'%Y%m%d_%H%M%S.png') \
+    filename=$HOME/Pictures/Screenshots/2024/Screenshot_$(date +'%Y%m%d_%H%M%S.png') \
     && grim -g "$(slurp)" "$filename" \
     && wl-copy "file://$filename" -t text/uri-list
 

@@ -74,7 +74,7 @@
 				{ on = ["g" "u"]; run = "cd ~/Dropbox/University/Mast4"; }
 				{ on = ["g" "m"]; run = "cd ~/Music"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
-				{ on = ["g" "s"]; run = "cd ~/Pictures/Screenshots"; }
+				{ on = ["g" "s"]; run = "cd ~/Pictures/Screenshots/2024"; }
 				{ on = ["g" "v"]; run = "cd ~/Videos"; }
 				# games:
 				{ on = ["g" "a" "c"]; run = "cd ~/.local/share/Celeste/Saves"; }
