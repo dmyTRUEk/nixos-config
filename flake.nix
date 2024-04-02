@@ -20,16 +20,16 @@
 		# everything match nicely? Try nix-colors!
 		# nix-colors.url = "github:misterio77/nix-colors";
 
-		#anyrun = {
-		#	url = "github:Kirottu/anyrun";
-		#	#inputs.nixpkgs.follows = "nixpkgs";
-		#};
+		anyrun = {
+			url = "github:Kirottu/anyrun";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = {
+	outputs = inputs @ {
 		nixpkgs,
 		home-manager,
-		#anyrun,
+		anyrun,
 		...
 	}:
 	let
@@ -43,8 +43,6 @@
 			psyche = nixpkgs.lib.nixosSystem {
 				# TODO: enable?
 				#system = "x86_64-linux";
-
-				#environment.packages = [ anyrun.packages.${system}.anyrun ];
 
 				# TODO: enable?
 				#specialArgs = { inherit inputs outputs; };
@@ -61,11 +59,13 @@
 			"myshko" = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 
-				# TODO: enable?
-				#extraSpecialArgs = { inherit inputs outputs; };
+				extraSpecialArgs = { inherit inputs; };
 
 				# > Main home-manager configuration file <
-				modules = [ ./home-manager/home.nix ];
+				modules = [
+					./home-manager/home.nix
+					anyrun.homeManagerModules.default
+				];
 			};
 		};
 	};
