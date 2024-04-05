@@ -68,10 +68,9 @@
 			"kitty"
 			"mako"
 			"nvim"
-			"ranger"
 			"sway"
 			"swayimg"
-			"swaylock"
+			#"swaylock"
 			"waybar"
 			"zathura"
 		]
@@ -142,7 +141,10 @@
 			};
 		};
 		ripgrep.enable = true; # (rust btw)
-		direnv.enable = true;
+		direnv = {
+			enable = true;
+			#enableFishIntegration = true; # it's by default
+		};
 		nix-index = {
 			enable = true;
 			enableFishIntegration = true;

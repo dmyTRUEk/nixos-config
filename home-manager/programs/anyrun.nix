@@ -12,7 +12,7 @@
 			dictionary
 			#kidex
 			#randr
-			rink
+			rink # calculator & units convertor
 			#shell
 			#stdin
 			symbols
