@@ -524,6 +524,8 @@ $btrbindsym $mod+g exec killall -SIGUSR1 .waybar-wrapped
 
 # Polkit Authentication - for apps that requests password
 #exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always $(nix eval nixpkgs#polkit_gnome.outPath --raw)/libexec/polkit-gnome-authentication-agent-1
+
 
 # Sddm - for lock screen
 #exec systemctl enable sddm.service
