@@ -30,6 +30,7 @@
 			audio = [{ run = ''vlc "$@"''; }];
 			kdenlive = [{ run = ''kdenlive "$@"''; }];
 			pdf = [{ run = ''zathura "$@"''; }];
+			libreoffice = [{ run = ''libreoffice "$@"''; }];
 		};
 		open = {
 			rules = [
@@ -40,6 +41,9 @@
 				{ mime = "application/pdf"; use = "pdf"; }
 				{ name = "*.mp3"; use = "audio"; }
 				{ name = "*.wav"; use = "audio"; }
+				{ name = "*.odt"; use = "libreoffice"; }
+				{ name = "*.odp"; use = "libreoffice"; }
+				{ name = "*.ods"; use = "libreoffice"; }
 				# Multiple openers for a single rule
 				#{ name = "*.html", use = [ "browser", "text" ] },
 			];
