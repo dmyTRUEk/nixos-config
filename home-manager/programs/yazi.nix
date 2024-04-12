@@ -83,6 +83,7 @@
 				{ on = ["g" "t"]; run = "cd '~/Downloads/Telegram Desktop'"; }
 				{ on = ["g" "r"]; run = "cd ~/Dropbox"; }
 				{ on = ["g" "u"]; run = "cd ~/Dropbox/University/Mast4"; }
+				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
 				{ on = ["g" "m"]; run = "cd ~/Music"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
 				{ on = ["g" "s"]; run = "cd ~/Pictures/Screenshots/2024"; }
