@@ -544,6 +544,7 @@ require('lazy').setup {
 			require('nvim-treesitter.configs').setup {
 				ensure_installed = {
 					'c', 'lua', 'vim', 'vimdoc', 'query', -- these are reqired
+					'comment',
 					--'cpp',
 					--'kotlin',
 					'latex',
@@ -1064,4 +1065,9 @@ translation_eng_to_ukr = {
 -- for keybind, action in pairs(test_map) do
 -- 	print('`'..keybind..'`', '->' , '`'..translate_keybind(keybind, translation_eng_to_ukr)..'`')
 -- end
+
+vim.cmd([[
+highlight MyTodo guifg=black guibg=orange
+au VimEnter * syntax match MyTodo /TODO/
+]])
 
