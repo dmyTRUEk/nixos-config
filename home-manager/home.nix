@@ -202,6 +202,7 @@
 		zip
 		unzip
 		p7zip
+		unrar
 		texliveFull
 
 		# GUI:
