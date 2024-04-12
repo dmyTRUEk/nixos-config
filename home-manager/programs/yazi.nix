@@ -67,11 +67,12 @@
 				{ on = ["<C-d>"]; run = ''shell "$SHELL" --block --confirm''; desc = "Open shell here"; }
 				{ on = ["<C-j>"]; run = "arrow  50%"; desc = "Move cursor half page down"; }
 				{ on = ["<C-k>"]; run = "arrow -50%"; desc = "Move cursor half page up"; }
+				{ on = ["J"]; run = "tab_switch -1 --relative"; desc = "Switch to the previous tab"; }
+				{ on = ["K"]; run = "tab_switch  1 --relative"; desc = "Switch to the next tab"; }
 				{ on = ["u"]; run = "shell 'dua i' --block --confirm"; desc = "Disk Usage (dua i)"; }
-				{ on = ["s"]; run = "search fd"; desc = "Search files by name using fd"; }
-				{ on = ["S"]; run = "search rg"; desc = "Search files by content using ripgrep"; }
-				#{ on = ["<C-s>"]; run = "search none"; desc = "Cancel the ongoing search"; }
+				#{ on = [ "m" "c" ]; run = "linemode ctime"; desc = "Set linemode to ctime"; }
 
+				# GOTOs:
 				# basic:
 				{ on = ["g" "/"]; run = "cd /"; }
 				#{ on = ["g" ""]; run = "cd /tmp"; }
