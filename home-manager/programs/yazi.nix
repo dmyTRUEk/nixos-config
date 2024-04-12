@@ -44,6 +44,12 @@
 				{ name = "*.odt"; use = "libreoffice"; }
 				{ name = "*.odp"; use = "libreoffice"; }
 				{ name = "*.ods"; use = "libreoffice"; }
+				{ name = "*.doc" ; use = "libreoffice"; }
+				{ name = "*.docx"; use = "libreoffice"; }
+				{ name = "*.ppt" ; use = "libreoffice"; }
+				{ name = "*.pptx"; use = "libreoffice"; }
+				{ name = "*.xls" ; use = "libreoffice"; }
+				{ name = "*.xlsx"; use = "libreoffice"; }
 				# Multiple openers for a single rule
 				#{ name = "*.html", use = [ "browser", "text" ] },
 			];
