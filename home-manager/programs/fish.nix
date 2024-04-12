@@ -119,6 +119,9 @@
 		ctcbr = "cargo test && cargo build --release";
 		ctcbrn = "cargo test && RUSTFLAGS='-C target-cpu=native' cargo build --release";
 
+		# src: https://github.com/cross-rs/cross/blob/6d097fb548ec121c2a0faf1c1d8ef4ca360d6750/docs/environment_variables.md?plain=1#L15
+		crosss = "NIX_STORE=/nix/store cross";
+
 		time-elapsed = "command time -f 'time elapsed: %E'";
 
 		fumo = "gensoquote | fumosay | lolcat";
