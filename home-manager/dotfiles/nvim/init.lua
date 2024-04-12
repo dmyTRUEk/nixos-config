@@ -306,9 +306,20 @@ require('lazy').setup {
 	'folke/tokyonight.nvim',
 
 	-- Core:
-	{'windwp/nvim-autopairs', opts = { -- close brackets automatically
-		-- TODO
-	}},
+	{'windwp/nvim-autopairs', -- close brackets automatically
+		config = true,
+		init = function()
+			local nap = require('nvim-autopairs')
+			local rule = require('nvim-autopairs.rule')
+			nap.get_rules("'")[1].not_filetypes = {
+				'tex',
+				'text',
+			}
+			nap.add_rules {
+				rule("$", "$", {"tex", "latex"}),
+			}
+		end
+	},
 	{'tpope/vim-surround', -- surround manager
 		init = function()
 			-- disable default keybinds:

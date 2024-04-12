@@ -58,9 +58,6 @@ func! SetupEverythingForLatex()
     let g:vimtex_quickfix_mode = 0
     let g:vimtex_view_method = 'zathura'
 
-    "let g:AutoPairs["'"] = ""
-    "let g:AutoPairs["`"] = ""
-
     " for autocompile and sync:
     let g:is_latex_auto_sync_enabled = 1
     let g:is_latex_auto_compile_enabled = 1
