@@ -124,6 +124,14 @@
 	};
 
 	services = {
+		displayManager = {
+			defaultSession = "sway";
+			#sddm = {
+			#	enable = true;
+			#	wayland.enable = true;
+			#	theme = "chili";
+			#};
+		};
 		xserver = {
 			enable = true; # TODO: dont enable or why i need it?
 			xkb = {
@@ -131,12 +139,6 @@
 				options = "caps:swapescape,ctrl:swap_lalt_lctrl";
 			};
 			displayManager = {
-				defaultSession = "sway";
-				#sddm = {
-				#	enable = true;
-				#	wayland.enable = true;
-				#	theme = "chili";
-				#};
 				gdm = {
 					enable = true;
 					wayland = true;
