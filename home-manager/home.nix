@@ -159,6 +159,9 @@
 	wayland.windowManager.sway = {
 		#enable = true; # dont `.enable` bc of dotfiles symlinks
 		wrapperFeatures.gtk = true;
+		#programs.sway.extraConfig = ''
+		#	exec_always ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+		#'';
 	};
 
 	home.packages = with pkgs; [
