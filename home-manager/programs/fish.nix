@@ -124,6 +124,8 @@
 		fumo = "gensoquote | fumosay | lolcat";
 
 		yy = "yazi_with_cwd_memory";
+
+		fileinfo = "stat";
 	};
 	shellInit = ''
 		# low priority first, high -- last
