@@ -165,6 +165,13 @@
 	};
 
 	home.packages = with pkgs; [
+		# INFO:
+		lshw # ls hardware
+		glxinfo # gpu info
+		vulkan-tools # for vulkaninfo, gpu info
+		wev # wayland event viewer
+		wayland-utils
+
 		# "LIBS":
 		pulseaudio # provides pactl, to change volume by fn keys
 		playerctl
@@ -184,20 +191,11 @@
 		btop
 		jq
 		ranger
-		(python3.withPackages (python-pkgs: with python-pkgs; [
-			i3ipc # for ANWS
-			numpy
-			matplotlib
-		]))
 		killall
-		gcc
 		lsd # modern ls (rust btw)
 		dua # disk usage (rust btw)
 		hyperfine # (rust btw)
 		skim # (rust btw)
-		rustup # rust btw
-		lshw # ls hardware
-		glxinfo # gpu info
 		fortune
 		#cowsay
 		#lolcat -> ur0/lolcat (rust btw)
@@ -207,6 +205,18 @@
 		p7zip
 		unrar
 		texliveFull
+		ffmpeg_5
+
+		# LANGS:
+		rustup # rust btw
+		#cargo-cross # rust btw
+		#alsa-lib pkg-config # for bevy (rust btw)
+		(python3.withPackages (python-pkgs: with python-pkgs; [
+			i3ipc # for ANWS
+			numpy
+			matplotlib
+		]))
+		gcc
 
 		# GUI:
 		alacritty # (rust btw)

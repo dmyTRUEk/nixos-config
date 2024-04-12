@@ -84,7 +84,8 @@
 		nixos-gc-5d = "nix-collect-garbage --delete-older-than 5d && sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 5d";
 		# TODO: two functions that accept how much delete: time (5d), number (10)
 		# TODO: use `nix store optimise` at the end
-		# TODO: use `nixos-rebuild switch` to "clean up" "boot options"
+		# TODO: use `nixos-rebuild switch ...` to "clean up" "boot options"
+		# TODO?: also clean up home-manager's generations
 
 		nn  = "nvim ~/.config/home-manager/home-manager/dotfiles/nvim/init.lua";
 		ns  = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/config";
