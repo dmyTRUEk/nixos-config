@@ -96,7 +96,7 @@
         "scroll-step": 1,
         // TODO: change tooltip: add info about right click and middle
         "on-click-right": "pavucontrol",
-        "on-click-middle": "blueberry",
+        "on-click-middle": "blueman-manager",
         "tooltip-format": "Device: {desc}.\nScroll to change it's value.\nRight click -> Sound control.\nMiddle click -> Bluetooth menu.",
     },
 
