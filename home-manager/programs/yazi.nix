@@ -60,6 +60,7 @@
 		# ALL default keymaps: github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml
 		manager = {
 			prepend_keymap = [
+				{ on = ["?"]; run = "help";  desc = "Open help"; }
 				{ on = ["Q"]; run = "quit";  desc = "Quit"; }
 				{ on = ["q"]; run = "close"; desc = "Close current tab or quit if last"; }
 				{ on = ["c" "c"]; run = ''shell 'filename="$1" && wl-copy "file://$filename" --type text/uri-list' --confirm''; desc = "Copy file using URI (file://)"; }
