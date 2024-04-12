@@ -8,6 +8,8 @@
 		"n." = "nvim .";
 		nd = "nvim -d";
 		nr = "nvim -R"; # open in read-only mode
+		nh = "nvim -o"; # split with horizontal divider
+		nv = "nvim -O"; # split with vertical divider
 
 		# lsd
 		l = "lsd";
