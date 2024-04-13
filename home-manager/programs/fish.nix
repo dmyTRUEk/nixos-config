@@ -125,8 +125,6 @@
 
 		time-elapsed = "command time -f 'time elapsed: %E'";
 
-		fumo = "gensoquote | fumosay | lolcat";
-
 		yy = "yazi_with_cwd_memory";
 
 		fileinfo = "stat";
@@ -149,9 +147,6 @@
 		set __fish_git_prompt_showcolorhints true
 		set __fish_git_prompt_describe_style branch
 		set __fish_git_prompt_showstashstate true
-		#function fumo
-		#	gensoquote -c $1 | fumosay -f $1 | lolcat
-		#end
 		function yazi_with_cwd_memory
 			set tmp (mktemp -t "yazi-cwd.XXXXX")
 			yazi $argv --cwd-file="$tmp"
@@ -159,6 +154,19 @@
 				cd -- "$cwd"
 			end
 			rm -f -- "$tmp"
+		end
+
+		function fumo
+			switch (count $argv)
+				case 0
+					gensoquote | fumosay | lolcat
+				case 1
+					set char $argv[1]
+					gensoquote -c $char | fumosay -f $char | lolcat
+				case '*'
+					echo "Got too many args, exiting..."
+					return 1
+			end
 		end
 	'';
 }
