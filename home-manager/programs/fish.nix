@@ -80,12 +80,6 @@
 		nic = "nvim ~/.config/home-manager/nixos/configuration.nix";
 		nih = "nvim ~/.config/home-manager/home-manager/home.nix";
 		nif = "nvim ~/.config/home-manager/flake.nix";
-		#nixos-gc-5d = "nix-collect-garbage --delete-older-than 5d && sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 5d && sudo nixos-rebuild switch --flake ~/.config/home-manager/";
-		nixos-gc-5d = "nix-collect-garbage --delete-older-than 5d && sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 5d";
-		# TODO: two functions that accept how much delete: time (5d), number (10)
-		# TODO: use `nix store optimise` at the end
-		# TODO: use `nixos-rebuild switch ...` to "clean up" "boot options"
-		# TODO?: also clean up home-manager's generations
 
 		nn  = "nvim ~/.config/home-manager/home-manager/dotfiles/nvim/init.lua";
 		ns  = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/config";
@@ -181,6 +175,48 @@
 					echo "Got too many args, exiting..."
 					return 1
 			end
+		end
+
+		function nixos-gc-my
+			# check current gc roots: `nix-store --gc --print-roots`
+			set argv_count (count $argv)
+			#echo $argv_count
+			if test $argv_count -ne 1
+				echo "Expected 1 argument, got $argv_count, exiting..."
+				return 1
+			end
+			set value $argv[1]
+			#echo "value: $value"
+			switch (string sub --start=-1 $value)
+				case 'd'
+					set days $value
+					#echo "days: $days"
+
+					# not needed?
+					#echo "[MY INFO] Running `sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $days`..." | lolcat
+					#sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $days
+
+					echo "[MY INFO] Running `sudo nix-collect-garbage --delete-older-than $days` (clean up root pkgs)..." | lolcat
+					sudo nix-collect-garbage --delete-older-than $days
+
+					echo "[MY INFO] Running `nix-collect-garbage --delete-older-than $days` (clean up home pkgs)..." | lolcat
+					nix-collect-garbage --delete-older-than $days
+
+					# remove old generations from boot options
+					echo "[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager/` (to remove old boot options)..." | lolcat
+					sudo nixos-rebuild switch --flake ~/.config/home-manager/
+				case 0 1 2 3 4 5 6 7 8 9
+					set gens $value
+					echo "gens: $gens"
+					echo "UNIMPLEMENTED"
+					# TODO
+					return 1
+				case '*'
+					echo "Expected number of generations (i.e. 10) or number of days (i.e. 10d) to leave, got `$value`, exiting..."
+					return 1
+			end
+			# TODO: use `nix store optimise` at the end (no need bc it's automatic?)
+			# TODO?: also clean up home-manager's generations
 		end
 	'';
 }
