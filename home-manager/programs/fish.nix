@@ -142,14 +142,24 @@
 		set __fish_git_prompt_describe_style branch
 		set __fish_git_prompt_showstashstate true
 
-		#function random_hash
-		#	local default_len=6
-		#	local hash_len=$default_len
-		#	if [[ -n $1 ]]; then
-		#		local hash_len=$1
-		#	fi
-		#	echo $(date +%s%N | sha512sum | cut -c -$hash_len)
-		#end
+		function random_hash
+			set default_len 6
+			set max_len 128
+			switch (count $argv)
+				case 0
+					set hash_len $default_len
+				case 1
+					set hash_len $argv[1]
+				case '*'
+					echo "Got too many args, exiting..."
+					return 1
+			end
+			if test $hash_len -eq 0
+				set hash_len $max_len
+			end
+			# TODO: if hash_len > max_len?
+			date +%s%N | sha512sum | cut -c -$hash_len
+		end
 
 		function yazi_with_cwd_memory
 			set tmp (mktemp -t "yazi-cwd.XXXXX")
