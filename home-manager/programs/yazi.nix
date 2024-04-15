@@ -94,6 +94,7 @@
 				{ on = ["g" "a" "c"]; run = "cd ~/.local/share/Celeste/Saves"; }
 				{ on = ["g" "a" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/374320/pfx/drive_c/users/steamuser/AppData/Roaming/DarkSoulsIII"; }
 				{ on = ["g" "a" "e"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/AppData/Roaming/EldenRing"; }
+				{ on = ["g" "a" "t"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/11020/pfx/drive_c/users/steamuser/Documents/TrackMania/Tracks/Replays"; }
 			];
 		};
 	};
