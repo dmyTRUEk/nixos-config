@@ -21,7 +21,7 @@ function random_hash
 		case 1
 			set hash_len $argv[1]
 		case '*'
-			echo "Got too many args, exiting..."
+			echo 'Got too many args, exiting...'
 			return 1
 	end
 	if test $hash_len -eq 0
@@ -32,7 +32,7 @@ function random_hash
 end
 
 function yazi_with_cwd_memory
-	set tmp (mktemp -t "yazi-cwd.XXXXX")
+	set tmp (mktemp -t 'yazi-cwd.XXXXX')
 	yazi $argv --cwd-file="$tmp"
 	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
 		cd -- "$cwd"
@@ -48,7 +48,7 @@ function fumo
 			set char $argv[1]
 			gensoquote -c $char | fumosay -f $char | lolcat
 		case '*'
-			echo "Got too many args, exiting..."
+			echo 'Got too many args, exiting...'
 			return 1
 	end
 end
@@ -79,7 +79,7 @@ function my-nixos-gc
 			nix-collect-garbage --delete-older-than $days
 
 			# remove old generations from boot options
-			echo "[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager/` # to remove old boot options" | lolcat
+			echo '[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager/` # to remove old boot options' | lolcat
 			sudo nixos-rebuild switch --flake ~/.config/home-manager/
 		case 0 1 2 3 4 5 6 7 8 9
 			set gens $value
@@ -96,34 +96,34 @@ function my-nixos-gc
 end
 
 function my-nixos-update
-	echo "[MY INFO] Running `nix flake update ~/.config/home-manager` # update flake inputs aka pkgs versions" | lolcat
+	echo '[MY INFO] Running `nix flake update ~/.config/home-manager` # update flake inputs aka pkgs versions' | lolcat
 	nix flake update ~/.config/home-manager
 
-	echo "[MY INFO] Running `sudo nixos-rebuild boot --flake ~/.config/home-manager` # update root pkgs" | lolcat
+	echo '[MY INFO] Running `sudo nixos-rebuild boot --flake ~/.config/home-manager` # update root pkgs' | lolcat
 	sudo nixos-rebuild boot --flake ~/.config/home-manager
 
-	echo "[MY INFO] Running `home-manager switch` # update home pkgs" | lolcat
+	echo '[MY INFO] Running `home-manager switch` # update home pkgs' | lolcat
 	home-manager switch
 end
 
 function my-nixos-rebuild-root-later
-	echo "[MY INFO] Running `sudo nixos-rebuild boot --flake ~/.config/home-manager` # rebuild and switch later (at next boot)" | lolcat
+	echo '[MY INFO] Running `sudo nixos-rebuild boot --flake ~/.config/home-manager` # rebuild and switch later (at next boot)' | lolcat
 	sudo nixos-rebuild boot --flake ~/.config/home-manager
 end
 
 function my-nixos-rebuild-root-now
-	echo "[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager` # rebuild and switch now" | lolcat
+	echo '[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager` # rebuild and switch now' | lolcat
 	sudo nixos-rebuild switch --flake ~/.config/home-manager
 end
 
 function my-nixos-rebuild-home-later
-	echo "[MY INFO] Running `` # TODO" | lolcat
-	echo "UNIMPLEMENTED"
+	echo '[MY INFO] Running `` # TODO' | lolcat
+	echo 'UNIMPLEMENTED'
 	# TODO?
 	return 1
 end
 
 function my-nixos-rebuild-home-now
-	echo "[MY INFO] Running `home-manager switch` # rebuild and switch now" | lolcat
+	echo '[MY INFO] Running `home-manager switch` # rebuild and switch now' | lolcat
 	home-manager switch
 end
