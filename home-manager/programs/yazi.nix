@@ -63,7 +63,6 @@
 				{ on = ["?"]; run = "help";  desc = "Open help"; }
 				{ on = ["Q"]; run = "quit";  desc = "Quit"; }
 				{ on = ["q"]; run = "close"; desc = "Close current tab or quit if last"; }
-				{ on = ["c" "c"]; run = ''shell 'filename="$1" && wl-copy "file://$filename" --type text/uri-list' --confirm''; desc = "Copy file using URI (file://)"; }
 				{ on = ["<C-d>"]; run = ''shell "$SHELL" --block --confirm''; desc = "Open shell here"; }
 				{ on = ["<C-j>"]; run = "arrow  50%"; desc = "Move cursor half page down"; }
 				{ on = ["<C-k>"]; run = "arrow -50%"; desc = "Move cursor half page up"; }
@@ -71,6 +70,12 @@
 				{ on = ["K"]; run = "tab_switch  1 --relative"; desc = "Switch to the next tab"; }
 				{ on = ["u"]; run = "shell 'dua i' --block --confirm"; desc = "Disk Usage (dua i)"; }
 				#{ on = [ "m" "c" ]; run = "linemode ctime"; desc = "Set linemode to ctime"; }
+
+				{ on = ["c" "c"]; run = ''shell 'filename="$1" && wl-copy "file://$filename" --type text/uri-list' --confirm''; desc = "Copy file using URI (file://)"; }
+				{ on = ["c" "a"]; run = "copy path"; desc = "Copy Absolute path"; }
+				{ on = ["c" "n"]; run = "copy filename"; desc = "Copy the Name of the file"; }
+				{ on = ["c" "e"]; run = "copy name_without_ext"; desc = "Copy the name of the file without the Extension"; }
+				{ on = ["c" "d"]; run = "copy dirname"; desc = "Copy the path of the parent Directory"; }
 
 				# GOTOs:
 				# basic:
