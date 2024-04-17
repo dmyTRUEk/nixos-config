@@ -45,8 +45,8 @@ WINDOW_ICONS: dict[str, str] = {
 	"ranger": "", #     
 	"skype": "󰒯", # 
 	"steam": "", # 
-	"telegram": "", # 
 	"swayimg": "", # 󰋩   󰥶 󰲍
+	"telegram": "", # 
 	"yazi": "", #     
 	"zathura": "", # 󰈦
 	"zoom": "󰬇",
