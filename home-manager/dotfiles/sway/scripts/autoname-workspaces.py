@@ -107,7 +107,7 @@ def main():
 		level=logging.INFO,
 		filename=ARGUMENTS.logfile,
 		filemode="w",
-		format="%(message)s",
+		format="%(asctime)s [%(levelname)s] %(message)s",
 	)
 
 	ipc = i3ipc.Connection()
