@@ -33,7 +33,7 @@ options_enable = {
 	'smartcase', -- when 'ignorecase' & 'smartcase' are both on, if a pattern contains an uppercase letter, it is case sensitive, otherwise, it is not; for example, '/The' would find only 'The', while '/the' would find both 'the' & 'The'
 
 	--'noexpandtab',
-	--'list',
+	'list',
 
 	'linebreak', -- wrap on words (wrap on chars in `breakat`)
 
@@ -70,7 +70,11 @@ options = {
 	-- TODO: smart detection of tabs or spaces are used in file
 	tabstop = 4, -- size of tab used for "rendering"
 	shiftwidth = 4, -- size of tab used for << >> etc
-	--listchars = 'tab:⍿·',
+	listchars = {
+		tab = '» ',
+		trail = '·',
+		nbsp = '␣',
+	},
 
 	--timeoutlen = 1000,
 	--ttimeoutlen = 0,
