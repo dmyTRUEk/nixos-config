@@ -235,6 +235,7 @@
 		transmission-gtk
 		zoom-us
 		discord
+		blender
 
 		# LSP:
 		lua-language-server # lua

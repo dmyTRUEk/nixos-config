@@ -29,6 +29,7 @@ import i3ipc
 # - assuming all icons to be ONE symbol (search for `ae36d1` in this file)
 WINDOW_ICONS: dict[str, str] = {
 	"alacritty": "", #   
+	"blender": "󰂫",
 	"blueman-manager": "",
 	"btop": "󰄪",
 	"discord": "", # 󰙯
