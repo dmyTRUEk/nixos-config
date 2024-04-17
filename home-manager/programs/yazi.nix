@@ -41,6 +41,7 @@
 				{ mime = "application/pdf"; use = "pdf"; }
 				{ name = "*.mp3"; use = "audio"; }
 				{ name = "*.wav"; use = "audio"; }
+				{ name = "*.ogg"; use = "audio"; }
 				{ name = "*.odt"; use = "libreoffice"; }
 				{ name = "*.odp"; use = "libreoffice"; }
 				{ name = "*.ods"; use = "libreoffice"; }
