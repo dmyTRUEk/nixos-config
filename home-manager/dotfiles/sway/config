@@ -551,8 +551,8 @@ exec dropbox
 exec gammastep
 
 # AutoName WorkSpace (ANWS)
-exec $HOME/.config/home-manager/home-manager/dotfiles/sway/scripts/autoname-workspaces.py
+exec_always $HOME/.config/sway/scripts/launch-anws.sh
 
-# sway relative keyboard (SRK)
-exec_always $HOME/.local/bin/sway-relative-keyboard-rs
+# sway relative keyboard rs (SRKR)
+exec_always $HOME/.config/sway/scripts/launch-srkr.sh
 
