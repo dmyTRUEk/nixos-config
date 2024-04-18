@@ -35,7 +35,7 @@ WINDOW_ICONS: dict[str, str] = {
 	"discord": "", # 󰙯
 	"firefox": "", # 󰈹
 	"kdenlive": "",
-	"kitty": "󰄛",
+	#"kitty": "󰄛", # TODO: make lower priority
 	"krita": "",
 	"libreoffice-calc": "󱪝",
 	"libreoffice-impress": "󰐩",
