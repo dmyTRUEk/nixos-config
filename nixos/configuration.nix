@@ -191,22 +191,20 @@
 
 		sway.enable = true;
 
-		#waybar.enable = true;
-
-		#firefox = {
-		#  enable = true;
-		#  preferences = { # TODO: move to HM
-		#    "browser.tabs.inTitlebar" = 0;
-		#  };
-		#};
-
+		# had to be installed in root?
 		light.enable = true; # TODO?: move to HM
 
+		# sadly, it have to be installed in root to work
 		steam = { # the meme
 			enable = true;
 			remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
 			dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
 		};
+
+		#nh = {
+		#	enable = true;
+		#	flake = "/home/myshko/.config/home-manager";
+		#};
 	};
 
 	environment.systemPackages = with pkgs; [
