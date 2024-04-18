@@ -87,6 +87,8 @@
 				{ on = ["g" "/"]; run = "cd /"; }
 				#{ on = ["g" ""]; run = "cd /tmp"; }
 				{ on = ["g" "h"]; run = "cd ~"; }
+				{ on = ["g" "."]; run = "cd ~/.config"; }
+				# TODO: goto home-manager
 				{ on = ["g" "T"]; run = "cd ~/.local/share/Trash/files"; }
 				# home:
 				{ on = ["g" "c"]; run = "cd ~/projects"; }
