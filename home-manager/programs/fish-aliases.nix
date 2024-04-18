@@ -120,4 +120,7 @@
 	yy = "yazi_with_cwd_memory";
 
 	fileinfo = "stat";
+
+	imagemagick = "magick";
+	im = "magick"; # IMageMagick
 }

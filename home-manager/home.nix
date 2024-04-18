@@ -237,6 +237,9 @@
 		discord
 		blender
 
+		# GUI+CLI:
+		imagemagick
+
 		# LSP:
 		lua-language-server # lua
 		nil # nix (rust btw)
