@@ -5,6 +5,7 @@
 	lib,
 	config,
 	pkgs,
+	pkgs_2024-04-11_1042fd8,
 	...
 }: {
 	# TODO?: make `enable`/`enabled` function that sets enable=true.
@@ -223,7 +224,7 @@
 		waybar
 		kitty
 		pavucontrol # gui to control volume
-		telegram-desktop
+		pkgs_2024-04-11_1042fd8.telegram-desktop
 		swayimg
 		krita
 		gnome.gnome-boxes

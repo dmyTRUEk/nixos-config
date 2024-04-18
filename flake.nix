@@ -24,6 +24,8 @@
 			url = "github:Kirottu/anyrun";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		nixpkgs_2024-04-11_1042fd8.url = "github:NixOS/nixpkgs/1042fd8b148a9105f3c0aca3a6177fd1d9360ba5";
 	};
 
 	outputs = inputs @ {
@@ -37,6 +39,7 @@
 		#pkgs = nixpkgs.legacyPackages.${system};  #f2ef04 same?
 		#pkgs = import stable { inherit system; }; #f2ef04 same?
 		pkgs = import nixpkgs { inherit system; }; #f2ef04 same?
+		pkgs_2024-04-11_1042fd8 = import inputs.nixpkgs_2024-04-11_1042fd8 { inherit system; };
 	in {
 		# NixOS configuration entrypoint
 		# Available through 'nixos-rebuild --flake .#your-hostname'
@@ -60,7 +63,7 @@
 			"myshko" = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 
-				extraSpecialArgs = { inherit inputs; };
+				extraSpecialArgs = { inherit inputs pkgs_2024-04-11_1042fd8; };
 
 				# > Main home-manager configuration file <
 				modules = [
