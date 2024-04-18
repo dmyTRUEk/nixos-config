@@ -558,6 +558,7 @@ require('lazy').setup {
 					'latex',
 					'nix',
 					'python',
+					'ron', -- Rust Object Notation
 					'rust',
 					--'yaml',
 					--'yuck',
