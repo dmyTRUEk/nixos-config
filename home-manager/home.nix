@@ -210,13 +210,13 @@
 		# LANGS:
 		rustup # rust btw
 		#cargo-cross # rust btw
-		#alsa-lib pkg-config # for bevy (rust btw)
 		(python3.withPackages (python-pkgs: with python-pkgs; [
 			i3ipc # for ANWS
 			numpy
 			matplotlib
 		]))
 		gcc
+		#alsa-lib pkg-config # for bevy (rust btw)
 
 		# GUI:
 		alacritty # (rust btw)
