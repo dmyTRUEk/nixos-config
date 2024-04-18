@@ -580,66 +580,69 @@ require('lazy').setup {
 						enable = true,
 						lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
 						keymaps = {
-							['aa'] = '@assignment.outer',
-							['ia'] = '@assignment.rhs',
 							-- You can use the capture groups defined in textobjects.scm
-							--['ab'] = '@block.outer',
-							--['ib'] = '@block.inner',
+							['aa'] = '@parameter.outer', -- a = Argument
+							['ia'] = '@parameter.inner', -- a = Argument
+							['ab'] = '@block.outer',
+							['ib'] = '@block.inner',
 							['ac'] = '@class.outer',
 							['ic'] = '@class.inner',
 							['af'] = '@function.outer',
 							['if'] = '@function.inner',
-							['ap'] = '@parameter.outer',
-							['ip'] = '@parameter.inner',
+							--ap   -- reserved for paragraph
+							--ip   -- reserved for paragraph
 							['ar'] = '@return.outer',
 							['ir'] = '@return.inner',
-							['as'] = '@assignment.outer',
-							['is'] = '@assignment.rhs',
+							['as'] = '@assignment.outer', -- s = aSSignment
+							['is'] = '@assignment.rhs',   -- s = aSSignment
 						},
 					},
 					move = {
 						enable = true,
 						set_jumps = true, -- set jumps in jumplist
+						-- TODO: swap prev & next to confuse % motion less
 						goto_next_start = {
 							[']]'] = '@block.inner',
-							[']a'] = '@assignment.rhs',
+							[']a'] = '@parameter.rhs',
 							[']b'] = '@block.inner',
 							[']c'] = '@class.outer',
 							[']f'] = '@function.outer',
-							[']m'] = '@scopename.inner',
-							[']p'] = '@parameter.inner',
+							[']m'] = '@scopename.inner', -- TODO: test, maybe change
+							--]p   -- reserved for paragraph
 							[']r'] = '@return.inner',
-							[']s'] = '@assignment.rhs', -- TODO: resolve conflict/overlap with next spelling
+							--[']s'] = '@assignment.rhs', -- TODO: resolve conflict/overlap with next spelling
 						},
 						goto_previous_start = {
 							['[['] = '@block.inner',
-							['[a'] = '@assignment.rhs',
+							['[a'] = '@parameter.rhs',
 							['[b'] = '@block.inner',
 							['[c'] = '@class.outer',
 							['[f'] = '@function.outer',
-							['[m'] = '@scopename.inner',
-							['[p'] = '@parameter.inner',
+							['[m'] = '@scopename.inner', -- TODO: test, maybe change
+							--[p   -- reserved for paragraph
 							['[r'] = '@return.inner',
-							['[s'] = '@assignment.rhs', -- TODO: resolve conflict/overlap with next spelling
+							--['[s'] = '@assignment.rhs', -- TODO: resolve conflict/overlap with next spelling
 						},
 						goto_next_end = {
-							[']A'] = '@assignment.rhs',
+							--[']}'] = todo,
+							[']A'] = '@parameter.rhs',
 							[']B'] = '@block.inner',
 							[']C'] = '@class.outer',
 							[']F'] = '@function.outer',
-							[']M'] = '@scopename.inner',
-							[']P'] = '@parameter.inner',
+							[']M'] = '@scopename.inner', -- TODO: test, maybe change
+							--[']P'] = '@parameter.inner',
 							[']R'] = '@return.inner',
 							[']S'] = '@assignment.rhs',
 							[']['] = '@block.inner',
 						},
 						goto_previous_end = {
-							['[A'] = '@assignment.rhs',
+							--['[{'] = todo,
+							['[A'] = '@parameter.rhs',
 							['[B'] = '@block.inner',
 							['[C'] = '@class.outer',
 							['[F'] = '@function.outer',
-							['[M'] = '@scopename.inner',
-							['[P'] = '@parameter.inner',
+							['[M'] = '@scopename.inner', -- TODO: test, maybe change
+							--['[P'] = '@parameter.inner',
 							['[R'] = '@return.inner',
 							['[S'] = '@assignment.rhs',
 							['[]'] = '@block.inner',
@@ -648,13 +651,18 @@ require('lazy').setup {
 					swap = {
 						enable = true,
 						swap_next = {
-							['>p'] = '@parameter.inner',
+							['>a'] = '@parameter.inner',
+							-->p   -- reserved for paragraph
 						},
 						swap_previous = {
-							['<p'] = '@parameter.inner',
+							['<a'] = '@parameter.inner',
+							--<p   -- reserved for paragraph
 						},
 					},
 				},
+				--matchup = { -- for treesitter based % motion?, maybe related: https://github.com/nvim-treesitter/nvim-treesitter/issues/2769
+				--	enable = true,
+				--},
 				playground = {
 					enable = true,
 					disable = {},
