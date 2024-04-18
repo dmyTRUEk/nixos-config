@@ -195,6 +195,8 @@ keybinds_n = {
 	cc3B = 'yiW3BviWp3WviWp',
 
 	['<c-cr>'] = '<c-6>', -- goto to prev file(buffer?)
+
+	['<esc>'] = '<cmd>nohlsearch<cr>',
 } -- end of `keybinds_n`
 
 keybinds_i = {
@@ -206,6 +208,7 @@ keybinds_i = {
 } -- end of `keybinds_i`
 
 keybinds_n_c = {
+	-- DEPRECATED
 	['<leader>o'] = 'nohlsearch',
 
 	['<leader>q'] = 'q',
