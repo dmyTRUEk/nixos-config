@@ -53,6 +53,7 @@ function fumo
 	end
 end
 
+
 function my-nixos-gc
 	# check current gc roots: `nix-store --gc --print-roots`
 	set argv_count (count $argv)
@@ -95,6 +96,7 @@ function my-nixos-gc
 	# TODO?: also clean up home-manager's generations
 end
 
+
 function my-nixos-update
 	echo '[MY INFO] Running `nix flake update ~/.config/home-manager` # update flake inputs aka pkgs versions' | lolcat
 	nix flake update ~/.config/home-manager
@@ -106,24 +108,26 @@ function my-nixos-update
 	home-manager switch
 end
 
-function my-nixos-rebuild-root-later
-	echo '[MY INFO] Running `sudo nixos-rebuild boot --flake ~/.config/home-manager` # rebuild and switch later (at next boot)' | lolcat
-	sudo nixos-rebuild boot --flake ~/.config/home-manager
-end
 
 function my-nixos-rebuild-root-now
 	echo '[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager` # rebuild and switch now' | lolcat
 	sudo nixos-rebuild switch --flake ~/.config/home-manager
 end
 
-function my-nixos-rebuild-home-later
-	echo '[MY INFO] Running `` # TODO' | lolcat
-	echo 'UNIMPLEMENTED'
-	# TODO?
-	return 1
+function my-nixos-rebuild-root-later
+	echo '[MY INFO] Running `sudo nixos-rebuild boot --flake ~/.config/home-manager` # rebuild and switch later (at next boot)' | lolcat
+	sudo nixos-rebuild boot --flake ~/.config/home-manager
 end
+
 
 function my-nixos-rebuild-home-now
 	echo '[MY INFO] Running `home-manager switch` # rebuild and switch now' | lolcat
 	home-manager switch
 end
+
+#function my-nixos-rebuild-home-later
+#	echo '[MY INFO] Running `` # TODO' | lolcat
+#	echo 'UNIMPLEMENTED'
+#	# TODO?
+#	return 1
+#end
