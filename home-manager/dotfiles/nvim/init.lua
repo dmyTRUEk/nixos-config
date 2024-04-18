@@ -194,6 +194,7 @@ keybinds_n = {
 	cc3W = 'yiW3WviWp4BviWp',
 	cc3B = 'yiW3BviWp3WviWp',
 
+	['<c-cr>'] = '<c-6>', -- goto to prev file(buffer?)
 } -- end of `keybinds_n`
 
 keybinds_i = {
