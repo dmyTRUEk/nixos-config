@@ -119,6 +119,12 @@ function my-nixos-rebuild-root-later
 	sudo nixos-rebuild boot --flake ~/.config/home-manager
 end
 
+function my-nixos-check-root
+	echo '[MY INFO] Running `nixos-rebuild build --flake ~/.config/home-manager` # check if current root configuration compiles' | lolcat
+	nixos-rebuild build --flake ~/.config/home-manager
+	echo '[MY INFO] OK' | lolcat
+end
+
 
 function my-nixos-rebuild-home-now
 	echo '[MY INFO] Running `home-manager switch` # rebuild and switch now' | lolcat
@@ -131,3 +137,17 @@ end
 #	# TODO?
 #	return 1
 #end
+
+function my-nixos-check-home
+	echo '[MY INFO] Running `home-manager build` # check if current home configuration compiles' | lolcat
+	home-manager build
+	echo '[MY INFO] OK' | lolcat
+end
+
+
+function my-nixos-check
+	#echo '[MY INFO] Running `my-nixos-check-root`' | lolcat
+	my-nixos-check-root
+	#echo '[MY INFO] Running `my-nixos-check-home`' | lolcat
+	my-nixos-check-home
+end
