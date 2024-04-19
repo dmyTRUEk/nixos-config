@@ -134,7 +134,9 @@
 			#	wayland.enable = true;
 			#	theme = "chili";
 			#};
+			#cosmic-greeter.enable = true; # TODO: try it out
 		};
+		#desktopManager.cosmic.enable = true;
 		xserver = {
 			enable = true; # TODO: dont enable or why i need it?
 			xkb = {

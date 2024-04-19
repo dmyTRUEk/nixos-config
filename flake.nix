@@ -25,6 +25,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		#nixos-cosmic = {
+		#	url = "github:lilyinstarlight/nixos-cosmic";
+		#	inputs.nixpkgs.follows = "nixpkgs";
+		#};
+
 		nixpkgs_2024-04-11_1042fd8.url = "github:NixOS/nixpkgs/1042fd8b148a9105f3c0aca3a6177fd1d9360ba5";
 	};
 
@@ -32,6 +37,7 @@
 		nixpkgs,
 		home-manager,
 		anyrun,
+		#nixos-cosmic,
 		...
 	}:
 	let
@@ -52,7 +58,16 @@
 				#specialArgs = { inherit inputs outputs; };
 
 				# > Main nixos configuration file <
-				modules = [ ./nixos/configuration.nix ];
+				modules = [
+					#{
+					#	nix.settings = {
+					#		substituters = [ "https://cosmic.cachix.org/" ];
+					#		trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+					#	};
+					#}
+					./nixos/configuration.nix
+					#nixos-cosmic.nixosModules.default
+				];
 			};
 		};
 
