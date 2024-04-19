@@ -1,0 +1,98 @@
+# programs.fish.shellInit +=
+
+function my-nixos-gc
+	# check current gc roots: `nix-store --gc --print-roots`
+	set argv_count (count $argv)
+	#echo $argv_count
+	if test $argv_count -ne 1
+		echo "Expected 1 argument, got $argv_count, exiting..."
+		return 1
+	end
+	set value $argv[1]
+	#echo "value: $value"
+	switch (string sub --start=-1 $value)
+		case 'd'
+			set days $value
+			#echo "days: $days"
+
+			# not needed?
+			#echo "[MY INFO] Running `sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $days` # TODO desc" | lolcat
+			#sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $days
+
+			echo "[MY INFO] Running `sudo nix-collect-garbage --delete-older-than $days` # clean up root pkgs" | lolcat
+			sudo nix-collect-garbage --delete-older-than $days
+
+			echo "[MY INFO] Running `nix-collect-garbage --delete-older-than $days` # clean up home pkgs" | lolcat
+			nix-collect-garbage --delete-older-than $days
+
+			# remove old generations from boot options
+			echo '[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager/` # to remove old boot options' | lolcat
+			sudo nixos-rebuild switch --flake ~/.config/home-manager/
+		case 0 1 2 3 4 5 6 7 8 9
+			set gens $value
+			echo "gens: $gens"
+			echo "UNIMPLEMENTED"
+			# TODO
+			return 1
+		case '*'
+			echo "Expected number of generations (i.e. 10) or number of days (i.e. 10d) to leave, got `$value`, exiting..."
+			return 1
+	end
+	# TODO: use `nix store optimise` at the end (no need bc it's automatic?)
+	# TODO?: also clean up home-manager's generations
+end
+
+
+function my-nixos-update
+	echo '[MY INFO] Running `nix flake update ~/.config/home-manager` # update flake inputs aka pkgs versions' | lolcat
+	nix flake update ~/.config/home-manager
+
+	echo '[MY INFO] Running `sudo nixos-rebuild boot --flake ~/.config/home-manager` # update root pkgs' | lolcat
+	sudo nixos-rebuild boot --flake ~/.config/home-manager
+
+	echo '[MY INFO] Running `home-manager switch` # update home pkgs' | lolcat
+	home-manager switch
+end
+
+
+function my-nixos-rebuild-root-now
+	echo '[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager` # rebuild and switch now' | lolcat
+	sudo nixos-rebuild switch --flake ~/.config/home-manager
+end
+
+function my-nixos-rebuild-root-later
+	echo '[MY INFO] Running `sudo nixos-rebuild boot --flake ~/.config/home-manager` # rebuild and switch later (at next boot)' | lolcat
+	sudo nixos-rebuild boot --flake ~/.config/home-manager
+end
+function my-nixos-check-root
+	echo '[MY INFO] Running `nixos-rebuild build --flake ~/.config/home-manager` # check if current root configuration compiles' | lolcat
+	nixos-rebuild build --flake ~/.config/home-manager
+	echo '[MY INFO] OK' | lolcat
+end
+
+
+function my-nixos-rebuild-home-now
+	echo '[MY INFO] Running `home-manager switch` # rebuild and switch now' | lolcat
+	home-manager switch
+end
+
+#function my-nixos-rebuild-home-later
+#      echo '[MY INFO] Running `` # TODO' | lolcat
+#      echo 'UNIMPLEMENTED'
+#      # TODO?
+#      return 1
+#end
+
+function my-nixos-check-home
+	echo '[MY INFO] Running `home-manager build` # check if current home configuration compiles' | lolcat
+	home-manager build
+	echo '[MY INFO] OK' | lolcat
+end
+
+
+function my-nixos-check
+	#echo '[MY INFO] Running `my-nixos-check-root`' | lolcat
+	my-nixos-check-root
+	#echo '[MY INFO] Running `my-nixos-check-home`' | lolcat
+	my-nixos-check-home
+end

@@ -122,7 +122,7 @@
 			#};
 		};
 		zsh.enable = true;
-		fish = import ./programs/fish.nix;
+		fish = import ./programs/fish.nix { inherit lib; };
 		firefox = {
 			enable = true;
 			# TODO: enable somehow?
