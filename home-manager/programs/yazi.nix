@@ -5,7 +5,7 @@
 	settings = {
 		manager = {
 			sort_by = "natural";
-			# TODO: reverse sort Pictures, sort by time Telegram
+			# TODO: reverse sort Pictures/Screenshots, sort by time Telegram
 			sort_sensitive = false; # case sensitive
 			#sort_reverse = true; # TODO: enable for screenshots
 			sort_dir_first = true;

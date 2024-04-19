@@ -80,8 +80,8 @@
 	);
 
 	home.pointerCursor =
-		let
-		getFrom = url: hash: name: {
+	let
+		getCursorFrom = url: hash: name: {
 			inherit name;
 			gtk.enable = true;
 			x11.enable = true;
@@ -95,7 +95,7 @@
 			'';
 		};
 	in
-		getFrom
+		getCursorFrom
 		"https://github.com/ful1e5/BreezeX_Cursor/releases/download/v2.0.0/BreezeX-Black.tar.gz"
 		"sha256-5su79uUG9HLeAqXDUJa/VhpbYyy9gFj/VdtRPY0yUL4="
 		"BreezeX-Black";
@@ -121,7 +121,7 @@
 			#	}/bin/git-credential-libsecret";
 			#};
 		};
-		zsh.enable = true;
+		zsh.enable = true; # only for rare tests
 		fish = import ./programs/fish.nix { inherit lib; };
 		firefox = {
 			enable = true;
