@@ -1,8 +1,4 @@
 # dmyTRUEk's Sway config file
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
 
 
 
@@ -20,15 +16,17 @@ set $right l
 # btr stands for better
 set $btrbindsym bindsym --to-code
 
-# Your preferred terminal emulator
+# Terminal emulator
 set $term alacritty
 
 # Application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened on the original workspace that the command was run on.
-# set $menu_all yofi binapps
-set $menu_apps anyrun
+set $runner anyrun
 
-# Wallpaper
+# Wallpaper (Background)
+# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
+#output * bg @datadir@/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg $HOME/Dropbox/Pictures/Wallpapers/pinetree_pablo-garcia-saldana.jpg fill
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/art/vector_control_dreams.jpg
 set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/art/solis-2560x1440.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/marigold_myshko_dm_crop.jpg
@@ -39,7 +37,7 @@ set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/art/solis-2560x1440.jpg
 # Lockscreen
 set $lock_command exec sh -c $HOME/.config/sway/scripts/lock_screen_manually.sh
 
-set $test_notification notify-send "Notification" "This is test notification"
+#set $test_notification notify-send "Notification" "This is test notification"
 
 # Workspaces names
 set $workspace_1 1
@@ -67,15 +65,12 @@ set $workspace_v 16
 
 
 ### OUTPUT CONFIGURATION
-# Wallpaper (Background)
-# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-#output * bg @datadir@/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#output * bg ~/Dropbox/Pictures/Wallpapers/pinetree_pablo-garcia-saldana.jpg fill
+# Set Wallpaper (Background)
 output * bg $wallpaper fill
 
 # Example configuration
 #output HDMI-A-1 resolution 1920x1080 position 1920,0
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+# Get the names of outputs: `swaymsg -t get_outputs`
 
 # for screen sharing
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -175,9 +170,9 @@ for_window [app_id="kdenlive" title=""] floating enable, resize set width 1200, 
 
 ### IDLE CONFIGURATION
 # Example configuration
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# This will lock screen after 300 seconds of inactivity, then turn off
+# displays after another 300 seconds, and turn screens back on when
+# resumed. It will also lock screen before computer goes to sleep.
 # ?TODO?
 # exec swayidle -w \
 #      timeout 10 'swaylock -f -c 000000' \
@@ -232,9 +227,10 @@ input type:touchpad {
 ### KEY BINDINGS
 
 ## Basics
-# Start a terminal
+# Launch terminal
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term --class="$term_floating"
+# TODO: win+ctrl+shift -> non floating with `fumo` at the begin ᗜᴗᗜ
 # TODO?:
 # bindsym $mod+Shift+plus exec $term --class="$term_floating_scratchpaded"
 
@@ -243,10 +239,9 @@ $btrbindsym $mod+Backspace kill
 # Kill focused window
 $btrbindsym $mod+Shift+Backspace kill 9
 
-# Start your launcher (yofi)
-$btrbindsym $mod+m exec $menu_apps
-# $btrbindsym $mod+Shift+m exec $menu_all
-#bindsym --release Super_L exec $menu_apps
+# Launch application launcher
+$btrbindsym $mod+m exec $runner
+#bindsym --release Super_L exec $runner
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with $mod + right mouse button.
@@ -273,7 +268,7 @@ $btrbindsym $mod+Ctrl+Backspace exec \
     --button-gap=20 \
     --button-dismiss-gap=20 \
     --button-margin-right=10 \
-    -m '  You pressed the exit shortcut. What do you want?' \
+    -m '  Exit shortcut pressed. What to do?' \
     -s '  Cancel  ' \
     -b '  Shutdown  ' 'systemctl poweroff' \
     -b '  Reboot  ' 'systemctl reboot' \
@@ -305,7 +300,7 @@ bindsym Control+Print exec \
 #   always: window under cursor will be focused if mouse moved.
 focus_follows_mouse always
 
-# Move your focus around
+# Move focus around
 $btrbindsym $mod+$left  focus left
 $btrbindsym $mod+$down  focus down
 $btrbindsym $mod+$up    focus up
@@ -384,7 +379,7 @@ $btrbindsym $mod+Shift+x move container to workspace number $workspace_x
 $btrbindsym $mod+Shift+c move container to workspace number $workspace_c
 $btrbindsym $mod+Shift+v move container to workspace number $workspace_v
 
-# Shortcuts for start programs:
+# Shortcuts to launch frequent programs:
 bindsym $mod+F1  workspace number $workspace_1, exec firefox
 bindsym $mod+F2  workspace number $workspace_2, exec telegram-desktop
 bindsym $mod+F3  workspace number $workspace_3, exec kitty --title 'yazi_with_cwd_memory' fish -C yazi_with_cwd_memory
@@ -404,7 +399,7 @@ $btrbindsym $mod+y layout toggle split
 # i disabled stacking layout, because it's useless, lmao
 #$btrbindsym $mod+s layout stacking
 
-# Split current object of your focus vertically or horizontally.
+# Split current object of focus vertically or horizontally.
 $btrbindsym $mod+p splitv
 $btrbindsym $mod+Shift+p splith
 
