@@ -62,7 +62,7 @@
 	"grsp." = "git restore --staged --patch .";
 	gs = "git status -u --find-renames=1";
 	gss = "git status";
-	gstash = "git stash push";
+	gstash = "git stash push --keep-index";
 	gstashp = "git stash pop";
 
 	whatismyip = "curl -s https://icanhazip.com";
