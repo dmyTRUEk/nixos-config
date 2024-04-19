@@ -203,10 +203,10 @@
 			dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
 		};
 
-		#nh = {
-		#	enable = true;
-		#	flake = "/home/myshko/.config/home-manager";
-		#};
+		nh = {
+			enable = true;
+			flake = "/home/myshko/.config/home-manager";
+		};
 	};
 
 	environment.systemPackages = with pkgs; [
