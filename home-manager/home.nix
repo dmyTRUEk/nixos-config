@@ -155,6 +155,10 @@
 		#texlive.enable = true;
 		obs-studio.enable = true;
 		anyrun = import ./programs/anyrun.nix { inherit inputs pkgs; }; # (rust btw)
+		fd = { # (rust btw)
+			enable = true;
+			hidden = true; # search hidden files and directories
+		};
 	};
 
 	wayland.windowManager.sway = {
