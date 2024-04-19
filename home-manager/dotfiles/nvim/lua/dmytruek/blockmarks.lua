@@ -142,7 +142,7 @@ local function update_extmarks(bufnr)
 			local body_node = match[query.body_cap_id]
 			local body_srow, body_scol = body_node:start()
 			local body_erow, body_ecol = body_node:end_()
-			if body_erow - body_srow >= 1 then
+			if body_erow - body_srow >= 10 then
 				local name_node = match[query.name_cap_id]
 				local name_srow, name_scol = name_node:start()
 				local name_erow, name_ecol = name_node:end_()
