@@ -11,8 +11,11 @@ function my-nixos-update
 	echo '[MY INFO] Running `nix flake update ~/.config/home-manager` # update flake inputs aka pkgs versions' | lolcat
 	nix flake update ~/.config/home-manager
 
-	my-nixos-rebuild-root-now
+	my-nixos-rebuild-now
+end
 
+function my-nixos-rebuild-now
+	my-nixos-rebuild-root-now
 	my-nixos-rebuild-home-now
 end
 
