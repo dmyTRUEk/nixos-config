@@ -60,8 +60,23 @@ end
 #end
 
 
+function my-nixos-print-generations-root
+	nix-env --list-generations
+end
+
+function my-nixos-print-generations-home
+	home-manager generations
+end
+
+function my-nixos-print-gcroots-by-ls
+	ll /nix/var/nix/gcroots/auto/
+end
+
+function my-nixos-print-gcroots-by-nix
+	nix-store --gc --print-roots
+end
+
 function my-nixos-gc
-	# check current gc roots: `nix-store --gc --print-roots`
 	set argv_count (count $argv)
 	#echo $argv_count
 	if test $argv_count -ne 1
