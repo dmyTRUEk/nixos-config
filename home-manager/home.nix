@@ -195,7 +195,6 @@
 		neofetch
 		btop
 		jq
-		ranger
 		killall
 		lsd # modern ls (rust btw)
 		dua # disk usage (rust btw)
