@@ -58,11 +58,14 @@
 	#  })
 	#  config.nix.registry;
 
-	nix.settings = {
-		# Enable flakes and new "nix" command
-		experimental-features = [ "nix-command" "flakes" ];
-		# Deduplicate and optimize nix store
-		auto-optimise-store = true;
+	nix = {
+		gc.automatic = false;
+		settings = {
+			# Enable flakes and new "nix" command
+			experimental-features = [ "nix-command" "flakes" ];
+			# Deduplicate and optimize nix store
+			auto-optimise-store = true;
+		};
 	};
 
 	boot = {
