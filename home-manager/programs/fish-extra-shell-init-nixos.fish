@@ -94,8 +94,9 @@ function my-nixos-gc
 			set days $value
 			#echo "days: $days"
 
-			# not needed?
+			# needed or not?
 			#echo "[MY INFO] Running `sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $days` # TODO desc" | lolcat
+			# TODO: require sudo explicitly?
 			#sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $days
 
 			echo "[MY INFO] Running `sudo nix-collect-garbage --delete-older-than $days` # clean up root pkgs" | lolcat
@@ -105,20 +106,36 @@ function my-nixos-gc
 			echo "[MY INFO] Running `nix-collect-garbage --delete-older-than $days` # clean up home pkgs" | lolcat
 			nix-collect-garbage --delete-older-than $days
 
-			# remove old generations from boot options
-			echo '[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager` # to remove old boot options' | lolcat
-			# TODO: require sudo explicitly?
-			sudo nixos-rebuild switch --flake ~/.config/home-manager
-		case 0 1 2 3 4 5 6 7 8 9
-			set gens $value
-			echo "gens: $gens"
-			echo "UNIMPLEMENTED"
-			# TODO
-			return 1
+		case 'n'
+			# remove last character, which is `n`
+			set gens (echo $value | rev | cut -c 2- | rev)
+			#echo "gens: $gens"
+			echo "[MY INFO] Running `nix-env --delete-generations +$gens` # delete all root generations except $gens last" | lolcat
+			nix-env --delete-generations +$gens
+
+			set hm_gens (
+				home-manager generations \
+				| awk '{print $5}' \
+				| tail -n +$(expr $gens + 1)
+			)
+			for hm_gen in $hm_gens
+				echo "[MY INFO] Running `home-manager remove-generations $hm_gen` # delete generation $hm_gen" | lolcat
+				home-manager remove-generations $hm_gen
+			end
+
+			echo "[MY INFO] Running `nix-collect-garbage` # delete unreachable pkgs" | lolcat
+			nix-collect-garbage
+
 		case '*'
-			echo "Expected number of generations (i.e. 10) or number of days (i.e. 10d) to leave, got `$value`, exiting..."
+			echo "Expected number of generations (i.e. 10n) or days (i.e. 10d) to leave, got `$value`, exiting..."
 			return 1
 	end
+
+	# remove old generations from boot options
+	echo '[MY INFO] Running `sudo nixos-rebuild switch --flake ~/.config/home-manager` # to remove old boot options' | lolcat
+	# TODO: require sudo explicitly?
+	sudo nixos-rebuild switch --flake ~/.config/home-manager
+
 	# TODO: use `nix store optimise` at the end (no need bc it's automatic?)
 	# TODO?: also clean up home-manager's generations
 end
