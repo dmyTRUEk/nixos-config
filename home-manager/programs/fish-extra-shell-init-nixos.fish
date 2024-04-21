@@ -61,18 +61,22 @@ end
 
 
 function my-nixos-print-generations-root
+	echo '[MY INFO] Running `nix-env --list-generations`' | lolcat
 	nix-env --list-generations
 end
 
 function my-nixos-print-generations-home
+	echo '[MY INFO] Running `home-manager generations`' | lolcat
 	home-manager generations
 end
 
 function my-nixos-print-gcroots-by-ls
+	echo '[MY INFO] Running `ll /nix/var/nix/gcroots/auto/`' | lolcat
 	ll /nix/var/nix/gcroots/auto/
 end
 
 function my-nixos-print-gcroots-by-nix
+	echo '[MY INFO] Running `nix-store --gc --print-roots`' | lolcat
 	nix-store --gc --print-roots
 end
 
