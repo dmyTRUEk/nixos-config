@@ -60,7 +60,7 @@
     },
 
     "sway/language": {
-        "format": " {shortDescription}",
+        "format": "  {shortDescription}",
     },
 
     "network": {
