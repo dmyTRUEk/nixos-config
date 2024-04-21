@@ -208,7 +208,7 @@
 		p7zip
 		unrar
 		texliveFull
-		ffmpeg_5
+		ffmpeg
 
 		# LANGS:
 		rustup # rust btw
