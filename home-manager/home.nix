@@ -193,7 +193,6 @@
 		# CLI:
 		tree
 		neofetch
-		btop
 		jq
 		killall
 		lsd # modern ls (rust btw)
