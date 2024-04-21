@@ -210,6 +210,7 @@
 		texliveFull
 		ffmpeg
 		nix-tree
+		nvd
 
 		# LANGS:
 		rustup # rust btw
