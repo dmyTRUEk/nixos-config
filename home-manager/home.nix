@@ -209,6 +209,7 @@
 		unrar
 		texliveFull
 		ffmpeg
+		nix-tree
 
 		# LANGS:
 		rustup # rust btw
