@@ -52,3 +52,42 @@ function fumo
 			return 1
 	end
 end
+
+function nm
+	set MAIN_FILE_C 'main.c'
+	set MAIN_FILE_CPP 'main.cpp'
+	set MAIN_FILE_LATEX 'main.tex'
+	set MAIN_FILE_PYTHON 'main.py'
+	set MAIN_FILE_RUST 'src/main.rs'
+	set MAIN_FILE_RUST_IN_SRC 'main.rs'
+	set MAIN_FILE_RUST_LIB 'src/lib.rs'
+	set MAIN_FILE_RUST_LIB_IN_SRC 'lib.rs'
+
+	if test -f $MAIN_FILE_C
+		nvim "$MAIN_FILE_C" $argv
+
+	else if test -f $MAIN_FILE_CPP
+		nvim "$MAIN_FILE_CPP" $argv
+
+	else if test -f $MAIN_FILE_LATEX
+		nvim "$MAIN_FILE_LATEX" $argv
+
+	else if test -f $MAIN_FILE_PYTHON
+		nvim "$MAIN_FILE_PYTHON" $argv
+
+	else if test -f $MAIN_FILE_RUST
+		nvim "$MAIN_FILE_RUST" $argv
+
+	else if test -f $MAIN_FILE_RUST_IN_SRC
+		nvim "$MAIN_FILE_RUST_IN_SRC" $argv
+
+	else if test -f $MAIN_FILE_RUST_LIB
+		nvim "$MAIN_FILE_RUST_LIB" $argv
+
+	else if test -f $MAIN_FILE_RUST_LIB_IN_SRC
+		nvim "$MAIN_FILE_RUST_LIB_IN_SRC" $argv
+
+	else
+		echo 'No known main file found.'
+	end
+end
