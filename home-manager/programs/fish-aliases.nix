@@ -126,4 +126,6 @@
 
 	imagemagick = "magick";
 	im = "magick"; # IMageMagick
+
+	bottom = "btm";
 }
