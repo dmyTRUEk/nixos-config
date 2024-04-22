@@ -115,6 +115,9 @@
 	# src: https://github.com/cross-rs/cross/blob/6d097fb548ec121c2a0faf1c1d8ef4ca360d6750/docs/environment_variables.md?plain=1#L15
 	crosss = "NIX_STORE=/nix/store cross";
 
+	interactive_python = "python -i ~/.config/home-manager/home-manager/files/init_interactive_python.py";
+	ipy = "interactive_python";
+
 	time-elapsed = "command time -f 'time elapsed: %E'";
 
 	yy = "yazi_with_cwd_memory";
