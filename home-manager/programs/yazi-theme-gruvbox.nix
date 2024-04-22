@@ -1,4 +1,4 @@
-# programs.yazi.theme =
+# programs.yazi.theme +=
 {
 	# based on: github.com/poperigby/gruvbox-dark-yazi
 	manager = {
