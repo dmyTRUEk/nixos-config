@@ -245,6 +245,7 @@
 		zoom-us
 		discord
 		blender
+		gwenview
 
 		# GUI+CLI:
 		imagemagick
