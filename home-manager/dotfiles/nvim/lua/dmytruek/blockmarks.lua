@@ -85,6 +85,11 @@ local queries = {
 				) @body
 			]],
 			[[
+				(trait_item
+					name: (type_identifier) @name
+				) @body
+			]],
+			[[
 				(for_expression
 					pattern: (identifier) @name
 				) @body
