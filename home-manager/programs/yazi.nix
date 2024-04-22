@@ -25,7 +25,11 @@
 		};
 		opener = {
 			text = [{ run = ''nvim "$@"''; block = true; }];
-			image = [{ run = ''swayimg "$@"''; } { run = ''krita "$@"''; }];
+			image = [
+				{ run = ''swayimg "$@"''; }
+				{ run = ''krita "$@"''; }
+				{ run = ''gwenview "$@"''; }
+			];
 			video = [{ run = ''vlc "$@"''; }];
 			audio = [{ run = ''vlc "$@"''; }];
 			kdenlive = [{ run = ''kdenlive "$@"''; }];
