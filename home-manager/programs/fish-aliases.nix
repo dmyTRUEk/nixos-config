@@ -29,7 +29,6 @@
 
 	please = "sudo";
 	grep = "grep -i --color";
-	whereami = "pwd";
 	findtextinfiles = "grep -rn";
 	duai = "dua i";
 
