@@ -159,6 +159,10 @@
 			enable = true;
 			hidden = true; # search hidden files and directories
 		};
+		bottom = {
+			enable = true;
+			#settings = {};
+		};
 	};
 
 	wayland.windowManager.sway = {
