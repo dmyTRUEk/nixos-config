@@ -15,8 +15,7 @@
 
 	# You can import other home-manager modules here
 	imports = [
-		# If you want to use home-manager modules from other flakes (such as nix-colors):
-		# inputs.nix-colors.homeManagerModule
+		inputs.nix-colors.homeManagerModules.default
 
 		# You can also split up your configuration and import pieces of it here:
 		# ./nvim.nix
@@ -67,7 +66,6 @@
 			"alacritty"
 			"gammastep"
 			"kitty"
-			"mako"
 			"nvim"
 			"sway"
 			"swayimg"
@@ -99,6 +97,19 @@
 		"https://github.com/ful1e5/BreezeX_Cursor/releases/download/v2.0.0/BreezeX-Black.tar.gz"
 		"sha256-5su79uUG9HLeAqXDUJa/VhpbYyy9gFj/VdtRPY0yUL4="
 		"BreezeX-Black";
+
+	# colorschemes: https://github.com/tinted-theming/schemes
+	colorScheme = inputs.nix-colors.colorSchemes.
+		#gruvbox-dark-medium
+		#gruvbox-dark-soft
+		gruvbox-dark-pale
+		#gruvbox-material-dark-medium
+		#gruvbox-material-dark-soft
+		#gruvbox-material-dark-hard
+		#onedark
+		#tokyo-night-terminal-dark
+		#everforest
+	;
 
 	programs = {
 		# IMPORTANT!!!
@@ -185,7 +196,6 @@
 		pulseaudio # provides pactl, to change volume by fn keys
 		playerctl
 		gammastep
-		mako
 		#light # TODO(fix): grant access to "video" group?
 		wl-clipboard
 		grim
@@ -282,6 +292,7 @@
 	#environment.variables.NIXOS_OZONE_WL = "1";
 
 	services = {
+		mako = import ./programs/mako.nix { inherit config; };
 		gnome-keyring.enable = true;
 		#dropbox.enable = true; # somewhy this doesn't work, so just pkg instead
 	};
