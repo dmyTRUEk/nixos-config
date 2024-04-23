@@ -78,7 +78,12 @@
 			"myshko" = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 
-				extraSpecialArgs = { inherit inputs pkgs_2024_04_11_1042fd8; };
+				extraSpecialArgs = {
+					inherit
+						inputs
+						pkgs_2024_04_11_1042fd8
+					;
+				};
 
 				# > Main home-manager configuration file <
 				modules = [
