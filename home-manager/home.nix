@@ -255,6 +255,7 @@
 		discord
 		blender
 		gwenview
+		skypeforlinux
 
 		# GUI+CLI:
 		imagemagick
