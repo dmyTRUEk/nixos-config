@@ -63,7 +63,6 @@
 		#);
 	in (
 		setup_simple_symlinks [
-			"alacritty"
 			"gammastep"
 			"kitty"
 			"nvim"
@@ -134,6 +133,7 @@
 		};
 		zsh.enable = true; # only for rare tests
 		fish = import ./programs/fish.nix { inherit lib; };
+		alacritty = import ./programs/alacritty.nix { inherit config; };
 		firefox = {
 			enable = true;
 			# TODO: enable somehow?
@@ -238,7 +238,6 @@
 		#alsa-lib pkg-config # for bevy (rust btw)
 
 		# GUI:
-		alacritty # (rust btw)
 		waybar
 		kitty
 		pavucontrol # gui to control volume
