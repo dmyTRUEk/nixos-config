@@ -125,6 +125,7 @@
 				{ name = "Public/"; text = "󰮮"; }
 				{ name = "Cargo.lock"; text = ""; }
 				{ name = "*.yaml"; text = ""; }
+				{ name = "*.tex"; text = ""; }
 			];
 		};
 	} // (
