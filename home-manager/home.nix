@@ -253,7 +253,6 @@
 		transmission-gtk
 		zoom-us
 		discord
-		blender
 		gwenview
 		skypeforlinux
 
