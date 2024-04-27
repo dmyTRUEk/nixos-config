@@ -72,6 +72,7 @@
 				{ on = ["?"]; run = "help";  desc = "Open help"; }
 				{ on = ["Q"]; run = "quit";  desc = "Quit"; }
 				{ on = ["q"]; run = "close"; desc = "Close current tab or quit if last"; }
+				{ on = ["<Esc>"]; run = ["escape" "unyank"]; desc = "Exit visual mode, clear selected, or cancel search"; }
 				{ on = ["<C-d>"]; run = ''shell "$SHELL" --block --confirm''; desc = "Open shell here"; }
 				{ on = ["<C-j>"]; run = "arrow  50%"; desc = "Move cursor half page down"; }
 				{ on = ["<C-k>"]; run = "arrow -50%"; desc = "Move cursor half page up"; }
