@@ -7,82 +7,54 @@ snippet 1/2 "1/2 -> \frac{1}{2}" i
 # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 snippet ab "above = overset{...}{...}"
 	\overset{$1}{$2} $0
-
 snippet abs "|...|" i
 	\abs{$1}$0
-
 snippet abs2 "|...|^2" i
 	\abs{$1}^2$0
-
-snippet "angs?" "Angstroms" ir
+snippet ang "Angstroms" ir
 	\text{\r{A}}
-
 snippet avg "average" i
 	\left\langle $1 \right\rangle $0
-
-
-
 # BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 snippet be "begin{...} ... end{}" b
 	\begin{$1}
 		$2
 	\end{$1}$0
-
 snippet bb "big brackets ( )" i
 	\qty($1)$0
-
 snippet bbc "big brackets { }" i
 	\qty\\{$1\\}$0
-
 snippet bbs "big brackets [ ]" i
 	\qty[$1]$0
-
 snippet bbt "big brackets < > (avg)" i
 	\left<$1\right>$0
-
 snippet bel "below = underset{...}{...}" i
 	\underset{$1}{$2}$0
-
-
-
 # CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 snippet ca "cases = begin{cases} ... end{}"
 	\begin{cases}
 		$1
 	\end{cases}
-
 snippet ce "center = begin{center} ... end{}" b
 	\begin{center}
 		$1
 	\end{center}$0
-
-snippet "compl?e?x?" "complex numbers symbol = C" ir
+snippet comp "complex numbers symbol = C" ir
 	\mathbb{C}
-
 # also named `vp`
 snippet cp "cross product = [A x B]" i
 	\left[ $1 \times $2 \right] $0
-
-
-
 # DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 #snippet d "differential = dx" i
 #	\dd{$1}$0
-
 snippet deg "degree symbol = ^o" i
 	\text{°}$0
-
 snippet det "matrix determinant" i
 	\mdet{$1}$0
-
 #snippet div "divergence" i
 #	div
-
 snippet ds "displaystyle = make formuls big if they are small" i
 	\displaystyle $0
-
-
-
 # EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 snippet ec "equation+cases = begin{equation+cases} ... end{}" b
 	\begin{equation}
@@ -90,30 +62,22 @@ snippet ec "equation+cases = begin{equation+cases} ... end{}" b
 		$1
 	\end{cases}
 	\end{equation}$0
-
 snippet eq "equation = begin{equation} ... end{}" b
 	\begin{equation}
 		$1
 	\end{equation}$0
-
 snippet equ "equivalent = ≡"
 	\equiv
-
 snippet eqbydef "equal by def = =_{def}"
 	\underset{def}{=}
-
 snippet es "equation+split = begin{equation+split} ... end{}" b
 	\begin{equation}
 	\begin{split}
 		$1
 	\end{split}
 	\end{equation}$0
-
-snippet "exp?" "exp = e^{...}" ir
-	e^{$1}$0
-
-
-
+snippet ex "exp = e^{...}" ir
+	\exp\qty($1)$0
 # FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 snippet fig "image = begin{figure} ... end{}" b
 	\begin{figure} [H]
@@ -122,166 +86,102 @@ snippet fig "image = begin{figure} ... end{}" b
     \caption{$2}
     \label{$3}
 	\end{figure}$0
-
 snippet fo "small formula $...$" i
 	\$$1\$$0
-
 snippet fol "follows = =>"
 	\quad\Rightarrow\quad
-
 snippet foll "long follows = ==>"
 	\qquad\Rightarrow\qquad
-
-
-
 # GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-snippet "grad?" "gradient = nabla vector" i
+snippet grad "gradient = nabla vector" i
 	\overrightarrow{\nabla}$0
-
-
-
 # HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 snippet ha "hat (operator) = A^" i
 	\hat{$1}$0
-
 snippet hb "hbar = ℏ" i
 	\hbar
-
-snippet "half?" "... / 2" ir
+snippet half "... / 2" ir
 	\frac{$1}{2}$0
-
-
-
 # IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 snippet i "\item ..."
 	\item $0
-
 snippet inf "infinity" i
 	\infty
-
 snippet ins "insertion"
 	\Bigg| \ $1 \ \Bigg| $0
-
 snippet int "integral" i
 	\int\limits_{$1}^{$2}\dd{$3} $0
-
 snippet intii "integral" i
 	\int\limits_{-\infty}^{+\infty}\dd{$1} $0
-
 snippet intzi "integral" i
 	\int\limits_{0}^{+\infty}\dd{$1} $0
-
 snippet inv "1 / ..." i
 	\frac{1}{$1}$0
-
 snippet it "itemize = begin{itemize} ... end{}" b
 	\begin{itemize}
 	\item $1
 	\end{itemize}$0
-
-
-
 # JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
-
-
-
 # KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-
-
-
 # LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
 snippet lap "laplace = Δ" i
 	\Delta
-
 snippet le "left equation = begin{fleqn+eqn}" b
 	\begin{fleqn} [\parindent]
 	\begin{equation}
 		$1
 	\end{equation}
 	\end{fleqn}$0
-
 snippet lim "limits when = ---...--->"
 	\underset{$1}{\rightarrow} $0
-
-
-
 # MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 snippet ma "matrix" i
 	\mqty($1)$0
-
 snippet mas "matrix" i
 	\mqty[$1]$0
-
-
-
 # NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 snippet en "enumerate = begin{enumerate} ... end{}" b
 	\begin{enumerate}
 	\item $1
 	\end{enumerate}$0
-
 snippet np "newpage" b
 	\newpage
-
 snippet num "42.0 * 10^{76}" i
 	$1\cdot 10^{$2}$0
-
-
-
 # OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-
-
-
 # PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
-
-
-
+snippet prod "product"
+	\prod_{$1}^{$2}$0
 # QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-
-
-
 # RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 #snippet rot "rotor (curl)" i
 #	rot
-
-
-
 # SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 snippet se "section{...}" b
 	\section{$1}
 	$0
-
 snippet sp "split = begin{split} ... end{}" b
 	\begin{split}
 		$1
 	\end{split}
-
-snippet "sqr?t?" "sqrt" ir
+snippet sq "sqrt" ir
 	\sqrt{$1}$0
-
 snippet ss "subsection{...}" b
 	\subsection{$1}
 	$0
-
 snippet s2 "subsection{...}" b
 	\subsection{$1}
 	$0
-
 snippet s3 "subsubsection{...}" b
 	\subsubsection{$1}
 	$0
-
 snippet sss "subsubsection{...}" b
 	\subsubsection{$1}
 	$0
-
 snippet sum "sum" i
 	\sum\limits_{$1}^{$2} $0
-
-
-
 # TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-snippet "tabl?e?" "table = begin{center+tabular} ... end{}" br
+snippet table "table = begin{center+tabular} ... end{}" br
 	\begin{table} [H]
 	\begin{center}
 	\begin{tabular} {|c|c|}
@@ -292,11 +192,9 @@ snippet "tabl?e?" "table = begin{center+tabular} ... end{}" br
 	\caption{}
 	\end{center}
 	\end{table}$0
-
 snippet ti "tilde" i
 	\tilde$0
-
-snippet "tikz?" "TIKZ image" rb
+snippet tikz "TIKZ image" rb
 	\begin{figure} [H]
 	\begin{center}
 	\begin{tikzpicture}
@@ -305,247 +203,158 @@ snippet "tikz?" "TIKZ image" rb
 	\caption{}
 	\end{center}
 	\end{figure}$0
-
 snippet to "\to" i
 	\to$0
-
 snippet today "Today Date" i
 	`date +%4Y.%2m.%2d`
-
 snippet toi "-> ∞" i
 	\to\infty$0
-
 snippet to0 "-> 0" i
 	\to 0$0
-
-
-
+snippet tp "tensor product" i
+	\bigotimes_{$1}^{$2}$0
+snippet ts "tensor sum" i
+	\bigoplus_{$1}^{$2}$0
 # UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-
-
-
 # VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 snippet v "vector" i
 	\vec$0
-
 snippet ve "long vector" i
 	\overrightarrow{$1}$0
-
 # also named `cp`
 snippet vp "vector product = [A x B]" i
 	\left[ $1 \times $2 \right] $0
-
 snippet vs "vspace" i
 	\vspace{$1}$0
-
-
-
 # WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-
-
-
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-
-
 # YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-
-
-
 # ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
-
-
-
 # SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS
 snippet 1/ "1 / ..." i
 	\frac{1}{$1}
-
 snippet / "\frac{}{}" i
 	\frac{$1}{$2}
-
 snippet + "\dagger" i
 	\dagger
-
 snippet * "\cdot" i
 	\cdot
-
 snippet ... "... -> …" i
 	…
-
-
-
 # GREEK LETTERS GREEK LETTERS GREEK LETTERS GREEK LETTERS GREEK LETTERS
 snippet a "alpha" i
 	\alpha
-
 snippet A "Alpha" i
 	\Alpha
-
 snippet b "beta" i
 	\beta
-
 snippet B "Beta" i
 	\Beta
-
 # snippet c "gamma" i
 # 	\gamma
-
 # snippet C "Gamma" i
 # 	\Gamma
-
 snippet d "delta" i
 	\delta
-
 snippet D "Delta" i
 	\Delta
-
 snippet e "epsilon" i
 	\varepsilon
-
 snippet E "Epsilon" i
 	\Epsilon
-
-snippet "eta?" "eta" ir
+snippet et "eta" ir
 	\eta
-
-snippet "Eta?" "eta" ir
+snippet Et "eta" ir
 	\Eta
-
 snippet f "phi" i
 	\varphi
-
 snippet F "Phi" i
 	\Phi
-
 snippet g "gamma" i
 	\gamma
-
 snippet G "Gamma" i
 	\Gamma
-
 snippet h "chi" i
 	\chi
-
 snippet H "Chi" i
 	\Chi
-
 #snippet i "iota" i
 #	\iota
-
 #snippet I "Iota" i
 #	\Iota
-
 #snippet j "alpha" i
 #	\alpha
-
 #snippet J "Alpha" i
 #	\Alpha
-
 snippet k "kappa" i
 	\varkappa
-
 snippet K "Kappa" i
 	\Kappa
-
 snippet l "lambda" i
 	\lambda
-
 snippet L "Lambda" i
 	\Lambda
-
 snippet m "mu" i
 	\mu
-
 snippet M "Mu" i
 	\Mu
-
 snippet n "nu" i
 	\nu
-
 snippet N "Nu" i
 	\Nu
-
 snippet o "omega" i
 	\omega
-
 snippet O "Omega" i
 	\Omega
-
 snippet p "psi" i
 	\psi
-
 snippet P "Psi" i
 	\Psi
-
 snippet pi "pi" i
 	\pi
-
 snippet Pi "Pi" i
 	\Pi
-
 #snippet q "alpha" i
 #	\alpha
-
 #snippet Q "Alpha" i
 #	\Alpha
-
 snippet r "rho" i
 	\rho
-
 snippet R "Rho" i
 	\Rho
-
 snippet s "sigma" i
 	\sigma
-
 snippet S "Sigma" i
 	\Sigma
-
 snippet t "theta" i
 	\theta
-
 snippet T "Theta" i
 	\Theta
-
-snippet "tau?" "tau" ir
+snippet ta "tau" ir
 	\tau
-
-snippet "Tau?" "Tau" ir
+snippet Ta "Tau" ir
 	\Tau
-
 snippet u "upsilon" i
 	\upsilon
-
 snippet U "Upsilon" i
 	\Upsilon
-
 #snippet v "nu" i
 #	\nu
-
 #snippet V "Nu" i
 #	\Nu
-
 snippet w "omega" i
 	\omega
-
 snippet W "Omega" i
 	\Omega
-
 snippet x "xi" i
 	\xi
-
 snippet X "Xi" i
 	\Xi
-
 #snippet y "alpha" i
 #	\alpha
-
 #snippet Y "Alpha" i
 #	\Alpha
-
 snippet z "zeta" i
 	\zeta
-
 snippet Z "Zeta" i
 	\Zeta
-
