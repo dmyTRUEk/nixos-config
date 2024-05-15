@@ -90,6 +90,9 @@
 				{ on = ["c" "e"]; run = "copy name_without_ext"; desc = "Copy the name of the file without the Extension"; }
 				{ on = ["c" "d"]; run = "copy dirname"; desc = "Copy the path of the parent Directory"; }
 
+				{ on = ["," "s"]; run = "sort size --dir-first --reverse"; desc = "Sort by size"; }
+				{ on = ["," "S"]; run = "sort size --dir-first";           desc = "Sort by size (reverse)"; }
+
 				# GOTOs:
 				# basic:
 				{ on = ["g" "/"]; run = "cd /"; }
