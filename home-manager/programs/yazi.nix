@@ -35,10 +35,13 @@
 			kdenlive = [{ run = ''kdenlive "$@"''; }];
 			pdf = [{ run = ''zathura "$@"''; }];
 			libreoffice = [{ run = ''libreoffice "$@"''; }];
+			djvu = [{ run = ''zathura "$@"''; }];
 		};
 		open = {
 			rules = [
 				{ name = "*.kdenlive"; use = "kdenlive"; }
+				{ name = "*.djvu"; use = "djvu"; }
+
 				{ mime = "text/*"; use = "text"; }
 				{ mime = "image/*"; use = "image"; }
 				{ mime = "video/*"; use = "video"; }
