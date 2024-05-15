@@ -197,6 +197,8 @@ keybinds_n = {
 	['<c-cr>'] = '<c-6>', -- goto to prev file(buffer?)
 
 	['<esc>'] = '<cmd>nohlsearch<cr>',
+
+	-- TODO?: add `zb` == `zw`: spelling bad/wrong
 } -- end of `keybinds_n`
 
 keybinds_i = {
