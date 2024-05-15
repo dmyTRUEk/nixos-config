@@ -133,7 +133,7 @@
 		};
 		zsh.enable = true; # only for rare tests
 		fish = import ./programs/fish.nix { inherit lib; };
-		alacritty = import ./programs/alacritty.nix { inherit config; };
+		alacritty = import ./programs/alacritty.nix { inherit config; }; # (rust btw)
 		firefox = {
 			enable = true;
 			# TODO: enable somehow?
@@ -152,6 +152,7 @@
 				#proc_tree = true;
 			};
 		};
+		jq.enable = true;
 		ripgrep.enable = true; # (rust btw)
 		direnv = {
 			enable = true;
@@ -163,14 +164,18 @@
 		};
 		yazi = import ./programs/yazi.nix; # (rust btw)
 		yt-dlp.enable = true;
-		#texlive.enable = true;
+		#texlive = {
+		#	enable = true;
+		#	packageSet = pkgs.texliveFull;
+		#};
 		obs-studio.enable = true;
 		anyrun = import ./programs/anyrun.nix { inherit inputs pkgs; }; # (rust btw)
+		skim.enable = true; # (rust btw)
 		fd = { # (rust btw)
 			enable = true;
 			hidden = true; # search hidden files and directories
 		};
-		bottom = {
+		bottom = { # (rust btw)
 			enable = true;
 			#settings = {};
 		};
@@ -207,12 +212,10 @@
 
 		# CLI:
 		tree
-		jq
 		killall
 		lsd # modern ls (rust btw)
 		dua # disk usage (rust btw)
 		hyperfine # (rust btw)
-		skim # (rust btw)
 		fortune
 		#cowsay
 		#lolcat -> ur0/lolcat (rust btw)
@@ -308,7 +311,7 @@
 
 		mimeApps = {
 			enable = true;
-			# TODO: test if yazi opens "folders"
+			# TODO: make yazi open "folders"
 			associations.added = {
 				"x-scheme-handler/tg" = "org.telegram.desktop.desktop";
 				"application/pdf" = "org.pwmt.zathura.desktop";
@@ -317,6 +320,7 @@
 				"x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
 				"application/pdf" = [ "org.pwmt.zathura.desktop" ];
 				"text/plain" = [ "neovim-in-alacritty.desktop" ];
+				#"application/vnd.oasis.opendocument.text" = [ "" ] # TODO
 			};
 		};
 	};
