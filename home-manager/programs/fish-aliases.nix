@@ -9,10 +9,11 @@
 	nhoriz = "nvim -o"; # split with horizontal divider
 	nvert  = "nvim -O"; # split with vertical divider
 
-	# lsd
-	l = "lsd";
-	la = "lsd -A";
-	ll = "lsd -Al";
+	ls = "ls"; # to exclude possibility of aliasing real ls
+	# better ls: eza (community maintained for of exa)
+	l  = "eza";
+	la = "eza -a";
+	ll = "eza -al";
 
 	mkdir = "mkdir -p";
 	cl = "clear ; git status || clear";

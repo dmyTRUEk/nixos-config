@@ -180,6 +180,15 @@
 			#settings = {};
 		};
 		fastfetch.enable = true;
+		eza = { # (rust btw)
+			enable = true;
+			enableFishIntegration = true;
+			icons = true;
+			extraOptions = [
+				#"--icons=auto"
+				"--group-directories-first"
+			];
+		};
 	};
 
 	wayland.windowManager.sway = {
@@ -213,7 +222,6 @@
 		# CLI:
 		tree
 		killall
-		lsd # modern ls (rust btw)
 		dua # disk usage (rust btw)
 		hyperfine # (rust btw)
 		fortune
