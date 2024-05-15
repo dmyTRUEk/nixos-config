@@ -34,6 +34,8 @@ WINDOW_ICONS: dict[str, str] = {
 	"btop": "󰄪",
 	"discord": "", # 󰙯
 	"firefox": "", # 󰈹
+	"gimp": "",
+	"gnome-boxes": "",
 	"kdenlive": "",
 	#"kitty": "󰄛", # TODO: make lower priority
 	"krita": "",
