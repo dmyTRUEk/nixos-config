@@ -174,6 +174,7 @@
 			enable = true;
 			#settings = {};
 		};
+		fastfetch.enable = true;
 	};
 
 	wayland.windowManager.sway = {
@@ -206,7 +207,6 @@
 
 		# CLI:
 		tree
-		neofetch
 		jq
 		killall
 		lsd # modern ls (rust btw)
