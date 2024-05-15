@@ -142,6 +142,7 @@
 		#desktopManager.cosmic.enable = true;
 		xserver = {
 			enable = true; # TODO: dont enable or why i need it?
+			videoDrivers = ["amdgpu"];
 			xkb = {
 				layout = "us";
 				options = "caps:swapescape,ctrl:swap_lalt_lctrl";
@@ -204,7 +205,10 @@
 			enable = true;
 			remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
 			dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+			#gamescopeSession.enable = true; # if some games' scaling is wrong in some DE/WMs # usage: in steam launch options add `gamescope %command%`
 		};
+		#gamemode.enable = true; # game mode, to give max performance to the game # usage: in steam launch options add `gamemoderun %command%`
+		#environment.systemPackages += mangohud # for mangohud (can be added in home.nix): fps, cpu%, gpu%, ram, vram, frame time, ... # usage: in steam launch options add `mangohud %command%`
 
 		nh = {
 			enable = true;
