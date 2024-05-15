@@ -24,7 +24,10 @@
 			image_quality = 50;
 		};
 		opener = {
-			text = [{ run = ''nvim "$@"''; block = true; }];
+			text = [
+				{ run = ''nvim "$@"''; block = true; }
+				#{ run = ''xdg-open "$@"''; } # TODO: fix
+			];
 			image = [
 				{ run = ''swayimg "$@"''; }
 				{ run = ''krita "$@"''; }
@@ -36,11 +39,13 @@
 			pdf = [{ run = ''zathura "$@"''; }];
 			libreoffice = [{ run = ''libreoffice "$@"''; }];
 			djvu = [{ run = ''zathura "$@"''; }];
+			#markdown = [];
 		};
 		open = {
 			rules = [
 				{ name = "*.kdenlive"; use = "kdenlive"; }
 				{ name = "*.djvu"; use = "djvu"; }
+				#{ name = "*.md"; use = "markdown"; }
 
 				{ mime = "text/*"; use = "text"; }
 				{ mime = "image/*"; use = "image"; }
@@ -85,10 +90,10 @@
 				#{ on = [ "m" "c" ]; run = "linemode ctime"; desc = "Set linemode to ctime"; }
 
 				{ on = ["c" "c"]; run = ''shell 'filename="$1" && wl-copy "file://$filename" --type text/uri-list' --confirm''; desc = "Copy file using URI (file://)"; }
-				{ on = ["c" "a"]; run = "copy path"; desc = "Copy Absolute path"; }
-				{ on = ["c" "n"]; run = "copy filename"; desc = "Copy the Name of the file"; }
+				{ on = ["c" "a"]; run = "copy path";             desc = "Copy Absolute path"; }
+				{ on = ["c" "d"]; run = "copy dirname";          desc = "Copy the path of the parent Directory"; }
 				{ on = ["c" "e"]; run = "copy name_without_ext"; desc = "Copy the name of the file without the Extension"; }
-				{ on = ["c" "d"]; run = "copy dirname"; desc = "Copy the path of the parent Directory"; }
+				{ on = ["c" "n"]; run = "copy filename";         desc = "Copy the Name of the file"; }
 
 				{ on = ["," "s"]; run = "sort size --dir-first --reverse"; desc = "Sort by size"; }
 				{ on = ["," "S"]; run = "sort size --dir-first";           desc = "Sort by size (reverse)"; }
