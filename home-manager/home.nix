@@ -233,6 +233,7 @@
 			i3ipc # for ANWS
 			numpy
 			matplotlib
+			pipe
 		]))
 		gcc
 		#alsa-lib pkg-config # for bevy (rust btw)
