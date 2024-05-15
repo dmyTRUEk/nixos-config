@@ -131,4 +131,6 @@
 
 	nf  = "nvim flake.nix";
 	nfl = "nvim flake.lock";
+
+	ff = "fastfetch";
 }
