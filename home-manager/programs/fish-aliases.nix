@@ -84,7 +84,6 @@
 	nss = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/scripts/";
 	nw  = "nvim ~/.config/home-manager/home-manager/dotfiles/waybar/config";
 	nanws="nvim ~/.config/home-manager/home-manager/dotfiles/sway/scripts/autoname-workspaces.py";
-	#nf = "nvim ~/.config/home-manager/home-manager/dotfiles/fish";
 	nfh = "nvim ~/.local/share/fish/fish_history";
 
 	nre = "nvim README.md";
@@ -128,4 +127,7 @@
 	im = "magick"; # IMageMagick
 
 	bottom = "btm";
+
+	nf  = "nvim flake.nix";
+	nfl = "nvim flake.lock";
 }
