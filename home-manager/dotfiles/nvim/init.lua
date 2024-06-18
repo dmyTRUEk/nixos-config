@@ -402,6 +402,8 @@ require('lazy').setup {
 					set_local('c', wrap_in_new)
 					set_local('C', wrap_in_type)
 					set_local('e', 'Err(\r)')
+					--set_local('f', '\1function: \1\1(\r)')
+					set_local('F', 'format!(\r)')
 					set_local('i', 'if \1If statement: \1 {\n\t\r\n}')
 					set_local('k', wrap_in_ok)
 					set_local('m', '\1Macro name: \1!(\r)')
