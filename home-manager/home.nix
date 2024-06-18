@@ -146,6 +146,7 @@
 			settings = {
 				vim_keys = true;
 				color_theme = "gruvbox_dark_v2";
+				theme_background = false;
 				proc_sorting = "memory";
 				proc_per_core = true;
 				update_ms = 100;
