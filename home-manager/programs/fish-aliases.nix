@@ -78,6 +78,7 @@
 	nx  = "nvim ~/.config/home-manager/";
 	nic = "nvim ~/.config/home-manager/nixos/configuration.nix";
 	nih = "nvim ~/.config/home-manager/home-manager/home.nix";
+	nihy = "nvim ~/.config/home-manager/home-manager/programs/yazi.nix";
 	nif = "nvim ~/.config/home-manager/flake.nix";
 
 	nn  = "nvim ~/.config/home-manager/home-manager/dotfiles/nvim/init.lua";
