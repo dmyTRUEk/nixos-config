@@ -217,7 +217,7 @@
 	};
 
 	environment.systemPackages = with pkgs; [
-		#vim -> neovim
+		vim # -> neovim
 		#fish
 		#git
 		#wget curl
