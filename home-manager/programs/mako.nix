@@ -1,7 +1,7 @@
 # services.mako =
 { config, ... }: {
 	enable = true;
-	sort = "+time";
+	sort = "-time";
 	font = "JetBrains Mono 10";
 	width  = 300;
 	height = 100;
@@ -10,6 +10,7 @@
 	maxVisible = 3;
 	layer = "overlay";
 	anchor = "bottom-right";
+	#margin = "40,20";
 
 	borderRadius = 10;
 
