@@ -236,6 +236,7 @@
 		ffmpeg
 		nix-tree
 		nvd
+		curlftpfs
 
 		# LANGS:
 		rustup # rust btw
