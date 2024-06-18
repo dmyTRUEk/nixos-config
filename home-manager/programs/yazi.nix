@@ -97,6 +97,8 @@
 
 				{ on = ["," "s"]; run = "sort size --dir-first --reverse"; desc = "Sort by size"; }
 				{ on = ["," "S"]; run = "sort size --dir-first";           desc = "Sort by size (reverse)"; }
+				{ on = ["," "m"]; run = "sort modified --dir-first --reverse"; desc = "Sort by modified time (reverse)"; }
+				{ on = ["," "M"]; run = "sort modified --dir-first";           desc = "Sort by modified time"; }
 
 				# GOTOs:
 				# basic:
