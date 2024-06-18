@@ -201,7 +201,7 @@
 		#'';
 	};
 
-	home.packages = with pkgs; [
+	home.packages = with pkgs; [ # PKGS
 		# INFO:
 		lshw # ls hardware
 		glxinfo # gpu info
@@ -270,6 +270,7 @@
 		discord
 		gwenview
 		skypeforlinux
+		helvum
 
 		# GUI+CLI:
 		imagemagick
