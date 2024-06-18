@@ -106,11 +106,12 @@
 				#{ on = ["g" ""]; run = "cd /tmp"; }
 				{ on = ["g" "h"]; run = "cd ~"; }
 				# hidden:
-				{ on = ["g" "C"]; run = "cd ~/.config"; }
+				{ on = ["g" "."]; run = "cd ~/.config"; }
 				{ on = ["g" "M"]; run = "cd ~/.config/home-manager"; }
 				{ on = ["g" "T"]; run = "cd ~/.local/share/Trash/files"; }
 				# home:
 				{ on = ["g" "c"]; run = "cd ~/projects"; }
+				{ on = ["g" "C" "t"]; run = "cd ~/projects/touhou_unfathomable_calamity"; }
 				{ on = ["g" "o"]; run = "cd ~/Documents"; }
 				{ on = ["g" "d"]; run = "cd ~/Downloads"; }
 				{ on = ["g" "t"]; run = "cd '~/Downloads/Telegram Desktop'"; }
