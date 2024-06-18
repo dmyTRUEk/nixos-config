@@ -190,6 +190,7 @@
 				"--group-directories-first"
 			];
 		};
+		#mangohud.enable = true;
 	};
 
 	wayland.windowManager.sway = {
