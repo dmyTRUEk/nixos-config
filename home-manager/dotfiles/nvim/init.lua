@@ -595,8 +595,8 @@ require('lazy').setup {
 							-- You can use the capture groups defined in textobjects.scm
 							['aa'] = '@parameter.outer', -- a = Argument
 							['ia'] = '@parameter.inner', -- a = Argument
-							['ab'] = '@block.outer',
-							['ib'] = '@block.inner',
+							--['ab'] = '@block.outer',
+							--['ib'] = '@block.inner',
 							['ac'] = '@class.outer',
 							['ic'] = '@class.inner',
 							['af'] = '@function.outer',
