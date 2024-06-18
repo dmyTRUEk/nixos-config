@@ -125,10 +125,25 @@
 				{ on = ["g" "s"]; run = "cd ~/Pictures/Screenshots/2024"; }
 				{ on = ["g" "v"]; run = "cd ~/Videos"; }
 				# games:
-				{ on = ["g" "a" "c"]; run = "cd ~/.local/share/Celeste/Saves"; }
-				{ on = ["g" "a" "t"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/11020/pfx/drive_c/users/steamuser/Documents/TrackMania/Tracks/Replays"; }
 				{ on = ["g" "a" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/374320/pfx/drive_c/users/steamuser/AppData/Roaming/DarkSoulsIII"; }
+				{ on = ["g" "a" "c"]; run = "cd ~/.local/share/Celeste/Saves"; }
 				{ on = ["g" "a" "e"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/AppData/Roaming/EldenRing"; }
+				{ on = ["g" "a" "t" "h" "6"]; run = "cd '~/Games/Touhou/Touhou 6 - The Embodiment of Scarlet Devil'"; }
+				{ on = ["g" "a" "t" "h" "7"]; run = "cd '~/Games/Touhou/Touhou 7 - Perfect Cherry Blossom'"; }
+				{ on = ["g" "a" "t" "h" "8"]; run = "cd '~/Games/Touhou/Touhou 8 - Imperishable Night'"; }
+				#{ on = ["g" "a" "t" "h" "9"]; run = "cd cd ~/.local/share/Steam/steamapps/common/th9"; }
+				{ on = ["g" "a" "t" "h" "1" "0"]; run = "cd ~/.local/share/Steam/steamapps/common/th10"; }
+				{ on = ["g" "a" "t" "h" "1" "1"]; run = "cd ~/.local/share/Steam/steamapps/common/th11"; }
+				{ on = ["g" "a" "t" "h" "1" "2"]; run = "cd ~/.local/share/Steam/steamapps/common/th12"; }
+				{ on = ["g" "a" "t" "h" "1" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1043230/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th13"; }
+				{ on = ["g" "a" "t" "h" "1" "4"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1043240/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th14"; }
+				{ on = ["g" "a" "t" "h" "1" "5"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/937580/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th15"; }
+				{ on = ["g" "a" "t" "h" "1" "6"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/745880/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th16"; }
+				{ on = ["g" "a" "t" "h" "1" "7"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1079160/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th17"; }
+				{ on = ["g" "a" "t" "h" "1" "8"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1566410/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th18"; }
+				#{ on = ["g" "a" "t" "h" "1" "9"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/2400340/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th19"; }
+				{ on = ["g" "a" "t" "r"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/11020/pfx/drive_c/users/steamuser/Documents/TrackMania/Tracks/Replays"; }
+				{ on = ["g" "a" "t" "s"]; run = "cd '~/.local/share/Steam/steamapps/common/TrackMania Nations Forever/GameData/Painter/Stickers'"; }
 			];
 		};
 	};
