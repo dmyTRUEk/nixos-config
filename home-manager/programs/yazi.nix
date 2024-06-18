@@ -39,11 +39,13 @@
 			pdf = [{ run = ''zathura "$@"''; }];
 			libreoffice = [{ run = ''libreoffice "$@"''; }];
 			djvu = [{ run = ''zathura "$@"''; }];
+			krita_project = [{ run = ''krita "$@"''; }];
 			#markdown = [];
 		};
 		open = {
 			rules = [
 				{ name = "*.kdenlive"; use = "kdenlive"; }
+				{ name = "*.kra"; use = "krita_project"; }
 				{ name = "*.djvu"; use = "djvu"; }
 				#{ name = "*.md"; use = "markdown"; }
 
