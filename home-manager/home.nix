@@ -110,6 +110,14 @@
 		#everforest
 	;
 
+	wayland.windowManager.sway = {
+		#enable = true; # dont `.enable` bc of dotfiles symlinks
+		wrapperFeatures.gtk = true;
+		#programs.sway.extraConfig = ''
+		#	exec_always ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+		#'';
+	};
+
 	programs = {
 		# IMPORTANT!!!
 		# - DO NOT `.enable` programs that have dotfiles symlinks
@@ -193,14 +201,6 @@
 		#mangohud.enable = true;
 	};
 
-	wayland.windowManager.sway = {
-		#enable = true; # dont `.enable` bc of dotfiles symlinks
-		wrapperFeatures.gtk = true;
-		#programs.sway.extraConfig = ''
-		#	exec_always ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
-		#'';
-	};
-
 	home.packages = with pkgs; [ # PKGS
 		# INFO:
 		lshw # ls hardware
@@ -210,7 +210,7 @@
 		wayland-utils
 
 		# "LIBS":
-		pulseaudio # provides pactl, to change volume by fn keys
+		pulseaudio # provides pactl, to change volume by fn keys # TODO: replace by `wpctl`
 		playerctl
 		gammastep
 		#light # TODO(fix): grant access to "video" group?
@@ -250,7 +250,6 @@
 			pipe
 		]))
 		gcc
-		#alsa-lib pkg-config # for bevy (rust btw)
 
 		# GUI:
 		waybar
