@@ -51,7 +51,7 @@ WINDOW_ICONS: dict[str, str] = {
 	"telegram": "", # 
 	"yazi": "", #     
 	"zathura": "", # 󰈦
-	"zoom": "󰬇",
+	"zoom": "Z",
 	#     
 }
 
