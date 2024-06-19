@@ -27,8 +27,8 @@ set $runner anyrun
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
 #output * bg @datadir@/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #output * bg $HOME/Dropbox/Pictures/Wallpapers/pinetree_pablo-garcia-saldana.jpg fill
-#set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/art/vector_control_dreams.jpg
-set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/art/solis-2560x1440.jpg
+#set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/abstract/vector_control_dreams.jpg
+set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/abstract/solis-2560x1440.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/marigold_myshko_dm_crop.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/games/elden-ring.png
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/sonny-boy-bg-spamton.png
