@@ -110,5 +110,11 @@ unzip2_ = Pipe(unzip2)
 windows_ = Pipe(windows)
 
 
+
+def binomial(n: int, m: int) -> int:
+	return factorial(n) // (factorial(m) * factorial(n-m))
+
+
+
 if __name__ == "__main__":
 	print(f"Python {sys.version} on {sys.platform}")
