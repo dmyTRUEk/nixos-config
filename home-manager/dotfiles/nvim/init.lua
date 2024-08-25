@@ -559,7 +559,7 @@ require('lazy').setup {
 					'comment',
 					--'cpp',
 					--'kotlin',
-					'latex',
+					--'latex',
 					'nix',
 					'python',
 					'ron', -- Rust Object Notation
