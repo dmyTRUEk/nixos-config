@@ -44,6 +44,7 @@
 	gc = "git commit";
 	gch = "git checkout";
 	gchb = "git checkout -b";
+	gchp = "git checkout -p"; # delete changes
 	gcl = "git clone";
 	gcm = "git commit -m";
 	gd = "git diff";
