@@ -107,7 +107,7 @@ end
 keybinds_swap_nv = {
 	['0'] = '^',
 	["'"] = '`',
-} -- end of `keybinds_swap_nv`
+}
 
 keybinds_nv = {
 	['-'] = '$', -- better $
@@ -154,10 +154,6 @@ keybinds_n = {
 	['<leader>.'] = 'm`A.<esc>``',
 
 	--['<leader>e'] = 'm`$x``',
-	--<leader>; m`A;<esc>``
-	--<leader>: m`A:<esc>``
-	--<leader>, m`A,<esc>``
-	--<leader>. m`A.<esc>``
 
 	-- TODO: make one more plugin?)
 	-- my Change Current word with another (aka `viwy`):
@@ -170,7 +166,6 @@ keybinds_n = {
 	-- there is no space after second word (eg `,` `)` `\n` etc)
 
 	-- TODO?: figure out better way to do this, so it works at least for `f<symbol>` or even any move
-
 	-- TODO: fix it for ukr
 
 	-- here `|` means cursor position
@@ -199,7 +194,7 @@ keybinds_n = {
 	['<esc>'] = '<cmd>nohlsearch<cr>',
 
 	-- TODO?: add `zb` == `zw`: spelling bad/wrong
-} -- end of `keybinds_n`
+}
 
 keybinds_i = {
 	['<c-;>'] = '',
@@ -207,7 +202,7 @@ keybinds_i = {
 	['<c-j>'] = '<down>',
 	['<c-k>'] = '<up>',
 	['<c-l>'] = '<right>',
-} -- end of `keybinds_i`
+}
 
 keybinds_n_c = {
 	-- DEPRECATED
@@ -233,12 +228,12 @@ keybinds_n_c = {
 	['<leader>S'] = 'setlocal spell!',
 
 	--<leader>v :call ToggleHorizontalVerticalSplit() <cr>
-} -- end of `keybinds_n_c`
+}
 
 -- TODO: test if `x` or `v` is needed
 keybinds_v = {
 	S = ':sort<cr>',
-} -- end of `keybinds_v`
+}
 
 
 
@@ -246,9 +241,9 @@ autocmds = {
 	{'FileType', {
 		pattern = {
 			'gitcommit',
-			'markdown',
+			'markdown', -- .md
 			'tex',
-			'text',
+			'text', -- .txt
 		},
 		command = 'setlocal spell spelllang=uk,en'
 	}},

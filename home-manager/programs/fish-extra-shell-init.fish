@@ -12,6 +12,10 @@ set __fish_git_prompt_showcolorhints true
 set __fish_git_prompt_describe_style branch
 set __fish_git_prompt_showstashstate true
 
+
+# TODO: colored man pages (maybe use `less`'s termcaps)
+
+
 function random_hash
 	set default_len 6
 	set max_len 128

@@ -42,11 +42,11 @@
 	"gap." = "git add --patch .";
 	gb = "git branch";
 	gc = "git commit";
+	gcm = "git commit -m";
 	gch = "git checkout";
 	gchb = "git checkout -b";
 	gchp = "git checkout -p"; # delete changes
 	gcl = "git clone";
-	gcm = "git commit -m";
 	gd = "git diff";
 	"gd." = "git diff .";
 	gds = "git diff --staged";

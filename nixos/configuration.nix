@@ -216,7 +216,7 @@
 		};
 	};
 
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages = with pkgs; [ # PKGS
 		vim # -> neovim
 		#fish
 		#git
