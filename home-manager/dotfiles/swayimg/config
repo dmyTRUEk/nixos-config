@@ -46,7 +46,7 @@ bracketright = prev_dir
 
 # `b` mnemonics: about
 b = info
-s = zoom fix
+s = zoom optimal
 
 Shift+space = animation
 
