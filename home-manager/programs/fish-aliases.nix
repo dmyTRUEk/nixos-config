@@ -27,6 +27,7 @@
 	"..3" = "cd ../../..";
 	"..4" = "cd ../../../..";
 	"..5" = "cd ../../../../..";
+	cdp = "cd ~/projects";
 
 	please = "sudo";
 	grep = "grep -i --color";
