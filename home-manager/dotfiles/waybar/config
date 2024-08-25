@@ -32,7 +32,7 @@
 
 
     "sway/window": {
-        "max-length": 100,
+        "max-length": 60,
         "rewrite": {
             "(.*)": "",
             /* "(.*) - Mozilla Firefox": "🌎 $1", */
