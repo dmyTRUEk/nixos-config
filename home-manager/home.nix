@@ -270,6 +270,7 @@
 		gwenview
 		skypeforlinux
 		helvum
+		audacity
 
 		# GUI+CLI:
 		imagemagick
