@@ -102,7 +102,7 @@
 				{ on = ["," "m"]; run = "sort modified --dir-first --reverse"; desc = "Sort by modified time (reverse)"; }
 				{ on = ["," "M"]; run = "sort modified --dir-first";           desc = "Sort by modified time"; }
 
-				{ on = ["<C-s>"]; run = ''shell 'swaymsg -s $SWAYSOCK output eDP-1 bg "$1" fill' --confirm''; desc = "Set as wallpaper/background"; }
+				{ on = ["<C-w>"]; run = ''shell 'swaymsg -s $SWAYSOCK output eDP-1 bg "$1" fill' --confirm''; desc = "Set as wallpaper/background"; }
 
 				# GOTOs:
 				# basic:
@@ -115,13 +115,16 @@
 				{ on = ["g" "T"]; run = "cd ~/.local/share/Trash/files"; }
 				# home:
 				{ on = ["g" "c"]; run = "cd ~/projects"; }
-				{ on = ["g" "C" "t"]; run = "cd ~/projects/touhou_unfathomable_calamity"; }
+				{ on = ["g" "C" "g"]; run = "cd ~/projects/orbit-calculation"; }
+				#{ on = ["g" "C" "t"]; run = "cd ~/projects/touhou_unfathomable_calamity"; }
 				{ on = ["g" "o"]; run = "cd ~/Documents"; }
 				{ on = ["g" "d"]; run = "cd ~/Downloads"; }
 				{ on = ["g" "t"]; run = "cd '~/Downloads/Telegram Desktop'"; }
 				{ on = ["g" "r"]; run = "cd ~/Dropbox"; }
 				{ on = ["g" "u"]; run = "cd ~/Dropbox/University/Mast4"; }
 				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
+				{ on = ["g" "w"]; run = "cd ~/Dropbox/Work"; }
+				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/0_papers"; }
 				{ on = ["g" "m"]; run = "cd ~/Music"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
 				{ on = ["g" "s"]; run = "cd ~/Pictures/Screenshots/2024"; }
@@ -152,12 +155,13 @@
 	theme = {
 		icon = {
 			prepend_rules = [
+				{ name = "Cargo.lock"; text = ""; }
+				{ name = "flake.lock"; text = ""; }
 				{ name = "Documents/"; text = "󰈙"; }
 				{ name = "Music/"; text = "󰎈"; }
+				{ name = "Public/"; text = "󰮮"; }
 				{ name = "*.mp3"; text = "󰎈"; }
 				{ name = "*.wav"; text = "󰎈"; }
-				{ name = "Public/"; text = "󰮮"; }
-				{ name = "Cargo.lock"; text = ""; }
 				{ name = "*.yaml"; text = ""; }
 				{ name = "*.tex"; text = ""; }
 			];
