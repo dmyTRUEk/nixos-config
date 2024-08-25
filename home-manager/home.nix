@@ -248,6 +248,7 @@
 			numpy
 			matplotlib
 			pipe
+			scipy
 		]))
 		gcc
 
