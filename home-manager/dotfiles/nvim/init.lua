@@ -250,7 +250,7 @@ autocmds = {
 			'tex',
 			'text',
 		},
-		command = 'setlocal spell'
+		command = 'setlocal spell spelllang=uk,en'
 	}},
 	{{'BufEnter', 'BufLeave', 'BufWinEnter', 'BufWinLeave', 'WinNew', 'WinEnter', 'WinLeave', 'VimResized'}, {
 		callback = function()
@@ -276,6 +276,13 @@ autocmds = {
 			-- TODO: refactor
 			require 'dmytruek.latex_autos'
 			vim.cmd("call SetupEverythingForLatex()")
+		end
+	}},
+	{'FileType', {
+		pattern = 'text',
+		callback = function()
+			vim.keymap.set('n', 'j', 'gj')
+			vim.keymap.set('n', 'k', 'gk')
 		end
 	}}
 }
