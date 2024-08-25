@@ -9,6 +9,7 @@ from math import *
 import itertools
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 from pipe import (
 	Pipe,
@@ -108,6 +109,7 @@ filter_remove_ = Pipe(filter_remove)
 index_of_max_ = Pipe(index_of_max)
 index_of_min_ = Pipe(index_of_min)
 list_ = Pipe(list)
+np_array_ = Pipe(np.array)
 split_at_ = Pipe(split_at)
 split_at_percentage_ = Pipe(split_at_percentage)
 std_dev_ = Pipe(std_dev)
