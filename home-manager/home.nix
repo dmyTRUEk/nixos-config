@@ -259,7 +259,7 @@
 		telegram-desktop
 		swayimg
 		krita
-		gnome.gnome-boxes
+		gnome-boxes
 		libreoffice
 		zathura
 		kdenlive
