@@ -5,7 +5,6 @@
 	lib,
 	config,
 	pkgs,
-	pkgs_2024_04_11_1042fd8,
 	...
 }: {
 	# TODO?: make `enable`/`enabled` function that sets enable=true.
@@ -219,7 +218,7 @@
 		slurp
 		libnotify # for notify-send
 		polkit_gnome
-		gnome.gnome-keyring
+		gnome-keyring
 
 		# CLI:
 		tree
@@ -251,12 +250,13 @@
 			scipy
 		]))
 		gcc
+		#lean4
 
 		# GUI:
 		waybar
 		kitty
 		pavucontrol # gui to control volume
-		pkgs_2024_04_11_1042fd8.telegram-desktop
+		telegram-desktop
 		swayimg
 		krita
 		gnome.gnome-boxes
@@ -265,7 +265,7 @@
 		kdenlive
 		vlc
 		dropbox
-		transmission-gtk
+		transmission_4-gtk
 		zoom-us
 		discord
 		gwenview
@@ -296,6 +296,9 @@
 		#vimix-cursors
 		#vimix-cursor-theme
 		# TODO: kde/breeze cursor
+
+		# libs:
+		#libunistring # tmp for fumosay
 	];
 
 	fonts.fontconfig.enable = true;

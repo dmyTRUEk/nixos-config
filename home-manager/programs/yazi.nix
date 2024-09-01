@@ -155,15 +155,16 @@
 	theme = {
 		icon = {
 			prepend_rules = [
-				{ name = "Cargo.lock"; text = ""; }
-				{ name = "flake.lock"; text = ""; }
-				{ name = "Documents/"; text = "󰈙"; }
-				{ name = "Music/"; text = "󰎈"; }
-				{ name = "Public/"; text = "󰮮"; }
-				{ name = "*.mp3"; text = "󰎈"; }
-				{ name = "*.wav"; text = "󰎈"; }
-				{ name = "*.yaml"; text = ""; }
-				{ name = "*.tex"; text = ""; }
+				# TODO:
+				# { name = "Cargo.lock"; text = ""; }
+				# { name = "flake.lock"; text = ""; }
+				# { name = "Documents"; text = "󰈙"; }
+				# { name = "Music"; text = "󰎈"; }
+				# { name = "Public"; text = "󰮮"; }
+				# { name = "*.mp3"; text = "󰎈"; }
+				# { name = "*.wav"; text = "󰎈"; }
+				# { name = "*.yaml"; text = ""; }
+				# { name = "*.tex"; text = ""; }
 			];
 		};
 	} // (
