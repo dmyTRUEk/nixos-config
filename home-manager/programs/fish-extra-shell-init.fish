@@ -53,6 +53,20 @@ set __fish_git_prompt_showstashstate true
 # set -gx LESS_TERMCAP_us (set_color --bold red)
 # set -gx LESS_TERMCAP_ue (set_color normal)
 
+function mkdircd -d "mkdir & cd"
+	# src: https://fishshell.com/docs/current/cmds/function.html
+	command mkdir $argv
+	if test $status = 0
+		switch $argv[(count $argv)]
+			case '-*'
+
+			case '*'
+				cd $argv[(count $argv)]
+				return
+		end
+	end
+end
+
 function random_hash
 	set default_len 6
 	set max_len 128

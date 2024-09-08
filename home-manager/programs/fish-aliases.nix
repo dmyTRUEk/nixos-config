@@ -16,9 +16,10 @@
 	ll = "eza -al";
 
 	mkdir = "mkdir -p";
+	#mkdircd = "";
 	cl = "clear ; git status || clear";
 
-	#"-" = "cd -";
+	#"-" = "cd -"; # TODO: alternative
 	cdd = "cd ~/.config/home-manager";
 	".." = "cd ..";
 	"..." = "cd ../..";
