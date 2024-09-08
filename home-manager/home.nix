@@ -272,6 +272,7 @@
 		skypeforlinux
 		helvum
 		audacity
+		amberol # gnome music player
 
 		# GUI+CLI:
 		imagemagick
