@@ -52,8 +52,10 @@
 
 		colors = with config.colorScheme.palette; {
 			primary = {
-				background = "0x${base00}";
-				foreground = "0x${base07}";
+				background = "0x282828";
+				foreground = "0xc5c8c6";
+				# background = "0x${base00}";
+				# foreground = "0x${base07}";
 			};
 			#cursor = {
 			#	cursor = "0x${base06}";
