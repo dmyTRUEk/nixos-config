@@ -1,10 +1,12 @@
 # dmyTRUEk's swayimg config
 
 [general]
+size = fullscreen
+
+[viewer]
 scale = fit
-fullscreen = yes
 antialiasing = no
-background = 000000
+window = 000000
 
 [list]
 order = alpha
@@ -17,10 +19,7 @@ name = JetBrains Mono
 size = 16
 color = #ff00ff
 
-[info]
-mode = off
-
-[keys]
+[keys.viewer]
 q = exit
 
 h = step_left
