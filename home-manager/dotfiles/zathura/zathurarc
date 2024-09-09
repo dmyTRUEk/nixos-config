@@ -32,6 +32,8 @@ map u scroll half-up
 
 unmap <C-d>
 map <C-d> toggle_page_mode
+map <C-1> set "first-page-column 1:1"
+map <C-2> set "first-page-column 1:2"
 
 map <C-o> jumplist backward
 map <C-i> jumplist forward
