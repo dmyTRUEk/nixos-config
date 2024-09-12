@@ -3,14 +3,17 @@
 	enable = true;
 	sort = "-time";
 	font = "JetBrains Mono 10";
-	width  = 300;
-	height = 100;
+	#width  = 300;
+	#height = 100;
 	#borderSize = 1;
 	groupBy = "summary";
-	maxVisible = 3;
+	maxVisible = 5;
+	#maxHistory = 1000;
 	layer = "overlay";
 	anchor = "bottom-right";
-	#margin = "40,20";
+	#outerMargin = "20";
+	#margin = "";
+	#padding = "";
 
 	borderRadius = 10;
 
@@ -23,8 +26,19 @@
 	#borderColor     = "#${config.colorScheme.palette.base00}";
 	#progressColor   = "#${config.colorScheme.palette.base00}";
 
-	#extraConfig = ''
-	#	[mode=do-not-disturb]
-	#	invisible=1
-	#'';
+	extraConfig =
+	let
+		extraOptions = {
+			outer-margin = "10,0";
+			max-history = 1000;
+		};
+	in
+		builtins.concatStringsSep "\n" (
+			map (
+				key:
+				let value = toString extraOptions.${key};
+				in "${key}=${value}"
+			)
+			(builtins.attrNames extraOptions)
+		);
 }
