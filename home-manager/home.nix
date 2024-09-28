@@ -96,14 +96,22 @@
 		"sha256-5su79uUG9HLeAqXDUJa/VhpbYyy9gFj/VdtRPY0yUL4="
 		"BreezeX-Black";
 
-	# colorschemes: https://github.com/tinted-theming/schemes
-	colorScheme = inputs.nix-colors.colorSchemes.
+	# colorSchemes: https://github.com/tinted-theming/schemes
+	colorScheme =
+	let
+		colorSchemes = inputs.nix-colors.colorSchemes;
+		# // (
+		# 	let cs = import ./colorscheme-gruvbox-my.nix; in { "${cs.slug}" = cs; }
+		# );
+	in
+		colorSchemes.
 		#gruvbox-dark-medium
 		#gruvbox-dark-soft
 		gruvbox-dark-pale
 		#gruvbox-material-dark-medium
 		#gruvbox-material-dark-soft
 		#gruvbox-material-dark-hard
+		# gruvbox-by-dmytruek
 		#onedark
 		#tokyo-night-terminal-dark
 		#everforest
