@@ -146,3 +146,15 @@ function nm
 		echo 'No known main file found.'
 	end
 end
+
+function ffmpeg-to-mp4 -d "convert to mp4 using ffmpeg"
+	switch (count $argv)
+		case 1
+			set file_name $argv[1]
+		case '*'
+			echo 'Expected only one argument'
+			return 1
+	end
+	set new_file_name (string replace -r '\.\w+$' '.mp4' $file_name)
+	ffmpeg -i $file_name -c copy $new_file_name
+end
