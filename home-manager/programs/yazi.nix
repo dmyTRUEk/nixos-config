@@ -36,7 +36,10 @@
 			video = [{ run = ''vlc "$@"''; }];
 			audio = [{ run = ''vlc "$@"''; }];
 			kdenlive = [{ run = ''kdenlive "$@"''; }];
-			pdf = [{ run = ''zathura "$@"''; }];
+			pdf = [
+				{ run = ''zathura "$@"''; }
+				{ run = ''firefox "$@"''; }
+			];
 			libreoffice = [{ run = ''libreoffice "$@"''; }];
 			djvu = [{ run = ''zathura "$@"''; }];
 			krita_project = [{ run = ''krita "$@"''; }];

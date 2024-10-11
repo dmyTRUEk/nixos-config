@@ -307,7 +307,6 @@
 		# TODO: kde/breeze cursor
 
 		# libs:
-		#libunistring # tmp for fumosay
 	];
 
 	fonts.fontconfig.enable = true;
