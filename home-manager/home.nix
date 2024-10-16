@@ -199,9 +199,8 @@
 		eza = { # (rust btw)
 			enable = true;
 			enableFishIntegration = true;
-			icons = true;
+			icons = "auto";
 			extraOptions = [
-				#"--icons=auto"
 				"--group-directories-first"
 			];
 		};
