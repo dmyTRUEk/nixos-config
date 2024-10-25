@@ -9,26 +9,26 @@ maybe even on any other Linux distro, if you somehow figure out how to install i
 # Configs:
 
 ## Text editors:
-- [NeoVim](./home-manager/dotfiles/nvim/)
+- [NeoVim](./home/dotfiles/nvim/)
 
 ## Window Managers / Desktop Environments:
 ### Sway:
-- Sway: [config](./home-manager/dotfiles/sway/config) + [scripts/](./home-manager/dotfiles/sway/scripts/)
-- Waybar: [config](./home-manager/dotfiles/waybar/config) + [style.css](./home-manager/dotfiles/waybar/style.css)
-- Anyrun: [anyrun.nix](./home-manager/programs/anyrun.nix) + [anyrun-theme.nix](./home-manager/programs/anyrun-theme.nix) + [anyrun.symbols.ron](./home-manager/programs/anyrun.symbols.ron)
-- Swaylock: [config](./home-manager/dotfiles/swaylock/config)
-- Mako: [mako.nix](./home-manager/programs/mako.nix)
+- Sway: [config](./home/dotfiles/sway/config) + [scripts/](./home/dotfiles/sway/scripts/)
+- Waybar: [config](./home/dotfiles/waybar/config) + [style.css](./home/dotfiles/waybar/style.css)
+- Anyrun: [anyrun.nix](./home/programs/anyrun.nix) + [anyrun-theme.nix](./home/programs/anyrun-theme.nix) + [anyrun.symbols.ron](./home/programs/anyrun.symbols.ron)
+- Swaylock: [config](./home/dotfiles/swaylock/config)
+- Mako: [mako.nix](./home/programs/mako.nix)
 
 ## File managers and viewers:
-- Yazi: [yazi.nix](./home-manager/programs/yazi.nix) + [yazi-theme-gruvbox.nix](./home-manager/programs/yazi-theme-gruvbox.nix)
-- Zathura: [zathurarc](./home-manager/dotfiles/zathura/zathurarc)
-- Swayimg: [config](./home-manager/dotfiles/swayimg/config)
+- Yazi: [yazi.nix](./home/programs/yazi.nix) + [yazi-theme-gruvbox.nix](./home/programs/yazi-theme-gruvbox.nix)
+- Zathura: [zathurarc](./home/dotfiles/zathura/zathurarc)
+- Swayimg: [config](./home/dotfiles/swayimg/config)
 
 ## Terminal stuff:
-- Shell: Fish: [fish.nix](./home-manager/programs/fish.nix) + [fish-aliases.nix](./home-manager/programs/fish-aliases.nix) + [fish-extra-shell-init.fish](./home-manager/programs/fish-extra-shell-init.fish)
-- Alacritty: [alacritty.nix](./home-manager/programs/alacritty.nix)
-- Kitty: [kitty.conf](./home-manager/dotfiles/kitty/kitty.conf)
+- Shell: Fish: [fish.nix](./home/programs/fish.nix) + [fish-aliases.nix](./home/programs/fish-aliases.nix) + [fish-extra-shell-init.fish](./home/programs/fish-extra-shell-init.fish)
+- Alacritty: [alacritty.nix](./home/programs/alacritty.nix)
+- Kitty: [kitty.conf](./home/dotfiles/kitty/kitty.conf)
 
 ## Other:
-- Python REPL: [init_interactive_python.py](./home-manager/files/init_interactive_python.py)
-- Vimium: [vimium-options.json](./home-manager/dotfiles/vimium/vimium-options.json)
+- Python REPL: [init_interactive_python.py](./home/files/init_interactive_python.py)
+- Vimium: [vimium-options.json](./home/dotfiles/vimium/vimium-options.json)
