@@ -552,3 +552,6 @@ exec_always $HOME/.config/sway/scripts/launch-anws.sh
 # sway relative keyboard rs (SRKR)
 exec_always $HOME/.config/sway/scripts/launch-srkr.sh
 
+# RAndom WAllpaper (RAWA)
+exec_always $HOME/.config/sway/scripts/launch-rawa.sh ~/Pictures/Wallpapers/solis-like-bgs-vol1/ 5m
+
