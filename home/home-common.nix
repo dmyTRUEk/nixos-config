@@ -51,7 +51,7 @@
 	home.file =
 	let
 		inherit (config.lib.file) mkOutOfStoreSymlink;
-		dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home-manager/dotfiles";
+		dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home/dotfiles";
 		config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor): use /.
 		setup_simple_symlinks = names: lib.mkMerge (builtins.map (name: {
 			"${config_path}/${name}".source = mkOutOfStoreSymlink "${dotfiles_path}/${name}";
@@ -219,7 +219,6 @@
 		pulseaudio # provides pactl, to change volume by fn keys # TODO: replace by `wpctl`
 		playerctl
 		gammastep
-		#light # TODO(fix): grant access to "video" group?
 		wl-clipboard
 		grim
 		slurp

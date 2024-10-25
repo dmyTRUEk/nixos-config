@@ -78,17 +78,21 @@
 	#random_hash = "";
 
 	nixi = "nix repl"; # nix interactive
-	nx  = "nvim ~/.config/home-manager/";
-	nic = "nvim ~/.config/home-manager/nixos/configuration.nix";
-	nih = "nvim ~/.config/home-manager/home-manager/home.nix";
-	nihy = "nvim ~/.config/home-manager/home-manager/programs/yazi.nix";
-	nif = "nvim ~/.config/home-manager/flake.nix";
+	nx   = "nvim ~/.config/home-manager/";
+	nic  = "nvim ~/.config/home-manager/os/configuration-common.nix";
+	nick = "nvim ~/.config/home-manager/os/configuration-knight.nix";
+	nicp = "nvim ~/.config/home-manager/os/configuration-psyche.nix";
+	nih  = "nvim ~/.config/home-manager/home/home-common.nix";
+	nihk = "nvim ~/.config/home-manager/home/home-knight.nix";
+	nihp = "nvim ~/.config/home-manager/home/home-psyche.nix";
+	nihy = "nvim ~/.config/home-manager/home/programs/yazi.nix";
+	nif  = "nvim ~/.config/home-manager/flake.nix";
 
-	nn  = "nvim ~/.config/home-manager/home-manager/dotfiles/nvim/init.lua";
-	ns  = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/config";
-	nss = "nvim ~/.config/home-manager/home-manager/dotfiles/sway/scripts/";
-	nw  = "nvim ~/.config/home-manager/home-manager/dotfiles/waybar/config";
-	nanws="nvim ~/.config/home-manager/home-manager/dotfiles/sway/scripts/autoname-workspaces.py";
+	nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua";
+	ns  = "nvim ~/.config/home-manager/home/dotfiles/sway/config";
+	nss = "nvim ~/.config/home-manager/home/dotfiles/sway/scripts/";
+	nw  = "nvim ~/.config/home-manager/home/dotfiles/waybar/config";
+	nanws="nvim ~/.config/home-manager/home/dotfiles/sway/scripts/autoname-workspaces.py";
 	nfh = "nvim ~/.local/share/fish/fish_history";
 
 	nre = "nvim README.md";
@@ -119,7 +123,7 @@
 	# src: https://github.com/cross-rs/cross/blob/6d097fb548ec121c2a0faf1c1d8ef4ca360d6750/docs/environment_variables.md?plain=1#L15
 	crosss = "NIX_STORE=/nix/store cross";
 
-	interactive_python = "python -i ~/.config/home-manager/home-manager/files/init_interactive_python.py";
+	interactive_python = "python -i ~/.config/home-manager/home/files/init_interactive_python.py";
 	ipy = "interactive_python";
 
 	time-elapsed = "command time -f 'time elapsed: %E'";

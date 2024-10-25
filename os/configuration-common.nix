@@ -20,7 +20,7 @@
 		# ./users.nix
 
 		# Import your generated (nixos-generate-config) hardware configuration
-		./hardware-configuration.nix
+		#./hardware-configuration.nix
 	];
 
 	nixpkgs = {
@@ -106,7 +106,7 @@
 	};
 
 	networking = {
-		hostName = "psyche"; # TODO: MOVE SOMEWHERE?? (to be cross pc compatible)
+		#hostName = "noname"; # specified in `-knight` & `-psyche`
 		networkmanager.enable = true;
 	};
 
@@ -137,9 +137,7 @@
 			#	wayland.enable = true;
 			#	theme = "chili";
 			#};
-			#cosmic-greeter.enable = true; # TODO: try it out
 		};
-		#desktopManager.cosmic.enable = true;
 		xserver = {
 			enable = true; # TODO: dont enable or why i need it?
 			videoDrivers = ["amdgpu"];
@@ -196,9 +194,6 @@
 		};
 
 		sway.enable = true;
-
-		# had to be installed in root?
-		light.enable = true; # TODO?: move to HM
 
 		# sadly, it have to be installed in root to work
 		steam = { # the meme
