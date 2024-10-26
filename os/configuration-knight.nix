@@ -25,6 +25,16 @@
 		networkmanager.enable = true;
 	};
 
+	boot.loader.systemd-boot = {
+		edk2-uefi-shell.enable = true;
+		windows = {
+			"10" = {
+				efiDeviceHandle = "FS0";
+				sortKey = "a_windows";
+			};
+		};
+	};
+
 	programs = {};
 
 	environment.systemPackages = with pkgs; [ # PKGS
