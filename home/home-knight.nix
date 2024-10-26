@@ -21,6 +21,6 @@
 
 	programs = {};
 
-	home.packeges = with pkgs; [ # PKGS
+	home.packages = with pkgs; [ # PKGS
 	];
 }
