@@ -21,7 +21,7 @@
 
 	programs = {};
 
-	home.packeges = with pkgs; [ # PKGS
+	home.packages = with pkgs; [ # PKGS
 		# "LIBS":
 		#light # TODO(fix): grant access to "video" group?
 	];
