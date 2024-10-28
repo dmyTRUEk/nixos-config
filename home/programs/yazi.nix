@@ -105,7 +105,7 @@
 				{ on = ["," "m"]; run = "sort modified --dir-first --reverse"; desc = "Sort by modified time (reverse)"; }
 				{ on = ["," "M"]; run = "sort modified --dir-first";           desc = "Sort by modified time"; }
 
-				{ on = ["<C-w>"]; run = ''shell 'swaymsg -s $SWAYSOCK output eDP-1 bg "$1" fill' --confirm''; desc = "Set as wallpaper/background"; }
+				{ on = ["<C-w>"]; run = ''shell --confirm 'swaymsg -s $SWAYSOCK output \* bg "$1" fill' ''; desc = "Set as Wallpaper"; }
 
 				# GOTOs:
 				# basic:
