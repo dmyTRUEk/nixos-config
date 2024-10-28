@@ -5,25 +5,13 @@
 	pkgs,
 	...
 }: {
-	system.stateVersion = "23.11";
-
 	imports = [
 		./hardware-configuration-psyche.nix
 	];
 
-	nixpkgs = {
-		overlays = [];
-		config = {
-			allowUnfree = true;
-		};
-	};
+	networking.hostName = "psyche";
 
-	#time.timeZone = "Europe/Kyiv";
-
-	networking = {
-		hostName = "psyche";
-		networkmanager.enable = true;
-	};
+	time.timeZone = "Europe/Kyiv";
 
 	programs = {
 		light.enable = true; # TODO?: move to HM   # had to be installed in root?

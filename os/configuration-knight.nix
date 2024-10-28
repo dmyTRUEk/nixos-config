@@ -5,25 +5,13 @@
 	pkgs,
 	...
 }: {
-	system.stateVersion = "23.11";
-
 	imports = [
 		./hardware-configuration-knight.nix
 	];
 
-	nixpkgs = {
-		overlays = [];
-		config = {
-			allowUnfree = true;
-		};
-	};
+	networking.hostName = "knight";
 
-	#time.timeZone = "Europe/Kyiv";
-
-	networking = {
-		hostName = "knight";
-		networkmanager.enable = true;
-	};
+	time.timeZone = "Europe/Kyiv";
 
 	boot.loader.systemd-boot = {
 		edk2-uefi-shell.enable = true;

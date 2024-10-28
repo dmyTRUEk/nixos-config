@@ -10,7 +10,6 @@
 	# https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 	system.stateVersion = "23.11";
 
-	# You can import other NixOS modules here
 	imports = [
 		# If you want to use modules from other flakes (such as nixos-hardware):
 		# inputs.hardware.nixosModules.common-cpu-amd
@@ -24,7 +23,7 @@
 	];
 
 	nixpkgs = {
-		# You can add overlays here
+		config.allowUnfree = true;
 		overlays = [
 			# If you want to use overlays exported from other flakes:
 			# neovim-nightly-overlay.overlays.default
@@ -36,11 +35,6 @@
 			#   });
 			# })
 		];
-		# Configure your nixpkgs instance
-		config = {
-			# Disable if you don't want unfree packages
-			allowUnfree = true;
-		};
 	};
 
 	# This will add each flake input as a registry
@@ -82,13 +76,16 @@
 		];
 	};
 
+	networking = {
+		#hostName = "noname"; # specified in `-knight` & `-psyche`
+		networkmanager.enable = true;
+	};
+
 	hardware.bluetooth.enable = true; # enables support for Bluetooth
 	#hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 	#hardware.opengl.extraPackages = with pkgs; [
 	#	amdvlk # fix? for bevy
 	#];
-
-	time.timeZone = "Europe/Kyiv";
 
 	i18n = {
 		defaultLocale = "en_US.UTF-8";
@@ -105,14 +102,6 @@
 		};
 	};
 
-	networking = {
-		#hostName = "noname"; # specified in `-knight` & `-psyche`
-		networkmanager.enable = true;
-	};
-
-	systemd.extraConfig = ''
-		DefaultTimeoutStopSec=10s
-	'';
 	systemd = {
 		user.services.polkit-gnome-authentication-agent-1 = {
 			description = "polkit-gnome-authentication-agent-1";
@@ -127,6 +116,9 @@
 				TimeoutStopSec = 10;
 			};
 		};
+		extraConfig = ''
+			DefaultTimeoutStopSec=10s
+		'';
 	};
 
 	services = {
@@ -165,16 +157,16 @@
 				#initialPassword = "12";
 				isNormalUser = true;
 				description = "myshko";
-				# TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
 				extraGroups = [
 					"wheel"          # for sudo
 					"networkmanager" # for network
 					"video"          # for brightness/light
 					"libvirtd"       # for virtualisation/VMs/gnome-boxes
 					"docker"         # for docker (yeah, i know)
+					# "audio" ?
 				];
 				packages = with pkgs; [
-					# move `sway` here?
+					# TODO: move `sway` here?
 				];
 			};
 		};
@@ -205,7 +197,7 @@
 		#gamemode.enable = true; # game mode, to give max performance to the game # usage: in steam launch options add `gamemoderun %command%`
 		#environment.systemPackages += mangohud # for mangohud (can be added in home.nix): fps, cpu%, gpu%, ram, vram, frame time, ... # usage: in steam launch options add `mangohud %command%`
 
-		nh = {
+		nh = { # (rust btw)
 			enable = true;
 			flake = "/home/myshko/.config/home-manager";
 		};
@@ -223,19 +215,23 @@
 		# everything else goes to home-manager (HM)
 	];
 
-	# TODO(refactor): move to HM?
-	# rtkit is optional but recommended
-	security.rtkit.enable = true;
 	services.pipewire = {
 		enable = true;
-		alsa.enable = true;
-		alsa.support32Bit = true;
 		pulse.enable = true;
+		alsa = {
+			enable = true;
+			support32Bit = true;
+		};
 		# If you want to use JACK applications, uncomment this
 		#jack.enable = true;
 	};
 
-	security.polkit.enable = true;
+	security = {
+		# TODO(refactor): move to HM?
+		# rtkit is optional but recommended
+		rtkit.enable = true;
+		polkit.enable = true;
+	};
 
 	virtualisation = {
 		docker.enable = true;
