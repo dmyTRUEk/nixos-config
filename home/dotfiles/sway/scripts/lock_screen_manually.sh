@@ -17,5 +17,5 @@ swaylock
 # so kill will be executed only when the screen is unlocked.
 pkill swayidle
 
-exec swayidle -w before-sleep '/home/myshko/.config/sway/scripts/lock_screen_manually.sh'
+exec swayidle -w before-sleep '/home/myshko/.config/home-manager/home/dotfiles/sway/scripts/lock_screen_manually.sh'
 

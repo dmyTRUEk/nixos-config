@@ -67,7 +67,7 @@
 			"nvim"
 			"sway"
 			"swayimg"
-			#"swaylock"
+			"swaylock"
 			"waybar"
 			"zathura"
 		]
