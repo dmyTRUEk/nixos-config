@@ -4,9 +4,12 @@
 size = fullscreen
 
 [viewer]
-scale = fit
-antialiasing = no
 window = 000000
+scale = fit
+antialiasing = yes
+slideshow_time = 5
+history = 5
+preload = 5
 
 [list]
 order = alpha
@@ -17,7 +20,10 @@ all = yes
 [font]
 name = JetBrains Mono
 size = 16
-color = #ff00ff
+color = ff00ff
+
+[info]
+show = no
 
 [keys.viewer]
 q = exit
@@ -43,7 +49,6 @@ p = prev_file
 bracketleft = next_dir
 bracketright = prev_dir
 
-# `b` mnemonics: about
 b = info
 s = zoom optimal
 
@@ -52,4 +57,13 @@ Shift+space = animation
 space = animation
 comma = next_frame
 period = prev_frame
+
+[keys.gallery]
+h = step_left
+j = step_down
+k = step_up
+l = step_right
+
+i = none
+b = info
 
