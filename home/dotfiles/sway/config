@@ -184,13 +184,13 @@ exec swayidle -w before-sleep '/home/myshko/.config/home-manager/home/dotfiles/s
 # Get names of inputs: `swaymsg -t get_inputs`
 # More info: `man 5 sway-input`
 input type:keyboard {
-    xkb_layout "us,ua"
-    # possible options: `man xkeyboard-config`
-    xkb_options "grp:shifts_toggle,grp:menu_toggle,caps:swapescape,ctrl:swap_lalt_lctl"
-    # TODO: make `grp:lctrl_toggle` or `grp:lalt_toggle` work
+	xkb_layout "us,ua"
+	# possible options: `man xkeyboard-config`
+	xkb_options "grp:shifts_toggle,grp:menu_toggle,caps:swapescape,ctrl:swap_lalt_lctl"
+	# TODO: make `grp:lctrl_toggle` or `grp:lalt_toggle` work
 
-    repeat_delay 200
-    repeat_rate 30
+	repeat_delay 200
+	repeat_rate 30
 }
 
 # TODO: move them to files
@@ -199,15 +199,15 @@ $btrbindsym $mod+Ctrl+e exec wl-paste | python -c 'from fileinput import input a
 
 # mouse
 input type:pointer {
-    # nothing for now
+	# nothing for now
 }
 
 input type:touchpad {
-    tap enabled
-    natural_scroll enabled
-    dwt disable
-    #drag_lock disable
-    scroll_factor 0.3
+	tap enabled
+	natural_scroll enabled
+	dwt disable
+	#drag_lock disable
+	scroll_factor 0.3
 }
 
 ## Mouse Cursor
@@ -250,31 +250,31 @@ $btrbindsym $mod+Escape $lock_command
 
 # Exit Sway
 $btrbindsym $mod+Ctrl+Backspace exec \
-    swaynag \
-    -t warning \
-    --font='JetBrains Mono 10' \
-    --text=f9f5d7 \
-    --button-text=f9f5d7 \
-    --background=282828 \
-    --button-background=303030 \
-    --border=242424 \
-    --border-bottom=242424 \
-    --button-gap=20 \
-    --button-dismiss-gap=20 \
-    --button-margin-right=10 \
-    -m '  Exit shortcut pressed. What to do?' \
-    -s '  Cancel  ' \
-    -b '  Shutdown  ' 'systemctl poweroff' \
-    -b '  Reboot  ' 'systemctl reboot' \
-    -b '  Sleep  ' 'systemctl suspend' \
-    -b '  Logout  ' 'swaymsg exit'
+	swaynag \
+	-t warning \
+	--font='JetBrains Mono 10' \
+	--text=f9f5d7 \
+	--button-text=f9f5d7 \
+	--background=282828 \
+	--button-background=303030 \
+	--border=242424 \
+	--border-bottom=242424 \
+	--button-gap=20 \
+	--button-dismiss-gap=20 \
+	--button-margin-right=10 \
+	-m '  Exit shortcut pressed. What to do?' \
+	-s '  Cancel  ' \
+	-b '  Shutdown  ' 'systemctl poweroff' \
+	-b '  Reboot  ' 'systemctl reboot' \
+	-b '  Sleep  ' 'systemctl suspend' \
+	-b '  Logout  ' 'swaymsg exit'
 
 # Screenshots
 # screenshot (of current monitor?)
 bindsym Print exec \
-    filename=$HOME/Pictures/Screenshots/2024/Screenshot_$(date +'%Y%m%d_%H%M%S.png') \
-    && grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') "$filename" \
-    && wl-copy "file://$filename" -t text/uri-list
+	filename=$HOME/Pictures/Screenshots/2024/Screenshot_$(date +'%Y%m%d_%H%M%S.png') \
+	&& grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') "$filename" \
+	&& wl-copy "file://$filename" -t text/uri-list
 # bind to make screenshot when alt is pressed (in tabletop simulator)
 # bindsym Alt+Print exec \
 #     filename=$HOME/Pictures/Screenshots/Screenshot_$(date +'%Y%m%d_%H%M%S.png') \
@@ -283,9 +283,9 @@ bindsym Print exec \
 
 # screenshot of rectangular selection
 bindsym Control+Print exec \
-    filename=$HOME/Pictures/Screenshots/2024/Screenshot_$(date +'%Y%m%d_%H%M%S.png') \
-    && grim -g "$(slurp)" "$filename" \
-    && wl-copy "file://$filename" -t text/uri-list
+	filename=$HOME/Pictures/Screenshots/2024/Screenshot_$(date +'%Y%m%d_%H%M%S.png') \
+	&& grim -g "$(slurp)" "$filename" \
+	&& wl-copy "file://$filename" -t text/uri-list
 
 
 ## Moving Focus
@@ -497,7 +497,7 @@ bindsym --locked Shift+XF86MonBrightnessDown exec light -U 1
 
 ### STATUS BAR
 bar {
-    swaybar_command waybar
+	swaybar_command waybar
 }
 # hide waybar
 $btrbindsym $mod+g exec killall -SIGUSR1 .waybar-wrapped
