@@ -240,6 +240,7 @@
 		nix-tree
 		nvd
 		curlftpfs
+		wtype
 
 		# LANGS:
 		rustup # rust btw
