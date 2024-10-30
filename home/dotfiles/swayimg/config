@@ -63,6 +63,8 @@ h = step_left
 j = step_down
 k = step_up
 l = step_right
+g = first_file
+Shift+g = last_file
 
 i = none
 b = info
