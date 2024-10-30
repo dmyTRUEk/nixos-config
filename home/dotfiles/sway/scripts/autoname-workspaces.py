@@ -64,7 +64,7 @@ DEFAULT_ICON: str = "?"
 ICONS_SEPARATOR: str = " "*1
 NUMBER_ICONS_SEPARATOR: str = " "*1
 
-NUMBER_TO_JP: dict[int, str] = {
+WORKSPACE_NUMBER_TO_NAME: dict[int, str] = {
 	1: "一",
 	2: "二",
 	3: "三",
@@ -179,24 +179,24 @@ def is_this_window(window_name: str, app_id_or_class_name: str) -> bool:
 
 
 @dataclass
-class WorkspaceMyName:
+class Workspace:
 	num: int
 	name: str
 	icons: list[str]
 
 	@staticmethod
-	def renamed_from_string(fullname: str) -> "WorkspaceMyName":
+	def renamed_from_string(fullname: str) -> "Workspace":
 		num = get_workspace_number_from_fullname(fullname)
 		name = "NA"
 		icons = ""
 		# TODO: refactor this mess.
-		for key, value in NUMBER_TO_JP.items():
+		for key, value in WORKSPACE_NUMBER_TO_NAME.items():
 			if fullname.startswith(value):
 				num = key
 				name = value
 				icons = fullname[len(value):]
 		icons = list(icons.strip()) # `ae36d1`: here we assume that icons consist of only one symbols
-		return WorkspaceMyName(num=num, name=name, icons=icons)
+		return Workspace(num=num, name=name, icons=icons)
 
 
 def get_workspace_number_from_fullname(fullname: str) -> int:
@@ -205,34 +205,34 @@ def get_workspace_number_from_fullname(fullname: str) -> int:
 
 
 def rename_workspaces(ipc):
-	for workspace in ipc.get_tree().workspaces():
-		workspace_my_name: WorkspaceMyName = WorkspaceMyName.renamed_from_string(workspace.name)
+	for workspace_from_ipc in ipc.get_tree().workspaces():
+		workspace_my: Workspace = Workspace.renamed_from_string(workspace_from_ipc.name)
 		icons = []
-		for window in workspace:
+		for window in workspace_from_ipc:
 			if window.app_id is not None or window.window_class is not None:
 				icon = icon_for_window(window)
 				if not ARGUMENTS.duplicates and icon in icons:
 					continue
 				icons.append(icon)
-		workspace_my_name.icons = icons
-		new_name = construct_workspace_name(workspace_my_name)
-		ipc.command(f"rename workspace '{workspace.name}' to '{new_name}'")
+		workspace_my.icons = icons
+		new_name = construct_workspace_name(workspace_my)
+		ipc.command(f"rename workspace '{workspace_from_ipc.name}' to '{new_name}'")
 
 
-def construct_workspace_name(workspace_my_name: WorkspaceMyName):
+def construct_workspace_name(workspace: Workspace):
 	# this `<n>:` is required for sway/waybar to know workspace's actual number
-	new_name = str(workspace_my_name.num) + ":"
-	new_name += NUMBER_TO_JP[int(workspace_my_name.num)]
-	if workspace_my_name.icons:
-		new_name += NUMBER_ICONS_SEPARATOR + ICONS_SEPARATOR.join(workspace_my_name.icons)
+	new_name = str(workspace.num) + ":"
+	new_name += WORKSPACE_NUMBER_TO_NAME[int(workspace.num)]
+	if workspace.icons:
+		new_name += NUMBER_ICONS_SEPARATOR + ICONS_SEPARATOR.join(workspace.icons)
 	return new_name
 
 
 
 def undo_window_renaming_and_exit(ipc):
 	for workspace in ipc.get_tree().workspaces():
-		new_name: int = get_workspace_number_from_fullname(workspace.name)
-		ipc.command(f"rename workspace '{workspace.name}' to '{new_name}'")
+		workspace_num: int = get_workspace_number_from_fullname(workspace.name)
+		ipc.command(f"rename workspace '{workspace.name}' to '{workspace_num}'")
 	ipc.main_quit()
 	sys.exit(0)
 
