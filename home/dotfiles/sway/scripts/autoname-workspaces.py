@@ -123,7 +123,7 @@ def main():
 			rename_workspaces(ipc)
 
 	def workspace_event_handler(ipc, event):
-		if event.change in ["init", "empty"]:
+		if event.change in ["init", "empty", "focus"]:
 			rename_workspaces(ipc)
 
 	ipc = i3ipc.Connection()
