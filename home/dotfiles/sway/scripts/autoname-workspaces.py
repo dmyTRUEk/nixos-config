@@ -27,34 +27,38 @@ import i3ipc
 # NOTES:
 # - use only lowercase
 # - assuming all icons to be ONE symbol (search for `ae36d1` in this file)
-WINDOW_ICONS: dict[str, str] = {
+WINDOW_ICONS_BY_WINDOW_NAME: dict[str, str] = { # for CLI apps
+	"btop": "󰄪",
+	"ranger": "", #     
+	"yazi": "", #     
+}
+WINDOW_ICONS_BY_APP_ID: dict[str, str] = {
 	"alacritty": "", #   
 	"blender": "󰂫",
 	"blueman-manager": "",
-	"btop": "󰄪",
 	"discord": "", # 󰙯
 	"firefox": "", # 󰈹
 	"gimp": "",
 	"gnome-boxes": "",
 	"kdenlive": "",
-	#"kitty": "󰄛", # TODO: make lower priority
+	"kitty": "󰄛",
 	"krita": "",
 	"libreoffice-calc": "󱪝",
 	"libreoffice-impress": "󰐩",
 	"libreoffice-writer": "󰷈",
 	"libreoffice": "󰈙",
 	"obs": "󰐾", # 󱔛 󰟞 󰐻 󰐾 󰻃 󰠿 󰚀 󱜠
-	"ranger": "", #     
 	"skype": "󰒯", # 
 	"steam": "", # 
 	"swayimg": "", # 󰋩   󰥶 󰲍
 	"telegram": "", # 
 	"vlc": "󰕼",
-	"yazi": "", #     
 	"zathura": "", # 󰈦
 	"zoom": "Z",
 	#     
 }
+WINDOW_ICONS_ALL: dict[str, str] = WINDOW_ICONS_BY_APP_ID | WINDOW_ICONS_BY_WINDOW_NAME
+
 
 DEFAULT_ICON: str = "?"
 ICONS_SEPARATOR: str = " "*1
@@ -123,9 +127,9 @@ def main():
 		if event.change in ["new", "close", "move"]:
 			rename_workspaces(ipc)
 
-	def workspace_event_handler(ipc, _event):
-		# TODO: if.
-		rename_workspaces(ipc)
+	def workspace_event_handler(_ipc, _event):
+		# rename_workspaces(ipc)
+		pass
 
 	ipc.on("window", window_event_handler)
 	ipc.on("workspace", workspace_event_handler)
@@ -136,28 +140,28 @@ def main():
 
 
 
-def icon_for_window(window):
+def icon_for_window(window) -> str:
 	if (app_id := window.app_id) is not None and len(app_id) > 0:
-		app_id = app_id.lower()
-		if icon := get_icon_for_window(app_id): # if not None
+		window_name = window.name.lower()
+		if icon := get_icon_for_window(window_name, WINDOW_ICONS_BY_WINDOW_NAME): # if not None
 			return icon
-		logging.info(f"No icon available for window with app_id: {app_id}")
+		app_id = app_id.lower()
+		if icon := get_icon_for_window(app_id, WINDOW_ICONS_BY_APP_ID): # if not None
+			return icon
+		logging.info(f"No icon available for window with {window_name=} and {app_id=}")
 	else:
 		# xwayland support
 		class_name = window.window_class
 		if len(class_name) > 0:
 			class_name = class_name.lower()
-			if icon := get_icon_for_window(class_name): # if not None
+			if icon := get_icon_for_window(class_name, WINDOW_ICONS_ALL): # if not None
 				return icon
-			logging.info(f"No icon available for window with class_name: {class_name}")
-	# if not found by `app_id` or `class_name` then try by `window_name`
-	if icon := get_icon_for_window(window.name): # if not None
-		return icon
+			logging.info(f"No icon available for window with {class_name=}")
 	return DEFAULT_ICON
 
 
-def get_icon_for_window(app_id_or_class_name: str) -> None | str:
-	for window_name, window_icon in WINDOW_ICONS.items():
+def get_icon_for_window(app_id_or_class_name: str, window_icons: dict[str, str]) -> None | str:
+	for window_name, window_icon in window_icons.items():
 		if is_this_window(window_name, app_id_or_class_name):
 			return window_icon
 	return None
@@ -201,8 +205,7 @@ def get_workspace_number_from_fullname(fullname: str) -> int:
 
 
 def rename_workspaces(ipc):
-	# reversed to make them in order I want them to be
-	for workspace in reversed(ipc.get_tree().workspaces()):
+	for workspace in ipc.get_tree().workspaces():
 		workspace_my_name: WorkspaceMyName = WorkspaceMyName.renamed_from_string(workspace.name)
 		icons = []
 		for window in workspace:
