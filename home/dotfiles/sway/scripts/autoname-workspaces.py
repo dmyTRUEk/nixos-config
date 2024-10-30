@@ -118,21 +118,21 @@ def main():
 		format="%(asctime)s [%(levelname)s] %(message)s",
 	)
 
-	ipc = i3ipc.Connection()
-
-	for sig in [signal.SIGINT, signal.SIGTERM]:
-		signal.signal(sig, lambda _signal, _frame: undo_window_renaming_and_exit(ipc))
-
 	def window_event_handler(ipc, event):
 		if event.change in ["new", "close", "move"]:
 			rename_workspaces(ipc)
 
-	def workspace_event_handler(_ipc, _event):
-		# rename_workspaces(ipc)
-		pass
+	def workspace_event_handler(ipc, event):
+		if event.change in ["init", "empty"]:
+			rename_workspaces(ipc)
+
+	ipc = i3ipc.Connection()
 
 	ipc.on("window", window_event_handler)
 	ipc.on("workspace", workspace_event_handler)
+
+	for sig in [signal.SIGINT, signal.SIGTERM]:
+		signal.signal(sig, lambda _signal, _frame: undo_window_renaming_and_exit(ipc))
 
 	rename_workspaces(ipc)
 
