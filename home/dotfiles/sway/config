@@ -123,15 +123,8 @@ for_window [window_role="pop-up"]       floating enable
 for_window [window_role="task_dialog"]  floating enable
 for_window [window_type="dialog"]       floating enable
 for_window [window_type="menu"]         floating enable
-# TODO: dont work?
-#for_window [floating] move position center
-# TODO:
-#for_window [window_type="floating_con"] floating enable
 
-# for_window [title="dialog"] floating enable
-# for_window [instance="gl"] floating enable
-
-for_window [class="xdg-desktop-portal-kde"] floating enable
+for_window [title="All Files" app_id="xdg-desktop-portal-gtk"] floating enable, resize set width 1200, resize set height 1000
 
 # Auto floating for windows like Terminals started with Mod+Shift+Return
 # if app_id contains "floating" word, then make it floating
