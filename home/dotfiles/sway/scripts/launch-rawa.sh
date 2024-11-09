@@ -1,2 +1,3 @@
 pkill -f random-wallpaper
-$HOME/.config/home-manager/home/dotfiles/sway/scripts/random-wallpaper.py $@
+sleep .5
+python $HOME/.config/home-manager/home/dotfiles/sway/scripts/random-wallpaper.py $@

@@ -36,7 +36,7 @@ set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/abstract/solis-2560x1440.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/mountains/Carpathians2024Y.jpg
 
 # Lockscreen
-set $lock_command exec sh -c $HOME/.config/sway/scripts/lock_screen_manually.sh
+set $lock_command exec $HOME/.config/sway/scripts/lock_screen_manually.sh
 
 #set $test_notification notify-send "Notification" "This is test notification"
 
@@ -173,8 +173,8 @@ for_window [title="Warning — Kdenlive"] move position center
 #      timeout 20 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 #      before-sleep 'swaylock -f -c 000000'
 
-exec swayidle -w before-sleep '/home/myshko/.config/home-manager/home/dotfiles/sway/scripts/lock_screen_manually.sh'
-# for details look in `sway/scripts/lock_screen_manually.sh`
+exec swayidle -w before-sleep ./scripts/lock_screen_manually.sh
+# for details look in `./scripts/lock_screen_manually.sh`
 
 
 
@@ -575,7 +575,7 @@ exec gammastep
 # AutoName WorkSpace (ANWS)
 exec_always $HOME/.config/sway/scripts/launch-anws.sh
 
-# sway relative keyboard rs (SRKR)
+# Sway Relative Keyboard Rs (SRKR)
 exec_always $HOME/.config/sway/scripts/launch-srkr.sh
 
 # RAndom WAllpaper (RAWA)

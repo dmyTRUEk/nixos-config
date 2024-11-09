@@ -1,5 +1,4 @@
-#! /usr/bin/env nix-shell
-#! nix-shell -i python3 -p python3
+# random wallpaper
 
 from os import listdir, system as exec_cli_cmd
 from os.path import isfile, join
