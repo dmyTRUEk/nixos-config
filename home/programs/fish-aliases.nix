@@ -10,7 +10,7 @@
 	nvert  = "nvim -O"; # split with vertical divider
 
 	ls = "ls"; # to exclude possibility of aliasing real ls
-	# better ls: eza (community maintained for of exa)
+	# better ls: eza (community maintained fork of exa)
 	l  = "eza";
 	la = "eza -a";
 	ll = "eza -al";
@@ -19,7 +19,7 @@
 	#mkdircd = "";
 	cl = "clear ; git status || clear";
 
-	#"-" = "cd -"; # TODO: alternative
+	#"-" = "cd -"; # TODO: find alternative
 	cdd = "cd ~/.config/home-manager";
 	".." = "cd ..";
 	"..." = "cd ../..";
@@ -74,10 +74,10 @@
 
 	dv = "yt-dlp";
 	dm = "yt-dlp -x --audio-format mp3 --embed-metadata --embed-thumbnail";
-	dm_without_covers = "yt-dlp -x --audio-format mp3 --embed-metadata";
+	dm_without_cover = "yt-dlp -x --audio-format mp3 --embed-metadata";
 	#random_hash = "";
 
-	nixi = "nix repl"; # nix interactive
+	nxi  = "nix repl"; # nix interactive
 	nx   = "nvim ~/.config/home-manager/";
 	nic  = "nvim ~/.config/home-manager/os/configuration-common.nix";
 	nick = "nvim ~/.config/home-manager/os/configuration-knight.nix";
@@ -85,20 +85,24 @@
 	nih  = "nvim ~/.config/home-manager/home/home-common.nix";
 	nihk = "nvim ~/.config/home-manager/home/home-knight.nix";
 	nihp = "nvim ~/.config/home-manager/home/home-psyche.nix";
+
+	nf   = "nvim ~/.config/home-manager/home/programs/fish.nix";
+	nfa  = "nvim ~/.config/home-manager/home/programs/fish-aliases.nix";
 	nihy = "nvim ~/.config/home-manager/home/programs/yazi.nix";
-	nif  = "nvim ~/.config/home-manager/flake.nix";
 
 	nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua";
 	ns  = "nvim ~/.config/home-manager/home/dotfiles/sway/config";
 	nss = "nvim ~/.config/home-manager/home/dotfiles/sway/scripts/";
 	nw  = "nvim ~/.config/home-manager/home/dotfiles/waybar/config";
-	nanws="nvim ~/.config/home-manager/home/dotfiles/sway/scripts/autoname-workspaces.py";
-	nfh = "nvim ~/.local/share/fish/fish_history";
+
+	nipy= "nvim ~/.config/home-manager/home/files/init_interactive_python.py";
+
+	nfh = "nvim -R ~/.local/share/fish/fish_history"; # open in read-only mode
 
 	nre = "nvim README.md";
 
 	# rust related:
-	nc = "nvim Cargo.toml";
+	nc  = "nvim Cargo.toml";
 	ncl = "nvim Cargo.lock";
 
 	cc = "cargo clean";
@@ -136,9 +140,6 @@
 	im = "magick"; # IMageMagick
 
 	bottom = "btm";
-
-	nf  = "nvim flake.nix";
-	nfl = "nvim flake.lock";
 
 	ff = "fastfetch";
 
