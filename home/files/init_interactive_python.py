@@ -40,19 +40,19 @@ from pipe import (
 
 # abcdefghijklmnopqrstuvwxyz
 
-def at(l: list['T'], index: int) -> 'T': # pyright: ignore[reportUndefinedVariable]
+def at[T](l: list[T], index: int) -> T:
 	return l[index]
 
-def avg(l: list['T']) -> 'T': # pyright: ignore[reportUndefinedVariable]
+def avg[T](l: list[T]) -> T:
 	return sum(l) / len(l)
 
 def diff(a: int | float | complex, b: int | float | complex) -> float | complex:
 	return abs(a-b) / (0.5 * (a+b))
 
-# def filter_leave(it: Iterator['T'], pred: Callable[['T'], bool]) -> Iterator['T']: # pyright: ignore[reportUndefinedVariable]
-# 	return (x for x in it if pred(x))
+def filter_leave[T](it: Iterator[T], pred: Callable[[T], bool]) -> Iterator[T]:
+	return (x for x in it if pred(x))
 
-def filter_remove(it: Iterator['T'], pred: Callable[['T'], bool]) -> Iterator['T']: # pyright: ignore[reportUndefinedVariable]
+def filter_remove[T](it: Iterator[T], pred: Callable[[T], bool]) -> Iterator[T]:
 	return (x for x in it if not pred(x))
 
 def frange(start: float, end: float, step: float):
@@ -61,19 +61,19 @@ def frange(start: float, end: float, step: float):
 		yield x
 		x += step
 
-def index_of_max(l: list['T']) -> int: # pyright: ignore[reportUndefinedVariable]
+def index_of_max[T](l: list[T]) -> int:
 	return max(enumerate(l), key=lambda x: x[1])[0]
 
-def index_of_min(l: list['T']) -> int: # pyright: ignore[reportUndefinedVariable]
+def index_of_min[T](l: list[T]) -> int:
 	return min(enumerate(l), key=lambda x: x[1])[0]
 
-def lerp(a: int | float | complex, b: int | float | complex, t: float) -> float | complex:
+def lerp[T](a: T, b: T, t: float) -> T:
 	return a*(1.-t) + b*t
 
-def split_at(l: list['T'], index: int) -> tuple[list['T'], list['T']]: # pyright: ignore[reportUndefinedVariable]
+def split_at[T](l: list[T], index: int) -> tuple[list[T], list[T]]:
 	return ( l[:index], l[index:] )
 
-def split_at_percentage(l: list['T'], p: float) -> tuple[list['T'], list['T']]: # pyright: ignore[reportUndefinedVariable]
+def split_at_percentage[T](l: list[T], p: float) -> tuple[list[T], list[T]]:
 	return split_at(l, round(len(l) * p))
 
 def std_dev(l: list[float]) -> float:
@@ -84,15 +84,7 @@ def unzip2(xy: Iterator) -> tuple[Iterator, Iterator]:
 	xy1, xy2 = itertools.tee(xy)
 	return ( (x for x, _ in xy1), (y for _, y in xy2) )
 
-def windows(it: Iterator['T'] | list['T'], window_size: int) -> Iterator[tuple['T', ...]] | list[tuple['T', ...]]: # pyright: ignore[reportUndefinedVariable]
-	# simple impl for lists:
-	# assert window_size <= len(l)
-	# res = []
-	# for i in range(len(l) - window_size + 1):
-	#     this_window = tuple(l[i+j] for j in range(window_size))
-	#     res.append(this_window)
-	# return res
-	# better impl for iterable:
+def windows[T](it: Iterator[T] | list[T], window_size: int) -> Iterator[tuple[T, ...]] | list[tuple[T, ...]]:
 	it = iter(it)
 	res = tuple(next(it) for _ in range(window_size))
 	yield res
@@ -104,7 +96,7 @@ def windows(it: Iterator['T'] | list['T'], window_size: int) -> Iterator[tuple['
 # Pipes:
 at_ = Pipe(at)
 avg_ = Pipe(avg)
-# filter_leave_ = Pipe(filter_leave) -> pipe.filter
+filter_leave_ = Pipe(filter_leave)
 filter_remove_ = Pipe(filter_remove)
 index_of_max_ = Pipe(index_of_max)
 index_of_min_ = Pipe(index_of_min)
@@ -156,3 +148,4 @@ def factorial_partial(n: int, k: int) -> int:
 if __name__ == '__main__':
 	import sys
 	print(f'Python {sys.version} on {sys.platform}')
+
