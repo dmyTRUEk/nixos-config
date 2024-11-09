@@ -21,6 +21,7 @@
 			allowUnfree = true;
 			# Workaround for https://github.com/nix-community/home-manager/issues/2942
 			allowUnfreePredicate = _: true;
+			android_sdk.accept_license = true;
 		};
 		overlays = [
 			# If you want to use overlays exported from other flakes:
@@ -251,6 +252,7 @@
 		]))
 		gcc
 		#lean4
+		android-studio
 
 		# GUI:
 		waybar
