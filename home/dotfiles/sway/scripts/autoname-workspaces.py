@@ -42,10 +42,10 @@ WINDOW_ICONS_BY_APP_ID: dict[str, str] = {
 	"kdenlive": "",
 	"kitty": "󰄛",
 	"krita": "",
+	"libreoffice": "󰈙",
 	"libreoffice-calc": "󱪝",
 	"libreoffice-impress": "󰐩",
 	"libreoffice-writer": "󰷈",
-	"libreoffice": "󰈙",
 	"obs": "󰐾", # 󱔛 󰟞 󰐻 󰐾 󰻃 󰠿 󰚀 󱜠
 	"skype": "󰒯", # 
 	"steam": "", # 
