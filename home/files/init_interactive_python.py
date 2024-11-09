@@ -145,6 +145,10 @@ def is_prime(n: int) -> bool:
 			return False
 	return True
 
+def factorial_partial(n: int, k: int) -> int:
+	# n! / (n-k)!
+	return prod(range(n-k+1, n+1))
+
 
 
 
