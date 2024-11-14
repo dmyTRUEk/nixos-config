@@ -55,6 +55,7 @@
 	gf = "git fetch";
 	gfo = "git fetch origin";
 	gl = "git log --oneline --decorate --graph";
+	gll = "git log --decorate --graph";
 	gm = "git merge";
 	gmt = "git mergetool";
 	gpull = "git pull";
