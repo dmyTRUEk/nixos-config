@@ -125,7 +125,7 @@
 				{ on = ["g" "t"]; run = "cd '~/Downloads/Telegram Desktop'"; }
 				{ on = ["g" "r"]; run = "cd ~/Dropbox"; }
 				#{ on = ["g" "D"]; run = "cd ~/Dropbox/Docs"; }
-				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD"; }
+				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2024_autumn"; }
 				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
 				{ on = ["g" "w"]; run = "cd ~/Dropbox/Work"; }
 				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/0_papers"; }
