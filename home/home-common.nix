@@ -225,9 +225,6 @@
 		killall
 		dua # disk usage (rust btw)
 		hyperfine # (rust btw)
-		fortune
-		#cowsay
-		#lolcat -> ur0/lolcat (rust btw)
 		tokei # (rust btw)
 		zip
 		unzip
@@ -239,6 +236,11 @@
 		nvd
 		curlftpfs
 		wtype
+
+		# CLI fun:
+		fortune
+		#cowsay
+		#lolcat -> ur0/lolcat (rust btw)
 
 		# LANGS:
 		rustup # rust btw
