@@ -1,23 +1,237 @@
 " ----------------- dmyTRUEk's ideavim config -----------------
 
-" Source your .vimrc
-source ~/.config/nvim/init.vim
-
 " Find more examples here: https://jb.gg/share-ideavimrc
 
-set scrolloff=5
+set encoding=utf-8          " use utf-8 encoding
+
+set number relativenumber   " set line numbers relative to caret
+set cursorline              " highlight cursor line
+set showmatch               " shows matching brackets
+set laststatus=2            " it controls, when/how to display status-bar: 0=never, 1={if > than 2 windows}, 2=always
+set autochdir               " change current dir to file's dir (folder directory)
+"set showcmd                 " ? show last command (if you pressed 'j' then 'j' will be showed)
+set virtualedit=block
+
+" better search
+set incsearch               " show search results immedeatly
+set hlsearch                " highlight found
+set ignorecase              " /word will find 'word' or 'Word' or 'WORD'
+set smartcase               " when 'ignorecase' and 'smartcase' are both on, if a pattern contains an uppercase letter, it is case sensitive, otherwise, it is not; for example, '/The' would find only 'The', while '/the' would find both 'the' and 'The'
+
+set autoindent              " set tabs automatically, when starting new line
+
+set scrolloff=10
+
+
+
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tommcdo/vim-exchange'
+Plug 'unblevable/quick-scope'
+Plug 'machakann/vim-highlightedyank'
+
+
+
+let mapleader = " "
+
+" unmap ex mode
+map Q <nop>
+
+" fix `h` and `l` motions
+nnoremap ch lc2h
+nnoremap cl c2l
+nnoremap dh ld2h
+nnoremap dl d2l
+nnoremap yh ly2h
+nnoremap yl y2l
+
+" better copy till end of line
+nnoremap Y y$
+
+" better bind for redo
+nnoremap U <C-r>
+
+" swap 0 and ^
+noremap 0 ^
+noremap ^ 0
+
+" swap ` and '
+noremap ` '
+noremap ' `
+
+" better move to end of line
+noremap - $
+
+" paste at start of line
+nnoremap <A-p> ^P
+
+" find from end of line
+nnoremap gf $F
+
+" work with function names:
+nnoremap cn ct(
+nnoremap dn dt(
+nnoremap yn yt(
+nnoremap cu ct_
+nnoremap du df_
+nnoremap d_ df_
+" xnoremap  n  t(
+
+nnoremap c; ct;
+nnoremap d; dt;
+nnoremap y; yt;
+
+nnoremap 0 ^
+nnoremap - $
+
+" better binds for go half page down/up:
+noremap <C-j> <C-d>zz
+noremap <C-k> <C-u>zz
+
+" move in insert mode:
+" TODO: <C-;>
+inoremap <C-;> <nop>
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-l> <right>
+
+" paste at end of line
+nnoremap <C-p> $p
+
+xnoremap S :sort <cr>
+
+" clear highlight after search
+nnoremap <leader>o :nohlsearch <cr>
+
+" erase last symbol in line
+nnoremap <leader>e m`$x``
+
+" append symbols to end of line:
+nnoremap <leader>; m`A;<esc>``
+nnoremap <leader>: m`A:<esc>``
+nnoremap <leader>, m`A,<esc>``
+nnoremap <leader>. m`A.<esc>``
+
+" WINDOW operations:
+" save:
+nnoremap <leader>w :w <cr>
+nnoremap <leader>W :wa <cr>
+
+" quit:
+nnoremap <leader>q :q <cr>
+nnoremap <leader>Q :qa <cr>
+
+" save and quit:
+nnoremap <leader>a :wq <cr>
+nnoremap <leader>A :wqa <cr>
+
+" move between windows inside vim:
+nnoremap <leader>h :wincmd h <cr>
+nnoremap <leader>j :wincmd j <cr>
+nnoremap <leader>k :wincmd k <cr>
+nnoremap <leader>l :wincmd l <cr>
+
+" move windows themselves inside vim:
+nnoremap <leader><leader>h :wincmd H <cr>
+nnoremap <leader><leader>j :wincmd J <cr>
+nnoremap <leader><leader>k :wincmd K <cr>
+nnoremap <leader><leader>l :wincmd L <cr>
+
+
+
+" my Change Current word with another (aka `viwy`):
+
+" `cc` is duplication of `S`, so we can use it for our purposes, so firstly we clearing it
+nnoremap cc <nop>
+nnoremap сс <nop>
+
+" map `cc<move>` to Change Current word with MOVE word
+" this solution is better than `df<space>f<space>p` because it might not work if
+" there is no space after second word (eg `,` `)` `\n` etc)
+
+" TODO?: figure out better way to do this, so it works at least for `f<symbol>` or even any move
+
+" TODO: fix it for ukr
+
+" here `|` means cursor position
+" a|aa bbb -> bbb| aaa
+nnoremap ccw yiwwviwp2bviwp
+" aaa.a|aa bbb.bbb -> bbb.bbb| aaa.aaa
+nnoremap ccW yiWWviWp2BviWp
+
+" aaa b|bb -> bbb aaa|
+nnoremap ccb yiwbviwpwviwp
+" aaa.aaa bbb.b|bb -> bbb.bbb aaa.aaa|
+nnoremap ccB yiWBviWpWviWp
+
+nnoremap cc2w yiw2wviwp3bviwp
+nnoremap cc2W yiW2WviWp3BviWp
+nnoremap cc2b yiw2bviwp2wviwp
+nnoremap cc2B yiW2BviWp2WviWp
+
+nnoremap cc3w yiw3wviwp4bviwp
+nnoremap cc3b yiw3bviwp3wviwp
+nnoremap cc3W yiW3WviWp4BviWp
+nnoremap cc3B yiW3BviWp3WviWp
+
+
+
+" vim-surround (yank(add,create), change, delete surround, like brackets, quotes):
+" better map in visual mode:
+let g:surround_no_mappings = 1 " bc of my 'xnoremap S'
+nmap ds  <Plug>Dsurround
+nmap cs  <Plug>Csurround
+nmap cS  <Plug>CSurround
+nmap ys  <Plug>Ysurround
+nmap yS  <Plug>YSurround
+nmap yss <Plug>Yssurround
+nmap ySs <Plug>YSsurround
+nmap ySS <Plug>YSsurround
+xmap s   <Plug>VSurround
+xmap і   <Plug>VSurround
+" TODO: surround by spaces without double press space
+"autocmd FileType * let g:surround_{char2nr(" ")} = " \r "
+autocmd FileType * let g:surround_{char2nr("\<CR>")} = "\n\t\r\n"
+autocmd FileType * let b:surround_{char2nr("<")} = "<\r>"
+autocmd FileType * let b:surround_{char2nr("(")} = "(\r)"
+autocmd FileType * let b:surround_{char2nr(")")} = "(\r)"
+autocmd FileType * let b:surround_{char2nr("[")} = "[\r]"
+autocmd FileType * let b:surround_{char2nr("]")} = "[\r]"
+autocmd FileType * let b:surround_{char2nr("{")} = "{\r}"
+autocmd FileType * let b:surround_{char2nr("}")} = "{\r}"
+autocmd FileType markdown let b:surround_{char2nr("l")} = "[\r]()"
+autocmd FileType markdown let b:surround_{char2nr("L")} = "[](\r)"
+
+
+
+" vim-exchange (swap two text selections):
+" better map in visual mode:
+vnoremap x <Plug>(Exchange)
+nnoremap X <Plug>(Exchange)
+
+
+
+" quick-scope (highlight when pressing `f`):
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+
+
+
+
+" Android Studio specific:
 
 map <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
 map <A-o> <Action>(Back)
 map <A-i> <Action>(Forward)
 
-map g[ <Action>(GotoPreviousError)
-map g] <Action>(GotoNextError)
+map <C-H> <Action>(GotoPreviousError)
+map <C-L> <Action>(GotoNextError)
 map gd <Action>(GotoDeclaration)
 "map gi <Action>(GotoImplementation)
 map <leader>r <Action>(RenameElement)
-" TODO: better mapping (conflicts with go forward)
 map <leader>i <Action>(Inline)
 
 map <leader>b <Action>(RebuildGradleProject)
