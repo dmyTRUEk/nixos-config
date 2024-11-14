@@ -241,6 +241,7 @@
 		fortune
 		#cowsay
 		#lolcat -> ur0/lolcat (rust btw)
+		cmatrix
 
 		# LANGS:
 		rustup # rust btw
