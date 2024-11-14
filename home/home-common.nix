@@ -253,6 +253,7 @@
 		gcc
 		#lean4
 		android-studio
+		android-tools # for `adb`
 
 		# GUI:
 		waybar
