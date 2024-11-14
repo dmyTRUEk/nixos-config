@@ -93,6 +93,7 @@
 				{ on = ["K"]; run = "tab_switch  1 --relative"; desc = "Switch to the next tab"; }
 				{ on = ["u"]; run = "shell 'dua i' --block --confirm"; desc = "Disk Usage (dua i)"; }
 				#{ on = [ "m" "c" ]; run = "linemode ctime"; desc = "Set linemode to ctime"; }
+				{ on = ["A"]; run = "create --dir"; desc = "Create a directory"; }
 
 				{ on = ["c" "c"]; run = ''shell 'filename="$1" && wl-copy "file://$filename" --type text/uri-list' --confirm''; desc = "Copy file using URI (file://)"; }
 				{ on = ["c" "a"]; run = "copy path";             desc = "Copy Absolute path"; }
