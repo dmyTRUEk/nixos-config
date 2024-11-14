@@ -16,7 +16,7 @@
 	ll = "eza -al";
 
 	mkdir = "mkdir -p";
-	#mkdircd = "";
+	#mkcd = ""; ---> ./fish-extra-shell-init.fish
 	cl = "clear ; git status || clear";
 
 	#"-" = "cd -"; # TODO: find alternative

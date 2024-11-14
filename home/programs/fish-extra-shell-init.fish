@@ -53,9 +53,9 @@ set __fish_git_prompt_showstashstate true
 # set -gx LESS_TERMCAP_us (set_color --bold red)
 # set -gx LESS_TERMCAP_ue (set_color normal)
 
-function mkdircd -d "mkdir & cd"
+function mkcd -d "mkdir & cd"
 	# src: https://fishshell.com/docs/current/cmds/function.html
-	command mkdir $argv
+	command mkdir -p $argv
 	if test $status = 0
 		switch $argv[(count $argv)]
 			case '-*'
