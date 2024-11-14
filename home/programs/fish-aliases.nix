@@ -88,16 +88,19 @@
 
 	nf   = "nvim ~/.config/home-manager/home/programs/fish.nix";
 	nfa  = "nvim ~/.config/home-manager/home/programs/fish-aliases.nix";
+	nff  = "nvim ~/.config/home-manager/home/programs/fish-extra-shell-init.fish";
 	nihy = "nvim ~/.config/home-manager/home/programs/yazi.nix";
 
 	nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua";
 	ns  = "nvim ~/.config/home-manager/home/dotfiles/sway/config";
 	nss = "nvim ~/.config/home-manager/home/dotfiles/sway/scripts/";
 	nw  = "nvim ~/.config/home-manager/home/dotfiles/waybar/config";
+	nz  = "nvim ~/.config/home-manager/home/dotfiles/zathura/zathurarc";
 
 	nipy= "nvim ~/.config/home-manager/home/files/init_interactive_python.py";
 
-	nfh = "nvim -R ~/.local/share/fish/fish_history"; # open in read-only mode
+	nfh  = "nvim -R ~/.local/share/fish/fish_history"; # open in read-only mode
+	nfhm = "nvim    ~/.local/share/fish/fish_history";
 
 	nre = "nvim README.md";
 
