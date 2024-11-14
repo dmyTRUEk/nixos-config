@@ -242,6 +242,7 @@
 		#cowsay
 		#lolcat -> ur0/lolcat (rust btw)
 		cmatrix
+		cbonsai
 
 		# LANGS:
 		rustup # rust btw
