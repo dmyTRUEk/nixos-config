@@ -26,6 +26,7 @@ import i3ipc
 # - use only lowercase
 # - assuming all icons to be ONE symbol (search for `ae36d1` in this file)
 WINDOW_ICONS_BY_WINDOW_NAME: dict[str, str] = { # for CLI apps
+	"all files": "",
 	"btop": "󰄪",
 	"ranger": "", #     
 	"yazi": "", #     
