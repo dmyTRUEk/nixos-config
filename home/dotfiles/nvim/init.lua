@@ -403,6 +403,7 @@ require('lazy').setup {
 					set_local('B', 'Box<\r>')
 					set_local('c', wrap_in_new)
 					set_local('C', wrap_in_type)
+					set_local('d', 'dbg!(\r);')
 					set_local('e', 'Err(\r)')
 					--set_local('f', '\1function: \1\1(\r)')
 					set_local('F', 'format!(\r)')
