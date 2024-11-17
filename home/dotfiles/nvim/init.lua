@@ -329,6 +329,9 @@ require('lazy').setup {
 			}
 			nap.add_rules {
 				rule("$", "$", {"tex", "latex"}),
+				rule("(", ")", {"tex", "latex"}),
+				rule("[", "]", {"tex", "latex"}),
+				rule("{", "}", {"tex", "latex"}),
 			}
 		end
 	},
