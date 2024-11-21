@@ -26,7 +26,7 @@
 
     "modules-right": [
         "tray",
-        "sway/language",
+        "custom/keyboard-layout",
         "clock",
     ],
 
@@ -130,9 +130,9 @@
         "spacing": 10,
     },
 
-    "sway/language": {
-        "format": "  {shortDescription} {variant}",
-        "tooltip-format": "{long}",
+    "custom/keyboard-layout": {
+        "exec": "sh $HOME/.config/home-manager/home/dotfiles/waybar/scripts/keyboard-layout.sh",
+        "format": "  {}",
     },
 
     // time and date
