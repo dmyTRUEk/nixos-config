@@ -143,20 +143,21 @@ def main():
 def icon_for_window(window) -> str:
 	if (app_id := window.app_id) is not None and len(app_id) > 0:
 		window_name = window.name.lower()
-		if icon := get_icon_for_window(window_name, WINDOW_ICONS_BY_WINDOW_NAME): # if not None
+		if (icon := get_icon_for_window(window_name, WINDOW_ICONS_BY_WINDOW_NAME)) is not None:
 			return icon
 		app_id = app_id.lower()
-		if icon := get_icon_for_window(app_id, WINDOW_ICONS_BY_APP_ID): # if not None
+		if (icon := get_icon_for_window(app_id, WINDOW_ICONS_BY_APP_ID)) is not None:
 			return icon
 		logging.info(f"No icon available for window with {window_name=} and {app_id=}")
-	else:
-		# xwayland support
+
+	else: # xwayland support
 		class_name = window.window_class
 		if len(class_name) > 0:
 			class_name = class_name.lower()
-			if icon := get_icon_for_window(class_name, WINDOW_ICONS_ALL): # if not None
+			if (icon := get_icon_for_window(class_name, WINDOW_ICONS_ALL)) is not None:
 				return icon
 			logging.info(f"No icon available for window with {class_name=}")
+
 	return DEFAULT_ICON
 
 
