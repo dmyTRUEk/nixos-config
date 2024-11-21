@@ -288,7 +288,8 @@ $btrbindsym $mod+Ctrl+Backspace exec \
 	-b '  Shutdown  ' 'shutdown 0' \
 	-b '  Reboot  ' 'reboot' \
 	-b '  Sleep  ' 'systemctl suspend' \
-	-b '  Logout  ' 'swaymsg exit'
+	-b '  Logout  ' 'swaymsg exit' \
+	-b '  Reload config  '  'swaymsg reload'
 
 # Screenshots
 # screenshot (of current monitor?)
