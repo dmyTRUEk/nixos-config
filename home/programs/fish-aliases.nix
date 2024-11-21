@@ -78,7 +78,7 @@
 	dm_without_cover = "yt-dlp -x --audio-format mp3 --embed-metadata";
 	#random_hash = "";
 
-	nxi  = "nix repl"; # nix interactive
+	nixi = "nix repl --file '<nixpkgs>'"; # nix interactive
 	nx   = "nvim ~/.config/home-manager/";
 	nic  = "nvim ~/.config/home-manager/os/configuration-common.nix";
 	nick = "nvim ~/.config/home-manager/os/configuration-knight.nix";
