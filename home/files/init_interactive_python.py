@@ -115,14 +115,17 @@ def binomial(n: int, m: int) -> int:
 	return factorial(n) // (factorial(m) * factorial(n-m))
 
 
-def xor_encryptor_decryptor(password: str) -> Callable[[str], str]:
-	password = str(hash(password))
+def xor_encryptor_decryptor(password: str, hash_pswd: bool = True) -> Callable[[str], str]:
+	if hash_pswd:
+		password = str(hash(password))
 	def xor_encrypt(text: str) -> str:
-		encrypted_l = []
+		encrypted_chars = []
 		for i in range(len(text)):
-			encrypted_c = ord(password[i%len(password)]) ^ ord(text[i])
-			encrypted_l.append(chr(encrypted_c))
-		return ''.join(encrypted_l)
+			text_co = ord(text[i])
+			password_co = ord(password[i%len(password)])
+			encrypted_c = chr(password_co ^ text_co)
+			encrypted_chars.append(encrypted_c)
+		return ''.join(encrypted_chars)
 	return xor_encrypt
 
 def is_prime(n: int) -> bool:
