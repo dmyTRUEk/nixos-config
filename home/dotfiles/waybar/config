@@ -31,6 +31,72 @@
 
 
 
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon}⚡ {capacity}%",
+        "format-plugged": " {capacity}%", // IDEA: amogus ඞ
+        "format-time": "{H}h {M}m",
+        //"format-alt": "{icon} {time}",
+        "tooltip-format": "{capacity}% (≈ {time})",
+        "tooltip-format-full": "Full",
+        // "format-good": "",
+        // "format-full": "",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        // 󰂎 󰁺 󰁻 󰁼 󰁽 󰁾 󰁿 󰂀 󰂁 󰂂 󰁹
+        //         
+        "states": {
+            "good": 75,
+            "warning": 25,
+            "critical": 10,
+        },
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  {signalStrength}%", // 直 睊 
+        "format-ethernet": "", //     
+        "format-linked": "󰯡 {ifname} (No IP)",
+        "format-disconnected": "󰤮  Disconnected", // ⚠
+        "format-alt": "  {essid} ({signalStrength}%)",
+        //"tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "  {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "TODO: {ifname} ",
+        "tooltip-format-disconnected": "󰤮  Disconnected",
+        "on-click-right": "alacritty -e nmtui-connect",
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+        "on-scroll-up":   "light -A 1",
+        "on-scroll-down": "light -U 1",
+        "tooltip-format": "Scroll to change it's value.",
+    },
+
+    // TODO: add bluetooth status and on click launch menu somewhere, and hide button when bluetooth is turned off
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 {volume}%",
+        "format-bluetooth": " {icon} {volume}%",
+        "format-bluetooth-muted": " 󰖁 {volume}%",
+        "format-icons": {
+            /* "headphone": "", */
+            /* "hands-free": "", */
+            /* "headset": "", */
+            /* "phone": "", */
+            /* "portable": "", */
+            /* "car": "", */
+            //           0    1    2    3    4    5    6    7    8    9
+            "default": ["󰕿", "󰕿", "󰖀", "󰖀", "󰖀", "󰖀", "󰕾", "󰕾", "󰕾", "󰕾"],
+        },
+        "scroll-step": 1,
+        // TODO: change tooltip: add info about right click and middle
+        "on-click-right": "pavucontrol",
+        "on-click-middle": "blueman-manager",
+        "tooltip-format": "Device: {desc}.\nScroll to change it's value.\nRight click -> Sound control.\nMiddle click -> Bluetooth menu.",
+    },
+
     "sway/window": {
         "max-length": 60,
         "rewrite": {
@@ -60,73 +126,8 @@
     },
 
     "sway/language": {
-        "format": "  {shortDescription}",
-    },
-
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {signalStrength}%", // 直 睊 
-        "format-ethernet": "", //     
-        "format-linked": "󰯡 {ifname} (No IP)",
-        "format-disconnected": "󰤮  Disconnected", // ⚠
-        "format-alt": "  {essid} ({signalStrength}%)",
-        //"tooltip-format": "{ifname}",
-        "tooltip-format-wifi": "  {essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "TODO: {ifname} ",
-        "tooltip-format-disconnected": "󰤮  Disconnected",
-        "on-click-right": "alacritty -e nmtui-connect",
-    },
-
-    // TODO: add bluetooth status and on click launch menu somewhere, and hide button when bluetooth is turned off
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰖁 {volume}%",
-        "format-bluetooth": " {icon} {volume}%",
-        "format-bluetooth-muted": " 󰖁 {volume}%",
-        "format-icons": {
-            /* "headphone": "", */
-            /* "hands-free": "", */
-            /* "headset": "", */
-            /* "phone": "", */
-            /* "portable": "", */
-            /* "car": "", */
-            //           0    1    2    3    4    5    6    7    8    9
-            "default": ["󰕿", "󰕿", "󰖀", "󰖀", "󰖀", "󰖀", "󰕾", "󰕾", "󰕾", "󰕾"],
-        },
-        "scroll-step": 1,
-        // TODO: change tooltip: add info about right click and middle
-        "on-click-right": "pavucontrol",
-        "on-click-middle": "blueman-manager",
-        "tooltip-format": "Device: {desc}.\nScroll to change it's value.\nRight click -> Sound control.\nMiddle click -> Bluetooth menu.",
-    },
-
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
-        "on-scroll-up":   "light -A 1",
-        "on-scroll-down": "light -U 1",
-        "tooltip-format": "Scroll to change it's value.",
-    },
-
-    "battery": {
-        "format": "{icon} {capacity}%",
-        "format-charging": "{icon}⚡ {capacity}%",
-        "format-plugged": " {capacity}%", // IDEA: amogus ඞ
-        "format-time": "{H}h {M}m",
-        //"format-alt": "{icon} {time}",
-        "tooltip-format": "{capacity}% (≈ {time})",
-        "tooltip-format-full": "Full",
-        // "format-good": "",
-        // "format-full": "",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        // 󰂎 󰁺 󰁻 󰁼 󰁽 󰁾 󰁿 󰂀 󰂁 󰂂 󰁹
-        //         
-        "states": {
-            "good": 75,
-            "warning": 25,
-            "critical": 10,
-        },
+        "format": "  {shortDescription} {variant}",
+        "tooltip-format": "{long}",
     },
 
     // time and date
@@ -151,6 +152,5 @@
              },
         },
     },
-
 }
 
