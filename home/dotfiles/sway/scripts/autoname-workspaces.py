@@ -142,9 +142,10 @@ def main():
 
 def icon_for_window(window) -> str:
 	if (app_id := window.app_id) is not None and len(app_id) > 0:
-		window_name = window.name.lower()
-		if (icon := get_icon_for_window(window_name, WINDOW_ICONS_BY_WINDOW_NAME)) is not None:
-			return icon
+		if (window_name := window.name) is not None and len(window_name) > 0:
+			window_name = window_name.lower()
+			if (icon := get_icon_for_window(window_name, WINDOW_ICONS_BY_WINDOW_NAME)) is not None:
+				return icon
 		app_id = app_id.lower()
 		if (icon := get_icon_for_window(app_id, WINDOW_ICONS_BY_APP_ID)) is not None:
 			return icon
