@@ -21,6 +21,7 @@
 
     "modules-center": [
         "sway/workspaces",
+        "sway/scratchpad",
     ],
 
     "modules-right": [
@@ -116,6 +117,10 @@
         "format": "{name}",
         //"sort-by-name": false,
         //"sort-by-coordinates": false,
+    },
+
+    "sway/scratchpad": {
+        "format": "  {count}",
     },
 
 
