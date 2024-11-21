@@ -46,15 +46,12 @@
 	let
 		inherit (config.lib.file) mkOutOfStoreSymlink;
 		dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home/dotfiles";
-		config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor): use /.
-		setup_simple_symlinks = names: lib.mkMerge (builtins.map (name: {
-			"${config_path}/${name}".source = mkOutOfStoreSymlink "${dotfiles_path}/${name}";
-		}) names);
-		#setup_complex_symlinks = lib.mapAttrs' (name: value: lib.nameValuePair
-		#	("${config_path}/${name}".source)
-		#	(mkOutOfStoreSymlink "${dotfiles_path}/${value}")
-		#);
+		config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor)?: use /.
+		setup_simple_symlinks = builtins.foldl' (acc: elem: acc // {
+			"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
+		}) {};
 	in (
+		# let tmp = # for dbg
 		setup_simple_symlinks [
 			"gammastep"
 			"kitty"
@@ -65,8 +62,8 @@
 			"waybar"
 			"zathura"
 		]
-		#//
-		#setup_complex_symlinks {}
+		# // setup_complex_symlinks {}
+		# ; in builtins.trace tmp tmp # for dbg
 	);
 
 	home.pointerCursor =
