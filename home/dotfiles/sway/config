@@ -36,7 +36,7 @@ set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/abstract/solis-2560x1440.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/mountains/Carpathians2024Y.jpg
 
 # Lockscreen
-set $lock_command exec $HOME/.config/sway/scripts/lock_screen_manually.sh
+set $lock_command exec sh $HOME/.config/sway/scripts/lock_screen_manually.sh
 
 #set $test_notification notify-send "Notification" "This is test notification"
 
@@ -147,7 +147,7 @@ for_window [title="Picture-in-Picture"] floating enable, sticky enable, border n
 
 # make Discord Picture-In-Picture floating and sticky
 # if this doesnt work, just increase sleep time in discord_pip.sh
-for_window [class="discord"] exec sh -c $HOME/.config/sway/scripts/discord_pip.sh
+for_window [class="discord"] exec sh $HOME/.config/sway/scripts/discord_pip.sh
 
 #for_window [title="Zoom"] floating enable
 #for_window [title="Skype"] floating enable
@@ -187,30 +187,15 @@ input type:keyboard {
 	xkb_layout "us,ua"
 	# possible options: `man xkeyboard-config`
 	xkb_options "grp:shifts_toggle,grp:menu_toggle,caps:swapescape,ctrl:swap_lalt_lctl"
-	# TODO: make `grp:lctrl_toggle` or `grp:lalt_toggle` work
+	# TODO?: make `grp:lctrl_toggle` or `grp:lalt_toggle` work
 
 	repeat_delay 200
 	repeat_rate 30
 }
 
-# TODO: move them to files?
-$btrbindsym $mod+Ctrl+u exec \
-	wtype -M ctrl -P x \
-	&& sleep 0.1 \
-	&& wl-paste \
-	| python -c 'from fileinput import input as get_stdin; is_caseable=lambda c: c.lower() != c.upper(); eng_to_ukr={"q":"й","w":"ц","e":"у","r":"к","t":"е","y":"н","u":"г","i":"ш","o":"щ","p":"з","[":"х","{":"Х","]":"ї","}":"Ї","a":"ф","s":"і","d":"в","f":"а","g":"п","h":"р","j":"о","k":"л","l":"д",";":"ж",":":"Ж",chr(39):"є",chr(34):"Є","z":"я","x":"ч","c":"с","v":"м","b":"и","n":"т","m":"ь",",":"б","<":"Б",".":"ю",">":"Ю","/":".","?":",","`":chr(39),"~":"ʼ","@":chr(34),"#":"№","$":";","^":":","&":"?"}; print("".join(map(lambda c: c if (c.lower() not in eng_to_ukr) else (eng_to_ukr[c] if (c.islower() or not is_caseable(c)) else eng_to_ukr[c.lower()].upper()), "".join(get_stdin())[:-1])),end="")' \
-	| wl-copy \
-	&& sleep 0.1 \
-	&& wtype -M ctrl -P v
 
-$btrbindsym $mod+Ctrl+e exec \
-	wtype -M ctrl -P x \
-	&& sleep 0.1 \
-	&& exec wl-paste \
-	| python -c 'from fileinput import input as get_stdin; is_caseable=lambda c: c.lower() != c.upper(); eng_to_ukr={"й":"q","ц":"w","у":"e","к":"r","е":"t","н":"y","г":"u","ш":"i","щ":"o","з":"p","х":"[","Х":"{","ї":"]","Ї":"}","ф":"a","і":"s","в":"d","а":"f","п":"g","р":"h","о":"j","л":"k","д":"l","ж":";","Ж":":","є":chr(39),"Є":chr(34),"я":"z","ч":"x","с":"c","м":"v","и":"b","т":"n","ь":"m","б":",","Б":"<","ю":".","Ю":">",".":"/",",":"?",chr(39):"`","ʼ":"~",chr(34):"@","№":"#",";":"$",":":"^","?":"&"}; print("".join(map(lambda c: c if (c.lower() not in eng_to_ukr) else (eng_to_ukr[c] if (c.islower() or not is_caseable(c)) else eng_to_ukr[c.lower()].upper()), "".join(get_stdin())[:-1])),end="")' \
-	| wl-copy \
-	&& sleep 0.1 \
-	&& wtype -M ctrl -P v
+$btrbindsym $mod+Ctrl+u exec sh $HOME/.config/home-manager/home/dotfiles/sway/scripts/langmap/eng_to_ukr.sh
+$btrbindsym $mod+Ctrl+e exec sh $HOME/.config/home-manager/home/dotfiles/sway/scripts/langmap/ukr_to_eng.sh
 
 bindsym $mod+Ctrl+Up exec \
 	wtype -M ctrl -P x \
@@ -576,11 +561,11 @@ exec dropbox
 exec gammastep
 
 # AutoName WorkSpace (ANWS)
-exec_always $HOME/.config/sway/scripts/launch-anws.sh
+exec_always sh $HOME/.config/sway/scripts/launch-anws.sh
 
 # Sway Relative Keyboard Rs (SRKR)
-exec_always $HOME/.config/sway/scripts/launch-srkr.sh
+exec_always sh $HOME/.config/sway/scripts/launch-srkr.sh
 
 # RAndom WAllpaper (RAWA)
-exec_always $HOME/.config/sway/scripts/launch-rawa.sh ~/Pictures/Wallpapers/solis-like-bgs-vol1/ 5m
+exec_always sh $HOME/.config/sway/scripts/launch-rawa.sh ~/Pictures/Wallpapers/solis-like-bgs-vol1/ 5m
 
