@@ -7,7 +7,8 @@ swaymsg --raw --type get_inputs | \
 			select(.type == "keyboard") |
 			.xkb_active_layout_name |
 			sub("English \\(US\\)"; "en") |
-			sub("Ukrainian"; "uk")
+			sub("Ukrainian"; "uk") |
+			sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak")
 		] |
 		first
 	' #| \
@@ -23,7 +24,8 @@ swaymsg --raw --type subscribe --monitor '["input"]' | \
 		select(.change == "xkb_layout") |
 		.input.xkb_active_layout_name |
 		sub("English \\(US\\)"; "en") |
-		sub("Ukrainian"; "uk")
+		sub("Ukrainian"; "uk") |
+		sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak")
 	' #| \
 	# awk '{
 	# 	getline iscaps < "/sys/class/leds/input3::capslock/brightness"; # TODO: read every time?

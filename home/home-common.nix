@@ -63,6 +63,9 @@
 			"zathura"
 		]
 		# // setup_complex_symlinks {}
+		// {
+			"${config.home.homeDirectory}/.xkb/symbols".source = mkOutOfStoreSymlink "${dotfiles_path}/sway/keyboard-layouts";
+		}
 		# ; in builtins.trace tmp tmp # for dbg
 	);
 

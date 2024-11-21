@@ -193,6 +193,9 @@ input type:keyboard {
 	repeat_rate 30
 }
 
+# enable/disable Colemak
+bindsym $mod+5       input type:keyboard xkb_layout "us,ua,en_colemak"
+bindsym $mod+Shift+5 input type:keyboard xkb_layout "us,ua"
 
 $btrbindsym $mod+Ctrl+u exec sh $HOME/.config/home-manager/home/dotfiles/sway/scripts/langmap/eng_to_ukr.sh
 $btrbindsym $mod+Ctrl+e exec sh $HOME/.config/home-manager/home/dotfiles/sway/scripts/langmap/ukr_to_eng.sh
