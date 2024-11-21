@@ -2,8 +2,6 @@
 # Tex Snippets #
 ################
 
-snippet 1/2 "1/2 -> \frac{1}{2}" i
-	\frac{1}{2}
 # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 snippet ab "above = overset{...}{...}"
 	\overset{$1}{$2} $0
@@ -11,7 +9,7 @@ snippet abs "|...|" i
 	\abs{$1}$0
 snippet abs2 "|...|^2" i
 	\abs{$1}^2$0
-snippet ang "Angstroms" ir
+snippet ang "Angstroms" i
 	\text{\r{A}}
 snippet avg "average" i
 	\left\langle $1 \right\rangle $0
@@ -39,7 +37,7 @@ snippet ce "center = begin{center} ... end{}" b
 	\begin{center}
 		$1
 	\end{center}$0
-snippet comp "complex numbers symbol = C" ir
+snippet comp "complex numbers symbol = C" i
 	\mathbb{C}
 # also named `vp`
 snippet cp "cross product = [A x B]" i
@@ -76,7 +74,7 @@ snippet es "equation+split = begin{equation+split} ... end{}" b
 		$1
 	\end{split}
 	\end{equation}$0
-snippet ex "exp = e^{...}" ir
+snippet ex "exp = e^{...}" i
 	\exp\qty($1)$0
 # FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 snippet fig "image = begin{figure} ... end{}" b
@@ -100,7 +98,7 @@ snippet ha "hat (operator) = A^" i
 	\hat{$1}$0
 snippet hb "hbar = ℏ" i
 	\hbar
-snippet half "... / 2" ir
+snippet half "... / 2" i
 	\frac{$1}{2}$0
 # IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 snippet i "\item ..."
@@ -164,7 +162,7 @@ snippet sp "split = begin{split} ... end{}" b
 	\begin{split}
 		$1
 	\end{split}
-snippet sq "sqrt" ir
+snippet sq "sqrt" i
 	\sqrt{$1}$0
 snippet ss "subsection{...}" b
 	\subsection{$1}
@@ -181,7 +179,7 @@ snippet sss "subsubsection{...}" b
 snippet sum "sum" i
 	\sum\limits_{$1}^{$2} $0
 # TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-snippet table "table = begin{center+tabular} ... end{}" br
+snippet table "table = begin{center+tabular} ... end{}" b
 	\begin{table} [H]
 	\begin{center}
 	\begin{tabular} {|c|c|}
@@ -234,6 +232,8 @@ snippet vs "vspace" i
 # SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS
 snippet 1/ "1 / ..." i
 	\frac{1}{$1}
+snippet 1/2 "1/2 -> \frac{1}{2}" i
+	\frac{1}{2}
 snippet / "\frac{}{}" i
 	\frac{$1}{$2}
 snippet + "\dagger" i
@@ -263,9 +263,9 @@ snippet e "epsilon" i
 	\varepsilon
 snippet E "Epsilon" i
 	\Epsilon
-snippet et "eta" ir
+snippet et "eta" i
 	\eta
-snippet Et "eta" ir
+snippet Et "eta" i
 	\Eta
 snippet f "phi" i
 	\varphi
@@ -331,9 +331,9 @@ snippet t "theta" i
 	\theta
 snippet T "Theta" i
 	\Theta
-snippet ta "tau" ir
+snippet ta "tau" i
 	\tau
-snippet Ta "Tau" ir
+snippet Ta "Tau" i
 	\Tau
 snippet th "theta" i
 	\theta
