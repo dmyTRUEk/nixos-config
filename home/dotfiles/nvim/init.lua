@@ -114,6 +114,8 @@ keybinds_nv = {
 
 	['<c-j>'] = '<c-d>zz', -- better move half-page down
 	['<c-k>'] = '<c-u>zz', -- better move half-page up
+
+	['<c-n>'] = '%',
 }
 
 keybinds_n = {
