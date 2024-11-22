@@ -1,0 +1,52 @@
+# dmyTRUEk's us workman custom keyboard layout
+#
+# src:
+# https://github.com/swaywm/sway/wiki#load-a-modified-custom-xkb-keymap-xmodmap-equivalent
+# https://git.sr.ht/~jman/dotfiles/tree/refs/heads/master/xkb/README.md
+# https://www.charvolant.org/doug/xkb/html/node5.html
+# <pkgs>/xkeyboard-config -> /etc/X11/xkb/symbols/us
+
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+	include "us"
+		name[Group1] = "English (Workman) (by dmyTRUEk)";
+
+	# qwertyuiop
+	# key <AD01> { [ q, Q ] }; # q
+	key <AD02> { [ d, D ] }; # w
+	key <AD03> { [ r, R ] }; # e
+	key <AD04> { [ w, W ] }; # r
+	key <AD05> { [ b, B ] }; # t
+	key <AD06> { [ j, J ] }; # y
+	key <AD07> { [ f, F ] }; # u
+	key <AD08> { [ u, U ] }; # i
+	key <AD09> { [ p, P ] }; # o
+	key <AD10> { [ semicolon, colon ] }; # p
+	# key <AD11> { [ braceleft, braceleft ] }; # [
+	# key <AD12> { [ bracketright, braceright ] }; # ]
+
+	# asdfghjkl;'
+	# key <AC01> { [ a, A ] }; # a
+	# key <AC02> { [ s, S ] }; # s
+	key <AC03> { [ h, H ] }; # d
+	key <AC04> { [ t, T ] }; # f
+	# key <AC05> { [ g, G ] }; # g
+	key <AC06> { [ y, Y ] }; # h
+	key <AC07> { [ n, N ] }; # j
+	key <AC08> { [ e, E ] }; # k
+	key <AC09> { [ o, O ] }; # l
+	key <AC10> { [ i, I ] }; # ;
+	# key <AC11> { [ apostrophe, quotedbl ] }; # '
+
+	# zxcvbnm,./
+	# key <AB01> { [ z, Z ] }; # z
+	# key <AB02> { [ x, X ] }; # x
+	key <AB03> { [ m, M ] }; # c
+	key <AB04> { [ c, C ] }; # v
+	key <AB05> { [ v, V ] }; # b
+	key <AB06> { [ k, K ] }; # n
+	key <AB07> { [ l, L ] }; # m
+	# key <AB08> { [ comma, less ] }; # ,
+	# key <AB09> { [ period, greater ] }; # .
+	# key <AB10> { [ slash, question ] }; # /
+};

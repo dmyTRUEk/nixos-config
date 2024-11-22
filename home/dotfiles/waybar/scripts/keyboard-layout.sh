@@ -8,6 +8,7 @@ swaymsg --raw --type get_inputs | \
 			.xkb_active_layout_name |
 			sub("English \\(US\\)"; "en") |
 			sub("Ukrainian"; "uk") |
+			sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman") |
 			sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak")
 		] |
 		first
@@ -25,6 +26,7 @@ swaymsg --raw --type subscribe --monitor '["input"]' | \
 		.input.xkb_active_layout_name |
 		sub("English \\(US\\)"; "en") |
 		sub("Ukrainian"; "uk") |
+		sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman") |
 		sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak")
 	' #| \
 	# awk '{
