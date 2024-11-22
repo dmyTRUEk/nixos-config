@@ -36,7 +36,7 @@ xkb_symbols "basic" {
 	key <AC08> { [ e, E ] }; # k
 	key <AC09> { [ i, I ] }; # l
 	key <AC10> { [ o, O ] }; # ;
-	key <AC11> { [ apostrophe, quotedbl ] }; # '
+	# key <AC11> { [ apostrophe, quotedbl ] }; # '
 
 	# zxcvbnm,./
 	# key <AB01> { [ z, Z ] }; # z
