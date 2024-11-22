@@ -60,7 +60,7 @@
 	gmt = "git mergetool";
 	gpull = "git pull";
 	gpush = "git push";
-	gpush-force = "git push --force-with-lease";
+	gpush-force-wl = "git push --force-with-lease";
 	grs = "git restore --staged";
 	"grs." = "git restore --staged .";
 	grsp = "git restore --staged --patch";
