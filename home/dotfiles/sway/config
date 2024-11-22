@@ -197,9 +197,13 @@ input type:keyboard {
 bindsym $mod+5       input type:keyboard xkb_layout "us,ua,en_workman"
 bindsym $mod+Shift+5 input type:keyboard xkb_layout "us,ua"
 
-# enable/disable Colemak
-bindsym $mod+6       input type:keyboard xkb_layout "us,ua,en_colemak"
+# enable/disable Colemak-DH
+bindsym $mod+6       input type:keyboard xkb_layout "us,ua,en_colemak_dh"
 bindsym $mod+Shift+6 input type:keyboard xkb_layout "us,ua"
+
+# enable/disable Colemak
+bindsym $mod+7       input type:keyboard xkb_layout "us,ua,en_colemak"
+bindsym $mod+Shift+7 input type:keyboard xkb_layout "us,ua"
 
 $btrbindsym $mod+Ctrl+u exec sh $HOME/.config/home-manager/home/dotfiles/sway/scripts/langmap/eng_to_ukr.sh
 $btrbindsym $mod+Ctrl+e exec sh $HOME/.config/home-manager/home/dotfiles/sway/scripts/langmap/ukr_to_eng.sh
