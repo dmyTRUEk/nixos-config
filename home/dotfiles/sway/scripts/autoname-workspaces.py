@@ -35,6 +35,7 @@ WINDOW_ICONS_BY_APP_ID: dict[str, str] = {
 	"alacritty": "", #   
 	"blender": "󰂫",
 	"blueman-manager": "",
+	"boxes": "",
 	"discord": "", # 󰙯
 	"firefox": "", # 󰈹
 	"gimp": "",
