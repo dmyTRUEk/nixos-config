@@ -39,6 +39,7 @@
 	g = "git";
 	ga = "git add";
 	"ga." = "git add .";
+	gai = "git add --intent-to-add";
 	gap = "git add --patch";
 	"gap." = "git add --patch .";
 	gb = "git branch";
