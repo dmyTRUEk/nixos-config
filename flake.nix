@@ -7,7 +7,8 @@
 
 		home-manager = {
 			#url = "github:nix-community/home-manager/release-23.11";
-			url = "github:nix-community/home-manager/master";
+			# url = "github:nix-community/home-manager/master";
+			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
@@ -30,46 +31,56 @@
 	}:
 	let
 		system = "x86_64-linux";
-		#pkgs = nixpkgs.legacyPackages.${system};  #f2ef04 same?
-		#pkgs = import stable { inherit system; }; #f2ef04 same?
-		pkgs = import nixpkgs { inherit system; }; #f2ef04 same?
+		nixosSystem = nixpkgs.lib.nixosSystem;
+		hostname_psyche = "psyche";
+		hostname_knight = "knight";
+		home-manager-module = home-manager.nixosModules.home-manager;
+		username_myshko = "myshko";
 	in {
-		# NixOS configuration entrypoint
-		# Available through 'nixos-rebuild --flake .#your-hostname'
+		# src: https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nixos-module
 		nixosConfigurations = {
-			psyche = nixpkgs.lib.nixosSystem {
+			${hostname_psyche} = nixosSystem {
+				inherit system;
+				specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
 				modules = [
 					./os/configuration-common.nix
-					./os/configuration-psyche.nix
+					./os/configuration-${hostname_psyche}.nix
+					home-manager-module {
+						home-manager = {
+							useGlobalPkgs = true; # makes hm use nixos's pkgs value
+							useUserPackages = true; # ?
+							extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
+							users = {
+								${username_myshko}.imports = [
+									./home/home-common.nix
+									./home/home-${hostname_psyche}.nix
+									anyrun.homeManagerModules.default
+								];
+							};
+						};
+					}
 				];
 			};
-			knight = nixpkgs.lib.nixosSystem {
+			${hostname_knight} = nixosSystem {
+				inherit system;
+				specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
 				modules = [
 					./os/configuration-common.nix
-					./os/configuration-knight.nix
-				];
-			};
-		};
-
-		# Standalone home-manager configuration entrypoint
-		# Available through 'home-manager --flake .#your-username@your-hostname'
-		homeConfigurations = {
-			"myshko@psyche" = home-manager.lib.homeManagerConfiguration {
-				inherit pkgs;
-				extraSpecialArgs = { inherit inputs; };
-				modules = [
-					./home/home-common.nix
-					./home/home-psyche.nix
-					anyrun.homeManagerModules.default
-				];
-			};
-			"myshko@knight" = home-manager.lib.homeManagerConfiguration {
-				inherit pkgs;
-				extraSpecialArgs = { inherit inputs; };
-				modules = [
-					./home/home-common.nix
-					./home/home-knight.nix
-					anyrun.homeManagerModules.default
+					./os/configuration-${hostname_knight}.nix
+					home-manager-module {
+						home-manager = {
+							useGlobalPkgs = true; # makes hm use nixos's pkgs value
+							useUserPackages = true; # ?
+							extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
+							users = {
+								${username_myshko}.imports = [
+									./home/home-common.nix
+									./home/home-${hostname_knight}.nix
+									anyrun.homeManagerModules.default
+								];
+							};
+						};
+					}
 				];
 			};
 		};
