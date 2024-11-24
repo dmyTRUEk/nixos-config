@@ -1,4 +1,7 @@
 -- blockmarks by @kraftwerk28
+-- queries by @dmyTRUEk
+--
+-- to make queries: `:TSPlaygroundToggle`
 
 local api = vim.api
 
