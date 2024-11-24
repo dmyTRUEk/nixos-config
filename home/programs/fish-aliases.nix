@@ -83,23 +83,16 @@
 	nixi = "nix repl --file '<nixpkgs>'"; # nix interactive
 	nx   = "nvim ~/.config/home-manager/";
 	nic  = "nvim ~/.config/home-manager/os/configuration-common.nix";
-	nick = "nvim ~/.config/home-manager/os/configuration-knight.nix";
-	nicp = "nvim ~/.config/home-manager/os/configuration-psyche.nix";
-	nih  = "nvim ~/.config/home-manager/home/home-common.nix";
-	nihk = "nvim ~/.config/home-manager/home/home-knight.nix";
-	nihp = "nvim ~/.config/home-manager/home/home-psyche.nix";
+	nih  = "nvim ~/.config/home-manager/home/home-common-common.nix";
 
-	nf   = "nvim ~/.config/home-manager/home/programs/fish.nix";
-	nfa  = "nvim ~/.config/home-manager/home/programs/fish-aliases.nix";
-	nff  = "nvim ~/.config/home-manager/home/programs/fish-extra-shell-init.fish";
-	nihy = "nvim ~/.config/home-manager/home/programs/yazi.nix";
+	nfa = "nvim ~/.config/home-manager/home/programs/fish-aliases.nix";
+	nfe = "nvim ~/.config/home-manager/home/programs/fish-extra-shell-init.fish";
+	nhy = "nvim ~/.config/home-manager/home/programs/yazi.nix";
 
 	nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua";
 	ns  = "nvim ~/.config/home-manager/home/dotfiles/sway/config";
 	nss = "nvim ~/.config/home-manager/home/dotfiles/sway/scripts/";
 	nw  = "nvim ~/.config/home-manager/home/dotfiles/waybar/config";
-	nz  = "nvim ~/.config/home-manager/home/dotfiles/zathura/zathurarc";
-
 	nipy= "nvim ~/.config/home-manager/home/files/init_interactive_python.py";
 
 	nfh  = "nvim -R ~/.local/share/fish/fish_history"; # open in read-only mode
