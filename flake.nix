@@ -36,6 +36,7 @@
 		hostname_knight = "knight";
 		home-manager-module = home-manager.nixosModules.home-manager;
 		username_myshko = "myshko";
+		username_guest  = "guest";
 	in {
 		# src: https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nixos-module
 		nixosConfigurations = {
@@ -52,8 +53,15 @@
 							extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
 							users = {
 								${username_myshko}.imports = [
-									./home/home-common.nix
-									./home/home-${hostname_psyche}.nix
+									./home/home-common-common.nix
+									./home/home-${username_myshko}-common.nix
+									./home/home-${username_myshko}-${hostname_psyche}.nix
+									anyrun.homeManagerModules.default
+								];
+								${username_guest}.imports = [
+									./home/home-common-common.nix
+									./home/home-${username_guest}-common.nix
+									./home/home-${username_guest}-${hostname_psyche}.nix
 									anyrun.homeManagerModules.default
 								];
 							};
@@ -74,8 +82,15 @@
 							extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
 							users = {
 								${username_myshko}.imports = [
-									./home/home-common.nix
-									./home/home-${hostname_knight}.nix
+									./home/home-common-common.nix
+									./home/home-${username_myshko}-common.nix
+									./home/home-${username_myshko}-${hostname_knight}.nix
+									anyrun.homeManagerModules.default
+								];
+								${username_guest}.imports = [
+									./home/home-common-common.nix
+									./home/home-${username_guest}-common.nix
+									./home/home-${username_guest}-${hostname_knight}.nix
 									anyrun.homeManagerModules.default
 								];
 							};

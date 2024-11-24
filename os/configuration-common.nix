@@ -127,6 +127,9 @@
 			#	theme = "chili";
 			#};
 		};
+		desktopManager = {
+			plasma6.enable = true;
+		};
 		xserver = {
 			enable = true; # TODO: dont enable or why i need it?
 			videoDrivers = ["amdgpu"];
@@ -165,6 +168,20 @@
 				packages = with pkgs; [
 					# TODO: move `sway` here?
 				];
+			};
+			guest = {
+				initialPassword = "1234";
+				isNormalUser = true;
+				description = "guest";
+				extraGroups = [
+					# "wheel"          # for sudo
+					"networkmanager" # for network
+					"video"          # for brightness/light
+					# "libvirtd"       # for virtualisation/VMs/gnome-boxes
+					# "docker"         # for docker (yeah, i know)
+					# "audio" ?
+				];
+				packages = with pkgs; [];
 			};
 		};
 	};
