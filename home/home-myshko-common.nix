@@ -106,7 +106,10 @@
 			enable = true;
 			userName = "dmyTRUEk";
 			userEmail = "25669613+dmyTRUEk@users.noreply.github.com";
-			# config.init.defaultBranch = "main";
+			extraConfig = {
+				init.defaultBranch = "main";
+				core.askPass = "";
+			};
 		};
 	};
 
