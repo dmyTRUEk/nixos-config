@@ -1,5 +1,3 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
 	inputs,
 	lib,
@@ -219,9 +217,8 @@
 
 	environment.systemPackages = with pkgs; [ # PKGS
 		vim # -> neovim
-		#fish
-		#git
-		#wget curl
+		#wget
+		#curl
 
 		#sddm-chili-theme
 

@@ -9,6 +9,7 @@
 	nhoriz = "nvim -o"; # split with horizontal divider
 	nvert  = "nvim -O"; # split with vertical divider
 
+	# ls
 	ls = "ls"; # to exclude possibility of aliasing real ls
 	# better ls: eza (community maintained fork of exa)
 	l  = "eza";
@@ -17,8 +18,10 @@
 
 	mkdir = "mkdir -p";
 	#mkcd = ""; ---> ./fish-extra-shell-init.fish
+
 	cl = "clear ; git status || clear";
 
+	# cd
 	#"-" = "cd -"; # TODO: find alternative
 	cdd = "cd ~/.config/home-manager";
 	".." = "cd ..";
