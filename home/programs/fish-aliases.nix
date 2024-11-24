@@ -72,7 +72,8 @@
 	"grsp." = "git restore --staged --patch .";
 	gs = "git status -u --find-renames=1";
 	gss = "git status";
-	gstash = "git stash push --keep-index";
+	# gstash = "git stash push --keep-index"; # TODO: do i need keep-index? bc it causes "bugs" when `gap` -> `gstash` -> ... (`gc`?) -> `gstashp`
+	gstash = "git stash push";
 	gstashp = "git stash pop";
 
 	whatismyip = "curl -s https://icanhazip.com";
