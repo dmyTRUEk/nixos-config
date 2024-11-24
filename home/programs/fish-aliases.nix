@@ -48,6 +48,7 @@
 	gchb = "git checkout -b";
 	gchp = "git checkout -p"; # delete changes
 	gcl = "git clone";
+	gcls = "git clone --depth 1"; # shallow
 	gd = "git diff";
 	"gd." = "git diff .";
 	gds = "git diff --staged";
