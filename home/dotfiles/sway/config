@@ -184,7 +184,7 @@ exec swayidle -w before-sleep ./scripts/lock_screen_manually.sh
 # Get names of inputs: `swaymsg -t get_inputs`
 # More info: `man 5 sway-input`
 input type:keyboard {
-	xkb_layout "us,ua"
+	xkb_layout "en,ukr"
 	# possible options: `man xkeyboard-config`
 	xkb_options "grp:shifts_toggle,grp:menu_toggle,caps:swapescape,ctrl:swap_lalt_lctl"
 	# TODO?: make `grp:lctrl_toggle` or `grp:lalt_toggle` work
@@ -194,16 +194,17 @@ input type:keyboard {
 }
 
 # enable/disable Workman
-bindsym $mod+5       input type:keyboard xkb_layout "us,ua,en_workman"
-bindsym $mod+Shift+5 input type:keyboard xkb_layout "us,ua"
+bindsym $mod+5       input type:keyboard xkb_layout "en,ukr,en_workman"
+# bindsym $mod+5       input type:keyboard xkb_layout "en,ukr,en_workman", input type:keyboard xkb_switch_layout 2
+bindsym $mod+Shift+5 input type:keyboard xkb_layout "en,ukr"
 
 # enable/disable Colemak-DH
-bindsym $mod+6       input type:keyboard xkb_layout "us,ua,en_colemak_dh"
-bindsym $mod+Shift+6 input type:keyboard xkb_layout "us,ua"
+bindsym $mod+6       input type:keyboard xkb_layout "en,ukr,en_colemak_dh"
+bindsym $mod+Shift+6 input type:keyboard xkb_layout "en,ukr"
 
 # enable/disable Colemak
-bindsym $mod+7       input type:keyboard xkb_layout "us,ua,en_colemak"
-bindsym $mod+Shift+7 input type:keyboard xkb_layout "us,ua"
+bindsym $mod+7       input type:keyboard xkb_layout "en,ukr,en_colemak"
+bindsym $mod+Shift+7 input type:keyboard xkb_layout "en,ukr"
 
 $btrbindsym $mod+Ctrl+u exec sh $HOME/.config/home-manager/home/dotfiles/sway/scripts/langmap/eng_to_ukr.sh
 $btrbindsym $mod+Ctrl+e exec sh $HOME/.config/home-manager/home/dotfiles/sway/scripts/langmap/ukr_to_eng.sh

@@ -1,4 +1,4 @@
-# dmyTRUEk's us colemak custom keyboard layout
+# dmyTRUEk's US colemak custom keyboard layout
 #
 # src:
 # https://github.com/swaywm/sway/wiki#load-a-modified-custom-xkb-keymap-xmodmap-equivalent
@@ -49,4 +49,6 @@ xkb_symbols "basic" {
 	# key <AB08> { [ comma, less ] }; # ,
 	# key <AB09> { [ period, greater ] }; # .
 	# key <AB10> { [ slash, question ] }; # /
+
+	key <RALT> { [ BackSpace, BackSpace ] };
 };

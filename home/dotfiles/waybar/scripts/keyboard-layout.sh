@@ -6,8 +6,8 @@ swaymsg --raw --type get_inputs | \
 		[ .[] |
 			select(.type == "keyboard") |
 			.xkb_active_layout_name |
-			sub("English \\(US\\)"; "en") |
-			sub("Ukrainian"; "uk") |
+			sub("English \\(US\\) \\(by dmyTRUEk\\)"; "en") |
+			sub("Ukrainian \\(by dmyTRUEk\\)"; "uk") |
 			sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman") |
 			sub("English \\(Colemak-DH\\) \\(by dmyTRUEk\\)"; "en colemak-dh") |
 			sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak")
@@ -25,8 +25,8 @@ swaymsg --raw --type subscribe --monitor '["input"]' | \
 	jq --unbuffered --raw-output '
 		select(.change == "xkb_layout") |
 		.input.xkb_active_layout_name |
-		sub("English \\(US\\)"; "en") |
-		sub("Ukrainian"; "uk") |
+		sub("English \\(US\\) \\(by dmyTRUEk\\)"; "en") |
+		sub("Ukrainian \\(by dmyTRUEk\\)"; "uk") |
 		sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman") |
 		sub("English \\(Colemak-DH\\) \\(by dmyTRUEk\\)"; "en colemak-dh") |
 		sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak")
