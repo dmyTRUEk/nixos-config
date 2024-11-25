@@ -37,6 +37,7 @@ WINDOW_ICONS_BY_APP_ID: dict[str, str] = {
 	"blueman-manager": "",
 	"boxes": "",
 	"discord": "", # 󰙯
+	"element": "[m]", # matrix/element
 	"firefox": "", # 󰈹
 	"gimp": "",
 	"gnome-boxes": "",
@@ -198,7 +199,7 @@ class Workspace:
 				num = key
 				name = value
 				icons = fullname[len(value):]
-		icons = list(icons.strip()) # `ae36d1`: here we assume that icons consist of only one symbols
+		icons = list(icons.strip()) # `ae36d1`: here we assume that icons consist of only one symbols?
 		return Workspace(num=num, name=name, icons=icons)
 
 
