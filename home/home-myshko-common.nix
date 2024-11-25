@@ -109,6 +109,7 @@
 			extraConfig = {
 				init.defaultBranch = "main";
 				core.askPass = "";
+				push.autoSetupRemote = true;
 			};
 		};
 	};
