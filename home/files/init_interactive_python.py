@@ -154,6 +154,12 @@ windows_ = Pipe(windows)
 
 
 
+class _NpArray:
+	def __getitem__(self, values) -> np.ndarray:
+		return np.array([values])
+
+np_array = _NpArray()
+
 
 
 
