@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 
 from pipe import (
 	Pipe,
+	batched as batched_,
 	chain as chain_,
 	chain_with as chain_with_,
 	dedup as dedup_,
