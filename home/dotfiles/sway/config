@@ -79,7 +79,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 ## Custom window options / rules
 # for_window <criteria> <command>
 #
-# Some useful commands
+# Some useful commands:
 # floating enable|disable|toggle
 # sticky enable|disable|toggle - show window on all workspaces (as pin in kde)
 # layout default|splith|splitv|stacking|tabbed
@@ -95,13 +95,14 @@ default_border none
 $btrbindsym $mod+0 border pixel 0
 $btrbindsym $mod+b border pixel 20
 $btrbindsym $mod+Shift+b border pixel 100
-# TODO: change colors for when moving windows by mouse
+
+# src: `man sway.5`
 # class                  border   background  text    indicator  child_border
 #client.background        n/a       #ffffff   n/a       n/a       n/a
-client.focused           #4c7899   #285577   #ffffff   #282828   #282828
-client.focused_inactive  #333333   #5f676a   #ffffff   #282828   #282828
-#client.focused_tab_title #333333   #5f676a   #ffffff   n/a       n/a
-client.unfocused         #333333   #222222   #888888   #292d2e   #282828
+client.focused            #444444   #111111   #ffffff   #ff00ff   #282828
+client.focused_inactive   #000000   #222222   #ffffff   #282828   #282828
+#client.focused_tab_title #333333   #5f676a   #ffffff
+client.unfocused          #000000   #000000   #888888   #292d2e   #282828
 #client.urgent            #2f343a   #900000   #ffffff   #900000   #900000
 #client.placeholder       #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
 
