@@ -1,6 +1,6 @@
 # Init for `interactive_python` alias.
 
-from typing import Callable, Iterator
+from typing import Callable, Iterable, Iterator
 
 from sys import argv as cli_args
 
@@ -17,7 +17,7 @@ from pipe import (
 	chain_with as chain_with_,
 	dedup as dedup_,
 	enumerate as enumerate_,
-	filter as filter_leave_,
+	# filter as filter_leave_,
 	groupby as group_by_,
 	islice as slice_,
 	izip as zip_,
@@ -46,13 +46,20 @@ def at[T](l: list[T], index: int) -> T:
 def avg[T](l: list[T]) -> T:
 	return sum(l) / len(l)
 
+def binomial(n: int, m: int) -> int:
+	return factorial(n) // (factorial(m) * factorial(n-m))
+
 def diff(a: int | float | complex, b: int | float | complex) -> float | complex:
 	return abs(a-b) / (0.5 * (a+b))
 
-def filter_leave[T](it: Iterator[T], pred: Callable[[T], bool]) -> Iterator[T]:
+def factorial_partial(n: int, k: int) -> int:
+	# n! / (n-k)!
+	return prod(range(n-k+1, n+1))
+
+def filter_leave[T](it: Iterable[T], pred: Callable[[T], bool]) -> Iterator[T]:
 	return (x for x in it if pred(x))
 
-def filter_remove[T](it: Iterator[T], pred: Callable[[T], bool]) -> Iterator[T]:
+def filter_remove[T](it: Iterable[T], pred: Callable[[T], bool]) -> Iterator[T]:
 	return (x for x in it if not pred(x))
 
 def frange(start: float, end: float, step: float):
@@ -67,6 +74,18 @@ def index_of_max[T](l: list[T]) -> int:
 def index_of_min[T](l: list[T]) -> int:
 	return min(enumerate(l), key=lambda x: x[1])[0]
 
+def is_prime(n: int) -> bool:
+	if n < 2:
+		return False
+	if n == 2:
+		return True
+	if n % 2 == 0:
+		return False
+	for i in range(3, ceil(sqrt(n))+1, 2):
+		if n % i == 0:
+			return False
+	return True
+
 def lerp[T](a: T, b: T, t: float) -> T:
 	return a*(1.-t) + b*t
 
@@ -80,17 +99,31 @@ def std_dev(l: list[float]) -> float:
 	avg_value = avg(l)
 	return sqrt( sum(map(lambda x: (x-avg_value)**2, l)) / (len(l) - 1) )
 
-def unzip2(xy: Iterator) -> tuple[Iterator, Iterator]:
+def unzip2(xy: Iterable) -> tuple[Iterator, Iterator]:
 	xy1, xy2 = itertools.tee(xy)
-	return ( (x for x, _ in xy1), (y for _, y in xy2) )
+	return (x for x, _ in xy1), (y for _, y in xy2)
 
-def windows[T](it: Iterator[T] | list[T], window_size: int) -> Iterator[tuple[T, ...]] | list[tuple[T, ...]]:
+def windows[T](it: Iterable[T] | list[T], window_size: int) -> Iterator[tuple[T, ...]]:
 	it = iter(it)
 	res = tuple(next(it) for _ in range(window_size))
 	yield res
 	for el in it:
 		res = res[1:] + (el,)
 		yield res
+
+def xor_encryptor_decryptor(password: str, hash_pswd: bool = True) -> Callable[[str], str]:
+	if hash_pswd:
+		password = str(hash(password))
+	def xor_encrypt(text: str) -> str:
+		encrypted_chars = []
+		for i in range(len(text)):
+			text_co = ord(text[i])
+			password_co = ord(password[i%len(password)])
+			encrypted_c = chr(password_co ^ text_co)
+			encrypted_chars.append(encrypted_c)
+		return ''.join(encrypted_chars)
+	return xor_encrypt
+
 
 
 # Pipes:
@@ -111,38 +144,10 @@ windows_ = Pipe(windows)
 
 
 
-def binomial(n: int, m: int) -> int:
-	return factorial(n) // (factorial(m) * factorial(n-m))
 
 
-def xor_encryptor_decryptor(password: str, hash_pswd: bool = True) -> Callable[[str], str]:
-	if hash_pswd:
-		password = str(hash(password))
-	def xor_encrypt(text: str) -> str:
-		encrypted_chars = []
-		for i in range(len(text)):
-			text_co = ord(text[i])
-			password_co = ord(password[i%len(password)])
-			encrypted_c = chr(password_co ^ text_co)
-			encrypted_chars.append(encrypted_c)
-		return ''.join(encrypted_chars)
-	return xor_encrypt
 
-def is_prime(n: int) -> bool:
-	if n < 2:
-		return False
-	if n == 2:
-		return True
-	if n % 2 == 0:
-		return False
-	for i in range(3, ceil(sqrt(n))+1, 2):
-		if n % i == 0:
-			return False
-	return True
 
-def factorial_partial(n: int, k: int) -> int:
-	# n! / (n-k)!
-	return prod(range(n-k+1, n+1))
 
 
 
