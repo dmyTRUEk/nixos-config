@@ -164,6 +164,7 @@
 		helvum
 		audacity
 		amberol # gnome music player
+		element-desktop
 
 		# GUI+CLI:
 		imagemagick
