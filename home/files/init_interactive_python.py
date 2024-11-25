@@ -149,8 +149,19 @@ windows_ = Pipe(windows)
 
 
 
+def eng_to_sga(eng_text: str) -> str:
+	eng_to_mel = {"a": "ᔑ", "b": "ʖ", "c": "ᓵ", "d": "↸", "e": "ᒷ", "f": "⎓", "g": "⊣", "h": "⍑", "i": "╎", "j": "⋮", "k": "ꖌ", "l": "ꖎ", "m": "ᒲ", "n": "リ", "o": "𝙹", "p": "!¡", "q": "ᑑ", "r": "∷", "s": "ᓭ", "t": "ℸ̣", "u": "⚍", "v": "⍊", "w": "∴", "x": " ̇/", "y": "ǁ", "z": "⨅"}
+	return [eng_to_mel[c] if c in eng_to_mel else c for c in eng_text.lower()] | join_
 
+def sga_to_eng(sga_text: str) -> str:
+	mel_to_eng = {"ᔑ": "a", "ʖ": "b", "ᓵ": "c", "↸": "d", "ᒷ": "e", "⎓": "f", "⊣": "g", "⍑": "h", "╎": "i", "⋮": "j", "ꖌ": "k", "ꖎ": "l", "ᒲ": "m", "リ": "n", "𝙹": "o", "!¡": "p", "ᑑ": "q", "∷": "r", "ᓭ": "s", "ℸ̣": "t", "⚍": "u", "⍊": "v", "∴": "w", " ̇/": "x", "ǁ": "y", "⨅": "z"}
+	eng_text = sga_text
+	for k, v in mel_to_eng.items():
+		eng_text = eng_text.replace(k, v)
+	return eng_text
 
+eng_to_mel = eng_to_sga
+mel_to_eng = sga_to_eng
 
 
 
