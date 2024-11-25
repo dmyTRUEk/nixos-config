@@ -87,6 +87,9 @@ def is_prime(n: int) -> bool:
 			return False
 	return True
 
+def join(strs: Iterable[str], sep: str = "") -> str:
+	return sep.join(strs)
+
 def lerp[T](a: T, b: T, t: float) -> T:
 	return a*(1.-t) + b*t
 
@@ -134,6 +137,7 @@ filter_leave_ = Pipe(filter_leave)
 filter_remove_ = Pipe(filter_remove)
 index_of_max_ = Pipe(index_of_max)
 index_of_min_ = Pipe(index_of_min)
+join_ = Pipe(join)
 list_ = Pipe(list)
 np_array_ = Pipe(np.array)
 split_at_ = Pipe(split_at)
