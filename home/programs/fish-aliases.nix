@@ -88,6 +88,7 @@
 	nx   = "nvim ~/.config/home-manager/";
 	nic  = "nvim ~/.config/home-manager/os/configuration-common.nix";
 	nih  = "nvim ~/.config/home-manager/home/home-common-common.nix";
+	nihm = "nvim ~/.config/home-manager/home/home-myshko-common.nix";
 
 	nfa = "nvim ~/.config/home-manager/home/programs/fish-aliases.nix";
 	nfe = "nvim ~/.config/home-manager/home/programs/fish-extra-shell-init.fish";
