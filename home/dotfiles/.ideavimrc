@@ -35,6 +35,9 @@ Plug 'machakann/vim-highlightedyank'
 
 let mapleader = " "
 
+" clear search on esc
+nnoremap <esc> :nohlsearch <cr>
+
 " unmap ex mode
 map Q <nop>
 
