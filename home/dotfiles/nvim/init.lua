@@ -337,6 +337,7 @@ require('lazy').setup {
 				rule('(', ')'),
 				rule('[', ']'),
 				rule('{', '}'),
+				rule('"', '"'),
 			}
 		end
 	},
