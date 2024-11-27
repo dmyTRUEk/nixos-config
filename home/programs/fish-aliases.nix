@@ -108,6 +108,7 @@
 	# rust related:
 	nc  = "nvim Cargo.toml";
 	ncl = "nvim Cargo.lock";
+	nru = "nvim rust-toolchain.toml";
 
 	cc = "cargo clean";
 	ct = "cargo test";
