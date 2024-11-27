@@ -72,6 +72,8 @@
 				{ name = "*.xls" ; use = "libreoffice"; }
 				{ name = "*.xlsx"; use = "libreoffice"; }
 
+				{ name = "*.srt"; use = "text"; }
+
 				# Multiple openers for a single rule
 				#{ name = "*.html", use = [ "browser", "text" ] },
 			];
