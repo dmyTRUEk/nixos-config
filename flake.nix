@@ -79,9 +79,11 @@
 					./os/configuration-${hostname_knight}.nix
 					home-manager-module {
 						home-manager = {
+							verbose = true;
 							useGlobalPkgs = true; # makes hm use nixos's pkgs value
 							useUserPackages = true; # ?
 							extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
+							backupFileExtension = "backup";
 							users = {
 								${username_myshko}.imports = [
 									./home/home-common-common.nix
