@@ -110,6 +110,7 @@
 				init.defaultBranch = "main";
 				core.askPass = "";
 				push.autoSetupRemote = true;
+				merge.tool = "nvimdiff";
 			};
 		};
 	};
