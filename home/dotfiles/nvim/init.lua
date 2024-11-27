@@ -134,6 +134,9 @@ keybinds_n = {
 	yh = 'ly2h',
 	yl = 'y2l',
 
+	-- "fix" `b` motion:
+	-- cb = 'cb<DEL>', TODO
+
 	-- `f` & `t` from end of line
 	gf = '$F',
 	gt = '$T',
@@ -330,10 +333,10 @@ require('lazy').setup {
 				'text',
 			}
 			nap.add_rules {
-				rule("$", "$", {"tex", "latex"}),
-				rule("(", ")"),
-				rule("[", "]"),
-				rule("{", "}"),
+				rule('$', '$', {'tex', 'latex'}),
+				rule('(', ')'),
+				rule('[', ']'),
+				rule('{', '}'),
 			}
 		end
 	},
