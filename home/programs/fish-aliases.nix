@@ -92,7 +92,7 @@
 
 	nfa = "nvim ~/.config/home-manager/home/programs/fish-aliases.nix";
 	nfe = "nvim ~/.config/home-manager/home/programs/fish-extra-shell-init.fish";
-	nhy = "nvim ~/.config/home-manager/home/programs/yazi.nix";
+	ny  = "nvim ~/.config/home-manager/home/programs/yazi.nix";
 
 	nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua";
 	ns  = "nvim ~/.config/home-manager/home/dotfiles/sway/config";
