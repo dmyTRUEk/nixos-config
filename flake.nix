@@ -7,7 +7,7 @@
 
 		home-manager = {
 			#url = "github:nix-community/home-manager/release-23.11";
-			# url = "github:nix-community/home-manager/master";
+			#url = "github:nix-community/home-manager/master";
 			url = "github:nix-community/home-manager"; # src: https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nixos-module
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
