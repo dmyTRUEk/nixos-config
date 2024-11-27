@@ -146,6 +146,9 @@
 
 	bottom = "btm";
 
+	nf  = "nvim flake.nix";
+	nfl = "nvim flake.lock";
+
 	ff = "fastfetch";
 
 	temp = "math $(cat /sys/class/thermal/thermal_zone0/temp) / 1000";
