@@ -158,3 +158,11 @@ function ffmpeg-to-mp4 -d "convert to mp4 using ffmpeg"
 	set new_file_name (string replace -r '\.\w+$' '.mp4' $file_name)
 	ffmpeg -i $file_name -c copy $new_file_name
 end
+
+function clear-and-gds-inf -d "`clear && gds` infinitely"
+	while true
+		command clear
+		gds
+		sleep 1
+	end
+end
