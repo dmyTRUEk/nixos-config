@@ -89,6 +89,8 @@
 
 	nixi = "nix repl --file '<nixpkgs>'"; # nix interactive
 	nx   = "nvim ~/.config/home-manager/";
+	nif  = "nvim ~/.config/home-manager/flake.nix";
+	nifl = "nvim ~/.config/home-manager/flake.lock";
 	nic  = "nvim ~/.config/home-manager/os/configuration-common.nix";
 	nih  = "nvim ~/.config/home-manager/home/home-common-common.nix";
 	nihm = "nvim ~/.config/home-manager/home/home-myshko-common.nix";
