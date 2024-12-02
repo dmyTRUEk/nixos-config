@@ -72,11 +72,13 @@
 	"grsp." = "git restore --staged --patch .";
 	gs = "git status -u --find-renames=1";
 	gss = "git status";
+	gsh = "git show";
 	gstash = "git stash push --keep-index"; # TODO: do i need keep-index? does cause "bugs" when `gap` -> `gstash` -> ... (`gc`?) -> `gstashp`
 	# gstash = "git stash push";
 	gstashp = "git stash pop";
+	gstash-drop-all = "git stash clear";
 	gstash-drop = "git stash drop";
-	gstash-clear = "git stash clear";
+	gstash-list = "git stash list";
 	gsw = "git switch";
 
 	whatismyip = "curl -s https://icanhazip.com";
