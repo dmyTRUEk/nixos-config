@@ -112,6 +112,7 @@ function nm
 	set MAIN_FILE_C 'main.c'
 	set MAIN_FILE_CPP 'main.cpp'
 	set MAIN_FILE_LATEX 'main.tex'
+	set MAIN_FILE_NIX 'main.nix'
 	set MAIN_FILE_PYTHON 'main.py'
 	set MAIN_FILE_RUST 'src/main.rs'
 	set MAIN_FILE_RUST_IN_SRC 'main.rs'
@@ -126,6 +127,9 @@ function nm
 
 	else if test -f $MAIN_FILE_LATEX
 		nvim "$MAIN_FILE_LATEX" $argv
+
+	else if test -f $MAIN_FILE_NIX
+		nvim "$MAIN_FILE_NIX" $argv
 
 	else if test -f $MAIN_FILE_PYTHON
 		nvim "$MAIN_FILE_PYTHON" $argv
