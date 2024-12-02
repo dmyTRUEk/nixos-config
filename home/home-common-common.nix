@@ -179,16 +179,6 @@
 		pyright # python
 		#ruff-lsp # python # TODO: setup it for lints, cs it's fast (rust btw)
 
-		# fonts:
-		jetbrains-mono # pretty ok monospace font
-		# for icons
-		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-		#font-awesome # for icons
-		source-han-serif
-		source-han-sans
-		corefonts  # Microsoft's TrueType core fonts for the Web
-		vistafonts # Some TrueType fonts from Microsoft Windows Vista (Calibri, Cambria, Candara, Consolas, Constantia, Corbel)
-
 		# cursors:
 		#vimix-cursors
 		#vimix-cursor-theme
@@ -196,8 +186,6 @@
 
 		# libs:
 	];
-
-	fonts.fontconfig.enable = true;
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions

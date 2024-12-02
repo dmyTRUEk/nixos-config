@@ -226,6 +226,20 @@
 		# everything else goes to home-manager (HM)
 	];
 
+	fonts = {
+		fontconfig.enable = true;
+		packages = with pkgs; [
+			jetbrains-mono # pretty ok monospace font
+			nerd-fonts.symbols-only # for icons
+			nerd-fonts.jetbrains-mono
+			#font-awesome # for icons
+			source-han-serif
+			source-han-sans
+			corefonts  # Microsoft's TrueType core fonts for the Web
+			vistafonts # Some TrueType fonts from Microsoft Windows Vista (Calibri, Cambria, Candara, Consolas, Constantia, Corbel)
+		];
+	};
+
 	services.pipewire = {
 		enable = true;
 		pulse.enable = true;
