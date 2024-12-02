@@ -130,23 +130,8 @@
 		cmatrix
 		cbonsai
 
-		# LANGS:
-		rustup # rust btw
-		#cargo-cross # rust btw
-		(python3.withPackages (python-pkgs: with python-pkgs; [
-			i3ipc # for ANWS
-			numpy
-			matplotlib
-			pipe
-			scipy
-		]))
-		gcc
-		#lean4
-		android-studio
-		android-tools # for `adb`
-		nixla.packages.${system}.nixla
-		nixla.packages.${system}.nixla-nix
-		nixla.packages.${system}.nixla-json
+		# GUI+CLI:
+		imagemagick
 
 		# GUI:
 		waybar
@@ -170,8 +155,23 @@
 		amberol # gnome music player
 		element-desktop
 
-		# GUI+CLI:
-		imagemagick
+		# LANGS:
+		rustup # rust btw
+		#cargo-cross # rust btw
+		(python3.withPackages (python-pkgs: with python-pkgs; [
+			i3ipc # for ANWS
+			numpy
+			matplotlib
+			pipe
+			scipy
+		]))
+		gcc
+		#lean4
+		android-studio
+		android-tools # for `adb`
+		nixla.packages.${system}.nixla
+		nixla.packages.${system}.nixla-nix
+		nixla.packages.${system}.nixla-json
 
 		# LSP:
 		lua-language-server # lua
