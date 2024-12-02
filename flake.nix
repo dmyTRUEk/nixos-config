@@ -28,6 +28,11 @@
 			url = "github:dmyTRUEk/nixla";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		nil = {
+			url = "github:oxalica/nil";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = inputs @ {
@@ -35,6 +40,7 @@
 		home-manager,
 		anyrun,
 		nixla,
+		nil,
 		...
 	}:
 	let
@@ -63,6 +69,7 @@
 								inherit
 									inputs
 									nixla
+									nil
 								;
 							};
 							backupFileExtension = "backup";
@@ -99,6 +106,7 @@
 								inherit
 									inputs
 									nixla
+									nil
 								;
 							};
 							backupFileExtension = "backup";
