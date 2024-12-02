@@ -5,6 +5,7 @@
 	lib,
 	config,
 	pkgs,
+	nixla,
 	...
 }: {
 	programs = {
@@ -143,6 +144,9 @@
 		#lean4
 		android-studio
 		android-tools # for `adb`
+		nixla.packages.${system}.nixla
+		nixla.packages.${system}.nixla-nix
+		nixla.packages.${system}.nixla-json
 
 		# GUI:
 		waybar

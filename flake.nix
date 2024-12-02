@@ -21,12 +21,20 @@
 			url = "github:Kirottu/anyrun";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		nixla = {
+			# url = "path:///home/myshko/projects/nixla";
+			# url = "path:////home/myshko/projects/nixla";
+			url = "github:dmyTRUEk/nixla";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = inputs @ {
 		nixpkgs,
 		home-manager,
 		anyrun,
+		nixla,
 		...
 	}:
 	let
@@ -51,7 +59,12 @@
 							verbose = true;
 							useGlobalPkgs = true; # makes hm use nixos's pkgs value
 							useUserPackages = true; # ?
-							extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
+							extraSpecialArgs = { # allows access to flake inputs in hm modules
+								inherit
+									inputs
+									nixla
+								;
+							};
 							backupFileExtension = "backup";
 							users = {
 								${username_myshko}.imports = [
@@ -82,7 +95,12 @@
 							verbose = true;
 							useGlobalPkgs = true; # makes hm use nixos's pkgs value
 							useUserPackages = true; # ?
-							extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
+							extraSpecialArgs = { # allows access to flake inputs in hm modules
+								inherit
+									inputs
+									nixla
+								;
+							};
 							backupFileExtension = "backup";
 							users = {
 								${username_myshko}.imports = [
