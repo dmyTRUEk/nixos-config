@@ -145,11 +145,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733143406,
-        "narHash": "sha256-Yo1KBrCR55vnIyWa9K1s/pRXgPL9XWrxWyKkJXROv+A=",
+        "lastModified": 1733305236,
+        "narHash": "sha256-hTeNd1iQZ03QSz1F09laRdcKsFyPNt7Lb+K9KYBEy6E=",
         "owner": "dmyTRUEk",
         "repo": "nixla",
-        "rev": "54feaff48b93ce3159a38a46f591fc9abdbf6ae3",
+        "rev": "2c42ef0c5a776b911d7d068639e10154299a11c9",
         "type": "github"
       },
       "original": {
