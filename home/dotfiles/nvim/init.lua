@@ -766,6 +766,7 @@ require('lazy').setup {
 		-- },
 		init = function()
 			local lsp_server_names = {
+				-- src: `:help lspconfig-all`
 				'rust_analyzer', -- TODO: enable `clippy`
 				'pyright', -- python
 				--'ruff_lsp', -- python linter -- TODO: setup
