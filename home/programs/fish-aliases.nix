@@ -161,4 +161,7 @@
 	temp = "math $(cat /sys/class/thermal/thermal_zone0/temp) / 1000";
 
 	zip = "zip -r";
+
+	pkg-version-get = "sh ~/.config/home-manager/home/files/pkg_version_get.sh";
+	pkg-version-sub = "sh ~/.config/home-manager/home/files/pkg_version_sub.sh";
 }

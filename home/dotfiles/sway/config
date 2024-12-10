@@ -583,3 +583,11 @@ exec_always sh $HOME/.config/sway/scripts/launch-srkr.sh
 # RAndom WAllpaper (RAWA)
 exec_always sh $HOME/.config/sway/scripts/launch-rawa.sh ~/Pictures/Wallpapers/solis-like-bgs-vol1/ 5m
 
+
+
+# PKGSUB:
+# Example:
+#exec sh $HOME/.config/home-manager/home/files/pkg_version_sub.sh master           applications/version-management/git/default.nix 2.47.0
+#exec sh $HOME/.config/home-manager/home/files/pkg_version_sub.sh nixpkgs-unstable applications/version-management/git/default.nix 2.47.0
+#exec sh $HOME/.config/home-manager/home/files/pkg_version_sub.sh nixos-unstable   applications/version-management/git/default.nix 2.47.0
+
