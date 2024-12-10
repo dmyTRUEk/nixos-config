@@ -773,6 +773,7 @@ require('lazy').setup {
 				'lua_ls',
 				--'clangd', -- c/c++
 				'nil_ls', -- nix
+				-- 'hls', -- haskell
 			}
 			local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 			for _, lsp_server_name in pairs(lsp_server_names) do
