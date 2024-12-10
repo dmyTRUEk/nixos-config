@@ -150,7 +150,7 @@ for_window [title="Picture-in-Picture"] floating enable, sticky enable, border n
 # if this doesnt work, just increase sleep time in discord_pip.sh
 for_window [class="discord"] exec sh $HOME/.config/sway/scripts/discord_pip.sh
 
-#for_window [title="Zoom"] floating enable
+for_window [title="zoom"] floating enable
 #for_window [title="Skype"] floating enable
 
 # kdenlive
