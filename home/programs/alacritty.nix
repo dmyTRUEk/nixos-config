@@ -4,7 +4,13 @@
 	settings = {
 		general.live_config_reload = true;
 
-		cursor.style.shape = "Block";
+		cursor = {
+			style = {
+				shape = "Beam";
+# blinking = "Never";
+			};
+			vi_mode_style.shape = "Block";
+		};
 
 		# [hints.mouse]
 		# enabled = true
