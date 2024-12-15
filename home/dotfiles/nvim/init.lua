@@ -110,8 +110,6 @@ keybinds_swap_nv = {
 }
 
 keybinds_nv = {
-	['-'] = '$', -- better $
-
 	['<c-j>'] = '<c-d>zz', -- better move half-page down
 	['<c-k>'] = '<c-u>zz', -- better move half-page up
 
@@ -124,6 +122,8 @@ keybinds_n = {
 	Q = '', -- unmap ex mode
 	U = '<c-r>', -- better redo
 	Y = 'y$', -- better copy till end of line
+
+	['-'] = '$', -- better $
 
 	['<c-p>'] = '$p', -- paste at end of line
 	['<a-p>'] = '^P', -- paste at begin of line
@@ -239,6 +239,7 @@ keybinds_n_c = {
 
 -- TODO: test if `x` or `v` is needed
 keybinds_v = {
+	['-'] = '$h', -- better $
 	S = ':sort<cr>',
 }
 
