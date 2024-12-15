@@ -443,6 +443,12 @@ require('lazy').setup {
 					set_local('t', '\\text{\r}')
 				end
 			}}
+			autocmds[#autocmds+1] = {'FileType', {
+				pattern = 'lean',
+				callback = function()
+					set_local('c', '/-\r-/')
+				end
+			}}
 		end
 	},
 	{'tommcdo/vim-exchange', -- exchange selections
