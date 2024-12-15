@@ -164,4 +164,7 @@
 
 	pkg-version-get = "sh ~/.config/home-manager/home/files/pkg_version_get.sh";
 	pkg-version-sub = "sh ~/.config/home-manager/home/files/pkg_version_sub.sh";
+
+	nl  = "nvim lakefile.lean";
+	nlm = "nvim lake-manifest.json";
 }
