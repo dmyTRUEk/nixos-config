@@ -201,6 +201,8 @@ keybinds_n = {
 	['<esc>'] = '<cmd>nohlsearch<cr>',
 
 	-- TODO?: add `zb` == `zw`: spelling bad/wrong
+
+	['g/m'] = '/<<<<<<<\\|=======\\|>>>>>>><cr>',
 }
 
 keybinds_i = {
