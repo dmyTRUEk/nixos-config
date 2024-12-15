@@ -167,7 +167,7 @@
 			scipy
 		]))
 		gcc
-		#lean4
+		lean4
 		android-studio
 		android-tools # for `adb`
 		nixla.packages.${system}.nixla
