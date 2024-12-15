@@ -340,6 +340,7 @@ require('lazy').setup {
 				rule('[', ']'),
 				rule('{', '}'),
 				rule('"', '"'),
+				rule('`', '', {'lean'}),
 			}
 		end
 	},
