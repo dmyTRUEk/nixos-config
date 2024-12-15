@@ -143,6 +143,7 @@
 		krita
 		gnome-boxes
 		libreoffice
+		hunspellDicts.uk_UA # for libreoffice UKR spellcheck
 		zathura
 		kdenlive
 		vlc
