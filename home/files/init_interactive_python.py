@@ -167,7 +167,7 @@ mel_to_eng = sga_to_eng
 
 class _NpArray:
 	def __getitem__(self, values) -> np.ndarray:
-		return np.array([values])
+		return np.array([*values])
 
 np_array = _NpArray()
 
