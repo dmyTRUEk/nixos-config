@@ -32,6 +32,8 @@
 	"..4" = "cd ../../../..";
 	"..5" = "cd ../../../../..";
 	cdp = "cd ~/projects";
+	cdv = "cd ~/Videos";
+	cdm = "cd ~/Music";
 
 	please = "sudo";
 	grep = "grep -i --color";
