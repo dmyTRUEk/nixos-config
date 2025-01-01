@@ -22,6 +22,7 @@ end
 options_enable = {
 	'number', 'relativenumber', -- line number + relative
 	'cursorline', -- highlight cursor line
+	-- 'cursorcolumn', -- highlight cursor column
 	--'termguicolors', -- ?
 	--'showmatch', -- shows matching brackets
 	'autochdir', -- change current dir to file's dir (folder directory)
