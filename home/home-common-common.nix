@@ -133,6 +133,7 @@
 
 		# GUI+CLI:
 		imagemagick
+		# ventoy
 
 		# GUI:
 		waybar
