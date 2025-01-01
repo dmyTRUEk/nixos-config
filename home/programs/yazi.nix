@@ -103,10 +103,12 @@
 				{ on = ["c" "e"]; run = "copy name_without_ext"; desc = "Copy the name of the file without the Extension"; }
 				{ on = ["c" "n"]; run = "copy filename";         desc = "Copy the Name of the file"; }
 
-				{ on = ["," "s"]; run = "sort size --dir-first --reverse"; desc = "Sort by size"; }
-				{ on = ["," "S"]; run = "sort size --dir-first";           desc = "Sort by size (reverse)"; }
-				{ on = ["," "m"]; run = "sort modified --dir-first --reverse"; desc = "Sort by modified time (reverse)"; }
-				{ on = ["," "M"]; run = "sort modified --dir-first";           desc = "Sort by modified time"; }
+				{ on = ["," "b"]; run = ["sort btime --dir-first --reverse"    "linemode btime"]; desc = "Sort by Birth time (reverse)"; }
+				{ on = ["," "B"]; run = ["sort btime --dir-first --reverse=no" "linemode btime"]; desc = "Sort by Birth time"; }
+				{ on = ["," "m"]; run = ["sort mtime --dir-first --reverse"    "linemode mtime"]; desc = "Sort by Modified time (reverse)"; }
+				{ on = ["," "M"]; run = ["sort mtime --dir-first --reverse=no" "linemode mtime"]; desc = "Sort by Modified time"; }
+				{ on = ["," "s"]; run = ["sort size --dir-first --reverse"     "linemode size"]; desc = "Sort by Size (reverse)"; }
+				{ on = ["," "S"]; run = ["sort size --dir-first --reverse=no"  "linemode size"]; desc = "Sort by Size"; }
 
 				{ on = ["<C-w>"]; run = ''shell --confirm 'swaymsg -s $SWAYSOCK output \* bg "$1" fill' ''; desc = "Set as Wallpaper"; }
 
@@ -133,7 +135,7 @@
 				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/0_papers"; }
 				{ on = ["g" "m"]; run = "cd ~/Music"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
-				{ on = ["g" "s"]; run = "cd ~/Pictures/Screenshots/2025"; }
+				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2025" "sort mtime --reverse"]; }
 				{ on = ["g" "v"]; run = "cd ~/Videos"; }
 				# games:
 				{ on = ["g" "a" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/374320/pfx/drive_c/users/steamuser/AppData/Roaming/DarkSoulsIII"; }
