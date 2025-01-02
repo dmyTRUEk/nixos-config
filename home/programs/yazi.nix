@@ -121,12 +121,12 @@
 				{ on = ["g" "."]; run = "cd ~/.config/home-manager"; }
 				{ on = ["g" "T"]; run = "cd ~/.local/share/Trash/files"; }
 				# home:
-				{ on = ["g" "c"]; run = "cd ~/projects"; }
+				{ on = ["g" "c"]; run = ["cd ~/projects" "sort mtime --reverse"]; }
 				{ on = ["g" "C" "g"]; run = "cd ~/projects/orbit-calculation"; }
 				#{ on = ["g" "C" "t"]; run = "cd ~/projects/touhou_unfathomable_calamity"; }
 				{ on = ["g" "o"]; run = "cd ~/Documents"; }
-				{ on = ["g" "d"]; run = "cd ~/Downloads"; }
-				{ on = ["g" "t"]; run = "cd '~/Downloads/Telegram Desktop'"; }
+				{ on = ["g" "d"]; run = ["cd ~/Downloads" "sort mtime --reverse"]; }
+				{ on = ["g" "t"]; run = ["cd '~/Downloads/Telegram Desktop'" "sort mtime --reverse"]; }
 				{ on = ["g" "r"]; run = "cd ~/Dropbox"; }
 				#{ on = ["g" "D"]; run = "cd ~/Dropbox/Docs"; }
 				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2025_spring"; }
@@ -136,7 +136,7 @@
 				{ on = ["g" "m"]; run = "cd ~/Music"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
 				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2025" "sort mtime --reverse"]; }
-				{ on = ["g" "v"]; run = "cd ~/Videos"; }
+				{ on = ["g" "v"]; run = ["cd ~/Videos" "sort mtime --reverse"]; }
 				# games:
 				{ on = ["g" "a" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/374320/pfx/drive_c/users/steamuser/AppData/Roaming/DarkSoulsIII"; }
 				{ on = ["g" "a" "c"]; run = "cd ~/.local/share/Celeste/Saves"; }
@@ -155,8 +155,8 @@
 				{ on = ["g" "a" "t" "h" "1" "7"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1079160/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th17"; }
 				{ on = ["g" "a" "t" "h" "1" "8"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1566410/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th18"; }
 				#{ on = ["g" "a" "t" "h" "1" "9"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/2400340/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th19"; }
-				{ on = ["g" "a" "t" "r"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/11020/pfx/drive_c/users/steamuser/Documents/TrackMania/Tracks/Replays"; }
-				{ on = ["g" "a" "t" "s"]; run = "cd '~/.local/share/Steam/steamapps/common/TrackMania Nations Forever/GameData/Painter/Stickers'"; }
+				{ on = ["g" "a" "t" "m" "r"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/11020/pfx/drive_c/users/steamuser/Documents/TrackMania/Tracks/Replays"; }
+				{ on = ["g" "a" "t" "m" "s"]; run = "cd '~/.local/share/Steam/steamapps/common/TrackMania Nations Forever/GameData/Painter/Stickers'"; }
 			];
 		};
 	};
