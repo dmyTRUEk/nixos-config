@@ -94,7 +94,8 @@
 	nixi = "nix repl --file '<nixpkgs>'"; # nix interactive
 	nx   = "nvim ~/.config/home-manager/";
 	nif  = "nvim ~/.config/home-manager/flake.nix";
-	nifl = "nvim ~/.config/home-manager/flake.lock";
+	nifl = "nvim -R ~/.config/home-manager/flake.lock"; # open in read-only mode
+	niflm= "nvim    ~/.config/home-manager/flake.lock";
 	nic  = "nvim ~/.config/home-manager/os/configuration-common.nix";
 	nicp = "nvim ~/.config/home-manager/os/configuration-psyche.nix";
 	nick = "nvim ~/.config/home-manager/os/configuration-knight.nix";
@@ -120,7 +121,8 @@
 
 	# rust related:
 	nc  = "nvim Cargo.toml";
-	ncl = "nvim Cargo.lock";
+	ncl = "nvim -R Cargo.lock"; # open in read-only mode
+	nclm= "nvim    Cargo.lock";
 	nru = "nvim rust-toolchain.toml";
 
 	cc = "cargo clean";
@@ -160,7 +162,8 @@
 	bottom = "btm";
 
 	nf  = "nvim flake.nix";
-	nfl = "nvim flake.lock";
+	nfl = "nvim -R flake.lock"; # open in read-only mode
+	nflm= "nvim    flake.lock";
 
 	ff = "fastfetch";
 
