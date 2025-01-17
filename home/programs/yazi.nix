@@ -135,7 +135,7 @@
 				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/0_papers"; }
 				{ on = ["g" "m"]; run = "cd ~/Music"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
-				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2025" "sort mtime --reverse"]; }
+				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2025" "sort natural --reverse"]; }
 				{ on = ["g" "v"]; run = ["cd ~/Videos" "sort mtime --reverse"]; }
 				# games:
 				{ on = ["g" "a" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/374320/pfx/drive_c/users/steamuser/AppData/Roaming/DarkSoulsIII"; }
