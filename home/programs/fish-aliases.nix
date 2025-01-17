@@ -96,8 +96,12 @@
 	nif  = "nvim ~/.config/home-manager/flake.nix";
 	nifl = "nvim ~/.config/home-manager/flake.lock";
 	nic  = "nvim ~/.config/home-manager/os/configuration-common.nix";
+	nicp = "nvim ~/.config/home-manager/os/configuration-psyche.nix";
+	nick = "nvim ~/.config/home-manager/os/configuration-knight.nix";
 	nih  = "nvim ~/.config/home-manager/home/home-common-common.nix";
 	nihm = "nvim ~/.config/home-manager/home/home-myshko-common.nix";
+	nihp = "nvim ~/.config/home-manager/home/home-myshko-psyche.nix";
+	nihk = "nvim ~/.config/home-manager/home/home-myshko-knight.nix";
 
 	nfa = "nvim ~/.config/home-manager/home/programs/fish-aliases.nix";
 	nfe = "nvim ~/.config/home-manager/home/programs/fish-extra-shell-init.fish";
