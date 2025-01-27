@@ -111,6 +111,7 @@ end
 function nm
 	set MAIN_FILE_C 'main.c'
 	set MAIN_FILE_CPP 'main.cpp'
+	set MAIN_FILE_HTML 'index.html'
 	set MAIN_FILE_LATEX 'main.tex'
 	set MAIN_FILE_LEAN 'main.lean'
 	set MAIN_FILE_NIX 'main.nix'
@@ -125,6 +126,9 @@ function nm
 
 	else if test -f $MAIN_FILE_CPP
 		nvim "$MAIN_FILE_CPP" $argv
+
+	else if test -f $MAIN_FILE_HTML
+		nvim "$MAIN_FILE_HTML" $argv
 
 	else if test -f $MAIN_FILE_LATEX
 		nvim "$MAIN_FILE_LATEX" $argv
