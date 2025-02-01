@@ -6,7 +6,7 @@
 	config,
 	pkgs,
 	nixla,
-	nil,
+	# nil,
 	...
 }: {
 	programs = {
@@ -180,7 +180,7 @@
 
 		# LSP:
 		lua-language-server # lua
-		nil.packages.${system}.nil # nix (rust btw)
+		# nil.packages.${system}.nil # nix (rust btw)
 		pyright # python
 		#ruff-lsp # python # TODO: setup it for lints, cs it's fast (rust btw)
 

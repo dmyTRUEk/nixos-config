@@ -29,10 +29,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		nil = {
-			url = "github:oxalica/nil";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		# nil = {
+		# 	url = "github:oxalica/nil";
+		# 	inputs.nixpkgs.follows = "nixpkgs";
+		# };
 
 		# nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 	};
@@ -42,7 +42,7 @@
 		home-manager,
 		anyrun,
 		nixla,
-		nil,
+		# nil,
 		...
 	}:
 	let
@@ -71,7 +71,7 @@
 								inherit
 									inputs
 									nixla
-									nil
+									# nil
 								;
 							};
 							backupFileExtension = "backup";
@@ -108,7 +108,7 @@
 								inherit
 									inputs
 									nixla
-									nil
+									# nil
 								;
 							};
 							backupFileExtension = "backup";
