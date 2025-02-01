@@ -454,6 +454,24 @@ require('lazy').setup {
 					set_local('c', '/-\r-/')
 				end
 			}}
+			autocmds[#autocmds+1] = {'FileType', {
+				pattern = 'html',
+				callback = function()
+					local function set_local_wrap_in_tag(key, tag)
+						tag = tag or key -- default arg
+						set_local(key, '<'..tag..'>\r</'..tag..'>')
+					end
+					set_local('c', '<!--\r-->')
+					set_local_wrap_in_tag('p')
+					set_local_wrap_in_tag('d', 'div')
+					set_local_wrap_in_tag('h1')
+					set_local_wrap_in_tag('h2')
+					set_local_wrap_in_tag('h3')
+					set_local_wrap_in_tag('h4')
+					set_local_wrap_in_tag('h5')
+					set_local_wrap_in_tag('h6')
+				end
+			}}
 		end
 	},
 	{'tommcdo/vim-exchange', -- exchange selections
