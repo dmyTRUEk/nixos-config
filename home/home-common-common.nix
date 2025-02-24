@@ -148,12 +148,12 @@
 		hunspellDicts.en_US-large # for libreoffice ENG spellcheck
 		hunspellDicts.uk_UA       # for libreoffice UKR spellcheck
 		zathura
-		kdenlive
+		kdePackages.kdenlive
 		vlc
 		transmission_4-gtk
 		zoom-us
 		discord
-		gwenview
+		kdePackages.gwenview
 		skypeforlinux
 		helvum
 		audacity
