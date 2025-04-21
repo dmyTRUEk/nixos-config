@@ -40,7 +40,6 @@
 	outputs = inputs @ {
 		nixpkgs,
 		home-manager,
-		anyrun,
 		nixla,
 		# nil,
 		...
@@ -80,13 +79,11 @@
 									./home/home-common-common.nix
 									./home/home-${username_myshko}-common.nix
 									./home/home-${username_myshko}-${hostname_psyche}.nix
-									anyrun.homeManagerModules.default
 								];
 								${username_guest}.imports = [
 									./home/home-common-common.nix
 									./home/home-${username_guest}-common.nix
 									./home/home-${username_guest}-${hostname_psyche}.nix
-									anyrun.homeManagerModules.default
 								];
 							};
 						};
@@ -117,13 +114,11 @@
 									./home/home-common-common.nix
 									./home/home-${username_myshko}-common.nix
 									./home/home-${username_myshko}-${hostname_knight}.nix
-									anyrun.homeManagerModules.default
 								];
 								${username_guest}.imports = [
 									./home/home-common-common.nix
 									./home/home-${username_guest}-common.nix
 									./home/home-${username_guest}-${hostname_knight}.nix
-									anyrun.homeManagerModules.default
 								];
 							};
 						};
