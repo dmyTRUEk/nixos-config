@@ -41,6 +41,7 @@ WINDOW_ICONS_BY_APP_ID: dict[str, str] = {
 	"firefox": "", # 󰈹
 	"gimp": "",
 	"gnome-boxes": "",
+	"godot": "",
 	"jetbrains-studio": "", # android-studio
 	"kdenlive": "",
 	"kitty": "󰄛",
