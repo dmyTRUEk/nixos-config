@@ -471,6 +471,10 @@ require('lazy').setup {
 					set_local_wrap_in_tag('4', 'h4')
 					set_local_wrap_in_tag('5', 'h5')
 					set_local_wrap_in_tag('6', 'h6')
+					set_local_wrap_in_tag('b')
+					set_local_wrap_in_tag('i')
+					set_local_wrap_in_tag('l', 'li')
+					set_local('a', '<a href="">\r</a>')
 				end
 			}}
 		end
