@@ -63,10 +63,10 @@
 
 	boot = {
 		loader = {
-			efi.canTouchEfiVariables = true;
+			# efi.canTouchEfiVariables = true;
 			systemd-boot = {
 				enable = true;
-				memtest86.enable = true;
+				# memtest86.enable = true;
 			};
 		};
 		kernelPackages = pkgs.linuxPackages_latest;
