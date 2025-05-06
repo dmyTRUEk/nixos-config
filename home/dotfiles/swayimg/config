@@ -6,7 +6,7 @@ size = fullscreen
 [viewer]
 window = 000000
 scale = fit
-antialiasing = yes
+#antialiasing = yes
 slideshow_time = 5
 history = 5
 preload = 5
@@ -37,9 +37,9 @@ Shift+j = step_down 50
 Shift+k = step_up 50
 Shift+l = step_right 50
 
-i = zoom 10
+i = zoom +10
 o = zoom -10
-Shift+i = zoom 50
+Shift+i = zoom +50
 Shift+o = zoom -50
 
 a = antialiasing
@@ -50,12 +50,12 @@ bracketleft = next_dir
 bracketright = prev_dir
 
 b = info
-s = zoom optimal
+s = zoom fit
 
 Shift+space = animation
 
 space = animation
-comma = next_frame
+comma  = next_frame
 period = prev_frame
 
 [keys.gallery]
