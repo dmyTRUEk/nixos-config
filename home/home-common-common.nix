@@ -154,7 +154,6 @@
 		zoom-us
 		discord
 		kdePackages.gwenview
-		skypeforlinux
 		helvum
 		audacity
 		amberol # gnome music player
