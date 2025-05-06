@@ -465,12 +465,12 @@ require('lazy').setup {
 					set_local('c', '<!--\r-->')
 					set_local_wrap_in_tag('p')
 					set_local_wrap_in_tag('d', 'div')
-					set_local_wrap_in_tag('h1')
-					set_local_wrap_in_tag('h2')
-					set_local_wrap_in_tag('h3')
-					set_local_wrap_in_tag('h4')
-					set_local_wrap_in_tag('h5')
-					set_local_wrap_in_tag('h6')
+					set_local_wrap_in_tag('1', 'h1')
+					set_local_wrap_in_tag('2', 'h2')
+					set_local_wrap_in_tag('3', 'h3')
+					set_local_wrap_in_tag('4', 'h4')
+					set_local_wrap_in_tag('5', 'h5')
+					set_local_wrap_in_tag('6', 'h6')
 				end
 			}}
 		end
