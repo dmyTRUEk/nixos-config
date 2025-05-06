@@ -158,6 +158,7 @@
 		audacity
 		amberol # gnome music player
 		element-desktop
+		inkscape
 
 		# LANGS:
 		rustup # rust btw
