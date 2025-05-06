@@ -5,7 +5,6 @@
 	settings = {
 		manager = {
 			sort_by = "natural";
-			# TODO: reverse sort Pictures/Screenshots, sort by time Telegram
 			sort_sensitive = false; # case sensitive
 			#sort_reverse = true; # TODO: enable for screenshots
 			sort_dir_first = true;
@@ -28,10 +27,16 @@
 				{ run = ''nvim "$@"''; block = true; }
 				#{ run = ''xdg-open "$@"''; } # TODO: fix
 			];
-			image = [
+			image_raster = [
 				{ run = ''swayimg "$@"''; }
 				{ run = ''krita "$@"''; }
 				{ run = ''gwenview "$@"''; }
+				{ run = ''nvim "$@"''; block = true; }
+			];
+			image_vector = [
+				{ run = ''swayimg "$@"''; }
+				{ run = ''inkscape "$@"''; }
+				{ run = ''nvim "$@"''; block = true; }
 			];
 			video = [{ run = ''vlc "$@"''; }];
 			audio = [{ run = ''vlc "$@"''; }];
@@ -51,9 +56,10 @@
 				{ name = "*.kra"; use = "krita_project"; }
 				{ name = "*.djvu"; use = "djvu"; }
 				#{ name = "*.md"; use = "markdown"; }
+				{ name = "*.svg"; use = "image_vector"; }
 
 				{ mime = "text/*"; use = "text"; }
-				{ mime = "image/*"; use = "image"; }
+				{ mime = "image/*"; use = "image_raster"; }
 				{ mime = "video/*"; use = "video"; }
 				{ mime = "application/pdf"; use = "pdf"; }
 
