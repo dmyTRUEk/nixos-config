@@ -159,6 +159,7 @@
 		amberol # gnome music player
 		element-desktop
 		inkscape
+		godot
 
 		# LANGS:
 		rustup # rust btw
