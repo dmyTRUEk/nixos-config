@@ -5,7 +5,8 @@ PATH_TO_FILE=$2
 OLD_VERSION=$3
 
 while true; do
-	CURRENT_VERSION=$(curl -s https://raw.githubusercontent.com/NixOS/nixpkgs/refs/heads/$BRANCH/pkgs/$PATH_TO_FILE | rg -o --color=never 'version\s*=\s*"(.*)";' --replace '$1')
+	CURRENT_VERSION=$(sh $HOME/.config/home-manager/home/files/pkg_version_get.sh $BRANCH $PATH_TO_FILE)
+	echo $CURRENT_VERSION
 
 	if [[ "$CURRENT_VERSION" != "$OLD_VERSION" ]]; then
 		echo "New version available: $CURRENT_VERSION"
