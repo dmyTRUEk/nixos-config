@@ -518,7 +518,7 @@ require('lazy').setup {
 	-- LUALINE:
 	{'nvim-lualine/lualine.nvim', opts = { -- status line
 		options = {
-			theme = 'powerline_dark', -- gruvbox, kanagawa
+			theme = 'powerline_dark', -- gruvbox
 			component_separators = { left = '', right = ''},
 			section_separators   = { left = '', right = ''},
 			always_divide_middle = false,
@@ -1063,7 +1063,7 @@ end
 
 
 -- TODO: load by lazy?
-require 'dmytruek.blockmarks'
+-- require 'dmytruek.blockmarks'
 
 
 
