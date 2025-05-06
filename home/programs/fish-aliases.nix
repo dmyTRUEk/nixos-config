@@ -49,6 +49,7 @@
 	"gap." = "git add --patch .";
 	gb = "git branch";
 	gc = "git commit";
+	gca = "git commit --amend"; # change msg of last commit
 	gcm = "git commit -m";
 	gch = "git checkout";
 	gchb = "git checkout -b";
