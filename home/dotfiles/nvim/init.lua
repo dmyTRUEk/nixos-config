@@ -438,7 +438,7 @@ require('lazy').setup {
 				end
 			}}
 			autocmds[#autocmds+1] = {'FileType', {
-				pattern = 'tex',
+				pattern = 'tex', -- LATEX
 				callback = function()
 					set_local('l', '\\\1Name: \1{\r}')
 					set_local('L', '\\begin{\1Environment: \1}\r\\end{\1\1}')
@@ -446,6 +446,7 @@ require('lazy').setup {
 					set_local('i', '\\textit{\r}')
 					set_local('u', '\\underline{\r}')
 					set_local('t', '\\text{\r}')
+					set_local('c', '\\textcolor{red!50!black}{\r}')
 				end
 			}}
 			autocmds[#autocmds+1] = {'FileType', {
