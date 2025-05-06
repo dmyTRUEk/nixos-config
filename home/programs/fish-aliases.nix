@@ -62,7 +62,7 @@
 	"gds." = "git diff --staged .";
 	gf = "git fetch";
 	gfo = "git fetch origin";
-	gl = "git log --oneline --decorate --graph";
+	gl = "git log --oneline --graph --decorate";
 	gll = "git log --decorate --graph";
 	gm = "git merge";
 	gmt = "git mergetool";
