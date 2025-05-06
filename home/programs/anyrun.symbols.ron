@@ -1,7 +1,6 @@
 Config(
 	// The prefix that the search needs to begin with to yield symbol results
 	prefix: "",
-	// Custom user defined symbols to be included along the unicode symbols
 	symbols: {
 		"approximately equal to": "≈",
 		"compose": "∘",
@@ -13,6 +12,9 @@ Config(
 		"fumo sad round": "ᗜ⁔ᗜ",
 		"fumo sad triangle": "ᗜ˰ᗜ",
 		"amogus": "ඞ",
+		"idk": "¯\\_(ツ)_/¯",
+		"--": "–",
+		"---": "—",
 	},
 	max_entries: 10,
 )
