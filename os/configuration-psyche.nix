@@ -36,6 +36,8 @@
 	environment.systemPackages = with pkgs; [ # PKGS
 	];
 
+	# networking.firewall.allowedTCPPorts = [ 3000 ]; # for local network "hosting"
+
 	# minecraft server using nixpkgs:
 	# networking.firewall.allowedTCPPorts = [ 25565 ];
 	# services = {
