@@ -160,6 +160,7 @@
 		element-desktop
 		inkscape
 		godot
+		luanti
 
 		# LANGS:
 		rustup # rust btw
