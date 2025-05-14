@@ -403,15 +403,15 @@ require('lazy').setup {
 			autocmds[#autocmds+1] = {'FileType', {
 				pattern = 'python',
 				callback = function()
-					set_local('I', 'Iterator[\r]')
-					set_local('L', 'list[\r]')
-					set_local('T', 'tuple[\r]')
+					set_local('e', 'enumerate(\r)')
 					set_local('i', 'filter(\r)')
+					set_local('I', 'Iterator[\r]')
 					set_local('l', 'list(\r)')
+					set_local('L', 'list[\r]')
 					set_local('m', 'map(\r)')
 					set_local('r', 'range(\r)')
 					set_local('t', '\1Type: \1[\r]')
-					set_local('e', 'enumerate(\r)')
+					set_local('T', 'tuple[\r]')
 				end
 			}}
 			autocmds[#autocmds+1] = {'FileType', {
@@ -445,13 +445,13 @@ require('lazy').setup {
 			autocmds[#autocmds+1] = {'FileType', {
 				pattern = 'tex', -- LATEX
 				callback = function()
+					set_local('b', '\\textbf{\r}')
+					set_local('c', '\\textcolor{red!50!black}{\r}')
+					set_local('i', '\\textit{\r}')
 					set_local('l', '\\\1Name: \1{\r}')
 					set_local('L', '\\begin{\1Environment: \1}\r\\end{\1\1}')
-					set_local('b', '\\textbf{\r}')
-					set_local('i', '\\textit{\r}')
-					set_local('u', '\\underline{\r}')
 					set_local('t', '\\text{\r}')
-					set_local('c', '\\textcolor{red!50!black}{\r}')
+					set_local('u', '\\underline{\r}')
 				end
 			}}
 			autocmds[#autocmds+1] = {'FileType', {
@@ -467,9 +467,8 @@ require('lazy').setup {
 						tag = tag or key -- default arg
 						set_local(key, '<'..tag..'>\r</'..tag..'>')
 					end
+					set_local('a', '<a href="">\r</a>')
 					set_local('c', '<!--\r-->')
-					set_local_wrap_in_tag('p')
-					set_local_wrap_in_tag('d', 'div')
 					set_local_wrap_in_tag('1', 'h1')
 					set_local_wrap_in_tag('2', 'h2')
 					set_local_wrap_in_tag('3', 'h3')
@@ -477,9 +476,10 @@ require('lazy').setup {
 					set_local_wrap_in_tag('5', 'h5')
 					set_local_wrap_in_tag('6', 'h6')
 					set_local_wrap_in_tag('b')
+					set_local_wrap_in_tag('d', 'div')
 					set_local_wrap_in_tag('i')
 					set_local_wrap_in_tag('l', 'li')
-					set_local('a', '<a href="">\r</a>')
+					set_local_wrap_in_tag('p')
 				end
 			}}
 		end
