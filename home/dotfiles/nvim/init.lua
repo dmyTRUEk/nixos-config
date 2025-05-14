@@ -840,8 +840,6 @@ require('lazy').setup {
 			keybinds_n['<leader>r'] = vim.lsp.buf.rename
 			keybinds_n['<leader>d'] = vim.diagnostic.open_float
 
-			keybinds_n['g['] = vim.diagnostic.goto_prev
-			keybinds_n['g]'] = vim.diagnostic.goto_next
 			keybinds_n['<c-h>'] = vim.diagnostic.goto_prev
 			keybinds_n['<c-l>'] = vim.diagnostic.goto_next
 
