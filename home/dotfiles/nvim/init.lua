@@ -411,6 +411,7 @@ require('lazy').setup {
 					set_local('m', 'map(\r)')
 					set_local('r', 'range(\r)')
 					set_local('t', '\1Type: \1[\r]')
+					set_local('e', 'enumerate(\r)')
 				end
 			}}
 			autocmds[#autocmds+1] = {'FileType', {
