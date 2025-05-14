@@ -111,23 +111,24 @@ keybinds_swap_nv = {
 }
 
 keybinds_nv = {
-	['<c-j>'] = '<c-d>zz', -- better move half-page down
-	['<c-k>'] = '<c-u>zz', -- better move half-page up
+	-- TODO: support LHS to be a set of keybinds
+	['<c-j>'] = '<c-d>zz', ['<c-о>'] = '<c-d>zz', -- better move half-page down
+	['<c-k>'] = '<c-u>zz', ['<c-л>'] = '<c-u>zz', -- better move half-page up
 
-	['<c-n>'] = '%',
+	['<c-n>'] = '%', ['<c-т>'] = '%',
 
-	-- ['<c-/>'] = 'gc', -- TODO
+	-- ['<c-/>'] = 'gc', -- TODO?
 }
 
 keybinds_n = {
 	Q = '', -- unmap ex mode
-	U = '<c-r>', -- better redo
-	Y = 'y$', -- better copy till end of line
+	U = '<c-r>', ['Г'] = '<c-r>', -- better redo
+	Y = 'y$', ['Н'] = 'y$', -- better copy till end of line
 
 	['-'] = '$', -- better $
 
-	['<c-p>'] = '$p', -- paste at end of line
-	['<a-p>'] = '^P', -- paste at begin of line
+	['<c-p>'] = '$p', ['<c-з>'] = '$p', -- paste at end of line
+	['<a-p>'] = '^P', ['<a-з>'] = '^P', -- paste at begin of line
 
 	-- "fix" `h` & `l` motions:
 	ch = 'lc2h',
@@ -159,7 +160,7 @@ keybinds_n = {
 	['<leader>;'] = 'm`A;<esc>``',
 	['<leader>:'] = 'm`A:<esc>``',
 	['<leader>,'] = 'm`A,<esc>``',
-	['<leader>.'] = 'm`A.<esc>``',
+	['<leader>.'] = 'm`A.<esc>``', ['<leader>ю'] = 'm`A.<esc>``',
 
 	--['<leader>e'] = 'm`$x``',
 
@@ -199,43 +200,46 @@ keybinds_n = {
 
 	['<c-cr>'] = '<c-6>', -- goto to prev file(buffer?)
 
-	['<esc>'] = '<cmd>nohlsearch<cr>',
+	['<esc>'] = '<cmd>nohlsearch<cr>', -- TODO: also remove red search result not found
 
 	-- TODO?: add `zb` == `zw`: spelling bad/wrong
 
-	['g/m'] = '/<<<<<<<\\|=======\\|>>>>>>><cr>',
+	['g/m'] = '/<<<<<<<\\|=======\\|>>>>>>><cr>', -- TODO: only for `.diff` file?
+
+	['пс'] = '<Plug>Commentary',
+	['псс'] = '<Plug>CommentaryLine', -- comments (gcc)
+
+	['<c-щ>'] = '<c-o>',
+	['<c-ш>'] = '<c-i>',
 }
 
 keybinds_i = {
-	['<c-;>'] = '',
-	['<c-h>'] = '<left>',
-	['<c-j>'] = '<down>',
-	['<c-k>'] = '<up>',
-	['<c-l>'] = '<right>',
+	['<c-;>'] = '',        ['<c-ж>'] = '',
+	['<c-h>'] = '<left>',  ['<c-р>'] = '<left>',
+	['<c-j>'] = '<down>',  ['<c-о>'] = '<down>',
+	['<c-k>'] = '<up>',    ['<c-л>'] = '<up>',
+	['<c-l>'] = '<right>', ['<c-д>'] = '<right>',
 }
 
 keybinds_n_c = {
-	-- DEPRECATED
-	['<leader>o'] = 'nohlsearch',
+	['<leader>q'] = 'q',   ['<leader>й'] = 'q',
+	['<leader>Q'] = 'qa',  ['<leader>Й'] = 'qa',
+	['<leader>w'] = 'w',   ['<leader>ц'] = 'w',
+	['<leader>W'] = 'wa',  ['<leader>Ц'] = 'wa',
+	['<leader>a'] = 'wq',  ['<leader>ф'] = 'wq',
+	['<leader>A'] = 'wqa', ['<leader>Ф'] = 'wqa',
 
-	['<leader>q'] = 'q',
-	['<leader>Q'] = 'qa',
-	['<leader>w'] = 'w',
-	['<leader>W'] = 'wa',
-	['<leader>a'] = 'wq',
-	['<leader>A'] = 'wqa',
+	['<leader>h'] = 'wincmd h', ['<leader>р'] = 'wincmd h',
+	['<leader>j'] = 'wincmd j', ['<leader>о'] = 'wincmd j',
+	['<leader>k'] = 'wincmd k', ['<leader>л'] = 'wincmd k',
+	['<leader>l'] = 'wincmd l', ['<leader>д'] = 'wincmd l',
 
-	['<leader>h'] = 'wincmd h',
-	['<leader>j'] = 'wincmd j',
-	['<leader>k'] = 'wincmd k',
-	['<leader>l'] = 'wincmd l',
+	['<leader><leader>h'] = 'wincmd H', ['<leader><leader>р'] = 'wincmd H',
+	['<leader><leader>j'] = 'wincmd J', ['<leader><leader>о'] = 'wincmd J',
+	['<leader><leader>k'] = 'wincmd K', ['<leader><leader>л'] = 'wincmd K',
+	['<leader><leader>l'] = 'wincmd L', ['<leader><leader>д'] = 'wincmd L',
 
-	['<leader><leader>h'] = 'wincmd H',
-	['<leader><leader>j'] = 'wincmd J',
-	['<leader><leader>k'] = 'wincmd K',
-	['<leader><leader>l'] = 'wincmd L',
-
-	['<leader>S'] = 'setlocal spell!',
+	['<leader>S'] = 'setlocal spell!', ['<leader>І'] = 'setlocal spell!',
 
 	--<leader>v :call ToggleHorizontalVerticalSplit() <cr>
 }
@@ -243,7 +247,7 @@ keybinds_n_c = {
 -- TODO: test if `x` or `v` is needed
 keybinds_v = {
 	['-'] = '$h', -- better $
-	S = ':sort<cr>',
+	S = ':sort<cr>', ['І'] = ':sort<cr>',
 }
 
 
@@ -353,17 +357,17 @@ require('lazy').setup {
 			-- disable default keybinds:
 			vim.g.surround_no_mappings = 1
 			-- set custom maps:
-			keybinds_n['ds'] = '<Plug>Dsurround'
-			keybinds_n['ds'] = '<Plug>Dsurround'
-			keybinds_n['cs'] = '<Plug>Csurround'
-			keybinds_n['cS'] = '<Plug>CSurround'
-			keybinds_n['ys'] = '<Plug>Ysurround'
-			keybinds_n['yS'] = '<Plug>YSurround'
-			keybinds_n['yss'] = '<Plug>Yssurround'
-			keybinds_n['ySs'] = '<Plug>YSsurround'
-			keybinds_n['ySS'] = '<Plug>YSsurround'
-			keybinds_v['s']  = '<Plug>VSurround'
-			keybinds_v['gs'] = '<Plug>VgSurround'
+			keybinds_n['ds'] = '<Plug>Dsurround';   keybinds_n['ві'] = '<Plug>Dsurround'
+			-- keybinds_n['ds'] = '<Plug>Dsurround' ?????????
+			keybinds_n['cs'] = '<Plug>Csurround';   keybinds_n['сі'] = '<Plug>Csurround'
+			keybinds_n['cS'] = '<Plug>CSurround';   keybinds_n['сІ'] = '<Plug>CSurround'
+			keybinds_n['ys'] = '<Plug>Ysurround';   keybinds_n['ні'] = '<Plug>Ysurround'
+			keybinds_n['yS'] = '<Plug>YSurround';   keybinds_n['нІ'] = '<Plug>YSurround'
+			keybinds_n['yss'] = '<Plug>Yssurround'; keybinds_n['ніі'] = '<Plug>Yssurround'
+			keybinds_n['ySs'] = '<Plug>YSsurround'; keybinds_n['нІі'] = '<Plug>YSsurround'
+			keybinds_n['ySS'] = '<Plug>YSsurround'; keybinds_n['нІІ'] = '<Plug>YSsurround'
+			keybinds_v['s']  = '<Plug>VSurround' ;  keybinds_v['і']  = '<Plug>VSurround'
+			keybinds_v['gs'] = '<Plug>VgSurround';  keybinds_v['пі'] = '<Plug>VgSurround'
 			local function set(scope, char, surround_expression)
 				vim[scope]['surround_'..vim.fn.char2nr(char)] = surround_expression
 			end
@@ -755,12 +759,12 @@ require('lazy').setup {
 		},
 		init = function()
 			local keybinds_n_c_telescope = {
-				['<leader>b'] = 'buffers',
-				['<leader>f'] = 'find_files',
-				['<leader>g'] = 'live_grep',
-				['<leader>p'] = 'colorscheme',
-				['<leader>s'] = 'spell_suggest',
-				['<leader>u'] = 'jumplist',
+				['<leader>b'] = 'buffers',       ['<leader>и'] = 'buffers',
+				['<leader>f'] = 'find_files',    ['<leader>а'] = 'find_files',
+				['<leader>g'] = 'live_grep',     ['<leader>п'] = 'live_grep',
+				['<leader>p'] = 'colorscheme',   ['<leader>з'] = 'colorscheme',
+				['<leader>s'] = 'spell_suggest', ['<leader>і'] = 'spell_suggest',
+				['<leader>u'] = 'jumplist',      ['<leader>г'] = 'jumplist',
 				--gd = 'lsp_definitions',
 				--gD = 'lsp_type_definitions',
 				gi = 'lsp_implementations',
@@ -1157,6 +1161,15 @@ translation_eng_to_ukr = {
 -- for keybind, action in pairs(test_map) do
 -- 	print('`'..keybind..'`', '->' , '`'..translate_keybind(keybind, translation_eng_to_ukr)..'`')
 -- end
+
+-- TODO: idea: just loop over all "templates": x, xx, xxx, ..., <c-x>, <a-x>, <leader>x, ...
+-- TODO: better idea: make LHS of the keybinds be a string or a set
+
+
+
+
+
+-- TODO: move these somewhere above?
 
 vim.cmd([[
 highlight MyTodo guifg=black guibg=orange
