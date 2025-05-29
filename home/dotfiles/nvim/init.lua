@@ -115,7 +115,7 @@ keybinds_nv = {
 	['<c-j>'] = '<c-d>zz', ['<c-о>'] = '<c-d>zz', -- better move half-page down
 	['<c-k>'] = '<c-u>zz', ['<c-л>'] = '<c-u>zz', -- better move half-page up
 
-	['<c-n>'] = '%', ['<c-т>'] = '%',
+	['<c-b>'] = '%', ['<c-и>'] = '%',
 
 	-- ['<c-/>'] = 'gc', -- TODO?
 }
