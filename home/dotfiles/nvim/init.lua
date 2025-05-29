@@ -487,6 +487,12 @@ require('lazy').setup {
 					set_local_wrap_in_tag('p')
 				end
 			}}
+			autocmds[#autocmds+1] = {'FileType', {
+				pattern = 'lua',
+				callback = function()
+					set_local('i', 'vim.inspect(\r)')
+				end
+			}}
 		end
 	},
 	{'tommcdo/vim-exchange', -- exchange selections
