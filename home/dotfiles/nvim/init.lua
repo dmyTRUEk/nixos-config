@@ -299,7 +299,20 @@ autocmds = {
 			vim.keymap.set('n', 'j', 'gj')
 			vim.keymap.set('n', 'k', 'gk')
 		end
-	}}
+	}},
+	{'WinEnter', {
+		callback = function()
+			local win = vim.api.nvim_get_current_win()
+			vim.defer_fn(function()
+				if vim.fn.getwininfo(win)[1].quickfix == 1 then
+					local qf_list = vim.fn.getqflist()
+					local qf_count = #qf_list
+					local height = math.min(qf_count, 10)
+					vim.api.nvim_win_set_height(win, height)
+				end
+			end, 10)
+		end
+	}},
 }
 
 
