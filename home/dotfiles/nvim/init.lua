@@ -281,11 +281,11 @@ autocmds = {
 		end
 	}},
 	{'FileType', {
-		pattern = "tex",
+		pattern = 'tex',
 		callback = function()
 			-- TODO: refactor
 			require 'dmytruek.latex_autos'
-			vim.cmd("call SetupEverythingForLatex()")
+			vim.cmd('call SetupEverythingForLatex()')
 		end
 	}},
 	{'FileType', {
