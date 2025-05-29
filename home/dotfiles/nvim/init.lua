@@ -211,6 +211,11 @@ keybinds_n = {
 
 	['<c-щ>'] = '<c-o>',
 	['<c-ш>'] = '<c-i>',
+
+	-- for quickfix list:
+	['<c-n>'] = '<cmd>cprev<cr>',
+	['<c-m>'] = '<cmd>cnext<cr>',
+	['<c-q>'] = '<cmd>cclose<cr>',
 }
 
 keybinds_i = {
