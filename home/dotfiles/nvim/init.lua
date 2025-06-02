@@ -641,6 +641,7 @@ require('lazy').setup {
 					'python',
 					'ron', -- Rust Object Notation
 					'rust',
+					'wgsl',
 					--'yaml',
 					--'yuck',
 				},
