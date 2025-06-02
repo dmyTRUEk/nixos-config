@@ -178,3 +178,11 @@ function clear-and-gds-inf -d "`clear && gds` infinitely"
 		sleep 1
 	end
 end
+
+function nvimcmddiff -d "view commands diff using neovim"
+	set -l tmp1 (mktemp)
+	set -l tmp2 (mktemp)
+	eval $argv[1] > $tmp1
+	eval $argv[2] > $tmp2
+	nvim -d $tmp1 $tmp2
+end

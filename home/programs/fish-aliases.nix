@@ -5,6 +5,7 @@
 	n = "nvim";
 	"n." = "nvim .";
 	nd = "nvim -d";
+	ndc = "nvimcmddiff";
 	nr = "nvim -R"; # open in read-only mode
 	nhoriz = "nvim -o"; # split with horizontal divider
 	nvert  = "nvim -O"; # split with vertical divider
