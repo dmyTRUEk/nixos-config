@@ -34,6 +34,8 @@
 		"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
 	];
 
+	services.ollama.acceleration = "rocm"; # or cuda
+
 	programs = {
 		light.enable = true; # TODO?: move to HM   # had to be installed in root?
 	};

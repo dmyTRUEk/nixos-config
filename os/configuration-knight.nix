@@ -29,6 +29,8 @@
 		"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
 	];
 
+	services.ollama.acceleration = "rocm"; # or cuda
+
 	programs = {};
 
 	environment.systemPackages = with pkgs; [ # PKGS

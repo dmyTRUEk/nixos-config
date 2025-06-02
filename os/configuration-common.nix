@@ -150,6 +150,14 @@
 			#desktopManager.xfce.enable = true;
 		};
 		blueman.enable = true;
+		ollama = {
+			enable = true;
+			# acceleration = "rocm"; # or cuda   # in `conf-<name>.nix`
+			loadModels = [
+				"llama3.2:1b"
+				"llama3.2:3b"
+			];
+		};
 	};
 
 	users = {
