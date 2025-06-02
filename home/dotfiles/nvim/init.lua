@@ -565,6 +565,36 @@ require('lazy').setup {
 		end
 	},
 	--'dmytruek/find-and-replace', -- find and replace
+	{'ThePrimeagen/harpoon',
+		branch = 'harpoon2',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		init = function()
+			local harpoon = require('harpoon')
+			harpoon:setup({ default = { -- `harpoon:setup()` is required
+				get_root_dir = function()
+					local cwd = vim.loop.cwd()
+					local root = vim.fn.system('git rev-parse --show-toplevel')
+					if vim.v.shell_error == 0 and root ~= nil then
+						return string.gsub(root, '\n', '')
+					end
+					return cwd
+				end,
+			}})
+			keybinds_n['<leader>H'] = function()
+				local fname = vim.fn.expand('%:p')
+				harpoon:list():add()
+				print('`' .. fname .. '` harpooned >:3')
+			end
+			keybinds_n['<C-e>'] = function() harpoon.ui:toggle_quick_menu(harpoon:list()) end
+			keybinds_n['<c-d>'] = function() harpoon:list():prev() end
+			keybinds_n['<c-f>'] = function() harpoon:list():next() end
+			keybinds_n['<c-1>'] = function() harpoon:list():select(1) end
+			keybinds_n['<c-2>'] = function() harpoon:list():select(2) end
+			keybinds_n['<c-3>'] = function() harpoon:list():select(3) end
+			keybinds_n['<c-4>'] = function() harpoon:list():select(4) end
+			keybinds_n['<c-5>'] = function() harpoon:list():select(5) end
+		end
+	},
 
 	-- UI:
 	-- LUALINE:
