@@ -317,6 +317,29 @@ autocmds = {
 
 
 
+user_cmds = {
+	{'QfAddFile', { nargs = '?', complete = 'file' }, function(opts)
+		local fname = opts.args
+		local entry
+		if fname == '' then
+			fname = vim.fn.expand('%:p')
+			if fname == '' then
+				print('No current file to add >w<')
+				return
+			end
+			entry = { filename = fname, lnum = vim.fn.line('.') }
+			print('Added current file to quickfix: ' .. fname .. ' ✨')
+		else
+			entry = { filename = fname }
+			print('Added to quickfix: ' .. fname .. ' ✨')
+		end
+		vim.fn.setqflist({ entry }, 'a')
+		vim.cmd('copen')
+	end},
+}
+
+
+
 
 
 -- Load `lazy.nvim`:
@@ -1086,6 +1109,12 @@ for _, autocmd in pairs(autocmds) do
 	--print_table(opts)
 	-- TODO: wrap in "try/catch"
 	vim.api.nvim_create_autocmd(events, opts)
+end
+
+
+for _, user_cmd in pairs(user_cmds) do
+	local cmd_name, opts, fn = unpack(user_cmd)
+	vim.api.nvim_create_user_command(cmd_name, fn, opts)
 end
 
 
