@@ -22,10 +22,10 @@ end
 options_enable = {
 	'number', 'relativenumber', -- line number + relative
 	'cursorline', -- highlight cursor line
-	-- 'cursorcolumn', -- highlight cursor column
+	--'cursorcolumn', -- highlight cursor column
 	--'termguicolors', -- ?
 	--'showmatch', -- shows matching brackets
-	'autochdir', -- change current dir to file's dir (folder directory)
+	--'autochdir', -- change current dir to file's dir (folder directory)
 	--'showcmd', -- ? show last command (if you pressed 'j' then 'j' will be showed)
 
 	--'incsearch',
@@ -200,8 +200,6 @@ keybinds_n = {
 
 	['<c-cr>'] = '<c-6>', -- goto to prev file(buffer?)
 
-	['<esc>'] = '<cmd>nohlsearch<cr>', -- TODO: also remove red search result not found
-
 	-- TODO?: add `zb` == `zw`: spelling bad/wrong
 
 	['g/m'] = '/<<<<<<<\\|=======\\|>>>>>>><cr>', -- TODO: only for `.diff` file?
@@ -211,11 +209,6 @@ keybinds_n = {
 
 	['<c-щ>'] = '<c-o>',
 	['<c-ш>'] = '<c-i>',
-
-	-- for quickfix list:
-	['<c-n>'] = '<cmd>cprev<cr>',
-	['<c-m>'] = '<cmd>cnext<cr>',
-	['<c-q>'] = '<cmd>cclose<cr>',
 }
 
 keybinds_i = {
@@ -247,6 +240,13 @@ keybinds_n_c = {
 	['<leader>S'] = 'setlocal spell!', ['<leader>І'] = 'setlocal spell!',
 
 	--<leader>v :call ToggleHorizontalVerticalSplit() <cr>
+
+	['<esc>'] = 'nohlsearch', -- TODO: also remove red "E486: Pattern not found"
+
+	-- for quickfix list:
+	['<c-9>'] = 'cprev',
+	['<c-0>'] = 'cnext',
+	['<c-q>'] = 'cclose',
 }
 
 -- TODO: test if `x` or `v` is needed
