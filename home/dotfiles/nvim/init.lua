@@ -641,6 +641,7 @@ require('lazy').setup {
 			vim.g.NERDTreeNaturalSort = 1
 			vim.g.NERDTreeIgnore = { '\\.bin$', '\\.png$', '\\.jpg$', '\\.jpeg$', '\\.gif$', '\\.webp$' }
 			keybinds_n_c['<leader>n'] = 'NERDTreeToggle'
+			keybinds_n_c['<leader>Nf'] = 'NERDTreeFind'
 		end
 	}, -- file manager
 	--'Xuyuanp/scrollbar.nvim', -- scrollbar
