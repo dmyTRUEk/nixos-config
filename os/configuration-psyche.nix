@@ -29,6 +29,11 @@
 		# };
 	};
 
+	systemd.tmpfiles.rules = [
+		# src: https://nixos.wiki/wiki/AMD_GPU#HIP
+		"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+	];
+
 	programs = {
 		light.enable = true; # TODO?: move to HM   # had to be installed in root?
 	};

@@ -20,7 +20,9 @@
 		"sd_mod"
 		"rtsx_pci_sdmmc"
 	];
-	boot.initrd.kernelModules = [];
+	boot.initrd.kernelModules = [
+		"amdgpu"
+	];
 	boot.kernelModules = [
 		"kvm-amd"
 	];
@@ -48,5 +50,16 @@
 	# networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
 
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-	hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+	hardware = {
+		cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+		graphics = {
+			enable = true;
+			extraPackages = with pkgs; [
+				# src: https://nixos.wiki/wiki/AMD_GPU#OpenCL
+				rocmPackages.clr.icd
+				# src: https://nixos.wiki/wiki/AMD_GPU#AMDVLK
+				amdvlk
+			];
+		};
+	};
 }
