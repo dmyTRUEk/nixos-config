@@ -49,5 +49,13 @@
 	# networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
 
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-	hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+	hardware = {
+		cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+		opengl.extraPackages = with pkgs; [
+			# src: https://nixos.wiki/wiki/AMD_GPU#OpenCL
+			rocmPackages.clr.icd
+			# src: https://nixos.wiki/wiki/AMD_GPU#AMDVLK
+			amdvlk
+		];
+	};
 }

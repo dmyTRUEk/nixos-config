@@ -24,8 +24,17 @@
 		};
 	};
 
+	systemd.tmpfiles.rules = [
+		# src: https://nixos.wiki/wiki/AMD_GPU#HIP
+		"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+	];
+
 	programs = {};
 
 	environment.systemPackages = with pkgs; [ # PKGS
 	];
+
+	environment.variables = {
+		ROC_ENABLE_PRE_VEGA = "1";
+	};
 }
