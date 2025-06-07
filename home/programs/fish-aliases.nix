@@ -113,6 +113,7 @@
 	ny  = "nvim ~/.config/home-manager/home/programs/yazi.nix";
 
 	nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua";
+	nns = "nvim ~/.config/home-manager/home/dotfiles/nvim/snippets/";
 	ns  = "nvim ~/.config/home-manager/home/dotfiles/sway/config";
 	nss = "nvim ~/.config/home-manager/home/dotfiles/sway/scripts/";
 	nw  = "nvim ~/.config/home-manager/home/dotfiles/waybar/config";
