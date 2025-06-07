@@ -123,6 +123,12 @@
 	services = {
 		displayManager = {
 			defaultSession = "sway";
+			gdm = {
+				enable = true;
+				wayland = true;
+				#banner = "Greetings, human.";
+				#hiddenUsers = [];
+			};
 			#sddm = {
 			#	enable = true;
 			#	wayland.enable = true;
@@ -138,14 +144,6 @@
 			xkb = {
 				layout = "us";
 				options = "caps:swapescape,ctrl:swap_lalt_lctrl";
-			};
-			displayManager = {
-				gdm = {
-					enable = true;
-					wayland = true;
-					#banner = "Greetings, human.";
-					#hiddenUsers = [];
-				};
 			};
 			#desktopManager.xfce.enable = true;
 		};
