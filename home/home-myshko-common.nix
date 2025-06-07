@@ -108,7 +108,7 @@
 			userEmail = "25669613+dmyTRUEk@users.noreply.github.com";
 			extraConfig = {
 				init.defaultBranch = "main";
-				core.askPass = "";
+				#core.askPass = "";
 				push.autoSetupRemote = true;
 				merge.tool = "nvimdiff";
 			};
