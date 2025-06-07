@@ -9,6 +9,11 @@
 	# nil,
 	...
 }: {
+	services.kdeconnect = {
+		enable = true;
+		indicator = true;
+	};
+
 	programs = {
 		# IMPORTANT!!!
 		# - DO NOT `.enable` programs that have dotfiles symlinks

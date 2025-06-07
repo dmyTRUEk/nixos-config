@@ -568,8 +568,7 @@ exec_always $(nix eval nixpkgs#polkit_gnome.outPath --raw)/libexec/polkit-gnome-
 exec dropbox
 
 # KDE Connect
-#exec kdeconnect-indicator
-#exec /usr/lib/kdeconnectd
+exec kdeconnect-indicator
 
 # Clipman
 #exec wl-paste -t text --watch clipman store

@@ -78,6 +78,10 @@
 	networking = {
 		#hostName = "noname"; # specified in `-knight` & `-psyche`
 		networkmanager.enable = true;
+		firewall = rec {
+			allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # for kdeconnect
+			allowedUDPPortRanges = allowedTCPPortRanges;
+		};
 	};
 
 	hardware.bluetooth.enable = true; # enables support for Bluetooth
