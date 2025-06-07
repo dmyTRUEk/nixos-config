@@ -166,6 +166,7 @@
 		inkscape
 		godot
 		luanti
+		zulip
 
 		# LANGS:
 		rustup # rust btw

@@ -58,7 +58,8 @@ WINDOW_ICONS_BY_APP_ID: dict[str, str] = {
 	"telegram": "", # 
 	"vlc": "󰕼",
 	"zathura": "", # 󰈦
-	"zoom": "Z",
+	"zoom": "󰬡", # Z
+	"zulip": "󰰷",
 	#     
 }
 WINDOW_ICONS_ALL: dict[str, str] = WINDOW_ICONS_BY_APP_ID | WINDOW_ICONS_BY_WINDOW_NAME
