@@ -3,7 +3,7 @@
 	enable = true;
 	#enableFishIntegration = true; # it's just `yazi_with_cwd_memory`
 	settings = {
-		manager = {
+		mgr = {
 			sort_by = "natural";
 			sort_sensitive = false; # case sensitive
 			#sort_reverse = true; # TODO: enable for screenshots
@@ -88,7 +88,7 @@
 	keymap = {
 		# some default keymaps: yazi-rs.github.io/docs/quick-start
 		# ALL default keymaps: github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml
-		manager = {
+		mgr = {
 			prepend_keymap = [
 				{ on = ["?"]; run = "help";  desc = "Open help"; }
 				{ on = ["Q"]; run = "quit";  desc = "Quit"; }

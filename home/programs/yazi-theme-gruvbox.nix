@@ -1,7 +1,7 @@
 # programs.yazi.theme +=
 {
 	# based on: github.com/poperigby/gruvbox-dark-yazi
-	manager = {
+	mgr = {
 		cwd = { fg = "#83a598"; };
 
 		# Hovered
