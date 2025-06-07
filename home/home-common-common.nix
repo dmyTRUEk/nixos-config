@@ -161,7 +161,7 @@
 		kdePackages.gwenview
 		helvum
 		audacity
-		amberol # gnome music player
+		# amberol # gnome music player
 		element-desktop
 		inkscape
 		godot
