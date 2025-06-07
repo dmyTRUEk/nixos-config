@@ -138,7 +138,7 @@
 				#{ on = ["g" "D"]; run = "cd ~/Dropbox/Docs"; }
 				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2025_spring"; }
 				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
-				{ on = ["g" "w"]; run = "cd ~/Dropbox/Work"; }
+				{ on = ["g" "w"]; run = "cd ~/Dropbox/Work/2025"; }
 				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/0_papers"; }
 				{ on = ["g" "m"]; run = "cd ~/Music"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
