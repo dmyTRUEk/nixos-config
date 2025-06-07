@@ -152,6 +152,7 @@
 			#desktopManager.xfce.enable = true;
 		};
 		blueman.enable = true;
+		printing.enable = true;
 		ollama = {
 			enable = true;
 			# acceleration = "rocm"; # or cuda   # in `conf-<name>.nix`
