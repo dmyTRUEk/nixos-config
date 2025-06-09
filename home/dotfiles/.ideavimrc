@@ -35,13 +35,25 @@ Plug 'machakann/vim-highlightedyank'
 
 let mapleader = " "
 
-" clear search on esc
-nnoremap <esc> :nohlsearch <cr>
 
-" unmap ex mode
+
+noremap 0 ^
+noremap ^ 0
+
+noremap ` '
+noremap ' `
+
+noremap <C-j> <C-d>zz
+noremap <C-k> <C-u>zz
+noremap <C-n> %
+
 map Q <nop>
+nnoremap U <C-r>
+nnoremap Y y$
+noremap - $
+nnoremap <C-p> $p
+nnoremap <A-p> ^P
 
-" fix `h` and `l` motions
 nnoremap ch lc2h
 nnoremap cl c2l
 nnoremap dh ld2h
@@ -49,124 +61,29 @@ nnoremap dl d2l
 nnoremap yh ly2h
 nnoremap yl y2l
 
-" better copy till end of line
-nnoremap Y y$
-
-" better bind for redo
-nnoremap U <C-r>
-
-" swap 0 and ^
-noremap 0 ^
-noremap ^ 0
-
-" swap ` and '
-noremap ` '
-noremap ' `
-
-" better move to end of line
-noremap - $
-
-" paste at start of line
-nnoremap <A-p> ^P
-
-" find from end of line
-nnoremap gf $F
-
-" work with function names:
 nnoremap cn ct(
 nnoremap dn dt(
 nnoremap yn yt(
 nnoremap cu ct_
 nnoremap du df_
 nnoremap d_ df_
-" xnoremap  n  t(
 
 nnoremap c; ct;
 nnoremap d; dt;
 nnoremap y; yt;
 
-nnoremap 0 ^
-nnoremap - $
-
-" better binds for go half page down/up:
-noremap <C-j> <C-d>zz
-noremap <C-k> <C-u>zz
-
-" move in insert mode:
-" TODO: <C-;>
-inoremap <C-;> <nop>
-inoremap <C-h> <left>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-l> <right>
-
-" paste at end of line
-nnoremap <C-p> $p
-
-xnoremap S :sort <cr>
-
-" clear highlight after search
-nnoremap <leader>o :nohlsearch <cr>
-
-" erase last symbol in line
-nnoremap <leader>e m`$x``
-
-" append symbols to end of line:
 nnoremap <leader>; m`A;<esc>``
 nnoremap <leader>: m`A:<esc>``
 nnoremap <leader>, m`A,<esc>``
 nnoremap <leader>. m`A.<esc>``
+nnoremap <leader>e m`$x``
 
-" WINDOW operations:
-" save:
-nnoremap <leader>w :w <cr>
-nnoremap <leader>W :wa <cr>
-
-" quit:
-nnoremap <leader>q :q <cr>
-nnoremap <leader>Q :qa <cr>
-
-" save and quit:
-nnoremap <leader>a :wq <cr>
-nnoremap <leader>A :wqa <cr>
-
-" move between windows inside vim:
-nnoremap <leader>h :wincmd h <cr>
-nnoremap <leader>j :wincmd j <cr>
-nnoremap <leader>k :wincmd k <cr>
-nnoremap <leader>l :wincmd l <cr>
-
-" move windows themselves inside vim:
-nnoremap <leader><leader>h :wincmd H <cr>
-nnoremap <leader><leader>j :wincmd J <cr>
-nnoremap <leader><leader>k :wincmd K <cr>
-nnoremap <leader><leader>l :wincmd L <cr>
-
-
-
-" my Change Current word with another (aka `viwy`):
-
-" `cc` is duplication of `S`, so we can use it for our purposes, so firstly we clearing it
 nnoremap cc <nop>
-nnoremap сс <nop>
 
-" map `cc<move>` to Change Current word with MOVE word
-" this solution is better than `df<space>f<space>p` because it might not work if
-" there is no space after second word (eg `,` `)` `\n` etc)
-
-" TODO?: figure out better way to do this, so it works at least for `f<symbol>` or even any move
-
-" TODO: fix it for ukr
-
-" here `|` means cursor position
-" a|aa bbb -> bbb| aaa
 nnoremap ccw yiwwviwp2bviwp
-" aaa.a|aa bbb.bbb -> bbb.bbb| aaa.aaa
 nnoremap ccW yiWWviWp2BviWp
 
-" aaa b|bb -> bbb aaa|
 nnoremap ccb yiwbviwpwviwp
-" aaa.aaa bbb.b|bb -> bbb.bbb aaa.aaa|
 nnoremap ccB yiWBviWpWviWp
 
 nnoremap cc2w yiw2wviwp3bviwp
@@ -178,6 +95,44 @@ nnoremap cc3w yiw3wviwp4bviwp
 nnoremap cc3b yiw3bviwp3wviwp
 nnoremap cc3W yiW3WviWp4BviWp
 nnoremap cc3B yiW3BviWp3WviWp
+
+nnoremap g/m /<<<<<<<\\|=======\\|>>>>>>> <cr>
+
+
+
+nnoremap <leader>q :q <cr>
+nnoremap <leader>Q :qa <cr>
+nnoremap <leader>w :w <cr>
+nnoremap <leader>W :wa <cr>
+nnoremap <leader>a :wq <cr>
+nnoremap <leader>A :wqa <cr>
+" TODO: maybe adjust it for AS's tabs navigation?
+nnoremap <leader>h :wincmd h <cr>
+nnoremap <leader>j :wincmd j <cr>
+nnoremap <leader>k :wincmd k <cr>
+nnoremap <leader>l :wincmd l <cr>
+nnoremap <leader>H :wincmd H <cr>
+nnoremap <leader>J :wincmd J <cr>
+nnoremap <leader>K :wincmd K <cr>
+nnoremap <leader>L :wincmd L <cr>
+nnoremap <leader><leader> :wincmd p <cr>
+
+nnoremap <esc> :nohlsearch <cr>
+
+
+
+" TODO: <C-;>
+inoremap <C-;> <nop>
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-l> <right>
+
+
+
+xnoremap S :sort <cr>
+
+
 
 
 
@@ -246,4 +201,9 @@ map <leader>g <Action>(FindInPath)
 map <leader>n <Action>(Switcher)
 
 map <leader>z <Action>(ToggleDistractionFreeMode)
+
+" better next/prev suggestion
+"imap <tab> <c-n>
+"imap <s-tab> <c-p>
+" it doesnt work TwT
 
