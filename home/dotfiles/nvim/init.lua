@@ -144,6 +144,8 @@ keymap_swap_n = function(k1, k2) vim.keymap.set('n', k1, k2) vim.keymap.set('n',
 keymap_swap_v = function(k1, k2) vim.keymap.set('v', k1, k2) vim.keymap.set('v', k2, k1) end
 keymap_swap_nv = function(k1, k2) keymap_swap_n(k1, k2) keymap_swap_v(k1, k2) end
 
+
+
 keymap_swap_nv('0', '^')
 keymap_swap_nv("'", '`')
 
@@ -183,8 +185,7 @@ keymap_n('<leader>;', 'm`A;<esc>``')
 keymap_n('<leader>:', 'm`A:<esc>``')
 keymap_n('<leader>,', 'm`A,<esc>``')
 keymap_n({'<leader>.', '<leader>ю'}, 'm`A.<esc>``')
-
-keymap_n('<leader>e', 'm`$x``') -- TODO: test
+keymap_n({'<leader>e', '<leader>у'}, 'm`$x``')
 
 -- TODO: make one more plugin? :3
 -- my Change Current word with another (aka `viwy`):
@@ -231,12 +232,8 @@ keymap_n('<c-ш>', '<c-i>')
 -- Diagnostic keymaps
 keymap_n('<leader>x', vim.diagnostic.setloclist) -- Open diagnostic quickfi[X] list
 
-
-keymap_i({'<c-;>', '<c-ж>'}, '')
-keymap_i({'<c-h>', '<c-р>'}, '<left>')
-keymap_i({'<c-j>', '<c-о>'}, '<down>')
-keymap_i({'<c-k>', '<c-л>'}, '<up>')
-keymap_i({'<c-l>', '<c-д>'}, '<right>')
+keymap_n('<down>', '<c-e>') -- move viewport down
+keymap_n('<up>'  , '<c-y>') -- move viewport up
 
 
 
@@ -252,10 +249,12 @@ keymap_n_cmd({'<leader>j', '<leader>о'}, 'wincmd j')
 keymap_n_cmd({'<leader>k', '<leader>л'}, 'wincmd k')
 keymap_n_cmd({'<leader>l', '<leader>д'}, 'wincmd l')
 
-keymap_n_cmd({'<leader><leader>h', '<leader><leader>р'}, 'wincmd H')
-keymap_n_cmd({'<leader><leader>j', '<leader><leader>о'}, 'wincmd J')
-keymap_n_cmd({'<leader><leader>k', '<leader><leader>л'}, 'wincmd K')
-keymap_n_cmd({'<leader><leader>l', '<leader><leader>д'}, 'wincmd L')
+keymap_n_cmd({'<leader>H', '<leader>Р'}, 'wincmd H')
+keymap_n_cmd({'<leader>J', '<leader>О'}, 'wincmd J')
+keymap_n_cmd({'<leader>K', '<leader>Л'}, 'wincmd K')
+keymap_n_cmd({'<leader>L', '<leader>Д'}, 'wincmd L')
+
+keymap_n_cmd('<leader><leader>', 'wincmd p')
 
 keymap_n_cmd({'<leader>S', '<leader>І'}, 'setlocal spell!')
 
@@ -269,11 +268,22 @@ keymap_n_cmd('<c-0>', 'cnext')
 keymap_n_cmd('<c-q>', 'cclose')
 
 keymap_n_cmd({'<c-t>', '<c-е>'}, 'tabnext')
+keymap_n_cmd({'<c-y>', '<c-н>'}, 'tabprev')
+
+
+
+keymap_i({'<c-;>', '<c-ж>'}, '')
+keymap_i({'<c-h>', '<c-р>'}, '<left>')
+keymap_i({'<c-j>', '<c-о>'}, '<down>')
+keymap_i({'<c-k>', '<c-л>'}, '<up>')
+keymap_i({'<c-l>', '<c-д>'}, '<right>')
 
 
 
 keymap_v('-', '$h') -- better $
 keymap_v({'S', 'І'}, ':sort<cr>')
+
+
 
 
 
