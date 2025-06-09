@@ -774,7 +774,16 @@ require('lazy').setup({
 		init = function ()
 			vim.g.NERDTreeSortOrder = { '[[extension]]' } -- TODO: change?
 			vim.g.NERDTreeNaturalSort = 1
-			vim.g.NERDTreeIgnore = { '\\.bin$', '\\.png$', '\\.jpg$', '\\.jpeg$', '\\.gif$', '\\.webp$' }
+			vim.g.NERDTreeIgnore = {
+				'\\.bin$',
+				'\\.gif$',
+				'\\.jpeg$',
+				'\\.jpg$',
+				'\\.png$',
+				'\\.rar$',
+				'\\.webp$',
+				'\\.zip$',
+			}
 			keymap_n_cmd('<leader>n', 'NERDTreeToggle')
 			keymap_n_cmd('<leader>Nf', 'NERDTreeFind')
 		end
