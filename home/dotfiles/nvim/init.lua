@@ -235,6 +235,8 @@ keymap_n('<leader>x', vim.diagnostic.setloclist) -- Open diagnostic quickfi[X] l
 keymap_n('<down>', '<c-e>') -- move viewport down
 keymap_n('<up>'  , '<c-y>') -- move viewport up
 
+keymap_n('=p', '`[v`]=') -- indent last paste
+
 
 
 keymap_n_cmd({'<leader>q', '<leader>й'}, 'q')
