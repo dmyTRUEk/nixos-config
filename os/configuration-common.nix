@@ -73,6 +73,7 @@
 		extraModulePackages = with config.boot.kernelPackages; [
 			v4l2loopback # for obs virtual camera
 		];
+		extraModprobeConfig = ''options bluetooth disable_ertm=1''; # for better bluetooth autoconnect
 	};
 
 	networking = {
