@@ -194,18 +194,18 @@ input type:keyboard {
 	repeat_rate 30
 }
 
-# enable/disable Workman
-bindsym $mod+5       input type:keyboard xkb_layout "en,ukr,en_workman"
-# bindsym $mod+5       input type:keyboard xkb_layout "en,ukr,en_workman", input type:keyboard xkb_switch_layout 2
+# disable alt layouts:
 bindsym $mod+Shift+5 input type:keyboard xkb_layout "en,ukr"
 
-# enable/disable Colemak-DH
-bindsym $mod+6       input type:keyboard xkb_layout "en,ukr,en_colemak_dh"
-bindsym $mod+Shift+6 input type:keyboard xkb_layout "en,ukr"
-
 # enable/disable Colemak
-bindsym $mod+7       input type:keyboard xkb_layout "en,ukr,en_colemak"
-bindsym $mod+Shift+7 input type:keyboard xkb_layout "en,ukr"
+bindsym $mod+5       input type:keyboard xkb_layout "en,ukr,en_colemak"
+
+# enable/disable Workman
+bindsym $mod+6       input type:keyboard xkb_layout "en,ukr,en_workman"
+# bindsym $mod+6       input type:keyboard xkb_layout "en,ukr,en_workman", input type:keyboard xkb_switch_layout 2
+
+# enable/disable Colemak-DH
+bindsym $mod+7       input type:keyboard xkb_layout "en,ukr,en_colemak_dh"
 
 bindsym $mod+Ctrl+F7       input type:keyboard xkb_layout "none"
 bindsym $mod+Ctrl+Shift+F7 input type:keyboard xkb_layout "en,ukr"
