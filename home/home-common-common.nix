@@ -167,7 +167,6 @@
 		godot
 		luanti
 		zulip
-		mathematica # wolfram mathematica
 
 		# LANGS:
 		rustup # rust btw
