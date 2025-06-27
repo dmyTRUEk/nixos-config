@@ -49,9 +49,14 @@
 			djvu = [{ run = ''zathura "$@"''; }];
 			krita_project = [{ run = ''krita "$@"''; }];
 			#markdown = [];
+			wolfram_mathematics = [
+				{ run = ''wolframnb "$@"''; }
+				#{ run = ''nvim "$@"''; block = true; }
+			];
 		};
 		open = {
 			rules = [
+				{ name = "*.nb"; use = "wolfram_mathematics"; }
 				{ name = "*.kdenlive"; use = "kdenlive"; }
 				{ name = "*.kra"; use = "krita_project"; }
 				{ name = "*.djvu"; use = "djvu"; }
