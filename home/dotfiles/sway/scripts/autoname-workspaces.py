@@ -57,6 +57,7 @@ WINDOW_ICONS_BY_APP_ID: dict[str, str] = {
 	"swayimg": "", # 󰋩   󰥶 󰲍
 	"telegram": "", # 
 	"vlc": "󰕼",
+	"wolfram": "󰛄",
 	"zathura": "", # 󰈦
 	"zoom": "󰬡", # Z
 	"zulip": "󰰷",
