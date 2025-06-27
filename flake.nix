@@ -74,8 +74,8 @@
 								inherit
 									inputs
 									nixla
-									pkgs_a85fc0a
 									# nil
+									pkgs_a85fc0a
 								;
 							};
 							backupFileExtension = "backup";
@@ -111,6 +111,7 @@
 									inputs
 									nixla
 									# nil
+									pkgs_a85fc0a
 								;
 							};
 							backupFileExtension = "backup";
