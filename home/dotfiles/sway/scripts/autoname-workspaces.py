@@ -26,93 +26,93 @@ import i3ipc
 # - use only lowercase
 # - assuming all icons to be ONE symbol (search for `ae36d1` in this file)
 WINDOW_ICONS_BY_WINDOW_NAME: dict[str, str] = { # for CLI apps
-	"all files": "",
-	"btop": "󰄪",
-	"ranger": "", #     
-	"yazi": "", #     
+	'all files': '',
+	'btop': '󰄪',
+	'ranger': '', #     
+	'yazi': '', #     
 }
 WINDOW_ICONS_BY_APP_ID: dict[str, str] = {
-	"alacritty": "", #   
-	"blender": "󰂫",
-	"blueman-manager": "",
-	"boxes": "",
-	"discord": "", # 󰙯
-	"element": "[m]", # matrix/element
-	"firefox": "", # 󰈹
-	"gimp": "",
-	"gnome-boxes": "",
-	"godot": "",
-	"jetbrains-studio": "", # android-studio
-	"kdeconnect": "",
-	"kdenlive": "",
-	"kitty": "󰄛",
-	"krita": "",
-	"libreoffice": "󰈙",
-	"libreoffice-calc": "󱪝",
-	"libreoffice-impress": "󰐩",
-	"libreoffice-writer": "󰷈",
-	"obs": "󰐾", # 󱔛 󰟞 󰐻 󰐾 󰻃 󰠿 󰚀 󱜠
-	"skype": "󰒯", # 
-	"steam": "", # 
-	"swayimg": "", # 󰋩   󰥶 󰲍
-	"telegram": "", # 
-	"vlc": "󰕼",
-	"wallet": "󰖄",
-	"wolfram": "󰛄",
-	"zathura": "", # 󰈦
-	"zoom": "󰬡", # Z
-	"zulip": "󰰷",
+	'alacritty': '', #   
+	'blender': '󰂫',
+	'blueman-manager': '',
+	'boxes': '',
+	'discord': '', # 󰙯
+	'element': '[m]', # matrix/element
+	'firefox': '', # 󰈹
+	'gimp': '',
+	'gnome-boxes': '',
+	'godot': '',
+	'jetbrains-studio': '', # android-studio
+	'kdeconnect': '',
+	'kdenlive': '',
+	'kitty': '󰄛',
+	'krita': '',
+	'libreoffice': '󰈙',
+	'libreoffice-calc': '󱪝',
+	'libreoffice-impress': '󰐩',
+	'libreoffice-writer': '󰷈',
+	'obs': '󰐾', # 󱔛 󰟞 󰐻 󰐾 󰻃 󰠿 󰚀 󱜠
+	'skype': '󰒯', # 
+	'steam': '', # 
+	'swayimg': '', # 󰋩   󰥶 󰲍
+	'telegram': '', # 
+	'vlc': '󰕼',
+	'wallet': '󰖄',
+	'wolfram': '󰛄',
+	'zathura': '', # 󰈦
+	'zoom': '󰬡', # Z
+	'zulip': '󰰷',
 	#     
 }
 WINDOW_ICONS_ALL: dict[str, str] = WINDOW_ICONS_BY_APP_ID | WINDOW_ICONS_BY_WINDOW_NAME
 
 
-DEFAULT_ICON: str = "?"
-ICONS_SEPARATOR: str = " "*1
-NUMBER_ICONS_SEPARATOR: str = " "*1
+DEFAULT_ICON: str = '?'
+ICONS_SEPARATOR: str = ' '*1
+NUMBER_ICONS_SEPARATOR: str = ' '*1
 
 WORKSPACE_NUMBER_TO_NAME: dict[int, str] = {
-	1: "一",
-	2: "二",
-	3: "三",
-	4: "四",
-	5: "く",
-	6: "わ",
-	7: "え",
-	8: "ら",
-	9: "あ",
-	10: "す",
-	11: "ディ",
-	12: "ふ",
-	13: "ざ",
-	14: "か",
-	15: "つ",
-	16: "を",
+	1: '一',
+	2: '二',
+	3: '三',
+	4: '四',
+	5: 'く',
+	6: 'わ',
+	7: 'え',
+	8: 'ら',
+	9: 'あ',
+	10: 'す',
+	11: 'ディ',
+	12: 'ふ',
+	13: 'ざ',
+	14: 'か',
+	15: 'つ',
+	16: 'を',
 }
 
 
 def main():
 	parser = argparse.ArgumentParser(
-		description="This script automatically changes the workspaces names in Sway depending on opened applications."
+		description='This script automatically changes the workspaces names in Sway depending on opened applications.'
 	)
 	parser.add_argument(
-		"--duplicates",
-		"-d",
-		action="store_false", # so default is true
-		help="Pass it if you don't want an icon for EACH instance of the same application per workspace.",
+		'--duplicates',
+		'-d',
+		action='store_false', # so default is true
+		help='Pass it if you don't want an icon for EACH instance of the same application per workspace.',
 	)
 	parser.add_argument(
-		"--exact",
-		"-e",
-		action="store_true", # so default is false
-		help="Pass it if you want to match names exactly (default is substring).",
+		'--exact',
+		'-e',
+		action='store_true', # so default is false
+		help='Pass it if you want to match names exactly (default is substring).',
 	)
 	parser.add_argument(
-		"--logfile",
-		"-l",
+		'--logfile',
+		'-l',
 		type=str,
-		default="/tmp/sway-autoname-workspaces.log",
-		help="Path for the logfile.",
+		default='/tmp/sway-autoname-workspaces.log',
+		help='Path for the logfile.',
 	)
 	args = parser.parse_args()
 	global ARGUMENTS
@@ -121,22 +121,22 @@ def main():
 	logging.basicConfig(
 		level=logging.INFO,
 		filename=ARGUMENTS.logfile,
-		filemode="w",
-		format="%(asctime)s [%(levelname)s] %(message)s",
+		filemode='w',
+		format='%(asctime)s [%(levelname)s] %(message)s',
 	)
 
 	def window_event_handler(ipc, event):
-		if event.change in ["new", "close", "move"]:
+		if event.change in ['new', 'close', 'move']:
 			rename_workspaces(ipc)
 
 	def workspace_event_handler(ipc, event):
-		if event.change in ["init", "empty", "focus"]:
+		if event.change in ['init', 'empty', 'focus']:
 			rename_workspaces(ipc)
 
 	ipc = i3ipc.Connection()
 
-	ipc.on("window", window_event_handler)
-	ipc.on("workspace", workspace_event_handler)
+	ipc.on('window', window_event_handler)
+	ipc.on('workspace', workspace_event_handler)
 
 	for sig in [signal.SIGINT, signal.SIGTERM]:
 		signal.signal(sig, lambda _signal, _frame: undo_window_renaming_and_exit(ipc))
@@ -156,7 +156,7 @@ def icon_for_window(window) -> str:
 		app_id = app_id.lower()
 		if (icon := get_icon_for_window(app_id, WINDOW_ICONS_BY_APP_ID)) is not None:
 			return icon
-		logging.info(f"No icon available for window with {window_name=} and {app_id=}")
+		logging.info(f'No icon available for window with {window_name=} and {app_id=}')
 
 	else: # xwayland support
 		class_name = window.window_class
@@ -164,7 +164,7 @@ def icon_for_window(window) -> str:
 			class_name = class_name.lower()
 			if (icon := get_icon_for_window(class_name, WINDOW_ICONS_ALL)) is not None:
 				return icon
-			logging.info(f"No icon available for window with {class_name=}")
+			logging.info(f'No icon available for window with {class_name=}')
 
 	return DEFAULT_ICON
 
@@ -194,10 +194,10 @@ class Workspace:
 	icons: list[str]
 
 	@staticmethod
-	def renamed_from_string(fullname: str) -> "Workspace":
+	def renamed_from_string(fullname: str) -> 'Workspace':
 		num = get_workspace_number_from_fullname(fullname)
-		name = "NA"
-		icons = ""
+		name = 'NA'
+		icons = ''
 		# TODO: refactor this mess.
 		for key, value in WORKSPACE_NUMBER_TO_NAME.items():
 			if fullname.startswith(value):
@@ -209,7 +209,7 @@ class Workspace:
 
 
 def get_workspace_number_from_fullname(fullname: str) -> int:
-	return int(fullname.split(":")[0])
+	return int(fullname.split(':')[0])
 
 
 
@@ -225,12 +225,12 @@ def rename_workspaces(ipc):
 				icons.append(icon)
 		workspace_my.icons = icons
 		new_name = construct_workspace_name(workspace_my)
-		ipc.command(f"rename workspace '{workspace_from_ipc.name}' to '{new_name}'")
+		ipc.command(f'rename workspace '{workspace_from_ipc.name}' to '{new_name}'')
 
 
 def construct_workspace_name(workspace: Workspace):
 	# this `<n>:` is required for sway/waybar to know workspace's actual number
-	new_name = str(workspace.num) + ":"
+	new_name = str(workspace.num) + ':'
 	new_name += WORKSPACE_NUMBER_TO_NAME[int(workspace.num)]
 	if workspace.icons:
 		new_name += NUMBER_ICONS_SEPARATOR + ICONS_SEPARATOR.join(workspace.icons)
@@ -241,12 +241,12 @@ def construct_workspace_name(workspace: Workspace):
 def undo_window_renaming_and_exit(ipc):
 	for workspace in ipc.get_tree().workspaces():
 		workspace_num: int = get_workspace_number_from_fullname(workspace.name)
-		ipc.command(f"rename workspace '{workspace.name}' to '{workspace_num}'")
+		ipc.command(f'rename workspace '{workspace.name}' to '{workspace_num}'')
 	ipc.main_quit()
 	sys.exit(0)
 
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 	main()
 

@@ -40,16 +40,16 @@ from pipe import (
 
 # abcdefghijklmnopqrstuvwxyz
 
-def at(l: list["T"], index: int) -> "T": # pyright: ignore[reportUndefinedVariable]
+def at(l: list['T'], index: int) -> 'T': # pyright: ignore[reportUndefinedVariable]
     return l[index]
 
-def avg(l: list["T"]) -> "T": # pyright: ignore[reportUndefinedVariable]
+def avg(l: list['T']) -> 'T': # pyright: ignore[reportUndefinedVariable]
     return sum(l) / len(l)
 
 def diff(a: int | float | complex, b: int | float | complex) -> float | complex:
     return abs(a-b) / (0.5 * (a+b))
 
-def filter_remove(it: Iterator["T"], pred: Callable[["T"], bool]) -> Iterator["T"]: # pyright: ignore[reportUndefinedVariable]
+def filter_remove(it: Iterator['T'], pred: Callable[['T'], bool]) -> Iterator['T']: # pyright: ignore[reportUndefinedVariable]
     return (x for x in it if not pred(x))
 
 def frange(start: float, end: float, step: float):
@@ -58,16 +58,16 @@ def frange(start: float, end: float, step: float):
         yield x
         x += step
 
-def index_of_max(l: list["T"]) -> int: # pyright: ignore[reportUndefinedVariable]
+def index_of_max(l: list['T']) -> int: # pyright: ignore[reportUndefinedVariable]
     return max(enumerate(l), key=lambda x: x[1])[0]
 
 def lerp(a: int | float | complex, b: int | float | complex, t: float) -> float | complex:
     return a*(1.-t) + b*t
 
-def split_at(l: list["T"], index: int) -> tuple[list["T"], list["T"]]: # pyright: ignore[reportUndefinedVariable]
+def split_at(l: list['T'], index: int) -> tuple[list['T'], list['T']]: # pyright: ignore[reportUndefinedVariable]
     return ( l[:index], l[index:] )
 
-def split_at_percentage(l: list["T"], p: float) -> tuple[list["T"], list["T"]]: # pyright: ignore[reportUndefinedVariable]
+def split_at_percentage(l: list['T'], p: float) -> tuple[list['T'], list['T']]: # pyright: ignore[reportUndefinedVariable]
     return split_at(l, round(len(l) * p))
 
 def std_dev(l: list[float]) -> float:
@@ -78,7 +78,7 @@ def unzip2(xy: Iterator) -> tuple[Iterator, Iterator]:
     xy1, xy2 = itertools.tee(xy)
     return ( (x for x, _ in xy1), (y for _, y in xy2) )
 
-def windows(it: Iterator["T"] | list["T"], window_size: int) -> Iterator[tuple["T", ...]] | list[tuple["T", ...]]: # pyright: ignore[reportUndefinedVariable]
+def windows(it: Iterator['T'] | list['T'], window_size: int) -> Iterator[tuple['T', ...]] | list[tuple['T', ...]]: # pyright: ignore[reportUndefinedVariable]
     # simple impl for lists:
     # assert window_size <= len(l)
     # res = []
@@ -110,6 +110,6 @@ unzip2_ = Pipe(unzip2)
 windows_ = Pipe(windows)
 
 
-if __name__ == "__main__":
-    print(f"Python {sys.version} on {sys.platform}")
+if __name__ == '__main__':
+    print(f'Python {sys.version} on {sys.platform}')
 

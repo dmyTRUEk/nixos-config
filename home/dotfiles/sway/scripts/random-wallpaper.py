@@ -38,6 +38,6 @@ def set_wallpaper(img: str):
 	exec_cli_cmd(f"swaymsg -s $SWAYSOCK output '*' bg {img} fill")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 	main()
 
