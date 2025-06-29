@@ -99,7 +99,7 @@ def main():
 		'--duplicates',
 		'-d',
 		action='store_false', # so default is true
-		help='Pass it if you don't want an icon for EACH instance of the same application per workspace.',
+		help="Pass it if you don't want an icon for EACH instance of the same application per workspace.",
 	)
 	parser.add_argument(
 		'--exact',
@@ -225,7 +225,7 @@ def rename_workspaces(ipc):
 				icons.append(icon)
 		workspace_my.icons = icons
 		new_name = construct_workspace_name(workspace_my)
-		ipc.command(f'rename workspace '{workspace_from_ipc.name}' to '{new_name}'')
+		ipc.command(f"rename workspace '{workspace_from_ipc.name}' to '{new_name}'")
 
 
 def construct_workspace_name(workspace: Workspace):
@@ -241,7 +241,7 @@ def construct_workspace_name(workspace: Workspace):
 def undo_window_renaming_and_exit(ipc):
 	for workspace in ipc.get_tree().workspaces():
 		workspace_num: int = get_workspace_number_from_fullname(workspace.name)
-		ipc.command(f'rename workspace '{workspace.name}' to '{workspace_num}'')
+		ipc.command(f"rename workspace '{workspace.name}' to '{workspace_num}'")
 	ipc.main_quit()
 	sys.exit(0)
 
