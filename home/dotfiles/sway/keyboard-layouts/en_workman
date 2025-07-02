@@ -51,5 +51,5 @@ xkb_symbols "basic" {
 	# key <AB09> { [ period, greater ] }; # .
 	# key <AB10> { [ slash, question ] }; # /
 
-	key <RALT> { [ BackSpace, BackSpace ] };
+	key <RALT> { [ BackSpace, none ] };
 };

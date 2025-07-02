@@ -12,5 +12,5 @@ xkb_symbols "basic" {
 	include "us"
 		name[Group1] = "English (US) (by dmyTRUEk)";
 
-	key <RALT> { [ BackSpace, BackSpace ] };
+	key <RALT> { [ BackSpace, none ] };
 };

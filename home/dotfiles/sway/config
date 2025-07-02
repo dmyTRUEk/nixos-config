@@ -194,6 +194,13 @@ input type:keyboard {
 	repeat_rate 30
 }
 
+# set $wtype $(nix eval nixpkgs#wtype.outPath --raw)
+set $wtype /nix/store/2lvbgblmx55qi3558jb4hdfnm0g7g07z-wtype-0.4/bin/wtype
+# bindsym --release Mod5       exec notify-send 'test'
+# bindsym Mod5       exec $wtype -k Backspace
+bindsym Shift+Backspace exec "$wtype -k Delete"
+# bindsym Shift+Backspace exec notify-send "$wtype"
+
 # disable alt layouts:
 bindsym $mod+Shift+5 input type:keyboard xkb_layout "en,ukr"
 
