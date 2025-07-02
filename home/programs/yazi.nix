@@ -98,22 +98,34 @@
 				{ on = ["?"]; run = "help";  desc = "Open help"; }
 				{ on = ["Q"]; run = "quit";  desc = "Quit"; }
 				{ on = ["q"]; run = "close"; desc = "Close current tab or quit if last"; }
+
+				# this is default anyway
+				# { on = ["<Enter>"];   run = "open";               desc = "Open selected files"; }
+				# { on = ["<S-Enter>"]; run = "open --interactive"; desc = "Open selected files interactively"; }
+
+				{ on = ["o"]; run = "create --dir"; desc = "Create a directory"; }
+				{ on = ["O"]; run = "create";       desc = "Create a file (append / for directory)"; }
+
+				{ on = ["i"]; run = "rename --cursor=start";      desc = "Rename, cursor at start"; }
+				{ on = ["a"]; run = "rename --cursor=before_ext"; desc = "Rename, cursor before extension"; }
+				{ on = ["A"]; run = "rename --cursor=end";        desc = "Rename, cursor at end"; }
+				{ on = ["r"]; run = "rename --empty=stem";        desc = "Rename, leave extension"; }
+				{ on = ["R"]; run = "rename --empty=all";         desc = "Rename"; }
+
 				{ on = ["<Esc>"]; run = ["escape" "unyank"]; desc = "Exit visual mode, clear selected, or cancel search"; }
 				{ on = ["<C-d>"]; run = ''shell "$SHELL" --block --confirm''; desc = "Open shell here"; }
 				{ on = ["<C-j>"]; run = "arrow  50%"; desc = "Move cursor half page down"; }
 				{ on = ["<C-k>"]; run = "arrow -50%"; desc = "Move cursor half page up"; }
-				{ on = ["J"]; run = "tab_switch -1 --relative"; desc = "Switch to the previous tab"; }
-				{ on = ["K"]; run = "tab_switch  1 --relative"; desc = "Switch to the next tab"; }
+				{ on = ["J"]; run = "tab_switch -1 --relative"; desc = "Switch to previous tab"; }
+				{ on = ["K"]; run = "tab_switch  1 --relative"; desc = "Switch to next tab"; }
 				{ on = ["u"]; run = "shell 'dua i' --block --confirm"; desc = "Disk Usage (dua i)"; }
 				#{ on = [ "m" "c" ]; run = "linemode ctime"; desc = "Set linemode to ctime"; }
-				{ on = ["a"]; run = "create --dir"; desc = "Create a directory"; }
-				{ on = ["A"]; run = "create";       desc = "Create a file (append / for directory)"; }
 
 				{ on = ["c" "c"]; run = ''shell 'filename="$1" && wl-copy "file://$filename" --type text/uri-list' --confirm''; desc = "Copy file using URI (file://)"; }
 				{ on = ["c" "a"]; run = "copy path";             desc = "Copy Absolute path"; }
-				{ on = ["c" "d"]; run = "copy dirname";          desc = "Copy the path of the parent Directory"; }
-				{ on = ["c" "e"]; run = "copy name_without_ext"; desc = "Copy the name of the file without the Extension"; }
-				{ on = ["c" "n"]; run = "copy filename";         desc = "Copy the Name of the file"; }
+				{ on = ["c" "d"]; run = "copy dirname";          desc = "Copy path of parent Directory"; }
+				{ on = ["c" "e"]; run = "copy name_without_ext"; desc = "Copy name of file without Extension"; }
+				{ on = ["c" "n"]; run = "copy filename";         desc = "Copy Name of file"; }
 
 				{ on = ["," "b"]; run = ["sort btime --dir-first --reverse"    "linemode btime"]; desc = "Sort by Birth time (reverse)"; }
 				{ on = ["," "B"]; run = ["sort btime --dir-first --reverse=no" "linemode btime"]; desc = "Sort by Birth time"; }
@@ -143,7 +155,7 @@
 				#{ on = ["g" "D"]; run = "cd ~/Dropbox/Docs"; }
 				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2025_spring"; }
 				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
-				{ on = ["g" "w"]; run = "cd ~/Dropbox/Work/2025"; }
+				{ on = ["g" "w"]; run = "cd ~/Dropbox/Work"; }
 				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/0_papers"; }
 				{ on = ["g" "m"]; run = "cd ~/Music"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
