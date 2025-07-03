@@ -156,7 +156,7 @@
 				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2025_spring"; }
 				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
 				{ on = ["g" "w"]; run = "cd ~/Dropbox/Work"; }
-				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/0_papers"; }
+				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/papers"; }
 				{ on = ["g" "m"]; run = "cd ~/Music"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
 				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2025" "sort natural --reverse"]; }
