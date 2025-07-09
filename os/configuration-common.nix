@@ -142,6 +142,8 @@
 		};
 		desktopManager = {
 			plasma6.enable = true;
+			#gnome.enable = true;
+			#cosmic.enable = true;
 		};
 		xserver = {
 			enable = true; # TODO: dont enable or why i need it?
