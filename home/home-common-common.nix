@@ -167,6 +167,7 @@
 		godot
 		luanti
 		zulip
+		cantor
 
 		# LANGS:
 		rustup # rust btw
