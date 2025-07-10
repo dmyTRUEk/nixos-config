@@ -166,7 +166,7 @@
 		inkscape
 		godot
 		zulip
-		cantor
+		kdePackages.cantor
 
 		# LANGS:
 		rustup # rust btw
