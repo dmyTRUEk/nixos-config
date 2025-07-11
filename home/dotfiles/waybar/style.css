@@ -10,10 +10,21 @@
     font-size: 13px;
 }
 
+
+
 #waybar {
     background: rgb(0, 0, 0); /* 40, 40, 40 */
     /* color: rgb(255, 255, 255); */
 }
+#waybar.empty,
+#waybar.floating
+/* #waybar.solo */
+{
+    background: transparent;
+    /* opacity: 0.5; */
+}
+
+
 
 #workspaces button {
     color: rgb(255, 255, 255);
@@ -40,19 +51,19 @@
 /*     color: #c9545d; */
 /* } */
 
-/* #cpu, */
 /* #custom-media, */
 /* #disk, */
 /* #idle_inhibitor, */
-/* #idle_inhibitor, */
-/* #memory, */
+/* #keyboard-state, */
 /* #scratchpad, */
 /* #temperature, */
 #backlight,
 #battery,
 #clock,
+#cpu,
 #custom-keyboard-layout,
 #language,
+#memory,
 #mode,
 #network,
 #pulseaudio,
@@ -72,6 +83,40 @@
 
 
 
+#memory.75 { color: rgb(100%, 95%, 95%); }
+#memory.76 { color: rgb(100%, 90%, 90%); }
+#memory.77 { color: rgb(100%, 85%, 85%); }
+#memory.78 { color: rgb(100%, 80%, 80%); }
+#memory.79 { color: rgb(100%, 75%, 75%); }
+#memory.80 { color: rgb(100%, 70%, 70%); }
+#memory.81 { color: rgb(100%, 65%, 65%); }
+#memory.82 { color: rgb(100%, 60%, 60%); }
+#memory.83 { color: rgb(100%, 55%, 55%); }
+#memory.84 { color: rgb(100%, 50%, 50%); }
+#memory.85 { color: rgb(100%, 45%, 45%); }
+#memory.86 { color: rgb(100%, 40%, 40%); }
+#memory.87 { color: rgb(100%, 35%, 35%); }
+#memory.88 { color: rgb(100%, 30%, 30%); }
+#memory.89 { color: rgb(100%, 25%, 25%); }
+#memory.90 { color: rgb(100%, 20%, 20%); }
+#memory.91 { color: rgb(100%, 15%, 15%); }
+#memory.92 { color: rgb(100%, 10%, 10%); }
+#memory.93 { color: rgb(100%,  5%,  5%); }
+#memory.94 { color: rgb(100%,  0%,  0%); }
+#memory.95 { color: black; background-color: red; }
+
+#cpu.00 { color: rgb(100%,100%,100%); }
+#cpu.10 { color: rgb(100%, 90%, 90%); }
+#cpu.20 { color: rgb(100%, 80%, 80%); }
+#cpu.30 { color: rgb(100%, 70%, 70%); }
+#cpu.40 { color: rgb(100%, 60%, 60%); }
+#cpu.50 { color: rgb(100%, 50%, 50%); }
+#cpu.60 { color: rgb(100%, 40%, 40%); }
+#cpu.70 { color: rgb(100%, 30%, 30%); }
+#cpu.80 { color: rgb(100%, 20%, 20%); }
+#cpu.90 { color: rgb(100%, 10%, 10%); }
+#cpu.95 { color: rgb(100%, 00%, 00%); }
+
 
 
 #mode {
@@ -79,96 +124,13 @@
     color: rgb(0, 0, 0);
 }
 
-#waybar.empty,
-#waybar.floating
-/* #waybar.solo */
-{
-    background: transparent;
-    /* opacity: 0.5; */
-}
 
 
-
-/* #tray { */
-/*     margin: 5px; */
-/* } */
-
-/* #custom-keyboard-layout { */
-/*     /1* border-bottom: 3px solid #3daee9; *1/ */
-/*     color: rgb(255, 255, 255) */
-/* } */
-
-/* #pulseaudio { */
-/*     /1* border-bottom: 3px solid #3daee9; *1/ */
-/*     color: rgb(255, 255, 255) */
-/* } */
-/* #pulseaudio.muted { */
-/*     border-bottom: 3px solid #3daee9; */
-/* } */
-
-/* #backlight { */
-/*     color: rgb(255, 255, 255) */
-/* } */
-
-/* #battery { */
-/*     /1* background-color: #ffffff; *1/ */
-/*     color: rgb(255, 255, 255) */
-/* } */
 #battery.charging {
-    /* background-color: #26A65B; */
-    color: rgb(205, 255, 205)
+    color: rgb(205, 255, 205);
 }
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    background-color: red;
+    color: black;
 }
-
-/* #clock { */
-/*     /1* border-bottom: 3px solid #3daee9; *1/ */
-/*     color: rgb(255, 255, 255) */
-/* } */
-
-
-
-/* label:focus { */
-/*     background-color: #000000; */
-/* } */
-
-/* #cpu { */
-/*     border-bottom: 3px solid #3daee9; */
-/* } */
-
-/* #memory { */
-/*     border-bottom: 3px solid #3daee9; */
-/* } */
-
-/* #network { */
-/*     border-bottom: 3px solid #3daee9; */
-/* } */
-
-/* #network.disconnected { */
-/*     border-bottom: 3px solid #3daee9; */
-/* } */
-
-/* #temperature { */
-/*     border-bottom: 3px solid #3daee9; */
-/* } */
-
-/* #temperature.critical { */
-/*     background-color: #eb4d4b; */
-/* } */
-
-/* #idle_inhibitor { */
-/*     background-color: #2d3436; */
-/* } */
-
-/* #idle_inhibitor.activated { */
-/*     background-color: #ecf0f1; */
-/*     color: #2d3436; */
-/* } */
 

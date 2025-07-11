@@ -8,9 +8,9 @@ swaymsg --raw --type get_inputs | \
 			.xkb_active_layout_name |
 			sub("English \\(US\\) \\(by dmyTRUEk\\)"; "en") |
 			sub("Ukrainian \\(by dmyTRUEk\\)"; "uk") |
-			sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman") |
-			sub("English \\(Colemak-DH\\) \\(by dmyTRUEk\\)"; "en colemak-dh") |
-			sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak")
+			sub("English \\(Colekam\\) \\(by dmyTRUEk\\)"; "en colekam") |
+			sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak") |
+			sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman")
 		] |
 		first
 	' #| \
@@ -27,9 +27,9 @@ swaymsg --raw --type subscribe --monitor '["input"]' | \
 		.input.xkb_active_layout_name |
 		sub("English \\(US\\) \\(by dmyTRUEk\\)"; "en") |
 		sub("Ukrainian \\(by dmyTRUEk\\)"; "uk") |
-		sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman") |
-		sub("English \\(Colemak-DH\\) \\(by dmyTRUEk\\)"; "en colemak-dh") |
-		sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak")
+		sub("English \\(Colekam\\) \\(by dmyTRUEk\\)"; "en colekam") |
+		sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak") |
+		sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman")
 	' #| \
 	# awk '{
 	# 	getline iscaps < "/sys/class/leds/input3::capslock/brightness"; # TODO: read every time?
