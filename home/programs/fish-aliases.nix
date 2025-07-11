@@ -93,6 +93,9 @@
 	dm_without_cover = "yt-dlp -x --audio-format mp3 --embed-metadata";
 	#random_hash = "";
 
+	cds = "cd ~/.config/home-manager/home/dotfiles/sway";
+	cdw = "cd ~/.config/home-manager/home/dotfiles/waybar";
+
 	nixi = "nix repl --file '<nixpkgs>'"; # nix interactive
 	nx   = "nvim ~/.config/home-manager/";
 	nif  = "nvim ~/.config/home-manager/flake.nix";
