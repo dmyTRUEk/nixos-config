@@ -106,11 +106,11 @@
 				{ on = ["o"]; run = "create --dir"; desc = "Create a directory"; }
 				{ on = ["O"]; run = "create";       desc = "Create a file (append / for directory)"; }
 
-				{ on = ["i"]; run = "rename --cursor=start";      desc = "Rename, cursor at start"; }
-				{ on = ["a"]; run = "rename --cursor=before_ext"; desc = "Rename, cursor before extension"; }
-				{ on = ["A"]; run = "rename --cursor=end";        desc = "Rename, cursor at end"; }
-				{ on = ["r"]; run = "rename --empty=stem";        desc = "Rename, leave extension"; }
-				{ on = ["R"]; run = "rename --empty=all";         desc = "Rename"; }
+				{ on = ["i"]; run = "rename --cursor=start";              desc = "Rename, cursor at start"; }
+				{ on = ["a"]; run = "rename --cursor=before_ext";         desc = "Rename, cursor before extension"; }
+				{ on = ["A"]; run = "rename --cursor=end";                desc = "Rename, cursor at end"; }
+				{ on = ["r"]; run = "rename --empty=stem --cursor=start"; desc = "Rename, leave extension"; }
+				{ on = ["R"]; run = "rename --empty=all";                 desc = "Rename"; }
 
 				{ on = ["<Esc>"]; run = ["escape" "unyank"]; desc = "Exit visual mode, clear selected, or cancel search"; }
 				{ on = ["<C-d>"]; run = ''shell "$SHELL" --block --confirm''; desc = "Open shell here"; }
