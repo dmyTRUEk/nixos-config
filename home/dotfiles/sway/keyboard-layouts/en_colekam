@@ -1,4 +1,4 @@
-# dmyTRUEk's US colemak-dh custom keyboard layout
+# dmyTRUEk's US colekam custom keyboard layout
 #
 # src:
 # https://github.com/swaywm/sway/wiki#load-a-modified-custom-xkb-keymap-xmodmap-equivalent
@@ -10,14 +10,14 @@
 default partial alphanumeric_keys
 xkb_symbols "basic" {
 	include "us"
-		name[Group1] = "English (Colemak-DH) (by dmyTRUEk)";
+		name[Group1] = "English (Colekam) (by dmyTRUEk)";
 
 	# qwertyuiop
 	# key <AD01> { [ q, Q ] }; # q
 	# key <AD02> { [ w, W ] }; # w
 	key <AD03> { [ f, F ] }; # e
 	key <AD04> { [ p, P ] }; # r
-	key <AD05> { [ b, B ] }; # t
+	key <AD05> { [ g, G ] }; # t
 	key <AD06> { [ j, J ] }; # y
 	key <AD07> { [ l, L ] }; # u
 	key <AD08> { [ u, U ] }; # i
@@ -31,8 +31,8 @@ xkb_symbols "basic" {
 	key <AC02> { [ r, R ] }; # s
 	key <AC03> { [ s, S ] }; # d
 	key <AC04> { [ t, T ] }; # f
-	key <AC05> { [ g, G ] }; # g
-	key <AC06> { [ m, M ] }; # h
+	key <AC05> { [ d, D ] }; # g
+	# key <AC06> { [ h, H ] }; # h
 	key <AC07> { [ n, N ] }; # j
 	key <AC08> { [ e, E ] }; # k
 	key <AC09> { [ i, I ] }; # l
@@ -43,10 +43,10 @@ xkb_symbols "basic" {
 	# key <AB01> { [ z, Z ] }; # z
 	# key <AB02> { [ x, X ] }; # x
 	# key <AB03> { [ c, C ] }; # c
-	key <AB04> { [ d, D ] }; # v
-	key <AB05> { [ v, V ] }; # b
-	key <AB06> { [ k, K ] }; # n
-	key <AB07> { [ h, H ] }; # m
+	# key <AB04> { [ v, V ] }; # v
+	# key <AB05> { [ b, B ] }; # b
+	key <AB06> { [ m, M ] }; # n
+	key <AB07> { [ k, K ] }; # m
 	# key <AB08> { [ comma, less ] }; # ,
 	# key <AB09> { [ period, greater ] }; # .
 	# key <AB10> { [ slash, question ] }; # /
