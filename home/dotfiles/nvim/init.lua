@@ -325,8 +325,8 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'text',
 	callback = function()
-		keymap_n('j', 'gj')
-		keymap_n('k', 'gk')
+		keymap_n({'j', 'о'}, 'gj')
+		keymap_n({'k', 'л'}, 'gk')
 	end
 })
 vim.api.nvim_create_autocmd('TextYankPost', {
