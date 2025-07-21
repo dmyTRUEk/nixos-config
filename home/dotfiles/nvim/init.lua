@@ -124,13 +124,14 @@ end
 
 
 
-keymap = function(mode, keys, action)
+keymap = function(mode, keys, action, opts)
+	local opts = opts or {}
 	if type(keys) == 'table' then
 		for _, k in ipairs(keys) do
-			vim.keymap.set(mode, k, action)
+			vim.keymap.set(mode, k, action, opts)
 		end
 	else
-		vim.keymap.set(mode, keys, action)
+		vim.keymap.set(mode, keys, action, opts)
 	end
 end
 
@@ -236,6 +237,48 @@ keymap_n('<down>', '<c-e>') -- move viewport down
 keymap_n('<up>'  , '<c-y>') -- move viewport up
 
 keymap_n('=p', '`[v`]=') -- indent last paste
+
+keymap_n('dc', function()
+	local start_pos = vim.api.nvim_win_get_cursor(0)
+	local found = vim.fn.search('\\u', 'W')
+	if found ~= 0 then
+		local end_pos = vim.api.nvim_win_get_cursor(0)
+
+		-- Go back to original position
+		vim.api.nvim_win_set_cursor(0, start_pos)
+
+		-- Start Visual mode to the end position
+		vim.cmd('normal! v')
+
+		-- Move cursor to match
+		vim.api.nvim_win_set_cursor(0, end_pos)
+
+		-- Move back one character to exclude the uppercase
+		vim.cmd('normal! h')
+
+		-- Delete selection without yanking
+		vim.cmd('normal! "_d')
+	end
+end)
+keymap_n('dC', function()
+	local start_pos = vim.api.nvim_win_get_cursor(0)
+	local found = vim.fn.search('\\u', 'bW')
+	if found ~= 0 then
+		local end_pos = vim.api.nvim_win_get_cursor(0)
+
+		-- Go back to original position
+		vim.api.nvim_win_set_cursor(0, start_pos)
+
+		-- Start visual mode
+		vim.cmd('normal! v')
+
+		-- Go to match position
+		vim.api.nvim_win_set_cursor(0, end_pos)
+
+		-- Delete selection without yanking
+		vim.cmd('normal! "_d')
+	end
+end)
 
 
 
