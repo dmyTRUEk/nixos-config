@@ -28,12 +28,13 @@ set $runner anyrun
 #output * bg @datadir@/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #output * bg $HOME/Dropbox/Pictures/Wallpapers/pinetree_pablo-garcia-saldana.jpg fill
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/abstract/vector_control_dreams.jpg
-set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/abstract/solis-2560x1440.jpg
+#set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/abstract/solis-2560x1440.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/marigold_myshko_dm_crop.jpg
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/games/elden-ring.png
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/sonny-boy-bg-spamton.png
 #set $wallpaper $HOME/Pictures/Wallpapers/nix/wallpaper-nix-2_crop.png
 #set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/mountains/Carpathians2024Y.jpg
+set $wallpaper $HOME/Dropbox/Pictures/Wallpapers/black.png
 
 # Lockscreen
 set $lock_command exec sh $HOME/.config/sway/scripts/lock_screen_manually.sh
@@ -590,7 +591,7 @@ exec_always sh $HOME/.config/sway/scripts/launch-anws.sh
 exec_always sh $HOME/.config/sway/scripts/launch-srkr.sh
 
 # RAndom WAllpaper (RAWA)
-exec_always sh $HOME/.config/sway/scripts/launch-rawa.sh ~/Pictures/Wallpapers/solis-like-bgs-vol1/ 5m
+exec_always sh $HOME/.config/sway/scripts/launch-rawa.sh ~/projects/solis-like-bg-generator/images/ 5m
 
 
 
