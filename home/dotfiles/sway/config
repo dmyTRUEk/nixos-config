@@ -591,7 +591,7 @@ exec_always sh $HOME/.config/sway/scripts/launch-anws.sh
 exec_always sh $HOME/.config/sway/scripts/launch-srkr.sh
 
 # RAndom WAllpaper (RAWA)
-exec_always sh $HOME/.config/sway/scripts/launch-rawa.sh 5m ~/projects/solis-like-bg-generator/images/
+exec_always sh $HOME/.config/sway/scripts/launch-rawa.sh 5m ~/projects/solis-like-bg-generator/images/ ~/Pictures/fractals/
 
 
 
