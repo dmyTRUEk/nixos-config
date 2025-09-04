@@ -9,6 +9,42 @@
 	# nil,
 	...
 }: {
+	home.file =
+	let
+		inherit (builtins) foldl' elemAt;
+		inherit (config.lib.file) mkOutOfStoreSymlink;
+		config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor)?: use /.
+		dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home/dotfiles";
+		setup_simple_symlinks = foldl' (acc: elem: acc // {
+			"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
+		}) {};
+		setup_complex_symlinks = foldl' (acc: elem_pair: acc // {
+			"${elemAt elem_pair 0}".source = mkOutOfStoreSymlink "${elemAt elem_pair 1}";
+		}) {};
+	in (
+		# setup_simple_symlinks [
+		# 	# "gammastep"
+		# 	# "kitty"
+		# 	# "nvim"
+		# 	# "sway"
+		# 	# "swayimg"
+		# 	# "swaylock"
+		# 	# "waybar"
+		# 	# "zathura"
+		# ]
+		# //
+		setup_complex_symlinks [
+			# [ "${config.home.homeDirectory}/.xkb/symbols" "${dotfiles_path}/sway/keyboard-layouts" ]
+			# [ "/home/${config.home.username}/mnt" "/run/media/${config.home.username}" ]
+			# [ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
+		]
+		# //
+		# {
+		# 	# "${config.home.homeDirectory}/.xkb/symbols".source = mkOutOfStoreSymlink "${dotfiles_path}/sway/keyboard-layouts";
+		# }
+		# ; in builtins.trace tmp tmp # for dbg
+	);
+
 	services.kdeconnect = {
 		enable = true;
 		indicator = true;

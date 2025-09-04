@@ -46,6 +46,7 @@
 		]
 		// setup_complex_symlinks [
 			[ "${config.home.homeDirectory}/.xkb/symbols" "${dotfiles_path}/sway/keyboard-layouts" ]
+			# [ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
 		]
 		// {
 			# "${config.home.homeDirectory}/.xkb/symbols".source = mkOutOfStoreSymlink "${dotfiles_path}/sway/keyboard-layouts";
