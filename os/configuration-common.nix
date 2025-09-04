@@ -164,6 +164,12 @@
 				"llama3.2:3b"
 			];
 		};
+
+		# for USB automount:
+		# src: https://www.reddit.com/r/NixOS/comments/185f0x4/how_to_mount_a_usb_drive/
+		udisks2.enable = true;
+		devmon.enable = true;
+		gvfs.enable = true;
 	};
 
 	users = {
