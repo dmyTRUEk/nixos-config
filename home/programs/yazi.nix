@@ -157,7 +157,7 @@
 				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
 				{ on = ["g" "w"]; run = "cd ~/Dropbox/Work"; }
 				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/papers"; }
-				{ on = ["g" "m"]; run = "cd ~/Music"; }
+				{ on = ["g" "m"]; run = "cd /run/media/myshko/"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
 				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2025" "sort natural --reverse"]; }
 				{ on = ["g" "v"]; run = ["cd ~/Videos" "sort mtime --reverse"]; }
