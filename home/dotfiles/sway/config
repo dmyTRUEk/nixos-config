@@ -308,6 +308,7 @@ $btrbindsym $mod+Ctrl+Backspace exec \
 	--button-margin-right=10 \
 	-m "$($HOME/.local/bin/gensoquote -f '\"%q\" -- %c( to %t)( about %a), \"%s\"')" \
 	-s '  Cancel  ' \
+	-z '  Shutdown in 5m  ' 'shutdown 5 && notify-send "Shutting down in 5 minutes" "Press here to cancel." -w && shutdown -c' \
 	-z '  Shutdown in 2m  ' 'shutdown 2 && notify-send "Shutting down in 2 minutes" "Press here to cancel." -w && shutdown -c' \
 	-b '  Shutdown  ' 'shutdown 0' \
 	-b '  Reboot  ' 'reboot' \
