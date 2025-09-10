@@ -56,7 +56,6 @@
 /* #idle_inhibitor, */
 /* #keyboard-state, */
 /* #scratchpad, */
-/* #temperature, */
 #backlight,
 #battery,
 #clock,
@@ -68,6 +67,7 @@
 #network,
 #pulseaudio,
 #scratchpad,
+#temperature,
 #tray,
 #window
 {
@@ -116,6 +116,19 @@
 #cpu.80 { color: rgb(100%, 20%, 20%); }
 #cpu.90 { color: rgb(100%, 10%, 10%); }
 #cpu.95 { color: rgb(100%, 00%, 00%); }
+
+#temperature {
+    padding-left: 6px;
+    /* padding-right: 12px; */
+}
+#temperature.warning {
+    color: red;
+}
+#temperature.critical {
+    padding-left: 12px;
+    color: black;
+    background-color: red;
+}
 
 
 

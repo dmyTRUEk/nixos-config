@@ -17,6 +17,7 @@
         // TODO: remove this:?
         "memory",
         "cpu",
+        "temperature",
         "sway/mode",
         "sway/window",
     ],
@@ -148,6 +149,13 @@
             "90": 90,
             "95": 95,
         },
+    },
+
+    "temperature": {
+        "interval": 1,
+        "format": "{temperatureC}°C",
+        "warning-threshold" : 95,
+        "critical-threshold": 96,
     },
 
     "sway/window": {
