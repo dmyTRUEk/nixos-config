@@ -9,11 +9,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1757576199,
-        "narHash": "sha256-lBk/MaHyVNH9tmAd12frY8MYzNU4fhbfC41LH8hl2UE=",
+        "lastModified": 1757761387,
+        "narHash": "sha256-eSB62Y9QboWMF1aX+KMHc+HkGOMcw4X6gFZu6mQXlgk=",
         "owner": "anyrun-org",
         "repo": "anyrun",
-        "rev": "d0b079c851c9d83e56b55ade2b21d9d3fb8038ed",
+        "rev": "591a1a4b899fc87481a018400366091673e70f30",
         "type": "github"
       },
       "original": {
@@ -66,11 +66,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757578556,
-        "narHash": "sha256-w1PGkTGow5XzsjccV364No46rkuGxTqo7m/4cfhnkIk=",
+        "lastModified": 1757698511,
+        "narHash": "sha256-UqHHGydF/q3jfYXCpvYLA0TWtvByOp1NwOKCUjhYmPs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b7112b12ea5b8c3aa6af344498ed9ca27dd03ba3",
+        "rev": "a3fcc92180c7462082cd849498369591dfb20855",
         "type": "github"
       },
       "original": {
