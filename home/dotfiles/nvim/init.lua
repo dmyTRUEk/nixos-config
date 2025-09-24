@@ -152,8 +152,8 @@ keymap_swap_nv("'", '`')
 
 keymap_nv({'<c-j>', '<c-о>'}, '<c-d>zz') -- better move half-page down
 keymap_nv({'<c-k>', '<c-л>'}, '<c-u>zz') -- better move half-page up
-keymap_nv({'<c-n>', '<c-т>'}, '%')
--- keymap_nv('<c-/>', 'gc') -- TODO
+keymap_nv({'<c-m>', '<c-ь>'}, '%')
+-- keymap_nv('<c-/>', 'gc' or search?) -- TODO
 
 keymap_n('Q', '') -- unmap ex mode
 keymap_n({'U', 'Г'}, '<c-r>') -- better redo
@@ -327,6 +327,7 @@ keymap_i({'<c-l>', '<c-д>'}, '<right>')
 
 keymap_v('-', '$h') -- better $
 keymap_v({'S', 'І'}, ':sort<cr>')
+keymap_v('<c-n>', ':norm ')
 
 
 
