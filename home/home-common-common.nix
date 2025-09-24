@@ -5,7 +5,7 @@
 	lib,
 	config,
 	pkgs,
-	nixla,
+	# nixla,
 	# nil,
 	...
 }: {
@@ -218,9 +218,9 @@
 		lean4
 		android-studio
 		android-tools # for `adb`
-		nixla.packages.${system}.nixla
-		nixla.packages.${system}.nixla-nix
-		nixla.packages.${system}.nixla-json
+		# nixla.packages.${system}.nixla
+		# nixla.packages.${system}.nixla-nix
+		# nixla.packages.${system}.nixla-json
 
 		# LSPs:
 		lua-language-server # lua

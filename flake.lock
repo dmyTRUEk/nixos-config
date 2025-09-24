@@ -55,26 +55,6 @@
         "type": "github"
       }
     },
-    "nixla": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1733305236,
-        "narHash": "sha256-hTeNd1iQZ03QSz1F09laRdcKsFyPNt7Lb+K9KYBEy6E=",
-        "owner": "dmyTRUEk",
-        "repo": "nixla",
-        "rev": "2c42ef0c5a776b911d7d068639e10154299a11c9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dmyTRUEk",
-        "repo": "nixla",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1757745802,
@@ -126,7 +106,6 @@
       "inputs": {
         "home-manager": "home-manager",
         "nix-colors": "nix-colors",
-        "nixla": "nixla",
         "nixpkgs": "nixpkgs",
         "nixpkgs_a85fc0a": "nixpkgs_a85fc0a"
       }

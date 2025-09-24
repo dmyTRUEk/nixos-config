@@ -22,12 +22,12 @@
 		# 	inputs.nixpkgs.follows = "nixpkgs";
 		# };
 
-		nixla = {
-			# url = "path:///home/myshko/projects/nixla";
-			# url = "path:////home/myshko/projects/nixla";
-			url = "github:dmyTRUEk/nixla";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		# nixla = {
+		# 	#url = "path:///home/myshko/projects/nixla";
+		# 	#url = "path:////home/myshko/projects/nixla";
+		# 	url = "github:dmyTRUEk/nixla";
+		# 	inputs.nixpkgs.follows = "nixpkgs";
+		# };
 
 		# nil = {
 		# 	url = "github:oxalica/nil";
@@ -43,7 +43,7 @@
 	outputs = inputs @ {
 		nixpkgs,
 		home-manager,
-		nixla,
+		# nixla,
 		# nil,
 		...
 	}:
@@ -73,7 +73,7 @@
 							extraSpecialArgs = { # allows access to flake inputs in hm modules
 								inherit
 									inputs
-									nixla
+									# nixla
 									# nil
 									pkgs_a85fc0a
 								;
@@ -109,7 +109,7 @@
 							extraSpecialArgs = { # allows access to flake inputs in hm modules
 								inherit
 									inputs
-									nixla
+									# nixla
 									# nil
 									pkgs_a85fc0a
 								;
