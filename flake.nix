@@ -17,10 +17,10 @@
 
 		nix-colors.url = "github:misterio77/nix-colors";
 
-		anyrun = {
-			url = "github:anyrun-org/anyrun";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		# anyrun = {
+		# 	url = "github:anyrun-org/anyrun";
+		# 	inputs.nixpkgs.follows = "nixpkgs";
+		# };
 
 		nixla = {
 			# url = "path:///home/myshko/projects/nixla";
