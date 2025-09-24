@@ -96,10 +96,10 @@
 			enable = true;
 			#enableFishIntegration = true; # it's by default
 		};
-		nix-index = {
-			enable = true;
-			enableFishIntegration = true;
-		};
+		# nix-index = { # for `command-not-found`?
+		# 	enable = true;
+		# 	enableFishIntegration = true;
+		# };
 		yazi = import ./programs/yazi.nix; # (rust btw)
 		yt-dlp.enable = true;
 		#texlive = {
