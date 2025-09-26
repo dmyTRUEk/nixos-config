@@ -10,36 +10,38 @@
 
 window,
 .match,
-.entry,
-.plugin,
-main {
+text,
+list,
+box {
 	background: transparent;
 }
 
-.match.activatable {
+row {
 	border-radius: 16px;
 	padding: .3rem .9rem;
 	margin-top: .01rem;
 }
-.match.activatable:first-child {
+row:first-child {
 	margin-top: .7rem;
 }
-.match.activatable:last-child {
+row:last-child {
 	margin-bottom: .6rem;
 }
 
-.plugin:hover .match.activatable {
+list:hover row {
 	border-radius: 10px;
 	padding: .3rem;
 	margin-top: .01rem;
 	margin-bottom: 0;
 }
 
-.match:selected, .match:hover, .plugin:hover {
+row:selected,
+row:hover,
+list:hover {
 	background: rgba(255, 255, 255, .1);
 }
 
-.entry {
+text {
 	background: rgba(255, 255, 255, .05);
 	border: 1px solid rgba(255, 255, 255, .1);
 	border-radius: 16px;
@@ -47,17 +49,17 @@ main {
 	padding: .3rem 1rem;
 }
 
-list > .plugin {
+list {
 	border-radius: 16px;
 	margin: 0 .3rem;
 }
-list > .plugin:first-child {
+list:first-child {
 	margin-top: .3rem;
 }
-list > .plugin:last-child {
+list:last-child {
 	margin-bottom: .3rem;
 }
-list > .plugin:hover {
+list:hover {
 	padding: .6rem;
 }
 
