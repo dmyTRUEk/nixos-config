@@ -2,7 +2,7 @@
 { inputs, pkgs, ... }: {
 	enable = true;
 	#package = inputs.anyrun.packages.${pkgs.system}.anyrun;
-	extraCss = builtins.readFile ./anyrun-theme.css;
+	extraCss = builtins.readFile ./anyrun-style.css;
 	extraConfigFiles."symbols.ron".text = builtins.readFile ./anyrun.symbols.ron;
 	config = {
 		plugins =
