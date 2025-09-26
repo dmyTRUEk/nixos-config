@@ -187,6 +187,7 @@
 					"libvirtd"       # for virtualisation/VMs/gnome-boxes
 					"docker"         # for docker (yeah, i know)
 					# "audio" ?
+					"dialout"        # for serial port/device (eg arduino on usb)
 				];
 				packages = with pkgs; [
 					# TODO: move `sway` here?
