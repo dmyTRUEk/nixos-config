@@ -2,6 +2,11 @@
 
 /* og src: github:InfiniteNightmare/nix-config ? */
 
+/*
+for testing:   background: linear-gradient(to right,transparent,red), linear-gradient(to bottom,transparent,green);
+*/
+
+
 * {
 	all: unset;
 	font-family: JetBrains Mono;
@@ -45,7 +50,7 @@ text {
 	background: rgba(255, 255, 255, .05);
 	border: 1px solid rgba(255, 255, 255, .1);
 	border-radius: 16px;
-	margin: .3rem;
+	margin: .5rem;
 	padding: .3rem 1rem;
 }
 
@@ -67,5 +72,12 @@ box.main {
 	background: rgba(0, 0, 0, .8);
 	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1), 0 0 0 1px rgba(0, 0, 0, .5);
 	border-radius: 24px;
-	padding: .3rem;
+	padding: .5rem;
+}
+
+image.info {
+	padding: 1.4rem .5rem 1.4rem 1rem;
+}
+label.info {
+	padding: 1.4rem 1rem 1.4rem .5rem;
 }
