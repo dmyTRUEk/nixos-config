@@ -155,8 +155,8 @@
 				#{ on = ["g" "D"]; run = "cd ~/Dropbox/Docs"; }
 				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2025_spring"; }
 				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
-				{ on = ["g" "w"]; run = "cd ~/Dropbox/Work"; }
-				{ on = ["g" "P"]; run = "cd ~/Dropbox/Work/papers"; }
+				{ on = ["g" "w"]; run = ["cd ~/Dropbox/Work" "sort natural --reverse"]; }
+				{ on = ["g" "P"]; run = ["cd ~/Dropbox/Work/papers" "sort natural"]; }
 				{ on = ["g" "m"]; run = "cd /run/media/myshko/"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
 				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2025" "sort natural --reverse"]; }
