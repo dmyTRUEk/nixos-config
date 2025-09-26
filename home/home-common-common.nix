@@ -127,6 +127,7 @@
 			];
 		};
 		#mangohud.enable = true;
+		bat.enable = true;
 	};
 
 	home.packages = with pkgs; [ # PKGS
