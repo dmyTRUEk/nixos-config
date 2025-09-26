@@ -7,7 +7,7 @@
 	colorScheme = {
 		slug = "gruvbox-by-dmytruek";
 		name = "Gruvbox by dmyTRUEk";
-		author = "dmyTRUEk (https://github.com/dmyTRUEk), Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)";
+		author = "dmyTRUEk (github:dmyTRUEk), Dawid Kurek (dawikur@gmail.com), morhetz (github:morhetz/gruvbox)";
 		palette = {
 			base00 = "#000000";  # ----
 			base01 = "#222222";  # ---

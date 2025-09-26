@@ -7,12 +7,12 @@
 }: {
 	imports = [
 		./hardware-configuration-psyche.nix
-		# inputs.nix-minecraft.nixosModules.minecraft-servers
+		#inputs.nix-minecraft.nixosModules.minecraft-servers
 	];
 
-	# nixpkgs.overlays = [
-	# 	inputs.nix-minecraft.overlay
-	# ];
+	#nixpkgs.overlays = [
+	#	inputs.nix-minecraft.overlay
+	#];
 
 	networking.hostName = "psyche";
 
@@ -20,13 +20,13 @@
 
 	boot.loader.systemd-boot = {
 		editor = false;
-		# edk2-uefi-shell.enable = true;
-		# windows = {
-		# 	"10" = {
-		# 		efiDeviceHandle = "FS0";
-		# 		sortKey = "a_windows";
-		# 	};
-		# };
+		#edk2-uefi-shell.enable = true;
+		#windows = {
+		#	"10" = {
+		#		efiDeviceHandle = "FS0";
+		#		sortKey = "a_windows";
+		#	};
+		#};
 	};
 
 	systemd.tmpfiles.rules = [

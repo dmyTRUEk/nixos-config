@@ -5,45 +5,39 @@
 	lib,
 	config,
 	pkgs,
-	# nixla,
-	# nil,
 	...
 }: {
-	home.file =
-	let
-		inherit (builtins) foldl' elemAt;
-		inherit (config.lib.file) mkOutOfStoreSymlink;
-		config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor)?: use /.
-		dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home/dotfiles";
-		setup_simple_symlinks = foldl' (acc: elem: acc // {
-			"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
-		}) {};
-		setup_complex_symlinks = foldl' (acc: elem_pair: acc // {
-			"${elemAt elem_pair 0}".source = mkOutOfStoreSymlink "${elemAt elem_pair 1}";
-		}) {};
-	in (
-		# setup_simple_symlinks [
-		# 	# "gammastep"
-		# 	# "kitty"
-		# 	# "nvim"
-		# 	# "sway"
-		# 	# "swayimg"
-		# 	# "swaylock"
-		# 	# "waybar"
-		# 	# "zathura"
-		# ]
-		# //
-		setup_complex_symlinks [
-			# [ "${config.home.homeDirectory}/.xkb/symbols" "${dotfiles_path}/sway/keyboard-layouts" ]
-			# [ "/home/${config.home.username}/mnt" "/run/media/${config.home.username}" ]
-			# [ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
-		]
-		# //
-		# {
-		# 	# "${config.home.homeDirectory}/.xkb/symbols".source = mkOutOfStoreSymlink "${dotfiles_path}/sway/keyboard-layouts";
-		# }
-		# ; in builtins.trace tmp tmp # for dbg
-	);
+	#home.file =
+	#let
+	#	inherit (builtins) foldl' elemAt;
+	#	inherit (config.lib.file) mkOutOfStoreSymlink;
+	#	config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor)?: use /.
+	#	dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home/dotfiles";
+	#	setup_simple_symlinks = foldl' (acc: elem: acc // {
+	#		"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
+	#	}) {};
+	#	setup_complex_symlinks = foldl' (acc: elem_pair: acc // {
+	#		"${elemAt elem_pair 0}".source = mkOutOfStoreSymlink "${elemAt elem_pair 1}";
+	#	}) {};
+	#in (
+	#	#setup_simple_symlinks [
+	#	#	#"gammastep"
+	#	#	#"kitty"
+	#	#	#"nvim"
+	#	#	#"sway"
+	#	#	#"swayimg"
+	#	#	#"swaylock"
+	#	#	#"waybar"
+	#	#	#"zathura"
+	#	#]
+	#	#//
+	#	#setup_complex_symlinks [
+	#	#	#[ "${config.home.homeDirectory}/.xkb/symbols" "${dotfiles_path}/sway/keyboard-layouts" ]
+	#	#	#[ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
+	#	#]
+	#	#//
+	#	#{}
+	#);
 
 	services.kdeconnect = {
 		enable = true;
@@ -96,10 +90,10 @@
 			enable = true;
 			#enableFishIntegration = true; # it's by default
 		};
-		# nix-index = { # for `command-not-found`?
-		# 	enable = true;
-		# 	enableFishIntegration = true;
-		# };
+		#nix-index = { # for `command-not-found`?
+		#	enable = true;
+		#	enableFishIntegration = true;
+		#};
 		yazi = import ./programs/yazi.nix; # (rust btw)
 		yt-dlp.enable = true;
 		#texlive = {
@@ -175,7 +169,7 @@
 
 		# GUI+CLI:
 		imagemagick
-		# ventoy
+		#ventoy
 
 		# GUI:
 		waybar
@@ -198,7 +192,7 @@
 		kdePackages.gwenview
 		helvum
 		audacity
-		# amberol # gnome music player
+		#amberol # gnome music player
 		element-desktop
 		inkscape
 		godot
@@ -219,13 +213,9 @@
 		lean4
 		android-studio
 		android-tools # for `adb`
-		# nixla.packages.${system}.nixla
-		# nixla.packages.${system}.nixla-nix
-		# nixla.packages.${system}.nixla-json
 
 		# LSPs:
 		lua-language-server # lua
-		# nil.packages.${system}.nil # nix (rust btw)
 		pyright # python
 		#ruff-lsp # python # TODO: setup it for lints, cs it's fast (rust btw)
 

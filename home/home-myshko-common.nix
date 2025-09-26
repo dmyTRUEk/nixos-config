@@ -7,12 +7,7 @@
 }: {
 	# TODO?: make `enable`/`enabled` function that sets enable=true.
 
-	imports = [
-		inputs.nix-colors.homeManagerModules.default
-
-		# You can also split up your configuration and import pieces of it here:
-		# ./nvim.nix
-	];
+	imports = [];
 
 	home = {
 		# TODO: refactor to not write username manually?
@@ -33,7 +28,7 @@
 			"${elemAt elem_pair 0}".source = mkOutOfStoreSymlink "${elemAt elem_pair 1}";
 		}) {};
 	in (
-		# let tmp = # for dbg
+		#let tmp = # for dbg
 		setup_simple_symlinks [
 			"gammastep"
 			"kitty"
@@ -46,12 +41,11 @@
 		]
 		// setup_complex_symlinks [
 			[ "${config.home.homeDirectory}/.xkb/symbols" "${dotfiles_path}/sway/keyboard-layouts" ]
-			# [ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
+			#[ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
 		]
-		// {
-			# "${config.home.homeDirectory}/.xkb/symbols".source = mkOutOfStoreSymlink "${dotfiles_path}/sway/keyboard-layouts";
-		}
-		# ; in builtins.trace tmp tmp # for dbg
+		#//
+		#{}
+		#; in builtins.trace tmp tmp # for dbg
 	);
 
 	home.pointerCursor =
@@ -74,27 +68,6 @@
 		"https://github.com/ful1e5/BreezeX_Cursor/releases/download/v2.0.0/BreezeX-Black.tar.gz"
 		"sha256-5su79uUG9HLeAqXDUJa/VhpbYyy9gFj/VdtRPY0yUL4="
 		"BreezeX-Black";
-
-	# colorSchemes: https://github.com/tinted-theming/schemes
-	colorScheme =
-	let
-		colorSchemes = inputs.nix-colors.colorSchemes;
-		# // (
-		# 	let cs = import ./colorscheme-gruvbox-my.nix; in { "${cs.slug}" = cs; }
-		# );
-	in
-		colorSchemes.
-		#gruvbox-dark-medium
-		#gruvbox-dark-soft
-		gruvbox-dark-pale
-		#gruvbox-material-dark-medium
-		#gruvbox-material-dark-soft
-		#gruvbox-material-dark-hard
-		# gruvbox-by-dmytruek
-		#onedark
-		#tokyo-night-terminal-dark
-		#everforest
-	;
 
 	wayland.windowManager.sway = {
 		#enable = true; # dont `.enable` bc of dotfiles symlinks

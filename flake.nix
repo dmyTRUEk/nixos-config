@@ -12,29 +12,9 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		# TODO: Add any other flake you might need
-		# hardware.url = "github:NixOS/nixos-hardware";
+		#hardware.url = "github:NixOS/nixos-hardware";
 
-		nix-colors.url = "github:misterio77/nix-colors";
-
-		# anyrun = {
-		# 	url = "github:anyrun-org/anyrun";
-		# 	inputs.nixpkgs.follows = "nixpkgs";
-		# };
-
-		# nixla = {
-		# 	#url = "path:///home/myshko/projects/nixla";
-		# 	#url = "path:////home/myshko/projects/nixla";
-		# 	url = "github:dmyTRUEk/nixla";
-		# 	inputs.nixpkgs.follows = "nixpkgs";
-		# };
-
-		# nil = {
-		# 	url = "github:oxalica/nil";
-		# 	inputs.nixpkgs.follows = "nixpkgs";
-		# };
-
-		# nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+		#nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
 		# nixpkgs at 2025-01-24, for wolfram mathematica 14.1.0
 		nixpkgs_a85fc0a.url = "github:NixOS/nixpkgs/a85fc0af456a898b7a4c459f38429e05df958907";
@@ -43,8 +23,6 @@
 	outputs = inputs @ {
 		nixpkgs,
 		home-manager,
-		# nixla,
-		# nil,
 		...
 	}:
 	let
@@ -73,8 +51,6 @@
 							extraSpecialArgs = { # allows access to flake inputs in hm modules
 								inherit
 									inputs
-									# nixla
-									# nil
 									pkgs_a85fc0a
 								;
 							};
@@ -109,8 +85,6 @@
 							extraSpecialArgs = { # allows access to flake inputs in hm modules
 								inherit
 									inputs
-									# nixla
-									# nil
 									pkgs_a85fc0a
 								;
 							};

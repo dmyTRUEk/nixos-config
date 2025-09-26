@@ -77,7 +77,7 @@
 	};
 
 	networking = {
-		#hostName = "noname"; # specified in `-knight` & `-psyche`
+		##hostName = "noname"; # specified in `-knight` & `-psyche`
 		networkmanager.enable = true;
 		firewall = rec {
 			allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # for kdeconnect
@@ -156,9 +156,12 @@
 		};
 		blueman.enable = true;
 		printing.enable = true;
-		ollama = {
+		ollama = { # src: https://wiki.nixos.org/wiki/Ollama
 			enable = true;
-			# acceleration = "rocm"; # or cuda   # in `conf-<name>.nix`
+			##acceleration = "rocm"; # or cuda   # in `conf-<name>.nix`
+			# Download these models using ollama pull as soon as ollama.service has started.
+			# This creates a systemd unit ollama-model-loader.service.
+			# Search for models of your choice from: https://ollama.com/library
 			loadModels = [
 				"llama3.2:1b"
 				"llama3.2:3b"
