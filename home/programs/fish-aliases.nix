@@ -52,9 +52,10 @@
 	gc = "git commit";
 	gca = "git commit --amend"; # change msg of last commit
 	gcm = "git commit -m";
-	gch = "git checkout";
-	gchb = "git checkout -b";
-	gchp = "git checkout -p"; # delete changes
+	gch = "git checkout"; # delete changes
+	gchb = "git checkout -b"; # change branch?
+	gchp = "git checkout -p"; # delete changes patch (interactively)
+	"gchp." = "git checkout -p ."; # delete changes patch (interactively) here (in this folder)
 	gcl = "git clone";
 	gcls = "git clone --depth 1"; # shallow
 	gd = "git diff";
