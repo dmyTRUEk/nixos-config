@@ -668,7 +668,7 @@ require('lazy').setup({
 					return cwd
 				end,
 			}})
-			keymap_n('<leader>H', function()
+			keymap_n('<c-s-h>', function()
 				local fname = vim.fn.expand('%:p')
 				harpoon:list():add()
 				print('`' .. fname .. '` harpooned >:3')
