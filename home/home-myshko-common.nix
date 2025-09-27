@@ -44,7 +44,9 @@
 			#[ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
 		]
 		#//
-		#{}
+		#{
+		#	#"${config_path}/anyrun/style.css".source = lib.mkForce (mkOutOfStoreSymlink "${dotfiles_path}/../programs/anyrun-style.css");
+		#}
 		#; in builtins.trace tmp tmp # for dbg
 	);
 
