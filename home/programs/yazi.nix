@@ -100,8 +100,8 @@
 				{ on = ["q"]; run = "close"; desc = "Close current tab or quit if last"; }
 
 				# this is default anyway
-				# { on = ["<Enter>"];   run = "open";               desc = "Open selected files"; }
-				# { on = ["<S-Enter>"]; run = "open --interactive"; desc = "Open selected files interactively"; }
+				#{ on = ["<Enter>"];   run = "open";               desc = "Open selected files"; }
+				#{ on = ["<S-Enter>"]; run = "open --interactive"; desc = "Open selected files interactively"; }
 
 				{ on = ["o"]; run = "create --dir"; desc = "Create a directory"; }
 				{ on = ["O"]; run = "create";       desc = "Create a file (append / for directory)"; }
@@ -188,15 +188,15 @@
 		icon = {
 			prepend_rules = [
 				# TODO:
-				# { name = "Cargo.lock"; text = ""; }
-				# { name = "flake.lock"; text = ""; }
-				# { name = "Documents"; text = "󰈙"; }
-				# { name = "Music"; text = "󰎈"; }
-				# { name = "Public"; text = "󰮮"; }
-				# { name = "*.mp3"; text = "󰎈"; }
-				# { name = "*.wav"; text = "󰎈"; }
-				# { name = "*.yaml"; text = ""; }
-				# { name = "*.tex"; text = ""; }
+				#{ name = "Cargo.lock"; text = ""; }
+				#{ name = "flake.lock"; text = ""; }
+				#{ name = "Documents"; text = "󰈙"; }
+				#{ name = "Music"; text = "󰎈"; }
+				#{ name = "Public"; text = "󰮮"; }
+				#{ name = "*.mp3"; text = "󰎈"; }
+				#{ name = "*.wav"; text = "󰎈"; }
+				#{ name = "*.yaml"; text = ""; }
+				#{ name = "*.tex"; text = ""; }
 			];
 		};
 	} // (
