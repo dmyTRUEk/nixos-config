@@ -86,9 +86,9 @@
 
 		git = {
 			enable = true;
-			userName = "dmyTRUEk";
-			userEmail = "25669613+dmyTRUEk@users.noreply.github.com";
-			extraConfig = {
+			settings = {
+				user.name = "dmyTRUEk";
+				user.email = "25669613+dmyTRUEk@users.noreply.github.com";
 				init.defaultBranch = "main";
 				#core.askPass = "";
 				push.autoSetupRemote = true;
