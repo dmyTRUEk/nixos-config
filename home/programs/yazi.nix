@@ -63,11 +63,6 @@
 				#{ name = "*.md"; use = "markdown"; }
 				{ name = "*.svg"; use = "image_vector"; }
 
-				{ mime = "text/*"; use = "text"; }
-				{ mime = "image/*"; use = "image_raster"; }
-				{ mime = "video/*"; use = "video"; }
-				{ mime = "application/pdf"; use = "pdf"; }
-
 				{ name = "*.mp3"; use = "audio"; }
 				{ name = "*.wav"; use = "audio"; }
 				{ name = "*.ogg"; use = "audio"; }
@@ -83,10 +78,17 @@
 				{ name = "*.xls" ; use = "libreoffice"; }
 				{ name = "*.xlsx"; use = "libreoffice"; }
 
+				{ name = "*.rtf"; use = "libreoffice"; }
+
 				{ name = "*.srt"; use = "text"; }
 
 				# Multiple openers for a single rule
 				#{ name = "*.html", use = [ "browser", "text" ] },
+
+				{ mime = "text/*"; use = "text"; }
+				{ mime = "image/*"; use = "image_raster"; }
+				{ mime = "video/*"; use = "video"; }
+				{ mime = "application/pdf"; use = "pdf"; }
 			];
 		};
 	};
