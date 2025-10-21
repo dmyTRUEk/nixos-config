@@ -12,44 +12,50 @@ xkb_symbols "basic" {
 	include "us"
 		name[Group1] = "English (Workman) (by dmyTRUEk)";
 
-	# qwertyuiop
 	# key <AD01> { [ q, Q ] }; # q
-	key <AD02> { [ d, D ] }; # w
-	key <AD03> { [ r, R ] }; # e
-	key <AD04> { [ w, W ] }; # r
-	key <AD05> { [ b, B ] }; # t
-	key <AD06> { [ j, J ] }; # y
-	key <AD07> { [ f, F ] }; # u
-	key <AD08> { [ u, U ] }; # i
-	key <AD09> { [ p, P ] }; # o
-	key <AD10> { [ semicolon, colon ] }; # p
-	# key <AD11> { [ braceleft, braceleft ] }; # [
-	# key <AD12> { [ bracketright, braceright ] }; # ]
-
-	# asdfghjkl;'
 	# key <AC01> { [ a, A ] }; # a
-	# key <AC02> { [ s, S ] }; # s
-	key <AC03> { [ h, H ] }; # d
-	key <AC04> { [ t, T ] }; # f
-	# key <AC05> { [ g, G ] }; # g
-	key <AC06> { [ y, Y ] }; # h
-	key <AC07> { [ n, N ] }; # j
-	key <AC08> { [ e, E ] }; # k
-	key <AC09> { [ o, O ] }; # l
-	key <AC10> { [ i, I ] }; # ;
-	# key <AC11> { [ apostrophe, quotedbl ] }; # '
-
-	# zxcvbnm,./
 	# key <AB01> { [ z, Z ] }; # z
+
+	key <AD02> { [ d, D ] }; # w
+	# key <AC02> { [ s, S ] }; # s
 	# key <AB02> { [ x, X ] }; # x
+
+	key <AD03> { [ r, R ] }; # e
+	key <AC03> { [ h, H ] }; # d
 	key <AB03> { [ m, M ] }; # c
+
+	key <AD04> { [ w, W ] }; # r
+	key <AC04> { [ t, T ] }; # f
 	key <AB04> { [ c, C ] }; # v
+
+	key <AD05> { [ b, B ] }; # t
+	# key <AC05> { [ g, G ] }; # g
 	key <AB05> { [ v, V ] }; # b
+
+	key <AD06> { [ j, J ] }; # y
+	key <AC06> { [ y, Y ] }; # h
 	key <AB06> { [ k, K ] }; # n
+
+	key <AD07> { [ f, F ] }; # u
+	key <AC07> { [ n, N ] }; # j
 	key <AB07> { [ l, L ] }; # m
+
+	key <AD08> { [ u, U ] }; # i
+	key <AC08> { [ e, E ] }; # k
 	# key <AB08> { [ comma, less ] }; # ,
+
+	key <AD09> { [ p, P ] }; # o
+	key <AC09> { [ o, O ] }; # l
 	# key <AB09> { [ period, greater ] }; # .
+
+	key <AD10> { [ semicolon, colon ] }; # p
+	key <AC10> { [ i, I ] }; # ;
 	# key <AB10> { [ slash, question ] }; # /
 
-	key <RALT> { [ BackSpace, none ] };
+	# key <AD11> { [ bracketleft, braceleft ] }; # [
+	# key <AC11> { [ apostrophe, quotedbl ] }; # '
+
+	# key <AD12> { [ bracketright, braceright ] }; # ]
+
+	key <RALT> { [ BackSpace, Delete ] };
 };

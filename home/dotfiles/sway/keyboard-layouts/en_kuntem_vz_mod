@@ -1,0 +1,61 @@
+# dmyTRUEk's US kuntem custom keyboard layout
+#
+# src:
+# https://github.com/swaywm/sway/wiki#load-a-modified-custom-xkb-keymap-xmodmap-equivalent
+# https://git.sr.ht/~jman/dotfiles/tree/refs/heads/master/xkb/README.md
+# https://www.charvolant.org/doug/xkb/html/node5.html
+# <pkgs>/xkeyboard-config -> /etc/X11/xkb/symbols/us
+# https://xkbcommon.org/doc/current/user-configuration.html#md_doc_2user-configuration
+
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+	include "us"
+		name[Group1] = "English (Kuntem) (by dmyTRUEk)";
+
+	key <AD01> { [ z, Z ] }; # q
+	key <AC01> { [ t, T ] }; # a
+	key <AB01> { [ v, V ] }; # z
+
+	key <AD02> { [ l, L ] }; # w
+	key <AC02> { [ s, S ] }; # s
+	# key <AB02> { [ x, X ] }; # x
+
+	key <AD03> { [ n, N ] }; # e
+	key <AC03> { [ r, R ] }; # d
+	key <AB03> { [ p, P ] }; # c
+
+	key <AD04> { [ d, D ] }; # r
+	key <AC04> { [ h, H ] }; # f
+	key <AB04> { [ b, B ] }; # v
+
+	key <AD05> { [ k, K ] }; # t
+	key <AC05> { [ f, F ] }; # g
+	key <AB05> { [ apostrophe, quotedbl ] }; # b
+
+	key <AD06> { [ j, J ] }; # y
+	key <AC06> { [ g, G ] }; # h
+	key <AB06> { [ m, M ] }; # n
+
+	key <AD07> { [ w, W ] }; # u
+	key <AC07> { [ c, C ] }; # j
+	key <AB07> { [ y, Y ] }; # m
+
+	key <AD08> { [ o, O ] }; # i
+	key <AC08> { [ a, A ] }; # k
+	key <AB08> { [ period, greater ] }; # ,
+
+	key <AD09> { [ u, U ] }; # o
+	key <AC09> { [ i, I ] }; # l
+	key <AB09> { [ comma, less ] }; # .
+
+	key <AD10> { [ q, Q ] }; # p
+	key <AC10> { [ e, E ] }; # ;
+	# key <AB10> { [ slash, question ] }; # /
+
+	# key <AD11> { [ bracketleft, braceleft ] }; # [
+	key <AC11> { [ semicolon, colon ] }; # '
+
+	# key <AD12> { [ bracketright, braceright ] }; # ]
+
+	key <RALT> { [ BackSpace, Delete ] };
+};

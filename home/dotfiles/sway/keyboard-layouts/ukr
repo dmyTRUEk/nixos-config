@@ -12,5 +12,5 @@ xkb_symbols "basic" {
 	include "ua"
 		name[Group1] = "Ukrainian (by dmyTRUEk)";
 
-	key <RALT> { [ BackSpace, none ] };
+	key <RALT> { [ BackSpace, Delete ] };
 };

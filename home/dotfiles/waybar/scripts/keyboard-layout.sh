@@ -9,6 +9,7 @@ swaymsg --raw --type get_inputs | \
 			sub("English \\(US\\) \\(by dmyTRUEk\\)"; "en") |
 			sub("Ukrainian \\(by dmyTRUEk\\)"; "uk") |
 			sub("English \\(Colekam\\) \\(by dmyTRUEk\\)"; "en colekam") |
+			sub("English \\(Kuntem\\) \\(by dmyTRUEk\\)"; "en kuntem") |
 			sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak") |
 			sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman")
 		] |
@@ -28,6 +29,7 @@ swaymsg --raw --type subscribe --monitor '["input"]' | \
 		sub("English \\(US\\) \\(by dmyTRUEk\\)"; "en") |
 		sub("Ukrainian \\(by dmyTRUEk\\)"; "uk") |
 		sub("English \\(Colekam\\) \\(by dmyTRUEk\\)"; "en colekam") |
+		sub("English \\(Kuntem\\) \\(by dmyTRUEk\\)"; "en kuntem") |
 		sub("English \\(Colemak\\) \\(by dmyTRUEk\\)"; "en colemak") |
 		sub("English \\(Workman\\) \\(by dmyTRUEk\\)"; "en workman")
 	' #| \
