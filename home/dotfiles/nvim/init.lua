@@ -1030,7 +1030,7 @@ require('lazy').setup({
 			local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 			for _, lsp_server_name in pairs(lsp_server_names) do
 				-- print('LSP: setting up', lsp_server_name)
-				require('lspconfig')[lsp_server_name].setup {
+				vim.lsp.config(lsp_server_name, {
 					capabilities = capabilities,
 					on_attach = function(client, bufnr)
 						-- TODO: try when nvim 0.10
@@ -1044,7 +1044,7 @@ require('lazy').setup({
 						--end
 						-- print('Inlay hints: end')
 					end
-				}
+				})
 			end
 
 			vim.keymap.del('n', 'gri')
