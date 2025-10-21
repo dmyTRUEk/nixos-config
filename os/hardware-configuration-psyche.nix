@@ -52,6 +52,7 @@
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 	hardware = {
 		cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+		# TODO?: move this to just conf.nix?
 		graphics = {
 			enable = true;
 			extraPackages = with pkgs; [

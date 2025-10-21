@@ -7,7 +7,7 @@
 		cursor = {
 			style = {
 				shape = "Beam";
-# blinking = "Never";
+				#blinking = "Never";
 			};
 			vi_mode_style.shape = "Block";
 		};
@@ -16,8 +16,8 @@
 		# enabled = true
 
 		scrolling = {
-			# auto_scroll = false
-			# faux_multiplier = 1
+			#auto_scroll = false;
+			#faux_multiplier = 1;
 			history = 10000;
 			multiplier = 3;
 		};
@@ -60,8 +60,8 @@
 			primary = {
 				background = "0x282828";
 				foreground = "0xc5c8c6";
-				# background = "0x${base00}";
-				# foreground = "0x${base07}";
+				#background = "0x${base00}";
+				#foreground = "0x${base07}";
 			};
 			#cursor = {
 			#	cursor = "0x${base06}";

@@ -222,12 +222,12 @@
 		# GAMES:
 		luanti
 
-		# cursors:
+		# CURSORS:
 		#vimix-cursors
 		#vimix-cursor-theme
 		# TODO: kde/breeze cursor
 
-		# libs:
+		# LIBS:
 
 		# FONTS:
 		jetbrains-mono # pretty ok monospace font

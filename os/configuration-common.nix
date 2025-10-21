@@ -87,9 +87,6 @@
 
 	hardware.bluetooth.enable = true; # enables support for Bluetooth
 	#hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-	#hardware.opengl.extraPackages = with pkgs; [
-	#	amdvlk # fix? for bevy
-	#];
 
 	i18n = {
 		defaultLocale = "en_US.UTF-8";
