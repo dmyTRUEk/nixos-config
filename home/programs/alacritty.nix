@@ -31,13 +31,17 @@
 			opacity = 1.0;
 		};
 
-		font = {
+		font =
+		let
+			font_family = "JetBrains Mono";
+			#font_family = "Minecraftia";
+		in {
 			builtin_box_drawing = true;
 			size = 13.0;
-			normal      = { family = "JetBrains Mono"; style = "Regular"; };
-			bold        = { family = "JetBrains Mono"; style = "Bold"; };
-			italic      = { family = "JetBrains Mono"; style = "Italic"; };
-			bold_italic = { family = "JetBrains Mono"; style = "Bold Italic"; };
+			normal      = { family = font_family; style = "Regular"; };
+			bold        = { family = font_family; style = "Bold"; };
+			italic      = { family = font_family; style = "Italic"; };
+			bold_italic = { family = font_family; style = "Bold Italic"; };
 		};
 
 		keyboard.bindings = [
