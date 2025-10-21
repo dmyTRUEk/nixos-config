@@ -238,6 +238,7 @@
 		source-han-sans
 		corefonts  # Microsoft's TrueType core fonts for the Web
 		vistafonts # Some TrueType fonts from Microsoft Windows Vista (Calibri, Cambria, Candara, Consolas, Constantia, Corbel)
+		minecraftia # minecraft font
 	];
 
 	# This value determines the NixOS release from which the default
