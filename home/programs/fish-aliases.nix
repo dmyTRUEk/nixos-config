@@ -188,7 +188,5 @@
 	nl  = "nvim lakefile.lean";
 	nlm = "nvim lake-manifest.json";
 
-	yappy = "python ~/projects/yappy/yappy.py";
-
 	ngi = "nvim .gitignore";
 }
