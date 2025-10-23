@@ -220,7 +220,7 @@
 		#ruff-lsp # python # TODO: setup it for lints, cs it's fast (rust btw)
 
 		# GAMES:
-		luanti
+		#luanti
 
 		# CURSORS:
 		#vimix-cursors
