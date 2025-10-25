@@ -121,6 +121,8 @@
 	ns  = "nvim ~/.config/home-manager/home/dotfiles/sway/config +'set autochdir'";
 	nss = "nvim ~/.config/home-manager/home/dotfiles/sway/scripts/ +'set autochdir'";
 	nw  = "nvim ~/.config/home-manager/home/dotfiles/waybar/config +'set autochdir'";
+	nws = "nvim ~/.config/home-manager/home/dotfiles/waybar/style.css +'set autochdir'";
+	nwss= "nvim ~/.config/home-manager/home/dotfiles/waybar/scripts/ +'set autochdir'";
 	nz  = "nvim ~/.config/home-manager/home/dotfiles/zathura/zathurarc";
 
 	nipy= "nvim ~/.config/home-manager/home/files/init_interactive_python.py";
