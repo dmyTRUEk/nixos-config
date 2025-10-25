@@ -229,16 +229,7 @@
 
 		# LIBS:
 
-		# FONTS:
-		jetbrains-mono # pretty ok monospace font
-		nerd-fonts.symbols-only # for icons
-		nerd-fonts.jetbrains-mono
-		#font-awesome # for icons
-		source-han-serif
-		source-han-sans
-		corefonts  # Microsoft's TrueType core fonts for the Web
-		vistafonts # Some TrueType fonts from Microsoft Windows Vista (Calibri, Cambria, Candara, Consolas, Constantia, Corbel)
-		minecraftia # minecraft font
+		# FONTS: MUST BE IN CONF!!!
 	];
 
 	# This value determines the NixOS release from which the default
