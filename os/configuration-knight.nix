@@ -15,7 +15,7 @@
 
 	boot.loader.systemd-boot = {
 		editor = false;
-		# edk2-uefi-shell.enable = true;
+		#edk2-uefi-shell.enable = true;
 		windows = {
 			"10" = {
 				efiDeviceHandle = "FS0";
