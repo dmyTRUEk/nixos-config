@@ -58,8 +58,6 @@
 			extraPackages = with pkgs; [
 				# src: https://nixos.wiki/wiki/AMD_GPU#OpenCL
 				rocmPackages.clr.icd
-				# src: https://nixos.wiki/wiki/AMD_GPU#AMDVLK
-				amdvlk
 			];
 		};
 	};
