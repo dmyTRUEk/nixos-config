@@ -163,6 +163,7 @@
 				"llama3.2:1b"
 				"llama3.2:3b"
 				"llama3.1:8b"
+				"gpt-oss:20b"
 			];
 		};
 
