@@ -205,12 +205,12 @@ bindsym Shift+Backspace exec "$wtype -k Delete"
 # disable alt layouts:
 bindsym $mod+Shift+5 input type:keyboard xkb_layout "en,ukr"
 
-# enable Colekam
-bindsym $mod+5       input type:keyboard xkb_layout "en,ukr,en_colekam"
-#bindsym $mod+5       input type:keyboard xkb_layout "en,ukr,en_colekam", input type:keyboard xkb_switch_layout 2
-
 # enable Kuntem
-bindsym $mod+6       input type:keyboard xkb_layout "en,ukr,en_kuntem_vz_mod"
+bindsym $mod+5       input type:keyboard xkb_layout "en,ukr,en_kuntem_vz_mod"
+#bindsym $mod+5       input type:keyboard xkb_layout "en,ukr,en_kuntem_vz_mod", input type:keyboard xkb_switch_layout 2
+
+# enable Colekam
+bindsym $mod+6       input type:keyboard xkb_layout "en,ukr,en_colekam"
 
 # enable Colemak
 bindsym $mod+7       input type:keyboard xkb_layout "en,ukr,en_colemak"
