@@ -127,7 +127,7 @@
 	home.packages = with pkgs; [ # PKGS
 		# INFO:
 		lshw # ls hardware
-		glxinfo # gpu info
+		mesa-demos # gpu info (aka/for? glxinfo)
 		vulkan-tools # for vulkaninfo, gpu info
 		wev # wayland event viewer
 		wayland-utils
