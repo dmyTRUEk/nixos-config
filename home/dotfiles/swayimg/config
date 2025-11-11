@@ -25,6 +25,9 @@ color = ff00ff
 [info]
 show = no
 
+[gallery]
+window = 000000
+
 [keys.viewer]
 q = exit
 
