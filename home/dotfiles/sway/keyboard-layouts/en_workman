@@ -12,13 +12,13 @@ xkb_symbols "basic" {
 	include "us"
 		name[Group1] = "English (Workman) (by dmyTRUEk)";
 
-	# key <AD01> { [ q, Q ] }; # q
-	# key <AC01> { [ a, A ] }; # a
-	# key <AB01> { [ z, Z ] }; # z
+	#key <AD01> { [ q, Q ] }; # q
+	#key <AC01> { [ a, A ] }; # a
+	#key <AB01> { [ z, Z ] }; # z
 
 	key <AD02> { [ d, D ] }; # w
-	# key <AC02> { [ s, S ] }; # s
-	# key <AB02> { [ x, X ] }; # x
+	#key <AC02> { [ s, S ] }; # s
+	#key <AB02> { [ x, X ] }; # x
 
 	key <AD03> { [ r, R ] }; # e
 	key <AC03> { [ h, H ] }; # d
@@ -29,7 +29,7 @@ xkb_symbols "basic" {
 	key <AB04> { [ c, C ] }; # v
 
 	key <AD05> { [ b, B ] }; # t
-	# key <AC05> { [ g, G ] }; # g
+	#key <AC05> { [ g, G ] }; # g
 	key <AB05> { [ v, V ] }; # b
 
 	key <AD06> { [ j, J ] }; # y
@@ -42,20 +42,20 @@ xkb_symbols "basic" {
 
 	key <AD08> { [ u, U ] }; # i
 	key <AC08> { [ e, E ] }; # k
-	# key <AB08> { [ comma, less ] }; # ,
+	#key <AB08> { [ comma, less ] }; # ,
 
 	key <AD09> { [ p, P ] }; # o
 	key <AC09> { [ o, O ] }; # l
-	# key <AB09> { [ period, greater ] }; # .
+	#key <AB09> { [ period, greater ] }; # .
 
 	key <AD10> { [ semicolon, colon ] }; # p
 	key <AC10> { [ i, I ] }; # ;
-	# key <AB10> { [ slash, question ] }; # /
+	#key <AB10> { [ slash, question ] }; # /
 
-	# key <AD11> { [ bracketleft, braceleft ] }; # [
-	# key <AC11> { [ apostrophe, quotedbl ] }; # '
+	#key <AD11> { [ bracketleft, braceleft ] }; # [
+	#key <AC11> { [ apostrophe, quotedbl ] }; # '
 
-	# key <AD12> { [ bracketright, braceright ] }; # ]
+	#key <AD12> { [ bracketright, braceright ] }; # ]
 
 	key <RALT> { [ BackSpace, Delete ] };
 };

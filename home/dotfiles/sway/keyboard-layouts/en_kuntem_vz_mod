@@ -18,7 +18,7 @@ xkb_symbols "basic" {
 
 	key <AD02> { [ l, L ] }; # w
 	key <AC02> { [ s, S ] }; # s
-	# key <AB02> { [ x, X ] }; # x
+	#key <AB02> { [ x, X ] }; # x
 
 	key <AD03> { [ n, N ] }; # e
 	key <AC03> { [ r, R ] }; # d
@@ -50,12 +50,12 @@ xkb_symbols "basic" {
 
 	key <AD10> { [ q, Q ] }; # p
 	key <AC10> { [ e, E ] }; # ;
-	# key <AB10> { [ slash, question ] }; # /
+	#key <AB10> { [ slash, question ] }; # /
 
-	# key <AD11> { [ bracketleft, braceleft ] }; # [
+	#key <AD11> { [ bracketleft, braceleft ] }; # [
 	key <AC11> { [ semicolon, colon ] }; # '
 
-	# key <AD12> { [ bracketright, braceright ] }; # ]
+	#key <AD12> { [ bracketright, braceright ] }; # ]
 
 	key <RALT> { [ BackSpace, Delete ] };
 };

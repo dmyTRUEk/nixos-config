@@ -12,28 +12,28 @@ xkb_symbols "basic" {
 	include "us"
 		name[Group1] = "English (Colekam) (by dmyTRUEk)";
 
-	# key <AD01> { [ q, Q ] }; # q
-	# key <AC01> { [ a, A ] }; # a
-	# key <AB01> { [ z, Z ] }; # z
+	#key <AD01> { [ q, Q ] }; # q
+	#key <AC01> { [ a, A ] }; # a
+	#key <AB01> { [ z, Z ] }; # z
 
-	# key <AD02> { [ w, W ] }; # w
+	#key <AD02> { [ w, W ] }; # w
 	key <AC02> { [ r, R ] }; # s
-	# key <AB02> { [ x, X ] }; # x
+	#key <AB02> { [ x, X ] }; # x
 
 	key <AD03> { [ f, F ] }; # e
 	key <AC03> { [ s, S ] }; # d
-	# key <AB03> { [ c, C ] }; # c
+	#key <AB03> { [ c, C ] }; # c
 
 	key <AD04> { [ p, P ] }; # r
 	key <AC04> { [ t, T ] }; # f
-	# key <AB04> { [ v, V ] }; # v
+	#key <AB04> { [ v, V ] }; # v
 
 	key <AD05> { [ g, G ] }; # t
 	key <AC05> { [ d, D ] }; # g
-	# key <AB05> { [ b, B ] }; # b
+	#key <AB05> { [ b, B ] }; # b
 
 	key <AD06> { [ j, J ] }; # y
-	# key <AC06> { [ h, H ] }; # h
+	#key <AC06> { [ h, H ] }; # h
 	key <AB06> { [ m, M ] }; # n
 
 	key <AD07> { [ l, L ] }; # u
@@ -42,20 +42,20 @@ xkb_symbols "basic" {
 
 	key <AD08> { [ u, U ] }; # i
 	key <AC08> { [ e, E ] }; # k
-	# key <AB08> { [ comma, less ] }; # ,
+	#key <AB08> { [ comma, less ] }; # ,
 
 	key <AD09> { [ y, Y ] }; # o
 	key <AC09> { [ i, I ] }; # l
-	# key <AB09> { [ period, greater ] }; # .
+	#key <AB09> { [ period, greater ] }; # .
 
 	key <AD10> { [ semicolon, colon ] }; # p
 	key <AC10> { [ o, O ] }; # ;
-	# key <AB10> { [ slash, question ] }; # /
+	#key <AB10> { [ slash, question ] }; # /
 
-	# key <AD11> { [ bracketleft, braceleft ] }; # [
-	# key <AC11> { [ apostrophe, quotedbl ] }; # '
+	#key <AD11> { [ bracketleft, braceleft ] }; # [
+	#key <AC11> { [ apostrophe, quotedbl ] }; # '
 
-	# key <AD12> { [ bracketright, braceright ] }; # ]
+	#key <AD12> { [ bracketright, braceright ] }; # ]
 
 	key <RALT> { [ BackSpace, Delete ] };
 };

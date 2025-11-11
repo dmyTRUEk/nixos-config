@@ -18,12 +18,12 @@ xkb_symbols "basic" {
 	key <FK07> { [ F7, F7 ] };
 
 	# left:
-	# key <ESC> {[]}; # -> top
+	#key <ESC> {[]}; # -> top
 	key <TAB>  {[none,none,none,none]};
 	key <CAPS> {[none,none,none,none]};
-	# key <LFSH> {[]};
-	# key <LCTL> {[]};
-	# key <LWIN> {[]};
+	##key <LFSH> {[]};
+	##key <LCTL> {[]};
+	##key <LWIN> {[]};
 	key <LALT> {[none,none,none,none]};
 
 	# space:
@@ -59,7 +59,7 @@ xkb_symbols "basic" {
 	key <FK04> {[none,none,none,none]};
 	key <FK05> {[none,none,none,none]};
 	key <FK06> {[none,none,none,none]};
-	# key <FK07> {[]};
+	##key <FK07> {[]};
 	key <FK08> {[none,none,none,none]};
 	key <FK09> {[none,none,none,none]};
 	key <FK10> {[none,none,none,none]};
