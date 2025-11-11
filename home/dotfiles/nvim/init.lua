@@ -280,6 +280,8 @@ keymap_n('dC', function()
 	end
 end)
 
+-- TODO: ctrl+tab swaps true->false, false->true
+
 
 
 keymap_n_cmd({'<leader>q', '<leader>й'}, 'q')
@@ -637,20 +639,20 @@ require('lazy').setup({
 	{'L3MON4D3/LuaSnip', -- snippets
 		version = '2.*',
 		-- opts = {},
-		init = function()
-			require('luasnip.loaders.from_snipmate').lazy_load()
-			local ls = require 'luasnip'
-			keymap_i('<F8>', ls.expand)
-			keymap_i('<F9>', ls.expand)
-			keymap_i('<F10>', ls.expand)
-			-- vim.keymap.set({'i', 's'}, '<C-L>', function() ls.jump( 1) end, {silent = true})
-			-- vim.keymap.set({'i', 's'}, '<C-J>', function() ls.jump(-1) end, {silent = true})
-			-- vim.keymap.set({'i', 's'}, '<C-E>', function()
-			-- 	if ls.choice_active() then
-			-- 		ls.change_choice(1)
-			-- 	end
-			-- end, {silent = true})
-		end
+		-- init = function()
+		-- 	require('luasnip.loaders.from_snipmate').lazy_load()
+		-- 	local ls = require 'luasnip'
+		-- 	keymap_i('<F8>', ls.expand)
+		-- 	keymap_i('<F9>', ls.expand)
+		-- 	keymap_i('<F10>', ls.expand)
+		-- 	-- vim.keymap.set({'i', 's'}, '<C-L>', function() ls.jump( 1) end, {silent = true})
+		-- 	-- vim.keymap.set({'i', 's'}, '<C-J>', function() ls.jump(-1) end, {silent = true})
+		-- 	-- vim.keymap.set({'i', 's'}, '<C-E>', function()
+		-- 	-- 	if ls.choice_active() then
+		-- 	-- 		ls.change_choice(1)
+		-- 	-- 	end
+		-- 	-- end, {silent = true})
+		-- end
 	},
 	--'dmytruek/find-and-replace', -- find and replace
 	{'ThePrimeagen/harpoon',
@@ -700,6 +702,7 @@ require('lazy').setup({
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			'nvim-telescope/telescope-fzf-native.nvim',
+			{ 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
 		},
 		config = function()
 			local actions = require('telescope.actions')
@@ -1005,88 +1008,109 @@ require('lazy').setup({
 	-- LSP PLUGINS:
 	{'neovim/nvim-lspconfig',
 		dependencies = {
-			'hrsh7th/nvim-cmp',
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
-			'saadparwaiz1/cmp_luasnip', -- for lua-snips
-			--'hrsh7th/cmp-nvim-lua', -- #e1a547
+			'saghen/blink.cmp',
 		},
-		-- opts = {
-		-- 	inlay_hint = { enabled = true },
-		-- },
-		init = function()
-			local lsp_server_names = {
-				-- src: `:help lspconfig-all`
-				'rust_analyzer', -- TODO: enable `clippy`?
-				'pyright', -- python
-				--'ruff_lsp', -- python linter -- TODO: setup
-				'lua_ls',
-				--'clangd', -- c/c++
-				--'nil_ls', -- nix
-				--'hls', -- haskell
-				'gdscript', -- godot script
-				--'gdshader_lsp', -- godot shader
-			}
-			local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-			for _, lsp_server_name in pairs(lsp_server_names) do
-				-- print('LSP: setting up', lsp_server_name)
-				vim.lsp.config(lsp_server_name, {
-					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						-- TODO: try when nvim 0.10
-						-- print('Inlay hints: trying to attach')
-						--if client.server_capabilities.inlayHintProvider then
-						--	--inlay_hints.on_attach(client, bufnr)
-						--	vim.lsp.inlay_hint.enable(bufnr, true)
-						--	-- print('Inlay hints attached')
-						--else
-						--	-- print('Inlay hints NOT attached')
-						--end
-						-- print('Inlay hints: end')
+		config = function()
+			vim.api.nvim_create_autocmd('LspAttach', {
+				group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+				callback = function(event)
+					local map = function(keys, func, desc, mode)
+						mode = mode or 'n'
+						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
 					end
-				})
-			end
 
-			vim.keymap.del('n', 'gri')
-			vim.keymap.del('n', 'grr')
-			vim.keymap.del({'n', 'x'}, 'gra')
-			vim.keymap.del('n', 'grn')
+					-- Rename the variable under your cursor.
+					--  Most Language Servers support renaming across files, etc.
+					map('<leader>r', vim.lsp.buf.rename, '[R]e[n]ame')
 
-			local telescope_builtin = require('telescope.builtin')
+					-- Execute a code action, usually your cursor needs to be on top of an error
+					-- or a suggestion from your LSP for this to activate.
+					map('ga', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
-			keymap_n('gd', telescope_builtin.lsp_definitions)
-			keymap_n('gD', vim.lsp.buf.declaration)
-			keymap_n('gi', telescope_builtin.lsp_implementations)
-			keymap_n('gr', telescope_builtin.lsp_references)
-			keymap_n('<leader>r', vim.lsp.buf.rename)
+					-- Find references for the word under your cursor.
+					map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
-			keymap_n('<c-h>', vim.diagnostic.goto_prev)
-			keymap_n('<c-l>', vim.diagnostic.goto_next)
+					-- Jump to the implementation of the word under your cursor.
+					--  Useful when your language has ways of declaring types without an actual implementation.
+					map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
-			keymap_n('ga', vim.lsp.buf.code_action)
-			keymap_n('K', vim.lsp.buf.hover)
+					-- Jump to the definition of the word under your cursor.
+					--  This is where a variable was first declared, or where a function is defined, etc.
+					--  To jump back, press <C-t>.
+					map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
-			keymap_n('go', telescope_builtin.lsp_document_symbols)
-			keymap_n('gO', telescope_builtin.lsp_dynamic_workspace_symbols)
+					-- WARN: This is not Goto Definition, this is Goto Declaration.
+					--  For example, in C this would take you to the header.
+					map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-			keymap_n('gt', telescope_builtin.lsp_type_definitions)
+					-- Fuzzy find all the symbols in your current document.
+					--  Symbols are things like variables, functions, types, etc.
+					map('<leader>O', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
 
-			-- TODO:
-			-- vim.lsp.buf.type_definition
-			-- vim.lsp.buf.rename
-			-- ? function() vim.lsp.buf.format { async = true } end
+					-- Fuzzy find all the symbols in your current workspace.
+					--  Similar to document symbols, except searches over your entire project.
+					map('<leader>o', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
 
-			-- enable this to print debug info to ~/.cache/nvim/lsp.log
-			--vim.lsp.set_log_level('debug')
+					-- Jump to the type of the word under your cursor.
+					--  Useful when you're not sure what type a variable is and you want to see
+					--  the definition of its *type*, not where it was *defined*.
+					map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
-			vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-				vim.lsp.diagnostic.on_publish_diagnostics, {
-					-- delay update diagnostics
-					update_in_insert = true,
-				}
-			)
+					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
+					---@param client vim.lsp.Client
+					---@param method vim.lsp.protocol.Method
+					---@param bufnr? integer some lsp support methods only in specific files
+					---@return boolean
+					local function client_supports_method(client, method, bufnr)
+						-- TODO: can be simplified to the true case?
+						if vim.fn.has 'nvim-0.11' == 1 then
+							return client:supports_method(method, bufnr)
+						else
+							return client.supports_method(method, { bufnr = bufnr })
+						end
+					end
+
+					-- The following two autocommands are used to highlight references of the
+					-- word under your cursor when your cursor rests there for a little while.
+					--    See `:help CursorHold` for information about when this is executed
+					--
+					-- When you move your cursor, the highlights will be cleared (the second autocommand).
+					local client = vim.lsp.get_client_by_id(event.data.client_id)
+					if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+						local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+						vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+							buffer = event.buf,
+							group = highlight_augroup,
+							callback = vim.lsp.buf.document_highlight,
+						})
+
+						vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+							buffer = event.buf,
+							group = highlight_augroup,
+							callback = vim.lsp.buf.clear_references,
+						})
+
+						vim.api.nvim_create_autocmd('LspDetach', {
+							group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+							callback = function(event2)
+								vim.lsp.buf.clear_references()
+								vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+							end,
+						})
+					end
+
+					-- TODO
+					-- The following code creates a keymap to toggle inlay hints in your
+					-- code, if the language server you are using supports them
+					--
+					-- This may be unwanted, since they displace some of your code
+					-- if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+					-- 	map('<leader>th', function()
+					-- 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+					-- 	end, '[T]oggle Inlay [H]ints')
+					-- end
+				end,
+			})
 
 			-- Diagnostic Config
 			-- See :help vim.diagnostic.Opts
@@ -1115,122 +1139,108 @@ require('lazy').setup({
 						return diagnostic_message[diagnostic.severity]
 					end,
 				},
-			}
-			keymap_n({'<leader>d', '<leader>в'}, vim.diagnostic.open_float)
-
-			local cmp = require('cmp')
-			cmp.setup {
-				snippet = {
-					-- REQUIRED - you MUST specify a snippet engine
-					expand = function(args)
-						--vim.fn['UltiSnips#Anon'](args.body)         -- for `ultisnips` users
-						--vim.fn['vsnip#anonymous'](args.body)        -- for `vsnip` users
-						--require('snippy').expand_snippet(args.body)   -- for `snippy` users
-						require('luasnip').lsp_expand(args.body)        -- for `luasnip` users
-					end,
-				},
-				window = {
-					--completion = cmp.config.window.bordered(),
-					--documentation = cmp.config.window.bordered(),
-				},
-				indent = { -- indentation based on treesitter for the `=` operator.
-					enable = true,
-				},
-				-- experimental = {
-				-- 	ghost_text = true,
-				-- },
-				sources = {
-					{ name = 'nvim_lsp' },
-					--{ name = 'nvim_lsp_signature_help' }, -- TODO: try it (from https://github.com/hrsh7th/nvim-cmp/wiki/Language-Server-Specific-Samples)
-					-- TODO: dont ignore `\` & `'` in latex
-					{ name = 'buffer', option = { keyword_pattern = [[\Z\k\+]] }},
-					-- \Z\k\+
-					-- м'ясо пом'якшити
-					-- telescope
-					-- test test test tmp123
-					{ name = 'path' },
-					--{ name = 'ultisnips' }, -- for ultisnips users
-					--{ name = 'vsnip' },     -- for vsnip users
-					--{ name = 'snippy' },    -- for snippy users
-					{ name = 'luasnip' },     -- for luasnip users
-					--{ name = 'nvim_lua', option = { include_deprecated = true } }, -- #e1a547
-				},
-				preselect = cmp.PreselectMode.Item,
-				sorting = {
-					priority_weight = 2,
-					comparators = {
-						cmp.config.compare.offset,
-						cmp.config.compare.exact,
-						-- cmp.config.compare.scopes,
-						cmp.config.compare.score,
-						cmp.config.compare.recently_used,
-						--require('cmp-under-comparator').under,
-						cmp.config.compare.locality,
-						cmp.config.compare.kind,
-						-- cmp.config.compare.sort_text,
-						cmp.config.compare.length,
-						cmp.config.compare.order,
-					},
-				},
-				-- matching = {
-				-- 	disallow_fuzzy_matching = true,
-				-- 	disallow_fullfuzzy_matching = true,
-				-- 	disallow_partial_fuzzy_matching = true,
-				-- 	disallow_partial_matching = false,
-				-- 	disallow_prefix_unmatching = true,
-				-- },
-				mapping = {
-					['<cr>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					['<tab>'] = function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						else
-							fallback()
-						end
-					end,
-					['<s-tab>'] = function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						else
-							fallback()
-						end
-					end,
-					['<A-space>'] = cmp.mapping.complete(),
-					['<C-space>'] = cmp.mapping.complete(),
-					--['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-					--['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-					--['<C-y>'] = cmp.config.disable, -- specify `cmp.config.disable` if you want to remove default `<C-y>` mapping
-					--['<C-e>'] = cmp.mapping.abort(),
-				},
+				-- TODO: update_in_insert?
 			}
 
-			-- Set configuration for specific filetype.
-			cmp.setup.filetype('gitcommit', {
-				sources = cmp.config.sources({
-					{ name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-				}, {
-					{ name = 'buffer' },
-				}),
-			})
+			-- LSP servers and clients are able to communicate to each other what features they support.
+			--  By default, Neovim doesn't support everything that is in the LSP specification.
+			--  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
+			--  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
+			local capabilities = require('blink.cmp').get_lsp_capabilities()
+			-- TODO: provide to lsp?
 
-			-- Use buffer source for `/` & `?` (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline({ '/', '?' }, {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = {
-					{ name = 'buffer' },
-				},
-			})
+			-- src: `:help lspconfig-all`
+			vim.lsp.enable('rust_analyzer') -- TODO: enable `clippy`?
+			vim.lsp.enable('pyright') -- python
+			--'ruff_lsp' -- python linter -- TODO: setup?
+			vim.lsp.enable('lua_ls')
+			--'clangd' -- c/c++
+			--'nil_ls' -- nix
+			--'hls' -- haskell
+			--'gdscript' -- godot script
+			--'gdshader_lsp' -- godot shader
+		end,
+	},
 
-			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline(':', {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = 'path' },
-				}, {
-					{ name = 'cmdline' },
-				}),
-			})
-		end
+	{'saghen/blink.cmp', -- Autocompletion
+		event = 'VimEnter',
+		version = '1.*',
+		dependencies = {
+			'L3MON4D3/LuaSnip',
+			'folke/lazydev.nvim', -- for Lua LSP
+		},
+		--- @module 'blink.cmp'
+		--- @type blink.cmp.Config
+		opts = {
+			keymap = {
+				-- See :h blink-cmp-config-keymap for defining your own keymap
+				preset = 'none',
+
+				['<tab>']   = { 'select_next', 'fallback' },
+				['<s-tab>'] = { 'select_prev', 'fallback' },
+
+				--['<C-e>'] = { 'hide', 'fallback' },
+
+				['<cr>'] = { 'select_and_accept', 'fallback' },
+
+				['<c-n>'] = { 'snippet_forward', 'fallback' },
+				['<c-p>'] = { 'snippet_backward', 'fallback' },
+
+				-- TODO: <c-space> to show completion
+
+				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+				--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+			},
+
+			--appearance = {
+			--	-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+			--	-- Adjusts spacing to ensure icons are aligned
+			--	nerd_font_variant = 'mono',
+			--},
+
+			completion = {
+				-- By default, you may press `<c-space>` to show the documentation.
+				-- Optionally, set `auto_show = true` to show the documentation after a delay.
+				--documentation = { auto_show = false, auto_show_delay_ms = 500 },
+
+				-- 'prefix' will fuzzy match on the text before the cursor
+				-- 'full' will fuzzy match on the text before _and_ after the cursor
+				-- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
+				--keyword = { range = 'full' },
+
+				-- TODO for buffer to work with ukr apostrophe: keyword_pattern = \Z\k\+ or [[\Z\k\+]]
+				-- enable only for latex? and text/md?
+				-- TEST AREA:
+				-- м'ясо пом'якшити комп'ютер
+				-- test test test tmp123
+			},
+
+			--sources = {
+			--	default = { 'lsp', 'path', 'snippets', 'lazydev' },
+			--	providers = {
+			--		lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+			--	},
+			--},
+
+			snippets = { preset = 'luasnip' },
+
+			-- Blink.cmp includes an optional, recommended rust fuzzy matcher,
+			-- which automatically downloads a prebuilt binary when enabled.
+			--
+			-- By default, we use the Lua implementation instead, but you may enable
+			-- the rust implementation via `'prefer_rust_with_warning'`
+			--
+			-- See :h blink-cmp-config-fuzzy for more information
+			--fuzzy = { implementation = 'lua' },
+
+			-- Shows a signature help window while you type arguments for a function
+			--signature = { enabled = true },
+
+			cmdline = {
+				keymap = { preset = 'inherit' },
+				completion = { menu = { auto_show = true } },
+			},
+		},
 	},
 
 	-- {'nvim-tree/nvim-web-devicons', -- ?
