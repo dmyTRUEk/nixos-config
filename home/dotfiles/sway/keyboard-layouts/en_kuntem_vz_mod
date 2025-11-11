@@ -56,6 +56,4 @@ xkb_symbols "basic" {
 	key <AC11> { [ semicolon, colon ] }; # '
 
 	#key <AD12> { [ bracketright, braceright ] }; # ]
-
-	key <RALT> { [ BackSpace, Delete ] };
 };

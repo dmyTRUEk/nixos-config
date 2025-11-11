@@ -11,6 +11,4 @@ default partial alphanumeric_keys
 xkb_symbols "basic" {
 	include "ua"
 		name[Group1] = "Ukrainian (by dmyTRUEk)";
-
-	key <RALT> { [ BackSpace, Delete ] };
 };

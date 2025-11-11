@@ -12,5 +12,5 @@ xkb_symbols "basic" {
 	include "us"
 		name[Group1] = "English (US) (by dmyTRUEk)";
 
-	key <RALT> { [ BackSpace, Delete ] };
+	#key <RALT> { [ BackSpace, Delete ] }; # shift+ralt doesnt work (expected delete)
 };
