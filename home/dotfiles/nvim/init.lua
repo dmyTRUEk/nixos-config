@@ -645,9 +645,9 @@ require('lazy').setup({
 		-- 	keymap_i('<F8>', ls.expand)
 		-- 	keymap_i('<F9>', ls.expand)
 		-- 	keymap_i('<F10>', ls.expand)
-		-- 	-- vim.keymap.set({'i', 's'}, '<C-L>', function() ls.jump( 1) end, {silent = true})
-		-- 	-- vim.keymap.set({'i', 's'}, '<C-J>', function() ls.jump(-1) end, {silent = true})
-		-- 	-- vim.keymap.set({'i', 's'}, '<C-E>', function()
+		-- 	-- vim.keymap.set({'i', 's'}, '<c-l>', function() ls.jump( 1) end, {silent = true})
+		-- 	-- vim.keymap.set({'i', 's'}, '<c-j>', function() ls.jump(-1) end, {silent = true})
+		-- 	-- vim.keymap.set({'i', 's'}, '<c-e>', function()
 		-- 	-- 	if ls.choice_active() then
 		-- 	-- 		ls.change_choice(1)
 		-- 	-- 	end
@@ -886,15 +886,15 @@ require('lazy').setup({
 					additional_vim_regex_highlighting = false,
 				},
 				--indent = { enable = false, disable = { 'python', 'css' } },
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection = '<c-space>',
-						node_incremental = '<c-space>',
-						scope_incremental = '<c-s>',
-						node_decremental = '<c-backspace>',
-					},
-				},
+				--incremental_selection = {
+				--	enable = true,
+				--	keymaps = {
+				--		init_selection = '<c-space>',
+				--		node_incremental = '<c-space>',
+				--		scope_incremental = '<c-s>',
+				--		node_decremental = '<c-backspace>',
+				--	},
+				--},
 				textobjects = { -- `nvim-treesitter-textobjects` required for this
 					select = {
 						enable = true,
@@ -1166,31 +1166,31 @@ require('lazy').setup({
 		end,
 	},
 
-	{'saghen/blink.cmp', -- Autocompletion
+	{'saghen/blink.cmp', -- Autocompletion (BLINK)
 		event = 'VimEnter',
 		version = '1.*',
 		dependencies = {
 			'L3MON4D3/LuaSnip',
-			'folke/lazydev.nvim', -- for Lua LSP
+			-- 'folke/lazydev.nvim', -- for Lua LSP?
 		},
 		--- @module 'blink.cmp'
 		--- @type blink.cmp.Config
 		opts = {
 			keymap = {
 				-- See :h blink-cmp-config-keymap for defining your own keymap
+				-- or https://cmp.saghen.dev/configuration/keymap
 				preset = 'none',
 
 				['<tab>']   = { 'select_next', 'fallback' },
 				['<s-tab>'] = { 'select_prev', 'fallback' },
-
-				--['<C-e>'] = { 'hide', 'fallback' },
 
 				['<cr>'] = { 'select_and_accept', 'fallback' },
 
 				['<c-n>'] = { 'snippet_forward', 'fallback' },
 				['<c-p>'] = { 'snippet_backward', 'fallback' },
 
-				-- TODO: <c-space> to show completion
+				['<c-space>'] = { 'show', 'fallback' },
+				['<c-e>'] = { 'hide', 'fallback' },
 
 				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 				--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -1205,7 +1205,7 @@ require('lazy').setup({
 			completion = {
 				-- By default, you may press `<c-space>` to show the documentation.
 				-- Optionally, set `auto_show = true` to show the documentation after a delay.
-				--documentation = { auto_show = false, auto_show_delay_ms = 500 },
+				--documentation = { auto_show = false, auto_show_delay_ms = 500 }, -- TODO?
 
 				-- 'prefix' will fuzzy match on the text before the cursor
 				-- 'full' will fuzzy match on the text before _and_ after the cursor
@@ -1219,12 +1219,19 @@ require('lazy').setup({
 				-- test test test tmp123
 			},
 
-			--sources = {
-			--	default = { 'lsp', 'path', 'snippets', 'lazydev' },
-			--	providers = {
-			--		lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-			--	},
-			--},
+			sources = {
+				-- default = {
+				-- 	'lsp',
+				-- 	'snippets',
+				-- 	'buffer',
+				-- 	'path',
+				-- 	-- 'lazydev',
+				-- },
+				providers = {
+					lsp = { fallbacks = {} } -- fix no sugestions from buffer when lsp gives results
+					-- lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+				},
+			},
 
 			snippets = { preset = 'luasnip' },
 
@@ -1241,8 +1248,20 @@ require('lazy').setup({
 			--signature = { enabled = true },
 
 			cmdline = {
-				keymap = { preset = 'inherit' },
-				completion = { menu = { auto_show = true } },
+				keymap = {
+					preset = 'inherit',
+					['<cr>'] = { 'accept_and_enter', 'fallback' },
+				},
+				completion = {
+					menu = {
+						auto_show = true,
+					},
+					list = {
+						selection = {
+							preselect = false,
+						},
+					},
+				},
 			},
 		},
 	},
