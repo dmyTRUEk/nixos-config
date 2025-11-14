@@ -655,36 +655,36 @@ require('lazy').setup({
 		-- end
 	},
 	--'dmytruek/find-and-replace', -- find and replace
-	{'ThePrimeagen/harpoon',
-		branch = 'harpoon2',
-		dependencies = { 'nvim-lua/plenary.nvim' },
-		init = function()
-			local harpoon = require('harpoon')
-			harpoon:setup({ default = { -- `harpoon:setup()` is required
-				get_root_dir = function()
-					local cwd = vim.loop.cwd()
-					local root = vim.fn.system('git rev-parse --show-toplevel')
-					if vim.v.shell_error == 0 and root ~= nil then
-						return string.gsub(root, '\n', '')
-					end
-					return cwd
-				end,
-			}})
-			keymap_n('<c-s-h>', function()
-				local fname = vim.fn.expand('%:p')
-				harpoon:list():add()
-				print('`' .. fname .. '` harpooned >:3')
-			end)
-			keymap_n('<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-			keymap_n('<c-d>', function() harpoon:list():prev() end)
-			keymap_n('<c-f>', function() harpoon:list():next() end)
-			keymap_n('<c-1>', function() harpoon:list():select(1) end)
-			keymap_n('<c-2>', function() harpoon:list():select(2) end)
-			keymap_n('<c-3>', function() harpoon:list():select(3) end)
-			keymap_n('<c-4>', function() harpoon:list():select(4) end)
-			keymap_n('<c-5>', function() harpoon:list():select(5) end)
-		end
-	},
+	-- {'ThePrimeagen/harpoon', -- TODO: make it work
+	-- 	branch = 'harpoon2',
+	-- 	dependencies = { 'nvim-lua/plenary.nvim' },
+	-- 	init = function()
+	-- 		local harpoon = require('harpoon')
+	-- 		harpoon:setup({ default = { -- `harpoon:setup()` is required
+	-- 			get_root_dir = function()
+	-- 				local cwd = vim.loop.cwd()
+	-- 				local root = vim.fn.system('git rev-parse --show-toplevel')
+	-- 				if vim.v.shell_error == 0 and root ~= nil then
+	-- 					return string.gsub(root, '\n', '')
+	-- 				end
+	-- 				return cwd
+	-- 			end,
+	-- 		}})
+	-- 		keymap_n('<c-s-h>', function()
+	-- 			local fname = vim.fn.expand('%:p')
+	-- 			harpoon:list():add()
+	-- 			print('`' .. fname .. '` harpooned >:3')
+	-- 		end)
+	-- 		keymap_n('<c-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+	-- 		keymap_n('<c-d>', function() harpoon:list():prev() end)
+	-- 		keymap_n('<c-f>', function() harpoon:list():next() end)
+	-- 		keymap_n('<c-1>', function() harpoon:list():select(1) end)
+	-- 		keymap_n('<c-2>', function() harpoon:list():select(2) end)
+	-- 		keymap_n('<c-3>', function() harpoon:list():select(3) end)
+	-- 		keymap_n('<c-4>', function() harpoon:list():select(4) end)
+	-- 		keymap_n('<c-5>', function() harpoon:list():select(5) end)
+	-- 	end
+	-- },
 	{'lewis6991/gitsigns.nvim', -- Adds git related signs to the gutter, as well as utilities for managing changes.
 		-- See `:help gitsigns` to understand what the configuration keys do.
 		opts = {
