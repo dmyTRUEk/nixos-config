@@ -183,6 +183,7 @@
 				#{ on = ["g" "a" "t" "h" "1" "9"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/2400340/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th19"; }
 				{ on = ["g" "a" "t" "m" "r"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/11020/pfx/drive_c/users/steamuser/Documents/TrackMania/Tracks/Replays"; }
 				{ on = ["g" "a" "t" "m" "s"]; run = "cd '~/.local/share/Steam/steamapps/common/TrackMania Nations Forever/GameData/Painter/Stickers'"; }
+				{ on = ["g" "a" "t" "o"]; run = "cd ~/.t-engine/4.0/tome/save/"; }
 			];
 		};
 	};
