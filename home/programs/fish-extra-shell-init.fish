@@ -186,3 +186,23 @@ function nvimcmddiff -d "view commands diff using neovim"
 	eval $argv[2] > $tmp2
 	nvim -d $tmp1 $tmp2
 end
+
+function auto-shutdown-on-low-battery-or-ram --argument threshold
+	while true
+		# Battery
+		set capacity (cat /sys/class/power_supply/BAT1/capacity)
+
+		# RAM
+		set meminfo (cat /proc/meminfo)
+		set mem_total (string match -r 'MemTotal:\s+(\d+)' $meminfo)[2]
+		set mem_free  (string match -r 'MemAvailable:\s+(\d+)' $meminfo)[2]
+		# Calculate used percentage
+		set mem_used_percent (math "(1 - $mem_free / $mem_total) * 100")
+
+		if test $capacity -le $threshold -o $mem_used_percent -ge 80
+			shutdown 0
+		end
+
+		sleep 1
+	end
+end
