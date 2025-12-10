@@ -5,6 +5,7 @@
 	extraCss = builtins.readFile ./anyrun-style.css;
 	extraConfigFiles."symbols.ron".text = builtins.readFile ./anyrun.symbols.ron;
 	config = {
+		# TODO: replace `:` with `;` for calling plugins
 		plugins =
 		#with inputs.anyrun.packages.${pkgs.system};
 		[
