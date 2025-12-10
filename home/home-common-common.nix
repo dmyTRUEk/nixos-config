@@ -208,11 +208,16 @@
 			matplotlib
 			pipe
 			scipy
+			jupyter # jupyterlab
 		]))
 		gcc
 		lean4
 		android-studio
 		android-tools # for `adb`
+		(julia.withPackages [
+			"IJulia" # for jupyter
+			"Symbolics"
+		])
 
 		# LSPs:
 		lua-language-server # lua
