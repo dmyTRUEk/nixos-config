@@ -10,32 +10,41 @@ vim.cmd([[
 func! CompileLatexToPDFsimple()
     ! echo '\n\n\n\n\n' && pdflatex -halt-on-error -synctex=1 %:t
 endf
+command CompileLatexToPDFsimple call CompileLatexToPDFsimple()
 
 " enable/disable vim to zathura sync
 func! LatexAutoSyncDisable()
     let g:is_latex_auto_sync_enabled = 0
 endf
+command LatexAutoSyncDisable call LatexAutoSyncDisable()
 func! LatexAutoSyncEnable()
     let g:is_latex_auto_sync_enabled = 1
 endf
+command LatexAutoSyncEnable call LatexAutoSyncEnable()
 
 " enable/disable autocompile
 func! LatexAutoCompileDisable()
     let g:is_latex_auto_compile_enabled = 0
 endf
+command LatexAutoCompileDisable call LatexAutoCompileDisable()
 func! LatexAutoCompileEnable()
     let g:is_latex_auto_compile_enabled = 1
 endf
+command LatexAutoCompileEnable call LatexAutoCompileEnable()
 
 " enable/disable autocompile and sync
 func! LatexAutosDisable()
     call LatexAutoCompileDisable()
     call LatexAutoSyncDisable()
 endf
+command LatexAutosDisable call LatexAutosDisable()
 func! LatexAutosEnable()
     call LatexAutoCompileEnable()
     call LatexAutoSyncEnable()
 endf
+command LatexAutosEnable call LatexAutosEnable()
+
+
 
 func! SetupEverythingForLatex()
     setlocal spell spelllang=uk,en
@@ -71,10 +80,13 @@ func! SetupEverythingForLatex()
 
     " set hold delay
     "set updatetime=1500
-    autocmd TextChanged *.tex call CompileLatexToPDF_async()
-    autocmd InsertLeave *.tex call CompileLatexToPDF_async()
-    "autocmd CursorHoldI *.tex call CompileLatexToPDF_async()
-    "autocmd CursorMovedI *.tex call CompileLatexToPDF_async()
+    autocmd TextChanged *.tex call CompileLatexToPDF_async_auto()
+    autocmd InsertLeave *.tex call CompileLatexToPDF_async_auto()
+    autocmd BufWritePost *.tex call CompileLatexToPDF_async_auto()
+    "autocmd CursorHoldI *.tex call CompileLatexToPDF_async_auto()
+    "autocmd CursorMovedI *.tex call CompileLatexToPDF_async_auto()
+
+    nnoremap <leader>c :call CompileLatexToPDF_async_manual()<cr>
 endf
 
 
@@ -103,17 +115,29 @@ func! PrivateCompileLatextoPDFasync_OnExit(j, c, e)
     let g:is_latex_compiling_now = 0
 endf
 
-func! CompileLatexToPDF_async()
+func! CompileLatexToPDF_async_auto()
     if g:is_latex_auto_compile_enabled && g:is_latex_compiling_now == 0
-        " lock another possible instances of this function
-        let g:is_latex_compiling_now = 1
-
-        " save file before compiling
-        execute "w"
-
-        " compile file
-        call jobstart("pdflatex -halt-on-error -synctex=1 " . bufname("%"), {"on_exit": "PrivateCompileLatextoPDFasync_OnExit"})
+        call CompileLatexToPDF_async_unchecked()
     endif
+    " TODO: needs another dispatch (call again after finished)
+endf
+
+func! CompileLatexToPDF_async_manual()
+    if g:is_latex_compiling_now == 0
+        call CompileLatexToPDF_async_unchecked()
+    endif
+    " TODO: needs another dispatch (call again after finished)
+endf
+
+func! CompileLatexToPDF_async_unchecked()
+    " lock another possible instances of this function
+    let g:is_latex_compiling_now = 1
+
+    " save file before compiling
+    execute "w"
+
+    " compile file
+    call jobstart("pdflatex -halt-on-error -synctex=1 " . bufname("%"), {"on_exit": "PrivateCompileLatextoPDFasync_OnExit"})
 endf
 
 ]])

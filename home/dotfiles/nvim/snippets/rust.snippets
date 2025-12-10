@@ -111,6 +111,8 @@ snippet opt "Option<T>"
 	Option<${1:i32}>
 snippet res "Result<T, E>"
 	Result<${1:&str}, ${2:()}>
+snippet ss "&'static str"
+	&'static str
 # Control structures
 snippet if
 	if ${1} {
@@ -204,8 +206,8 @@ snippet drop "Drop trait implementation (destructor)"
 		}
 	}
 # Statics
-snippet ss "static string declaration"
-	static ${1}: &'static str = "${0}";
+#snippet ss "static string declaration"
+#	static ${1}: &'static str = "${0}";
 snippet stat "static item declaration"
 	static ${1}: ${2:usize} = ${0};
 # Concurrency

@@ -108,10 +108,12 @@ vim.o.splitbelow = true
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
 
--- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- If performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
--- See `:help 'confirm'`
-vim.o.confirm = true
+--vim.o.confirm = true
+
+-- When substituting replace all occurances in a line by default
+vim.o.gdefault = true
 
 
 
@@ -177,6 +179,7 @@ keymap_n('yh', 'ly2h') keymap_n('yl', 'y2l')
 -- work with function names:
 keymap_n('cn', 'ct(') keymap_n('dn', 'dt(') keymap_n('yn', 'yt(')
 keymap_n('cu', 'ct_') keymap_n('du', 'df_') keymap_n('yu', 'yt_')
+keymap_n('c.', 'ct.') keymap_n('d.', 'dt.') keymap_n('y.', 'yt.')
 
 keymap_n('c;', 'ct;')
 keymap_n('d;', 'dt;')
@@ -279,8 +282,23 @@ keymap_n('dC', function()
 		vim.cmd('normal! "_d')
 	end
 end)
+-- TODO: move forward/backward to capital letter
+--keymap_n('<c-f>c', function()
+--	vim.fn.search('\\u', 'W')
+--end)
+--keymap_n('<c-f>C', function()
+--	vim.fn.search('\\u', 'bW')
+--end)
 
--- TODO: ctrl+tab swaps true->false, false->true
+keymap_n({'<c-s>', '<c-і>'}, ':.,$s/') -- old:  :%s/  -- TODO: confirm (`/c`) by default
+
+keymap_n({'gi', 'пш'}, "'^") -- goto place of last insert
+
+--keymap_n('<cr>', '.')
+
+keymap_n({'<a-a>', '<a-ф>'}, 'ga')
+
+-- TODO: ctrl+tab or something swaps true->false, false->true
 
 
 
@@ -329,7 +347,9 @@ keymap_i({'<c-l>', '<c-д>'}, '<right>')
 
 keymap_v('-', '$h') -- better $
 keymap_v({'S', 'І'}, ':sort<cr>')
-keymap_v('<c-n>', ':norm ')
+keymap_v('<c-n>', ':norm 0')
+
+keymap_v({'gp', 'пз'}, '"0p') -- paste without copy
 
 
 
@@ -569,13 +589,14 @@ require('lazy').setup({
 					set_local('T', wrap_in_type)
 					set_local('v', 'vec![\r]')
 					set_local('V', 'Vec<\r>')
+					set_local('/', '/*\r*/')
 				end
 			})
 			vim.api.nvim_create_autocmd('FileType', {
 				pattern = 'tex', -- LATEX
 				callback = function()
 					set_local('b', '\\textbf{\r}')
-					set_local('c', '\\textcolor{red!50!black}{\r}')
+					set_local('c', '\\textcolor{red!90!black}{\r}')
 					set_local('i', '\\textit{\r}')
 					set_local('l', '\\\1Name: \1{\r}')
 					set_local('L', '\\begin{\1Environment: \1}\r\\end{\1\1}')
@@ -639,20 +660,15 @@ require('lazy').setup({
 	{'L3MON4D3/LuaSnip', -- snippets
 		version = '2.*',
 		-- opts = {},
-		-- init = function()
-		-- 	require('luasnip.loaders.from_snipmate').lazy_load()
-		-- 	local ls = require 'luasnip'
-		-- 	keymap_i('<F8>', ls.expand)
-		-- 	keymap_i('<F9>', ls.expand)
-		-- 	keymap_i('<F10>', ls.expand)
-		-- 	-- vim.keymap.set({'i', 's'}, '<c-l>', function() ls.jump( 1) end, {silent = true})
-		-- 	-- vim.keymap.set({'i', 's'}, '<c-j>', function() ls.jump(-1) end, {silent = true})
-		-- 	-- vim.keymap.set({'i', 's'}, '<c-e>', function()
-		-- 	-- 	if ls.choice_active() then
-		-- 	-- 		ls.change_choice(1)
-		-- 	-- 	end
-		-- 	-- end, {silent = true})
-		-- end
+		init = function()
+			require('luasnip.loaders.from_snipmate').lazy_load()
+			local ls = require 'luasnip'
+			keymap_i({'<F8>', '<F9>', '<F10>'}, function()
+				if ls.expand_or_jumpable() then
+					ls.expand_or_jump()
+				end
+			end)
+		end
 	},
 	--'dmytruek/find-and-replace', -- find and replace
 	-- {'ThePrimeagen/harpoon', -- TODO: make it work
@@ -923,7 +939,7 @@ require('lazy').setup({
 						-- TODO: swap prev & next to confuse % motion less
 						goto_next_start = {
 							[']]'] = '@block.inner',
-							[']a'] = '@parameter.rhs',
+							[']a'] = '@parameter.rhs', -- TODO: broken?
 							[']b'] = '@block.inner',
 							[']c'] = '@class.outer',
 							[']f'] = '@function.outer',
@@ -934,7 +950,7 @@ require('lazy').setup({
 						},
 						goto_previous_start = {
 							['[['] = '@block.inner',
-							['[a'] = '@parameter.rhs',
+							['[a'] = '@parameter.rhs', -- TODO: broken?
 							['[b'] = '@block.inner',
 							['[c'] = '@class.outer',
 							['[f'] = '@function.outer',
@@ -1032,7 +1048,7 @@ require('lazy').setup({
 
 					-- Jump to the implementation of the word under your cursor.
 					--  Useful when your language has ways of declaring types without an actual implementation.
-					map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+					--map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
 					-- Jump to the definition of the word under your cursor.
 					--  This is where a variable was first declared, or where a function is defined, etc.
@@ -1154,9 +1170,21 @@ require('lazy').setup({
 			-- TODO: provide to lsp?
 
 			-- src: `:help lspconfig-all`
-			vim.lsp.enable('rust_analyzer') -- TODO: enable `clippy`?
+			vim.lsp.enable('rust_analyzer')
+			vim.lsp.config('rust_analyzer', {
+				settings = {
+					["rust-analyzer"] = {
+						checkOnSave = {
+							enable = true,
+							command = "clippy", -- lints list: https://rust-lang.github.io/rust-clippy/
+						},
+					},
+				},
+			})
+
 			vim.lsp.enable('pyright') -- python
 			--'ruff_lsp' -- python linter -- TODO: setup?
+
 			vim.lsp.enable('lua_ls')
 			--'clangd' -- c/c++
 			--'nil_ls' -- nix
@@ -1170,11 +1198,9 @@ require('lazy').setup({
 		event = 'VimEnter',
 		version = '1.*',
 		dependencies = {
-			'L3MON4D3/LuaSnip',
+			{'L3MON4D3/LuaSnip', version='v2.*'},
 			-- 'folke/lazydev.nvim', -- for Lua LSP?
 		},
-		--- @module 'blink.cmp'
-		--- @type blink.cmp.Config
 		opts = {
 			keymap = {
 				-- See :h blink-cmp-config-keymap for defining your own keymap
