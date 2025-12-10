@@ -51,6 +51,7 @@
 	gb = "git branch";
 	gc = "git commit";
 	gca = "git commit --amend"; # change msg of last commit
+	gcane = "git commit --amend --no-edit"; # add changes to last commit
 	gcm = "git commit -m";
 	gch = "git checkout"; # delete changes
 	gchb = "git checkout -b"; # change branch?
@@ -71,6 +72,7 @@
 	gpull = "git pull";
 	gpush = "git push";
 	gpush-force-wl = "git push --force-with-lease";
+	grmc = "git rm --cached";
 	grs = "git restore --staged";
 	"grs." = "git restore --staged .";
 	grsp = "git restore --staged --patch";
