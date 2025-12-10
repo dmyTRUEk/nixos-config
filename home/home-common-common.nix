@@ -5,6 +5,7 @@
 	lib,
 	config,
 	pkgs,
+	peeky,
 	...
 }: {
 	#home.file =
@@ -198,6 +199,7 @@
 		godot
 		zulip
 		kdePackages.cantor
+		peeky.packages.${system}.default
 
 		# LANGS:
 		rustup # rust btw

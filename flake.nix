@@ -18,11 +18,18 @@
 
 		# nixpkgs at 2025-01-24, for wolfram mathematica 14.1.0
 		nixpkgs_a85fc0a.url = "github:NixOS/nixpkgs/a85fc0af456a898b7a4c459f38429e05df958907";
+
+		peeky = {
+			#url = "path:////home/myshko/projects/peeky";
+			url = "github:dmyTRUEk/peeky";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = inputs @ {
 		nixpkgs,
 		home-manager,
+		peeky,
 		...
 	}:
 	let
@@ -52,6 +59,7 @@
 								inherit
 									inputs
 									pkgs_a85fc0a
+									peeky
 								;
 							};
 							backupFileExtension = "backup";
@@ -86,6 +94,7 @@
 								inherit
 									inputs
 									pkgs_a85fc0a
+									peeky
 								;
 							};
 							backupFileExtension = "backup";

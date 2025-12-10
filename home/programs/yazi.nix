@@ -29,6 +29,7 @@
 			];
 			image_raster = [
 				{ run = ''swayimg "$@"''; }
+				{ run = ''peeky "$@"''; }
 				{ run = ''krita "$@"''; }
 				{ run = ''gwenview "$@"''; }
 				{ run = ''nvim "$@"''; block = true; }
