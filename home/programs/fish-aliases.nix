@@ -9,6 +9,7 @@
 	nr = "nvim -R"; # open in read-only mode
 	nhoriz = "nvim -o"; # split with horizontal divider
 	nvert  = "nvim -O"; # split with vertical divider
+	ntab   = "nvim -p"; # open tabs
 
 	# ls
 	ls = "ls"; # to exclude possibility of aliasing real ls
