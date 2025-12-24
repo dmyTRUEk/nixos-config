@@ -12,7 +12,7 @@
         "battery",
         "network",
         "backlight",
-        "pulseaudio",
+        "pulseaudio", // TODO: replace by wireplumber?
         // TODO: add Bluetooth icon when it's on
         // TODO: remove this:?
         "memory",

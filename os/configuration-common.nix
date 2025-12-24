@@ -269,20 +269,22 @@
 	};
 
 	services.pipewire = {
+		# src:
+		# https://nixos.wiki/wiki/NixOS_Wiki:Audio
+		# https://nixos.wiki/wiki/PipeWire
 		enable = true;
-		pulse.enable = true;
 		alsa = {
 			enable = true;
 			support32Bit = true;
 		};
+		pulse.enable = true;
 		# If you want to use JACK applications, uncomment this
 		#jack.enable = true;
 	};
 
 	security = {
 		# TODO(refactor): move to HM?
-		# rtkit is optional but recommended
-		rtkit.enable = true;
+		rtkit.enable = true; # for audio, optional but recommended
 		polkit.enable = true;
 	};
 

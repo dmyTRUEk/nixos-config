@@ -134,7 +134,6 @@
 		wayland-utils
 
 		# "LIBS":
-		pulseaudio # provides pactl, to change volume by fn keys # TODO: replace by `wpctl`
 		playerctl
 		gammastep
 		wl-clipboard
