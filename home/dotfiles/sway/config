@@ -194,6 +194,7 @@ input type:keyboard {
 	repeat_rate 30
 }
 
+# RALT Backspace
 # TODO
 #set $wtype $(nix eval nixpkgs#wtype.outPath --raw)
 #set $wtype $wtype/bin/wtype

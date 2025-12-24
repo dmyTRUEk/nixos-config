@@ -136,6 +136,7 @@
 			#	wayland.enable = true;
 			#	theme = "chili";
 			#};
+			#cosmic-greeter.enable = true;
 		};
 		desktopManager = {
 			plasma6.enable = true;
@@ -149,9 +150,8 @@
 				layout = "us";
 				options = "caps:swapescape,ctrl:swap_lalt_lctrl";
 			};
-			#desktopManager.xfce.enable = true;
 		};
-		blueman.enable = true;
+		blueman.enable = true; # for bluetooth
 		printing.enable = true;
 		ollama = { # src: https://wiki.nixos.org/wiki/Ollama
 			enable = true;
@@ -262,7 +262,7 @@
 			#font-awesome # for icons
 			source-han-serif
 			source-han-sans
-			corefonts  # Microsoft's TrueType core fonts for the Web
+			corefonts # Microsoft's TrueType core fonts for the Web
 			vista-fonts # Some TrueType fonts from Microsoft Windows Vista (Calibri, Cambria, Candara, Consolas, Constantia, Corbel)
 			minecraftia # minecraft font
 		];
