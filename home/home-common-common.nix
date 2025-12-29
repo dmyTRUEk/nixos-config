@@ -153,7 +153,6 @@
 		unzip
 		p7zip
 		unrar
-		texliveFull
 		ffmpeg
 		nix-tree
 		nvd
@@ -211,6 +210,7 @@
 			scipy
 			#jupyter # jupyterlab
 		]))
+		texliveFull
 		gcc
 		#lean4
 		android-studio
