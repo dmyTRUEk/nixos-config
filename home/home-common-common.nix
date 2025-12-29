@@ -157,7 +157,7 @@
 		ffmpeg
 		nix-tree
 		nvd
-		curlftpfs
+		#curlftpfs
 		wtype
 
 		# CLI fun:
@@ -165,7 +165,7 @@
 		#cowsay
 		#lolcat -> ur0/lolcat (rust btw)
 		cmatrix
-		cbonsai
+		#cbonsai
 
 		# GUI+CLI:
 		imagemagick
@@ -197,7 +197,7 @@
 		inkscape
 		godot
 		zulip
-		kdePackages.cantor
+		#kdePackages.cantor
 		peeky.packages.${system}.default
 
 		# LANGS:
@@ -212,7 +212,7 @@
 			#jupyter # jupyterlab
 		]))
 		gcc
-		lean4
+		#lean4
 		android-studio
 		android-tools # for `adb`
 		#(julia.withPackages [
