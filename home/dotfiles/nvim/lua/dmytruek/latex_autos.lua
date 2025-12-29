@@ -50,15 +50,6 @@ func! SetupEverythingForLatex()
     setlocal spell spelllang=uk,en
     syntax spell toplevel
 
-    nnoremap j gj
-    nnoremap k gk
-    nnoremap о gj
-    nnoremap л gk
-    inoremap <C-j> <C-o>gj
-    inoremap <C-о> <C-o>gj
-    inoremap <C-k> <C-o>gk
-    inoremap <C-л> <C-o>gk
-
     nnoremap 0 g^
     nnoremap - g$
 

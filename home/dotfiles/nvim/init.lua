@@ -361,12 +361,13 @@ vim.api.nvim_create_autocmd('FileType', {
 		'markdown', -- .md
 		'tex',
 		'text', -- .txt
+		'typst', -- .typ
 	},
 	command = 'setlocal spell spelllang=uk,en'
 })
 --vim.api.nvim_create_autocmd({'BufEnter', 'BufLeave', 'BufWinEnter', 'BufWinLeave', 'WinNew', 'WinEnter', 'WinLeave', 'VimResized'}, {
 --	callback = function()
---		--set_relative_scrolloff() -- TODO:
+--		--set_relative_scrolloff() -- TODO
 --	end
 --})
 vim.api.nvim_create_autocmd('FileType', {
@@ -389,10 +390,17 @@ vim.api.nvim_create_autocmd('FileType', {
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'text',
+	pattern = {
+		'markdown', -- .md
+		'tex',
+		'text', -- .txt
+		'typst', -- .typ
+	},
 	callback = function()
 		keymap_n({'j', 'о'}, 'gj')
 		keymap_n({'k', 'л'}, 'gk')
+		keymap_n({'<c-j>', '<c-о>'}, '<c-o>gj')
+		keymap_n({'<c-k>', '<c-л>'}, '<c-o>gk')
 	end
 })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -491,7 +499,7 @@ require('lazy').setup({
 				'text',
 			}
 			nap.add_rules {
-				rule('$', '$', {'tex', 'latex'}),
+				rule('$', '$', {'tex', 'typst'}),
 				rule('(', ')'),
 				rule('[', ']'),
 				rule('{', '}'),
@@ -638,6 +646,16 @@ require('lazy').setup({
 				pattern = 'lua',
 				callback = function()
 					set_local('i', 'vim.inspect(\r)')
+				end
+			})
+			vim.api.nvim_create_autocmd('FileType', {
+				pattern = 'typst',
+				callback = function()
+					set_local('b', '#text(weight: "bold")[\r]')
+					set_local('c', '#text(red)[\r]')
+					set_local('f', '\1Name: \1(\r)')
+					set_local('i', '#text(style: "italic")[\r]')
+					set_local('v', 'va(\r)')
 				end
 			})
 		end

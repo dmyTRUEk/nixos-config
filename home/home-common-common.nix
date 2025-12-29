@@ -219,6 +219,7 @@
 		#	"IJulia" # for jupyter
 		#	"Symbolics"
 		#])
+		typst
 
 		# LSPs:
 		lua-language-server # lua
