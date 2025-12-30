@@ -117,9 +117,10 @@
 				TimeoutStopSec = 10;
 			};
 		};
-		# extraConfig = ''
-		# 	DefaultTimeoutStopSec=10s
-		# '';
+		# TODO
+		#extraConfig = ''
+		#	DefaultTimeoutStopSec=10s
+		#'';
 	};
 
 	services = {
@@ -145,7 +146,7 @@
 		};
 		xserver = {
 			enable = true; # TODO: dont enable or why i need it?
-			videoDrivers = ["amdgpu"];
+			videoDrivers = ["amdgpu"]; # TODO: why i need this? opencl/etc?
 			xkb = {
 				layout = "us";
 				options = "caps:swapescape,ctrl:swap_lalt_lctrl";
