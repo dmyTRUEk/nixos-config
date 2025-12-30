@@ -115,6 +115,9 @@
 	nihp = "nvim ~/.config/home-manager/home/home-myshko-psyche.nix";
 	nihk = "nvim ~/.config/home-manager/home/home-myshko-knight.nix";
 
+	nal = "nvim ~/.config/home-manager/home/programs/alacritty.nix";
+	nan = "nvim ~/.config/home-manager/home/programs/anyrun.nix";
+	nans= "nvim ~/.config/home-manager/home/programs/anyrun.symbols.ron";
 	nfa = "nvim ~/.config/home-manager/home/programs/fish-aliases.nix";
 	nfe = "nvim ~/.config/home-manager/home/programs/fish-extra-shell-init.fish";
 	ny  = "nvim ~/.config/home-manager/home/programs/yazi.nix";
