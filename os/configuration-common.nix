@@ -265,6 +265,9 @@
 			corefonts # Microsoft's TrueType core fonts for the Web
 			vista-fonts # Some TrueType fonts from Microsoft Windows Vista (Calibri, Cambria, Candara, Consolas, Constantia, Corbel)
 			minecraftia # minecraft font
+			monocraft # minecraft monospace font
+			miracode # minecraft monospace vectory font
+			fira
 		];
 	};
 

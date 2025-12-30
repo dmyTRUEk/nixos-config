@@ -35,6 +35,8 @@
 		let
 			font_family = "JetBrains Mono";
 			#font_family = "Minecraftia";
+			#font_family = "Monocraft";
+			#font_family = "Miracode";
 		in {
 			builtin_box_drawing = true;
 			size = 13.0;
