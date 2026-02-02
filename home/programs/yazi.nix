@@ -24,67 +24,67 @@
 		};
 		opener = {
 			text = [
-				{ run = ''nvim "$@"''; block = true; }
-				#{ run = ''xdg-open "$@"''; } # TODO: fix
+				{ run = ''nvim %s''; block = true; }
+				#{ run = ''xdg-open %s''; } # TODO: fix
 			];
 			image_raster = [
-				{ run = ''swayimg "$@"''; }
-				{ run = ''peeky "$@"''; }
-				{ run = ''krita "$@"''; }
-				{ run = ''gwenview "$@"''; }
-				{ run = ''nvim "$@"''; block = true; }
+				{ run = ''swayimg %s''; }
+				{ run = ''peeky %s''; }
+				{ run = ''krita %s''; }
+				{ run = ''gwenview %s''; }
+				{ run = ''nvim %s''; block = true; }
 			];
 			image_vector = [
-				{ run = ''swayimg "$@"''; }
-				{ run = ''inkscape "$@"''; }
-				{ run = ''nvim "$@"''; block = true; }
+				{ run = ''swayimg %s''; }
+				{ run = ''inkscape %s''; }
+				{ run = ''nvim %s''; block = true; }
 			];
-			video = [{ run = ''vlc "$@"''; }];
-			audio = [{ run = ''vlc "$@"''; }];
-			kdenlive = [{ run = ''kdenlive "$@"''; }];
+			video = [{ run = ''vlc %s''; }];
+			audio = [{ run = ''vlc %s''; }];
+			kdenlive = [{ run = ''kdenlive %s''; }];
 			pdf = [
-				{ run = ''zathura "$@"''; }
-				{ run = ''firefox "$@"''; }
+				{ run = ''zathura %s''; }
+				{ run = ''firefox %s''; }
 			];
-			libreoffice = [{ run = ''libreoffice "$@"''; }];
-			djvu = [{ run = ''zathura "$@"''; }];
-			krita_project = [{ run = ''krita "$@"''; }];
+			libreoffice = [{ run = ''libreoffice %s''; }];
+			djvu = [{ run = ''zathura %s''; }];
+			krita_project = [{ run = ''krita %s''; }];
 			#markdown = [];
 			wolfram_mathematica = [
-				{ run = ''wolframnb "$@"''; }
-				#{ run = ''nvim "$@"''; block = true; }
+				{ run = ''wolframnb %s''; }
+				#{ run = ''nvim %s''; block = true; }
 			];
 		};
 		open = {
 			rules = [
-				{ name = "*.nb"; use = "wolfram_mathematica"; }
-				{ name = "*.kdenlive"; use = "kdenlive"; }
-				{ name = "*.kra"; use = "krita_project"; }
-				{ name = "*.djvu"; use = "djvu"; }
-				#{ name = "*.md"; use = "markdown"; }
-				{ name = "*.svg"; use = "image_vector"; }
+				{ url = "*.nb"; use = "wolfram_mathematica"; }
+				{ url = "*.kdenlive"; use = "kdenlive"; }
+				{ url = "*.kra"; use = "krita_project"; }
+				{ url = "*.djvu"; use = "djvu"; }
+				#{ url = "*.md"; use = "markdown"; }
+				{ url = "*.svg"; use = "image_vector"; }
 
-				{ name = "*.mp3"; use = "audio"; }
-				{ name = "*.wav"; use = "audio"; }
-				{ name = "*.ogg"; use = "audio"; }
+				{ url = "*.mp3"; use = "audio"; }
+				{ url = "*.wav"; use = "audio"; }
+				{ url = "*.ogg"; use = "audio"; }
 
-				{ name = "*.odt"; use = "libreoffice"; }
-				{ name = "*.odp"; use = "libreoffice"; }
-				{ name = "*.ods"; use = "libreoffice"; }
+				{ url = "*.odt"; use = "libreoffice"; }
+				{ url = "*.odp"; use = "libreoffice"; }
+				{ url = "*.ods"; use = "libreoffice"; }
 
-				{ name = "*.doc" ; use = "libreoffice"; }
-				{ name = "*.docx"; use = "libreoffice"; }
-				{ name = "*.ppt" ; use = "libreoffice"; }
-				{ name = "*.pptx"; use = "libreoffice"; }
-				{ name = "*.xls" ; use = "libreoffice"; }
-				{ name = "*.xlsx"; use = "libreoffice"; }
+				{ url = "*.doc" ; use = "libreoffice"; }
+				{ url = "*.docx"; use = "libreoffice"; }
+				{ url = "*.ppt" ; use = "libreoffice"; }
+				{ url = "*.pptx"; use = "libreoffice"; }
+				{ url = "*.xls" ; use = "libreoffice"; }
+				{ url = "*.xlsx"; use = "libreoffice"; }
 
-				{ name = "*.rtf"; use = "libreoffice"; }
+				{ url = "*.rtf"; use = "libreoffice"; }
 
-				{ name = "*.srt"; use = "text"; }
+				{ url = "*.srt"; use = "text"; }
 
 				# Multiple openers for a single rule
-				#{ name = "*.html", use = [ "browser", "text" ] },
+				#{ url = "*.html", use = [ "browser", "text" ] },
 
 				{ mime = "text/*"; use = "text"; }
 				{ mime = "image/*"; use = "image_raster"; }
