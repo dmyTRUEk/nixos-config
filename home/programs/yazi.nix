@@ -156,13 +156,13 @@
 				{ on = ["g" "t"]; run = ["cd '~/Downloads/Telegram Desktop'" "sort mtime --reverse"]; }
 				{ on = ["g" "r"]; run = "cd ~/Dropbox"; }
 				#{ on = ["g" "D"]; run = "cd ~/Dropbox/Docs"; }
-				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2025_spring"; }
+				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2026_1_spring"; }
 				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
 				{ on = ["g" "w"]; run = ["cd ~/Dropbox/Work" "sort natural --reverse"]; }
 				{ on = ["g" "P"]; run = ["cd ~/Dropbox/Work/papers" "sort natural"]; }
 				{ on = ["g" "m"]; run = "cd /run/media/myshko/"; }
 				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
-				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2025" "sort natural --reverse"]; }
+				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2026" "sort natural --reverse"]; }
 				{ on = ["g" "v"]; run = ["cd ~/Videos" "sort mtime --reverse"]; }
 				# games:
 				{ on = ["g" "a" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/374320/pfx/drive_c/users/steamuser/AppData/Roaming/DarkSoulsIII"; }
