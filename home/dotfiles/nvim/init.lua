@@ -333,7 +333,7 @@ keymap_n_cmd('<c-0>', 'cnext')
 keymap_n_cmd('<c-q>', 'cclose')
 
 keymap_n_cmd({'<c-t>', '<c-е>'}, 'tabnext')
-keymap_n_cmd({'<c-y>', '<c-н>'}, 'tabprev')
+-- keymap_n_cmd({'<c-y>', '<c-н>'}, 'tabprev')
 
 
 
@@ -379,6 +379,15 @@ vim.api.nvim_create_autocmd('FileType', {
 		vim.opt_local.shiftwidth = TAB_SIZE
 		--vim.opt_local.softtabstop = options.softtabstop
 		--vim.opt_local.smarttab = true
+	end
+})
+vim.api.nvim_create_autocmd('FileType', {
+	-- set tabs EVERYWHERE EXCEPT haskell
+	pattern = 'haskell',
+	callback = function()
+		vim.opt_local.expandtab = true
+		vim.opt_local.tabstop = 2
+		vim.opt_local.shiftwidth = 2
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
