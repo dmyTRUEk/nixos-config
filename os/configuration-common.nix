@@ -104,19 +104,6 @@
 	};
 
 	systemd = {
-		user.services.polkit-gnome-authentication-agent-1 = {
-			description = "polkit-gnome-authentication-agent-1";
-			wantedBy = [ "graphical-session.target" ];
-			wants = [ "graphical-session.target" ];
-			after = [ "graphical-session.target" ];
-			serviceConfig = {
-				Type = "simple";
-				ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-				Restart = "on-failure";
-				RestartSec = 1;
-				TimeoutStopSec = 10;
-			};
-		};
 		# TODO
 		#extraConfig = ''
 		#	DefaultTimeoutStopSec=10s
@@ -125,17 +112,17 @@
 
 	services = {
 		displayManager = {
-			defaultSession = "sway";
-			gdm = {
+			defaultSession = "plasma";
+			sddm = {
 				enable = true;
-				wayland = true;
-				#banner = "Greetings, human.";
-				#hiddenUsers = [];
+				wayland.enable = true;
+				#theme = "chili";
 			};
-			#sddm = {
+			#gdm = {
 			#	enable = true;
-			#	wayland.enable = true;
-			#	theme = "chili";
+			#	wayland = true;
+			#	#banner = "Greetings, human.";
+			#	#hiddenUsers = [];
 			#};
 			#cosmic-greeter.enable = true;
 		};
@@ -152,7 +139,6 @@
 				options = "caps:swapescape,ctrl:swap_lalt_lctrl";
 			};
 		};
-		blueman.enable = true; # for bluetooth
 		printing.enable = true;
 		ollama = { # src: https://wiki.nixos.org/wiki/Ollama
 			enable = true;
@@ -225,7 +211,6 @@
 			config.init.defaultBranch = "main";
 		};
 
-		sway.enable = true;
 
 		# sadly, it have to be installed in root to work
 		steam = { # the meme
@@ -316,28 +301,6 @@
 	#security.pam.loginLimits = [
 	#	{ domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
 	#];
-
-	xdg = {
-		portal = {
-			enable = true;
-			wlr.enable = true;
-			#xdgOpenUsePortal = true;
-			configPackages = [
-				pkgs.sway
-			];
-			# TODO: enable?
-			config = {
-				sway = {
-					default = [ "gtk" ];
-					"org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-				};
-				common.default = [ "gtk" ];
-			};
-			extraPortals = [ # deprecated?
-				pkgs.xdg-desktop-portal-gtk
-			];
-		};
-	};
 
 	environment.sessionVariables = {
 		QT_QPA_PLATFORMTHEME = "kde"; # fix Cantor's colors/theme

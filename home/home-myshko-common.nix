@@ -50,35 +50,6 @@
 		#; in builtins.trace tmp tmp # for dbg
 	);
 
-	home.pointerCursor =
-	let
-		getCursorFrom = url: hash: name: {
-			inherit name;
-			gtk.enable = true;
-			x11.enable = true;
-			size = 48;
-			package =
-				pkgs.runCommand "moveUp" {} ''
-				mkdir -p $out/share/icons
-				ln -s ${pkgs.fetchzip {
-					inherit url hash;
-				}} $out/share/icons/${name}
-			'';
-		};
-	in
-		getCursorFrom
-		"https://github.com/ful1e5/BreezeX_Cursor/releases/download/v2.0.0/BreezeX-Black.tar.gz"
-		"sha256-5su79uUG9HLeAqXDUJa/VhpbYyy9gFj/VdtRPY0yUL4="
-		"BreezeX-Black";
-
-	wayland.windowManager.sway = {
-		#enable = true; # dont `.enable` bc of dotfiles symlinks
-		wrapperFeatures.gtk = true;
-		#programs.sway.extraConfig = ''
-		#	exec_always ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
-		#'';
-	};
-
 	programs = {
 		# IMPORTANT!!!
 		# - DO NOT `.enable` programs that have dotfiles symlinks
@@ -109,8 +80,6 @@
 	#environment.variables.NIXOS_OZONE_WL = "1";
 
 	services = {
-		mako = import ./programs/mako.nix { inherit config; };
-		gnome-keyring.enable = true;
 		#dropbox.enable = true; # somewhy this doesn't work, so just pkg instead
 	};
 

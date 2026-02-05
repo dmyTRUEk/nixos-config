@@ -42,7 +42,7 @@
 
 	services.kdeconnect = {
 		enable = true;
-		indicator = true;
+		# indicator = true;
 	};
 
 	programs = {
@@ -140,8 +140,6 @@
 		grim
 		slurp
 		libnotify # for notify-send
-		polkit_gnome # TODO: remove?
-		gnome-keyring # TODO: remove?
 
 		# CLI:
 		tree
