@@ -29,7 +29,7 @@
 		"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
 	];
 
-	services.ollama.acceleration = "rocm"; # or cuda
+	#services.ollama.acceleration = "rocm"; # or cuda
 
 	programs = {};
 
