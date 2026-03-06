@@ -66,11 +66,13 @@
 							users = {
 								${username_myshko}.imports = [
 									./home/home-common-common.nix
+									./home/home-common-${hostname_psyche}.nix
 									./home/home-${username_myshko}-common.nix
 									./home/home-${username_myshko}-${hostname_psyche}.nix
 								];
 								${username_guest}.imports = [
 									./home/home-common-common.nix
+									./home/home-common-${hostname_psyche}.nix
 									./home/home-${username_guest}-common.nix
 									./home/home-${username_guest}-${hostname_psyche}.nix
 								];
@@ -101,11 +103,13 @@
 							users = {
 								${username_myshko}.imports = [
 									./home/home-common-common.nix
+									./home/home-common-${hostname_knight}.nix
 									./home/home-${username_myshko}-common.nix
 									./home/home-${username_myshko}-${hostname_knight}.nix
 								];
 								${username_guest}.imports = [
 									./home/home-common-common.nix
+									./home/home-common-${hostname_knight}.nix
 									./home/home-${username_guest}-common.nix
 									./home/home-${username_guest}-${hostname_knight}.nix
 								];
