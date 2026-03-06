@@ -8,5 +8,8 @@
 	programs = {};
 
 	home.packages = with pkgs; [ # PKGS
+		# LANGS:
+		android-studio
+		android-tools  # for `adb`
 	];
 }
