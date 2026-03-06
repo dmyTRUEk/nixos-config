@@ -300,6 +300,8 @@ keymap_n({'<a-a>', '<a-ф>'}, 'ga')
 
 -- TODO: ctrl+tab or something swaps true->false, false->true
 
+keymap_n({'<leader>z', '<leader>я'}, 'za') -- toggle fold/collapsed/expanded
+
 
 
 keymap_n_cmd({'<leader>q', '<leader>й'}, 'q')
