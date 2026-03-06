@@ -37,7 +37,6 @@
 	#services.ollama.acceleration = "rocm"; # or cuda
 
 	programs = {
-		light.enable = true; # TODO?: move to HM   # had to be installed in root?
 	};
 
 	environment.systemPackages = with pkgs; [ # PKGS
