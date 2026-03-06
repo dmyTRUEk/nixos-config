@@ -219,11 +219,15 @@
 		#	"Symbolics"
 		#])
 		typst
+		#(haskellPackages.ghcWithPackages (haskell-pkgs: with haskell-pkgs; [
+		#	# haskell pkgs
+		#]))
 
 		# LSPs:
 		lua-language-server # lua
 		pyright # python
 		#ruff-lsp # python # TODO: setup it for lints, cs it's fast (rust btw)
+		#haskell-language-server
 
 		# GAMES:
 		#luanti
