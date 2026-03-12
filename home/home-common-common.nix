@@ -188,7 +188,7 @@
 		zoom-us
 		discord
 		kdePackages.gwenview
-		helvum
+		#helvum
 		audacity
 		#amberol # gnome music player
 		element-desktop
