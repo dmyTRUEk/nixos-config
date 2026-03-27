@@ -7,13 +7,11 @@ size = fullscreen
 window = 000000
 scale = fit
 #antialiasing = yes
-slideshow_time = 5
 history = 5
 preload = 5
 
 [list]
 order = alpha
-loop = yes
 recursive = no
 all = yes
 
@@ -27,6 +25,10 @@ show = no
 
 [gallery]
 window = 000000
+# selected_scale = 1.15
+
+[slideshow]
+time = 5
 
 [keys.viewer]
 q = exit
