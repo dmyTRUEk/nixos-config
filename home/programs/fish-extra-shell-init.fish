@@ -122,6 +122,7 @@ function nm
 	set MAIN_FILE_RUST_LIB 'src/lib.rs'
 	set MAIN_FILE_RUST_LIB_IN_SRC 'lib.rs'
 	set MAIN_FILE_TYPST 'main.typ'
+	set MAIN_FILE_TYPST_PRESENTATION 'presentation.typ'
 
 	if test -f $MAIN_FILE_C
 		nvim "$MAIN_FILE_C" $argv
@@ -161,6 +162,9 @@ function nm
 
 	else if test -f $MAIN_FILE_TYPST
 		nvim "$MAIN_FILE_TYPST" $argv
+
+	else if test -f $MAIN_FILE_TYPST_PRESENTATION
+		nvim "$MAIN_FILE_TYPST_PRESENTATION" $argv
 
 	else
 		echo 'No known main file found.'
