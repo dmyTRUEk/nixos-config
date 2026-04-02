@@ -7,6 +7,7 @@ from sys import argv as cli_args
 from time import sleep
 from math import *
 import itertools
+from random import randint, uniform as randf
 
 import numpy as np
 import matplotlib.pyplot as plt
