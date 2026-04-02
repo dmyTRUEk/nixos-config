@@ -30,17 +30,12 @@
 	in (
 		#let tmp = # for dbg
 		setup_simple_symlinks [
-			"gammastep"
 			"kitty"
 			"nvim"
-			"sway"
 			"swayimg"
-			"swaylock"
-			"waybar"
 			"zathura"
 		]
 		// setup_complex_symlinks [
-			[ "${config.home.homeDirectory}/.xkb/symbols" "${dotfiles_path}/sway/keyboard-layouts" ]
 			#[ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
 		]
 		#//

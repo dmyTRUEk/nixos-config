@@ -137,8 +137,6 @@
 				{ on = ["," "s"]; run = ["sort size --dir-first --reverse"     "linemode size"]; desc = "Sort by Size (reverse)"; }
 				{ on = ["," "S"]; run = ["sort size --dir-first --reverse=no"  "linemode size"]; desc = "Sort by Size"; }
 
-				{ on = ["<C-w>"]; run = ''shell --confirm 'swaymsg -s $SWAYSOCK output \* bg "$1" fill' ''; desc = "Set as Wallpaper"; }
-
 				# GOTOs:
 				# basic:
 				{ on = ["g" "/"]; run = "cd /"; }

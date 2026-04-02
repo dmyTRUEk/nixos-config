@@ -170,7 +170,6 @@
 		#ventoy
 
 		# GUI:
-		waybar
 		kitty
 		pavucontrol # gui to control volume
 		telegram-desktop

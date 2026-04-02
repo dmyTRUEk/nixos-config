@@ -97,9 +97,6 @@
 	dm_without_cover = "yt-dlp -x --audio-format mp3 --embed-metadata";
 	#random_hash = "";
 
-	cds = "cd ~/.config/home-manager/home/dotfiles/sway";
-	cdw = "cd ~/.config/home-manager/home/dotfiles/waybar";
-
 	nixi = "nix repl --file '<nixpkgs>'"; # nix interactive
 	nx   = "nvim ~/.config/home-manager/";
 	nif  = "nvim ~/.config/home-manager/flake.nix";
@@ -124,11 +121,6 @@
 
 	nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua +'set autochdir'";
 	nns = "nvim ~/.config/home-manager/home/dotfiles/nvim/snippets/ +'set autochdir'";
-	ns  = "nvim ~/.config/home-manager/home/dotfiles/sway/config +'set autochdir'";
-	nss = "nvim ~/.config/home-manager/home/dotfiles/sway/scripts/ +'set autochdir'";
-	nw  = "nvim ~/.config/home-manager/home/dotfiles/waybar/config +'set autochdir'";
-	nws = "nvim ~/.config/home-manager/home/dotfiles/waybar/style.css +'set autochdir'";
-	nwss= "nvim ~/.config/home-manager/home/dotfiles/waybar/scripts/ +'set autochdir'";
 	nz  = "nvim ~/.config/home-manager/home/dotfiles/zathura/zathurarc";
 
 	nipy= "nvim ~/.config/home-manager/home/files/init_interactive_python.py";

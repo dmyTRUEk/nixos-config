@@ -178,7 +178,6 @@
 					"dialout"        # for serial port/device (eg arduino on usb)
 				];
 				packages = with pkgs; [
-					# TODO: move `sway` here?
 				];
 			};
 			guest = {
