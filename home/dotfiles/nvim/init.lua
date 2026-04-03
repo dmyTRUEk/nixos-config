@@ -1061,6 +1061,7 @@ require('lazy').setup({
 			vim.api.nvim_create_autocmd('LspAttach', {
 				group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
 				callback = function(event)
+					-- TODO: remove and use my own funcs?
 					local map = function(keys, func, desc, mode)
 						mode = mode or 'n'
 						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -1103,23 +1104,23 @@ require('lazy').setup({
 					--  the definition of its *type*, not where it was *defined*.
 					map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
-					keymap_n('<c-h>', vim.diagnostic.goto_prev)
-					keymap_n('<c-l>', vim.diagnostic.goto_next)
-					keymap_n('<leader>d', vim.diagnostic.open_float)
-
-					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
-					---@param client vim.lsp.Client
-					---@param method vim.lsp.protocol.Method
-					---@param bufnr? integer some lsp support methods only in specific files
-					---@return boolean
-					local function client_supports_method(client, method, bufnr)
-						-- TODO: can be simplified to the true case?
-						if vim.fn.has 'nvim-0.11' == 1 then
-							return client:supports_method(method, bufnr)
+					local function jump_to_error_or_warning(count)
+						local errors_count = vim.diagnostic.count(0)[1]
+						if errors_count ~= nil and errors_count > 0 then
+							vim.diagnostic.jump({count=count, severity=vim.diagnostic.severity.ERROR})
 						else
-							return client.supports_method(method, { bufnr = bufnr })
+							vim.diagnostic.jump({count=count})
 						end
 					end
+					local function jump_to_error_or_warning_next() jump_to_error_or_warning(1) end
+					local function jump_to_error_or_warning_prev() jump_to_error_or_warning(-1) end
+					keymap_n('<c-h>', jump_to_error_or_warning_prev)
+					keymap_n('<c-l>', jump_to_error_or_warning_next)
+					keymap_n('<leader>d', vim.diagnostic.open_float)
+					-- TODO: fix K keybind (hover)
+					-- keymap_n('K', vim.lsp.buf.hover)
+					-- vim.keymap.del('n', 'K')
+					-- keymap_n('K', function() print('hello') end)
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
@@ -1127,7 +1128,7 @@ require('lazy').setup({
 					--
 					-- When you move your cursor, the highlights will be cleared (the second autocommand).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
-					if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+					if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
 						local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
 						vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 							buffer = event.buf,
@@ -1151,15 +1152,14 @@ require('lazy').setup({
 					end
 
 					-- TODO
-					-- The following code creates a keymap to toggle inlay hints in your
-					-- code, if the language server you are using supports them
-					--
-					-- This may be unwanted, since they displace some of your code
-					-- if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-					-- 	map('<leader>th', function()
-					-- 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-					-- 	end, '[T]oggle Inlay [H]ints')
+					-- if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+					-- 	vim.lsp.inlay_hint.enable()
 					-- end
+					map('<leader>th', function()
+						if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+						end
+					end, '[T]oggle Inlay [H]ints')
 				end,
 			})
 
@@ -1204,10 +1204,10 @@ require('lazy').setup({
 			vim.lsp.enable('rust_analyzer')
 			vim.lsp.config('rust_analyzer', {
 				settings = {
-					["rust-analyzer"] = {
+					['rust-analyzer'] = {
 						checkOnSave = {
 							enable = true,
-							command = "clippy", -- lints list: https://rust-lang.github.io/rust-clippy/
+							command = 'clippy', -- lints list: https://rust-lang.github.io/rust-clippy/
 						},
 					},
 				},
