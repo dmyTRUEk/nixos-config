@@ -1,5 +1,5 @@
 -- blockmarks by @kraftwerk28
--- queries by @dmyTRUEk
+-- updated and improved by @dmyTRUEk and ChatGPT
 --
 -- to make queries: `:TSPlaygroundToggle`
 
@@ -67,56 +67,62 @@ local queries = {
 					name: (identifier) @name
 				) @body
 			]],
-			[[
-				(struct_item
-					name: (type_identifier) @name
-				) @body
-			]],
-			[[
-				(enum_item
-					name: (type_identifier) @name
-				) @body
-			]],
+			-- [[
+			-- 	(struct_item
+			-- 		name: (type_identifier) @name
+			-- 	) @body
+			-- ]],
+			-- [[
+			-- 	(enum_item
+			-- 		name: (type_identifier) @name
+			-- 	) @body
+			-- ]],
 			[[
 				(impl_item
 					type: (_) @name
-				) @body
+					body: (declaration_list) @body
+				)
 			]],
-			[[
-				(impl_item
-					trait: (_) @name
-				) @body
-			]],
+			-- [[
+			-- 	(impl_item
+			-- 		trait: (_) @name
+			-- 	) @body
+			-- ]],
 			[[
 				(trait_item
-					name: (_) @name
-				) @body
+					name: (type_identifier) @name
+					body: (declaration_list) @body
+				)
 			]],
 			[[
 				(for_expression
-					pattern: (_) @name
-				) @body
+					pattern: (_) @pat
+					value: (_) @val
+					body: (block) @body
+				)
 			]],
+			-- TODO: loop_expression with label
 			[[
 				(if_expression
 					condition: (_) @name
-				) @body
+					consequence: (block) @body
+				)
 			]],
-			[[
-				(let_declaration
-					pattern: (identifier) @name
-				) @body
-			]],
+			-- [[
+			-- 	(let_declaration
+			-- 		pattern: (identifier) @name
+			-- 	) @body
+			-- ]],
 			-- [[
 			-- 	(block
 			-- 		pattern: (identifier) @name
 			-- 	) @body
 			-- ]],
-			[[
-				(mod_item
-					name: (identifier) @name
-				) @body
-			]],
+			-- [[
+			-- 	(mod_item
+			-- 		name: (identifier) @name
+			-- 	) @body
+			-- ]],
 		},
 	},
 }
@@ -125,10 +131,52 @@ local parsed_queries = {}
 for lang, qdef in pairs(queries) do
 	for _, query_code in ipairs(qdef.queries) do
 		local q = vim.treesitter.query.parse(lang, query_code)
+
 		for id, name in ipairs(q.captures) do
 			q[name .. '_cap_id'] = id
 		end
+
 		q.comment = qdef.comment
+
+		if query_code:find("function_item") then
+			q.format = function(name)
+				return "end of fn " .. name
+			end
+
+		elseif query_code:find("if_expression") then
+			q.format = function(name)
+				return "end of if " .. name
+			end
+
+		elseif query_code:find("for_expression") then
+			q.format = function(_, match, get_node, bufnr)
+				local pat = get_node(match, q.pat_cap_id)
+				local val = get_node(match, q.val_cap_id)
+
+				if not pat or not val then return "end of for" end
+
+				local psr, psc, per, pec = pat:range()
+				local vsr, vsc, ver, vec = val:range()
+
+				local ptxt = vim.api.nvim_buf_get_text(bufnr, psr, psc, per, pec, {})[1]
+				local vtxt = vim.api.nvim_buf_get_text(bufnr, vsr, vsc, ver, vec, {})[1]
+
+				return "end of for " .. ptxt .. " in " .. vtxt
+			end
+
+		elseif query_code:find("impl_item") then
+			q.format = function(name)
+				return "end of impl " .. name
+			end
+
+		elseif query_code:find("trait_item") then
+			q.format = function(name)
+				return "end of trait " .. name
+			end
+
+		-- TODO: lua for_statement
+		end
+
 		table.insert(parsed_queries, q)
 	end
 end
@@ -143,6 +191,11 @@ local function get_node(m, id)
 	return n
 end
 
+local function get_text(node, bufnr)
+	local sr, sc, er, ec = node:range()
+	return vim.api.nvim_buf_get_text(bufnr, sr, sc, er, ec, {})[1]
+end
+
 local function update_extmarks(bufnr)
 	api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
 
@@ -155,7 +208,7 @@ local function update_extmarks(bufnr)
 			local body_node = get_node(match, query.body_cap_id)
 			local name_node = get_node(match, query.name_cap_id)
 
-			if not body_node or not name_node then
+			if not body_node then
 				goto continue
 			end
 
@@ -163,20 +216,18 @@ local function update_extmarks(bufnr)
 			local body_erow, body_ecol = body_node:end_()
 
 			if body_erow - body_srow >= 10 then
-				local name_srow, name_scol = name_node:start()
-				local name_erow, name_ecol = name_node:end_()
+				local name_text = name_node and get_text(name_node, bufnr) or ""
 
-				local name_content = api.nvim_buf_get_text(
-					bufnr,
-					name_srow, name_scol,
-					name_erow, name_ecol,
-					{}
-				)[1]
+				local label
+				if query.format then
+					label = query.format(name_text, match, get_node, bufnr)
+				else
+					label = "end of " .. name_text
+				end
 
 				api.nvim_buf_set_extmark(bufnr, ns, body_erow, body_ecol, {
 					virt_text = {
-						{ query.comment .. 'end of ', 'Comment' },
-						{ name_content, 'Constant' },
+						{ query.comment .. label, 'Comment' },
 					},
 					virt_text_pos = "eol",
 				})
