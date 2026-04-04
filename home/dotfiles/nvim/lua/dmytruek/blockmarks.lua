@@ -62,70 +62,93 @@ local queries = {
 	rust = {
 		comment = '// ',
 		queries = {
+			-- fn ...(...) { ... }
 			[[
 				(function_item
 					name: (identifier) @name
 				) @body
 			]],
-			-- [[
-			-- 	(struct_item
-			-- 		name: (type_identifier) @name
-			-- 	) @body
-			-- ]],
-			-- [[
-			-- 	(enum_item
-			-- 		name: (type_identifier) @name
-			-- 	) @body
-			-- ]],
+			-- if ... { ... }
 			[[
-				(impl_item
-					type: (_) @name
-					body: (declaration_list) @body
-				)
+				(if_expression
+					condition: (_) @name
+				) @body
 			]],
-			-- [[
-			-- 	(impl_item
-			-- 		trait: (_) @name
-			-- 	) @body
-			-- ]],
-			[[
-				(trait_item
-					name: (type_identifier) @name
-					body: (declaration_list) @body
-				)
-			]],
+			-- for ... in ... { ... }
 			[[
 				(for_expression
 					pattern: (_) @pat
 					value: (_) @val
-					body: (block) @body
-				)
+				) @body
 			]],
-			-- TODO: loop_expression with label
+			-- struct ... { ... }
 			[[
-				(if_expression
-					condition: (_) @name
-					consequence: (block) @body
-				)
+				(struct_item
+					name: (type_identifier) @name
+				) @body
 			]],
+			-- enum ... { ... }
+			[[
+				(enum_item
+					name: (type_identifier) @name
+				) @body
+			]],
+			-- impl ... for ... { ... } -- TODO
+			[[
+				(impl_item
+					trait: (_) @name
+					type: (_)
+				) @body
+			]],
+			-- impl ... { ... }
+			[[
+				(impl_item
+					type: (_) @name
+				) @body
+			]],
+			-- trait ... { ... }
+			[[
+				(trait_item
+					name: (type_identifier) @name
+				) @body
+			]],
+			-- '...: loop { ... }
+			[[
+				(loop_expression
+					(label) @name
+				) @body
+			]],
+			-- loop { ... }
 			-- [[
-			-- 	(let_declaration
-			-- 		pattern: (identifier) @name
+			-- 	(loop_expression
 			-- 	) @body
 			-- ]],
+			-- let ... = ...;
+			[[
+				(let_declaration
+					pattern: (identifier) @name
+				) @body
+			]],
+			-- mod ... { ... }
+			[[
+				(mod_item
+					name: (identifier) @name
+				) @body
+			]],
+			-- { ... }
 			-- [[
 			-- 	(block
 			-- 		pattern: (identifier) @name
 			-- 	) @body
 			-- ]],
-			-- [[
-			-- 	(mod_item
-			-- 		name: (identifier) @name
-			-- 	) @body
-			-- ]],
 		},
 	},
 }
+
+local function get_text(node, bufnr)
+	local sr, sc, er, ec = node:range()
+	return vim.api.nvim_buf_get_text(bufnr, sr, sc, er, ec, {})[1]
+end
 
 local parsed_queries = {}
 for lang, qdef in pairs(queries) do
@@ -149,17 +172,17 @@ for lang, qdef in pairs(queries) do
 			end
 
 		elseif query_code:find("for_expression") then
+			local pat_id = q.pat_cap_id
+			local val_id = q.val_cap_id
+
 			q.format = function(_, match, get_node, bufnr)
-				local pat = get_node(match, q.pat_cap_id)
-				local val = get_node(match, q.val_cap_id)
+				local pat = get_node(match, pat_id)
+				local val = get_node(match, val_id)
 
 				if not pat or not val then return "end of for" end
 
-				local psr, psc, per, pec = pat:range()
-				local vsr, vsc, ver, vec = val:range()
-
-				local ptxt = vim.api.nvim_buf_get_text(bufnr, psr, psc, per, pec, {})[1]
-				local vtxt = vim.api.nvim_buf_get_text(bufnr, vsr, vsc, ver, vec, {})[1]
+				local ptxt = get_text(pat, bufnr)
+				local vtxt = get_text(val, bufnr)
 
 				return "end of for " .. ptxt .. " in " .. vtxt
 			end
@@ -191,11 +214,6 @@ local function get_node(m, id)
 	return n
 end
 
-local function get_text(node, bufnr)
-	local sr, sc, er, ec = node:range()
-	return vim.api.nvim_buf_get_text(bufnr, sr, sc, er, ec, {})[1]
-end
-
 local function update_extmarks(bufnr)
 	api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
 
@@ -215,7 +233,7 @@ local function update_extmarks(bufnr)
 			local body_srow, body_scol = body_node:start()
 			local body_erow, body_ecol = body_node:end_()
 
-			if body_erow - body_srow >= 10 then
+			if body_erow - body_srow >= 15 then
 				local name_text = name_node and get_text(name_node, bufnr) or ""
 
 				local label
