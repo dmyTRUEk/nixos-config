@@ -79,27 +79,27 @@ local queries = {
 			]],
 			[[
 				(impl_item
-					trait: (type_identifier) @name
+					type: (_) @name
 				) @body
 			]],
 			[[
 				(impl_item
-					type: (type_identifier) @name
+					trait: (_) @name
 				) @body
 			]],
 			[[
 				(trait_item
-					name: (type_identifier) @name
+					name: (_) @name
 				) @body
 			]],
 			[[
 				(for_expression
-					pattern: (identifier) @name
+					pattern: (_) @name
 				) @body
 			]],
 			[[
 				(if_expression
-					condition: (binary_expression) @name
+					condition: (_) @name
 				) @body
 			]],
 			[[
@@ -125,7 +125,7 @@ local parsed_queries = {}
 for lang, qdef in pairs(queries) do
 	for _, query_code in ipairs(qdef.queries) do
 		local q = vim.treesitter.query.parse(lang, query_code)
-		for id, name in pairs(q.captures) do
+		for id, name in ipairs(q.captures) do
 			q[name .. '_cap_id'] = id
 		end
 		q.comment = qdef.comment
@@ -135,39 +135,54 @@ end
 
 local ns = api.nvim_create_namespace('blockmark')
 
+local function get_node(m, id)
+	local n = m[id]
+	if type(n) == "table" then
+		return n[1]
+	end
+	return n
+end
+
 local function update_extmarks(bufnr)
 	api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
-	-- local lang = vim.treesitter.language.get_lang(vim.bo[bufnr].filetype)
-	-- vim.print({ lang = lang })
-	local node = vim.treesitter.get_node()
-	if not node then
-		return
-	end
-	local tree = node:tree()
+
+	local parser = vim.treesitter.get_parser(bufnr)
+	local tree = parser:parse()[1]
+	local root = tree:root()
 
 	for _, query in ipairs(parsed_queries) do
-		for pattern, match, metadata in query:iter_matches(tree:root(), bufnr) do
-			local body_node = match[query.body_cap_id]
+		for _, match in query:iter_matches(root, bufnr) do
+			local body_node = get_node(match, query.body_cap_id)
+			local name_node = get_node(match, query.name_cap_id)
+
+			if not body_node or not name_node then
+				goto continue
+			end
+
 			local body_srow, body_scol = body_node:start()
 			local body_erow, body_ecol = body_node:end_()
+
 			if body_erow - body_srow >= 10 then
-				local name_node = match[query.name_cap_id]
 				local name_srow, name_scol = name_node:start()
 				local name_erow, name_ecol = name_node:end_()
+
 				local name_content = api.nvim_buf_get_text(
 					bufnr,
 					name_srow, name_scol,
 					name_erow, name_ecol,
 					{}
 				)[1]
-				local erow, ecol = match[query.body_cap_id]:end_()
-				api.nvim_buf_set_extmark(bufnr, ns, erow, ecol, {
+
+				api.nvim_buf_set_extmark(bufnr, ns, body_erow, body_ecol, {
 					virt_text = {
 						{ query.comment .. 'end of ', 'Comment' },
 						{ name_content, 'Constant' },
 					},
+					virt_text_pos = "eol",
 				})
 			end
+
+			::continue::
 		end
 	end
 end

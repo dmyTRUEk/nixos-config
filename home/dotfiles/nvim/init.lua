@@ -1388,7 +1388,7 @@ require('lazy').setup({
 
 
 -- TODO: load by lazy?
--- require 'dmytruek.blockmarks'
+require 'dmytruek.blockmarks'
 
 
 
