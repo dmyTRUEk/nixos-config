@@ -178,7 +178,7 @@ keymap_n('yh', 'ly2h') keymap_n('yl', 'y2l')
 
 -- work with function names:
 keymap_n('cn', 'ct(') keymap_n('dn', 'dt(') keymap_n('yn', 'yt(')
-keymap_n('cu', 'ct_') keymap_n('du', 'df_') keymap_n('yu', 'yt_')
+keymap_n('cu', 'ct_') keymap_n('du', 'dt_') keymap_n('yu', 'yt_')
 keymap_n('c.', 'ct.') keymap_n('d.', 'dt.') keymap_n('y.', 'yt.')
 
 keymap_n('c;', 'ct;')
