@@ -744,7 +744,7 @@ require('lazy').setup({
 			},
 		},
 	},
-	{'nvim-telescope/telescope.nvim', -- TELESCOPE (fuzzy finder):
+	{'nvim-telescope/telescope.nvim', -- Fuzzy Finder (files, lsp, etc)
 		event = 'VimEnter',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
@@ -810,7 +810,6 @@ require('lazy').setup({
 	},
 
 	-- UI:
-	-- LUALINE:
 	{'nvim-lualine/lualine.nvim', opts = { -- status line
 		options = {
 			theme = 'powerline_dark', -- gruvbox
@@ -898,36 +897,36 @@ require('lazy').setup({
 	},
 	--'Xuyuanp/scrollbar.nvim', -- scrollbar
 
-	-- TREESITTER:
-	{'nvim-treesitter/nvim-treesitter',
+	{'nvim-treesitter/nvim-treesitter', -- Highlight, edit, and navigate code
+		lazy = false, -- Important: This plugin does not support lazy-loading.
 		build = ':TSUpdate',
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter-textobjects',
 			'nvim-treesitter/playground',
 			'nvim-treesitter/nvim-treesitter-context',
 		},
-		init = function()
+		config = function()
 			require('nvim-treesitter.configs').setup {
 				ensure_installed = {
-					'c', 'lua', 'vim', 'vimdoc', 'query', -- these are reqired
-					'comment',
+					'c', 'lua', 'vim', 'vimdoc', 'query', -- these are reqired?
+					--'comment',
 					--'cpp',
 					--'kotlin',
 					--'latex',
+					'markdown',
 					'nix',
 					'python',
-					'ron', -- Rust Object Notation
+					--'ron', -- Rust Object Notation
 					'rust',
-					'wgsl',
+					--'wgsl',
 					--'yaml',
-					--'yuck',
 				},
 				highlight = {
 					enable = true,
 					disable = function(lang, bufnr)
 						return vim.fn.getfsize(vim.api.nvim_buf_get_name(bufnr)) > 99999
 					end,
-					-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+					-- Setting this to true will run `:h syntax` and treesitter at the same time.
 					-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
 					-- Using this option may slow down your editor, and you may see some duplicate highlights.
 					-- Instead of true it can also be a list of languages
@@ -1050,6 +1049,64 @@ require('lazy').setup({
 					},
 				},
 			}
+
+			-- from new kickstart.nvim:
+			-- -- ensure basic parser are installed
+			-- local parsers = {
+			-- 	'c', 'lua', 'vim', 'vimdoc', 'query', -- these are reqired?
+			-- 	--'comment',
+			-- 	--'cpp',
+			-- 	--'kotlin',
+			-- 	--'latex',
+			-- 	'markdown',
+			-- 	'nix',
+			-- 	'python',
+			-- 	--'ron', -- Rust Object Notation
+			-- 	'rust',
+			-- 	--'wgsl',
+			-- 	--'yaml',
+			-- }
+			-- require('nvim-treesitter').install(parsers)
+			--
+			-- ---@param buf integer
+			-- ---@param language string
+			-- local function treesitter_try_attach(buf, language)
+			-- 	-- check if parser exists and load it
+			-- 	if not vim.treesitter.language.add(language) then return end
+			-- 	-- enables syntax highlighting and other treesitter features
+			-- 	vim.treesitter.start(buf, language)
+			--
+			-- 	-- enables treesitter based folds
+			-- 	-- for more info on folds see `:help folds`
+			-- 	-- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+			-- 	-- vim.wo.foldmethod = 'expr'
+			--
+			-- 	-- enables treesitter based indentation
+			-- 	vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			-- end
+			--
+			-- local available_parsers = require('nvim-treesitter').get_available()
+			-- vim.api.nvim_create_autocmd('FileType', {
+			-- 	callback = function(args)
+			-- 		local buf, filetype = args.buf, args.match
+			--
+			-- 		local language = vim.treesitter.language.get_lang(filetype)
+			-- 		if not language then return end
+			--
+			-- 		local installed_parsers = require('nvim-treesitter').get_installed 'parsers'
+			--
+			-- 		if vim.tbl_contains(installed_parsers, language) then
+			-- 			-- enable the parser if it is installed
+			-- 			treesitter_try_attach(buf, language)
+			-- 		elseif vim.tbl_contains(available_parsers, language) then
+			-- 			-- if a parser is available in `nvim-treesitter` auto install it, and enable it after the installation is done
+			-- 			require('nvim-treesitter').install(language):await(function() treesitter_try_attach(buf, language) end)
+			-- 		else
+			-- 			-- try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
+			-- 			treesitter_try_attach(buf, language)
+			-- 		end
+			-- 	end,
+			-- })
 		end,
 	},
 	{'nvim-treesitter/nvim-treesitter-context',
@@ -1070,11 +1127,7 @@ require('lazy').setup({
 		}
 	},
 
-	-- LSP PLUGINS:
-	{'neovim/nvim-lspconfig',
-		dependencies = {
-			'saghen/blink.cmp',
-		},
+	{'neovim/nvim-lspconfig', -- Main LSP Configuration
 		config = function()
 			vim.api.nvim_create_autocmd('LspAttach', {
 				group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
