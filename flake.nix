@@ -14,7 +14,10 @@
 
 		#hardware.url = "github:NixOS/nixos-hardware";
 
-		#nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+		#nix-minecraft.url = {
+		#	url = "github:Infinidoge/nix-minecraft";
+		#	inputs.nixpkgs.follows = "nixpkgs";
+		#};
 
 		# nixpkgs at 2025-01-24, for wolfram mathematica 14.1.0
 		nixpkgs_a85fc0a.url = "github:NixOS/nixpkgs/a85fc0af456a898b7a4c459f38429e05df958907";

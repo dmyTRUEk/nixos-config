@@ -194,9 +194,9 @@
 		godot
 		zulip
 		#kdePackages.cantor
-		peeky.packages.${system}.default
+		peeky.packages.${stdenv.hostPlatform.system}.default
 
-		# LANGS:
+		# LANGS/DEV/PROGRAMMING:
 		rustup # rust btw
 		#cargo-cross # rust btw
 		(python3.withPackages (python-pkgs: with python-pkgs; [
