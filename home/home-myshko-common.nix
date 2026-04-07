@@ -7,7 +7,11 @@
 }: {
 	# TODO?: make `enable`/`enabled` function that sets enable=true.
 
-	imports = [];
+	imports = [
+		inputs.plasma-manager.homeModules.plasma-manager
+		# TODO(refactor): import files here
+		./kde-plasma-config.nix # NOTE: remember to remove `lastImageSaveLocation`
+	];
 
 	home = {
 		# TODO: refactor to not write username manually?
