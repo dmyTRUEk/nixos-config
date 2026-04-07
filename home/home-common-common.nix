@@ -171,7 +171,6 @@
 
 		# GUI:
 		kitty
-		pavucontrol # gui to control volume
 		telegram-desktop
 		swayimg
 		krita
