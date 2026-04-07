@@ -112,6 +112,30 @@ local queries = {
 					name: (type_identifier) @name
 				) @body
 			]],
+			-- let ... = ...;
+			[[
+				(let_declaration
+					pattern: (identifier) @name
+				) @body
+			]],
+			-- match ... { ... }
+			[[
+				(match_expression
+					value: (_) @name
+				) @body
+			]],
+			-- ... => ...
+			[[
+				(match_arm
+					pattern: (match_pattern) @name
+				) @body
+			]],
+			-- mod ... { ... }
+			[[
+				(mod_item
+					name: (identifier) @name
+				) @body
+			]],
 			-- '...: loop { ... }
 			[[
 				(loop_expression
@@ -123,18 +147,6 @@ local queries = {
 			-- 	(loop_expression
 			-- 	) @body
 			-- ]],
-			-- let ... = ...;
-			[[
-				(let_declaration
-					pattern: (identifier) @name
-				) @body
-			]],
-			-- mod ... { ... }
-			[[
-				(mod_item
-					name: (identifier) @name
-				) @body
-			]],
 			-- { ... }
 			-- [[
 			-- 	(block
@@ -187,6 +199,16 @@ for lang, qdef in pairs(queries) do
 				return "end of for " .. ptxt .. " in " .. vtxt
 			end
 
+		elseif query_code:find("struct_item") then
+			q.format = function(name)
+				return "end of struct " .. name
+			end
+
+		elseif query_code:find("enum_item") then
+			q.format = function(name)
+				return "end of enum " .. name
+			end
+
 		elseif query_code:find("impl_item") then
 			q.format = function(name)
 				return "end of impl " .. name
@@ -195,6 +217,31 @@ for lang, qdef in pairs(queries) do
 		elseif query_code:find("trait_item") then
 			q.format = function(name)
 				return "end of trait " .. name
+			end
+
+		elseif query_code:find("let_declaration") then
+			q.format = function(name)
+				return "end of let " .. name .. " = ..."
+			end
+
+		elseif query_code:find("match_expression") then
+			q.format = function(name)
+				return "end of match " .. name
+			end
+
+		elseif query_code:find("match_arm") then
+			q.format = function(name)
+				return "end of match arm " .. name .. " => ..."
+			end
+
+		elseif query_code:find("mod_item") then
+			q.format = function(name)
+				return "end of mod " .. name
+			end
+
+		elseif query_code:find("loop_expression") then
+			q.format = function(name)
+				return "end of loop " .. name
 			end
 
 		-- TODO: lua for_statement
