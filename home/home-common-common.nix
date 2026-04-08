@@ -8,37 +8,12 @@
 	peeky,
 	...
 }: {
-	#home.file =
-	#let
-	#	inherit (builtins) foldl' elemAt;
-	#	inherit (config.lib.file) mkOutOfStoreSymlink;
-	#	config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor)?: use /.
-	#	dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home/dotfiles";
-	#	setup_simple_symlinks = foldl' (acc: elem: acc // {
-	#		"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
-	#	}) {};
-	#	setup_complex_symlinks = foldl' (acc: elem_pair: acc // {
-	#		"${elemAt elem_pair 0}".source = mkOutOfStoreSymlink "${elemAt elem_pair 1}";
-	#	}) {};
-	#in (
-	#	#setup_simple_symlinks [
-	#	#	#"gammastep"
-	#	#	#"kitty"
-	#	#	#"nvim"
-	#	#	#"sway"
-	#	#	#"swayimg"
-	#	#	#"swaylock"
-	#	#	#"waybar"
-	#	#	#"zathura"
-	#	#]
-	#	#//
-	#	#setup_complex_symlinks [
-	#	#	#[ "${config.home.homeDirectory}/.xkb/symbols" "${dotfiles_path}/sway/keyboard-layouts" ]
-	#	#	#[ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
-	#	#]
-	#	#//
-	#	#{}
-	#);
+	imports = [
+		./programs/fish.nix      # (rust btw)
+		./programs/alacritty.nix # (rust btw)
+		./programs/yazi.nix      # (rust btw)
+		./programs/anyrun.nix    # (rust btw)
+	];
 
 	services.kdeconnect = {
 		enable = true;
@@ -64,8 +39,8 @@
 			#};
 		};
 		zsh.enable = true; # only for rare tests
-		fish = import ./programs/fish.nix { inherit lib; };
-		alacritty = import ./programs/alacritty.nix { inherit config; }; # (rust btw)
+		#fish = {}; # -> ./programs/fish.nix   # (rust btw)
+		#alacritty = {}; # -> ./programs/alacritty.nix   # (rust btw)
 		firefox = {
 			enable = true;
 			# TODO: enable somehow?
@@ -95,14 +70,14 @@
 		#	enable = true;
 		#	enableFishIntegration = true;
 		#};
-		yazi = import ./programs/yazi.nix; # (rust btw)
+		#yazi = {}; # -> ./programs/yazi.nix   # (rust btw)
 		yt-dlp.enable = true;
 		#texlive = {
 		#	enable = true;
 		#	packageSet = pkgs.texliveFull;
 		#};
 		obs-studio.enable = true;
-		anyrun = import ./programs/anyrun.nix { inherit inputs pkgs; }; # (rust btw)
+		#anyrun = {}; # -> ./programs/anyrun.nix   # (rust btw)
 		skim.enable = true; # (rust btw)
 		fd = { # (rust btw)
 			enable = true;

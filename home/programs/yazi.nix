@@ -1,207 +1,216 @@
-# programs.yazi =
-{
-	enable = true;
-	#enableFishIntegration = true; # it's just `yazi_with_cwd_memory`
-	settings = {
-		mgr = {
-			sort_by = "natural";
-			sort_sensitive = false; # case sensitive
-			#sort_reverse = true; # TODO: enable for screenshots
-			sort_dir_first = true;
-			linemode = "size";
-			show_hidden = false;
-			show_symlink = true;
-			scrolloff = 10;
+{ ... }: {
+	imports = [
+		./yazi-theme-gruvbox.nix
+	];
+
+	programs.yazi = {
+		enable = true;
+		#enableFishIntegration = true; # it's just `yazi_with_cwd_memory`
+		settings = {
+			mgr = {
+				sort_by = "natural";
+				sort_sensitive = false; # case sensitive
+				#sort_reverse = true; # TODO: enable for screenshots
+				sort_dir_first = true;
+				linemode = "size";
+				show_hidden = false;
+				show_symlink = true;
+				scrolloff = 10;
+			};
+			preview = {
+				# $ yazi --clear-cache
+				tab_size = 4;
+				# image max sizes (dont load if more than):
+				max_width  = 4000;
+				max_height = 4000;
+				image_filter = "triangle";
+				image_quality = 50;
+			};
+			opener = {
+				text = [
+					{ run = ''nvim %s''; block = true; }
+					#{ run = ''xdg-open %s''; } # TODO: fix
+				];
+				image_raster = [
+					{ run = ''swayimg %s''; }
+					{ run = ''peeky %s''; }
+					{ run = ''krita %s''; }
+					{ run = ''gwenview %s''; }
+					{ run = ''nvim %s''; block = true; }
+				];
+				image_vector = [
+					{ run = ''swayimg %s''; }
+					{ run = ''inkscape %s''; }
+					{ run = ''nvim %s''; block = true; }
+				];
+				video = [{ run = ''vlc %s''; }];
+				audio = [{ run = ''vlc %s''; }];
+				kdenlive = [{ run = ''kdenlive %s''; }];
+				pdf = [
+					{ run = ''zathura %s''; }
+					{ run = ''firefox %s''; }
+				];
+				libreoffice = [{ run = ''libreoffice %s''; }];
+				djvu = [{ run = ''zathura %s''; }];
+				krita_project = [{ run = ''krita %s''; }];
+				#markdown = [];
+				wolfram_mathematica = [
+					{ run = ''wolframnb %s''; }
+					#{ run = ''nvim %s''; block = true; }
+				];
+			};
+			open = {
+				rules = [
+					{ url = "*.nb"; use = "wolfram_mathematica"; }
+					{ url = "*.kdenlive"; use = "kdenlive"; }
+					{ url = "*.kra"; use = "krita_project"; }
+					{ url = "*.djvu"; use = "djvu"; }
+					#{ url = "*.md"; use = "markdown"; }
+					{ url = "*.svg"; use = "image_vector"; }
+
+					{ url = "*.mp3"; use = "audio"; }
+					{ url = "*.wav"; use = "audio"; }
+					{ url = "*.ogg"; use = "audio"; }
+
+					{ url = "*.odt"; use = "libreoffice"; }
+					{ url = "*.odp"; use = "libreoffice"; }
+					{ url = "*.ods"; use = "libreoffice"; }
+
+					{ url = "*.doc" ; use = "libreoffice"; }
+					{ url = "*.docx"; use = "libreoffice"; }
+					{ url = "*.ppt" ; use = "libreoffice"; }
+					{ url = "*.pptx"; use = "libreoffice"; }
+					{ url = "*.xls" ; use = "libreoffice"; }
+					{ url = "*.xlsx"; use = "libreoffice"; }
+
+					{ url = "*.rtf"; use = "libreoffice"; }
+
+					{ url = "*.srt"; use = "text"; }
+
+					# Multiple openers for a single rule
+					#{ url = "*.html", use = [ "browser", "text" ] },
+
+					{ mime = "text/*"; use = "text"; }
+					{ mime = "image/*"; use = "image_raster"; }
+					{ mime = "video/*"; use = "video"; }
+					{ mime = "application/pdf"; use = "pdf"; }
+				];
+			};
 		};
-		preview = {
-			# $ yazi --clear-cache
-			tab_size = 4;
-			# image max sizes (dont load if more than):
-			max_width  = 4000;
-			max_height = 4000;
-			image_filter = "triangle";
-			image_quality = 50;
+		keymap = {
+			# some default keymaps: yazi-rs.github.io/docs/quick-start
+			# ALL default keymaps: github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml
+			mgr = {
+				prepend_keymap = [
+					{ on = ["?"]; run = "help";  desc = "Open help"; }
+					{ on = ["Q"]; run = "quit";  desc = "Quit"; }
+					{ on = ["q"]; run = "close"; desc = "Close current tab or quit if last"; }
+
+					# this is default anyway
+					#{ on = ["<Enter>"];   run = "open";               desc = "Open selected files"; }
+					#{ on = ["<S-Enter>"]; run = "open --interactive"; desc = "Open selected files interactively"; }
+
+					{ on = ["o"]; run = "create --dir"; desc = "Create a directory"; }
+					{ on = ["O"]; run = "create";       desc = "Create a file (append / for directory)"; }
+
+					{ on = ["i"]; run = "rename --cursor=start";              desc = "Rename, cursor at start"; }
+					{ on = ["a"]; run = "rename --cursor=before_ext";         desc = "Rename, cursor before extension"; }
+					{ on = ["A"]; run = "rename --cursor=end";                desc = "Rename, cursor at end"; }
+					{ on = ["r"]; run = "rename --empty=stem --cursor=start"; desc = "Rename, leave extension"; }
+					{ on = ["R"]; run = "rename --empty=all";                 desc = "Rename"; }
+
+					{ on = ["<Esc>"]; run = ["escape" "unyank"]; desc = "Exit visual mode, clear selected, or cancel search"; }
+					{ on = ["<C-d>"]; run = ''shell "$SHELL" --block --confirm''; desc = "Open shell here"; }
+					{ on = ["<C-j>"]; run = "arrow  50%"; desc = "Move cursor half page down"; }
+					{ on = ["<C-k>"]; run = "arrow -50%"; desc = "Move cursor half page up"; }
+					{ on = ["J"]; run = "tab_switch -1 --relative"; desc = "Switch to previous tab"; }
+					{ on = ["K"]; run = "tab_switch  1 --relative"; desc = "Switch to next tab"; }
+					{ on = ["u"]; run = "shell 'dua i' --block --confirm"; desc = "Disk Usage (dua i)"; }
+					#{ on = [ "m" "c" ]; run = "linemode ctime"; desc = "Set linemode to ctime"; }
+
+					{ on = ["c" "c"]; run = ''shell 'filename="$1" && wl-copy "file://$filename" --type text/uri-list' --confirm''; desc = "Copy file using URI (file://)"; }
+					{ on = ["c" "a"]; run = "copy path";             desc = "Copy Absolute path"; }
+					{ on = ["c" "d"]; run = "copy dirname";          desc = "Copy path of parent Directory"; }
+					{ on = ["c" "e"]; run = "copy name_without_ext"; desc = "Copy name of file without Extension"; }
+					{ on = ["c" "n"]; run = "copy filename";         desc = "Copy Name of file"; }
+
+					{ on = ["," "b"]; run = ["sort btime --dir-first --reverse"    "linemode btime"]; desc = "Sort by Birth time (reverse)"; }
+					{ on = ["," "B"]; run = ["sort btime --dir-first --reverse=no" "linemode btime"]; desc = "Sort by Birth time"; }
+					{ on = ["," "m"]; run = ["sort mtime --dir-first --reverse"    "linemode mtime"]; desc = "Sort by Modified time (reverse)"; }
+					{ on = ["," "M"]; run = ["sort mtime --dir-first --reverse=no" "linemode mtime"]; desc = "Sort by Modified time"; }
+					{ on = ["," "s"]; run = ["sort size --dir-first --reverse"     "linemode size"]; desc = "Sort by Size (reverse)"; }
+					{ on = ["," "S"]; run = ["sort size --dir-first --reverse=no"  "linemode size"]; desc = "Sort by Size"; }
+
+					# work with archives: extract/compress
+					# { on = ["z" "c" "z"]; run = ''''; desc = "Compress to Zip"; }
+					# { on = ["z" "z" "c"]; run = ''''; desc = "Compress to Zip"; }
+					{ on = ["z" "x" "z"]; run = ''shell --confirm 'unzip "$1"' ''; desc = "eXtract from Zip"; }
+					{ on = ["z" "z" "x"]; run = ''shell --confirm 'unzip "$1"' ''; desc = "eXtract from Zip"; }
+
+					# GOTOs:
+					# basic:
+					{ on = ["g" "/"]; run = "cd /"; }
+					#{ on = ["g" ""]; run = "cd /tmp"; }
+					{ on = ["g" "h"]; run = "cd ~"; }
+					# hidden:
+					{ on = ["g" "."]; run = "cd ~/.config/home-manager"; }
+					{ on = ["g" "T"]; run = "cd ~/.local/share/Trash/files"; }
+					# home:
+					{ on = ["g" "c"]; run = ["cd ~/projects" "sort mtime --reverse"]; }
+					{ on = ["g" "C" "g"]; run = "cd ~/projects/orbit-calculation"; }
+					#{ on = ["g" "C" "t"]; run = "cd ~/projects/touhou_unfathomable_calamity"; }
+					{ on = ["g" "o"]; run = "cd ~/Documents"; }
+					{ on = ["g" "d"]; run = ["cd ~/Downloads" "sort mtime --reverse"]; }
+					{ on = ["g" "t"]; run = ["cd '~/Downloads/Telegram Desktop'" "sort mtime --reverse"]; }
+					{ on = ["g" "r"]; run = "cd ~/Dropbox"; }
+					#{ on = ["g" "D"]; run = "cd ~/Dropbox/Docs"; }
+					{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2026_1_spring"; }
+					{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
+					{ on = ["g" "w"]; run = ["cd ~/Dropbox/Work" "sort natural --reverse"]; }
+					{ on = ["g" "P"]; run = ["cd ~/Dropbox/Work/papers" "sort natural"]; }
+					{ on = ["g" "m"]; run = "cd /run/media/myshko/"; }
+					{ on = ["g" "p"]; run = "cd ~/Pictures"; }
+					{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2026" "sort natural --reverse"]; }
+					{ on = ["g" "v"]; run = ["cd ~/Videos" "sort mtime --reverse"]; }
+					# games:
+					{ on = ["g" "a" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/374320/pfx/drive_c/users/steamuser/AppData/Roaming/DarkSoulsIII"; }
+					{ on = ["g" "a" "c"]; run = "cd ~/.local/share/Celeste/Saves"; }
+					{ on = ["g" "a" "e"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/AppData/Roaming/EldenRing"; }
+					{ on = ["g" "a" "t" "h" "6"]; run = "cd '~/Games/Touhou/Touhou 6 - The Embodiment of Scarlet Devil'"; }
+					{ on = ["g" "a" "t" "h" "7"]; run = "cd '~/Games/Touhou/Touhou 7 - Perfect Cherry Blossom'"; }
+					{ on = ["g" "a" "t" "h" "8"]; run = "cd '~/Games/Touhou/Touhou 8 - Imperishable Night'"; }
+					#{ on = ["g" "a" "t" "h" "9"]; run = "cd cd ~/.local/share/Steam/steamapps/common/th9"; }
+					{ on = ["g" "a" "t" "h" "1" "0"]; run = "cd ~/.local/share/Steam/steamapps/common/th10"; }
+					{ on = ["g" "a" "t" "h" "1" "1"]; run = "cd ~/.local/share/Steam/steamapps/common/th11"; }
+					{ on = ["g" "a" "t" "h" "1" "2"]; run = "cd ~/.local/share/Steam/steamapps/common/th12"; }
+					{ on = ["g" "a" "t" "h" "1" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1043230/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th13"; }
+					{ on = ["g" "a" "t" "h" "1" "4"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1043240/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th14"; }
+					{ on = ["g" "a" "t" "h" "1" "5"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/937580/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th15"; }
+					{ on = ["g" "a" "t" "h" "1" "6"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/745880/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th16"; }
+					{ on = ["g" "a" "t" "h" "1" "7"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1079160/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th17"; }
+					{ on = ["g" "a" "t" "h" "1" "8"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1566410/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th18"; }
+					#{ on = ["g" "a" "t" "h" "1" "9"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/2400340/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th19"; }
+					{ on = ["g" "a" "t" "m" "r"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/11020/pfx/drive_c/users/steamuser/Documents/TrackMania/Tracks/Replays"; }
+					{ on = ["g" "a" "t" "m" "s"]; run = "cd '~/.local/share/Steam/steamapps/common/TrackMania Nations Forever/GameData/Painter/Stickers'"; }
+					{ on = ["g" "a" "t" "o"]; run = "cd ~/.t-engine/4.0/tome/save/"; }
+				];
+			};
 		};
-		opener = {
-			text = [
-				{ run = ''nvim %s''; block = true; }
-				#{ run = ''xdg-open %s''; } # TODO: fix
-			];
-			image_raster = [
-				{ run = ''swayimg %s''; }
-				{ run = ''peeky %s''; }
-				{ run = ''krita %s''; }
-				{ run = ''gwenview %s''; }
-				{ run = ''nvim %s''; block = true; }
-			];
-			image_vector = [
-				{ run = ''swayimg %s''; }
-				{ run = ''inkscape %s''; }
-				{ run = ''nvim %s''; block = true; }
-			];
-			video = [{ run = ''vlc %s''; }];
-			audio = [{ run = ''vlc %s''; }];
-			kdenlive = [{ run = ''kdenlive %s''; }];
-			pdf = [
-				{ run = ''zathura %s''; }
-				{ run = ''firefox %s''; }
-			];
-			libreoffice = [{ run = ''libreoffice %s''; }];
-			djvu = [{ run = ''zathura %s''; }];
-			krita_project = [{ run = ''krita %s''; }];
-			#markdown = [];
-			wolfram_mathematica = [
-				{ run = ''wolframnb %s''; }
-				#{ run = ''nvim %s''; block = true; }
-			];
-		};
-		open = {
-			rules = [
-				{ url = "*.nb"; use = "wolfram_mathematica"; }
-				{ url = "*.kdenlive"; use = "kdenlive"; }
-				{ url = "*.kra"; use = "krita_project"; }
-				{ url = "*.djvu"; use = "djvu"; }
-				#{ url = "*.md"; use = "markdown"; }
-				{ url = "*.svg"; use = "image_vector"; }
-
-				{ url = "*.mp3"; use = "audio"; }
-				{ url = "*.wav"; use = "audio"; }
-				{ url = "*.ogg"; use = "audio"; }
-
-				{ url = "*.odt"; use = "libreoffice"; }
-				{ url = "*.odp"; use = "libreoffice"; }
-				{ url = "*.ods"; use = "libreoffice"; }
-
-				{ url = "*.doc" ; use = "libreoffice"; }
-				{ url = "*.docx"; use = "libreoffice"; }
-				{ url = "*.ppt" ; use = "libreoffice"; }
-				{ url = "*.pptx"; use = "libreoffice"; }
-				{ url = "*.xls" ; use = "libreoffice"; }
-				{ url = "*.xlsx"; use = "libreoffice"; }
-
-				{ url = "*.rtf"; use = "libreoffice"; }
-
-				{ url = "*.srt"; use = "text"; }
-
-				# Multiple openers for a single rule
-				#{ url = "*.html", use = [ "browser", "text" ] },
-
-				{ mime = "text/*"; use = "text"; }
-				{ mime = "image/*"; use = "image_raster"; }
-				{ mime = "video/*"; use = "video"; }
-				{ mime = "application/pdf"; use = "pdf"; }
-			];
+		theme = {
+			icon = {
+				prepend_rules = [
+					# TODO:
+					#{ name = "Cargo.lock"; text = ""; }
+					#{ name = "flake.lock"; text = ""; }
+					#{ name = "Documents"; text = "󰈙"; }
+					#{ name = "Music"; text = "󰎈"; }
+					#{ name = "Public"; text = "󰮮"; }
+					#{ name = "*.mp3"; text = "󰎈"; }
+					#{ name = "*.wav"; text = "󰎈"; }
+					#{ name = "*.yaml"; text = ""; }
+					#{ name = "*.tex"; text = ""; }
+				];
+			};
 		};
 	};
-	keymap = {
-		# some default keymaps: yazi-rs.github.io/docs/quick-start
-		# ALL default keymaps: github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml
-		mgr = {
-			prepend_keymap = [
-				{ on = ["?"]; run = "help";  desc = "Open help"; }
-				{ on = ["Q"]; run = "quit";  desc = "Quit"; }
-				{ on = ["q"]; run = "close"; desc = "Close current tab or quit if last"; }
-
-				# this is default anyway
-				#{ on = ["<Enter>"];   run = "open";               desc = "Open selected files"; }
-				#{ on = ["<S-Enter>"]; run = "open --interactive"; desc = "Open selected files interactively"; }
-
-				{ on = ["o"]; run = "create --dir"; desc = "Create a directory"; }
-				{ on = ["O"]; run = "create";       desc = "Create a file (append / for directory)"; }
-
-				{ on = ["i"]; run = "rename --cursor=start";              desc = "Rename, cursor at start"; }
-				{ on = ["a"]; run = "rename --cursor=before_ext";         desc = "Rename, cursor before extension"; }
-				{ on = ["A"]; run = "rename --cursor=end";                desc = "Rename, cursor at end"; }
-				{ on = ["r"]; run = "rename --empty=stem --cursor=start"; desc = "Rename, leave extension"; }
-				{ on = ["R"]; run = "rename --empty=all";                 desc = "Rename"; }
-
-				{ on = ["<Esc>"]; run = ["escape" "unyank"]; desc = "Exit visual mode, clear selected, or cancel search"; }
-				{ on = ["<C-d>"]; run = ''shell "$SHELL" --block --confirm''; desc = "Open shell here"; }
-				{ on = ["<C-j>"]; run = "arrow  50%"; desc = "Move cursor half page down"; }
-				{ on = ["<C-k>"]; run = "arrow -50%"; desc = "Move cursor half page up"; }
-				{ on = ["J"]; run = "tab_switch -1 --relative"; desc = "Switch to previous tab"; }
-				{ on = ["K"]; run = "tab_switch  1 --relative"; desc = "Switch to next tab"; }
-				{ on = ["u"]; run = "shell 'dua i' --block --confirm"; desc = "Disk Usage (dua i)"; }
-				#{ on = [ "m" "c" ]; run = "linemode ctime"; desc = "Set linemode to ctime"; }
-
-				{ on = ["c" "c"]; run = ''shell 'filename="$1" && wl-copy "file://$filename" --type text/uri-list' --confirm''; desc = "Copy file using URI (file://)"; }
-				{ on = ["c" "a"]; run = "copy path";             desc = "Copy Absolute path"; }
-				{ on = ["c" "d"]; run = "copy dirname";          desc = "Copy path of parent Directory"; }
-				{ on = ["c" "e"]; run = "copy name_without_ext"; desc = "Copy name of file without Extension"; }
-				{ on = ["c" "n"]; run = "copy filename";         desc = "Copy Name of file"; }
-
-				{ on = ["," "b"]; run = ["sort btime --dir-first --reverse"    "linemode btime"]; desc = "Sort by Birth time (reverse)"; }
-				{ on = ["," "B"]; run = ["sort btime --dir-first --reverse=no" "linemode btime"]; desc = "Sort by Birth time"; }
-				{ on = ["," "m"]; run = ["sort mtime --dir-first --reverse"    "linemode mtime"]; desc = "Sort by Modified time (reverse)"; }
-				{ on = ["," "M"]; run = ["sort mtime --dir-first --reverse=no" "linemode mtime"]; desc = "Sort by Modified time"; }
-				{ on = ["," "s"]; run = ["sort size --dir-first --reverse"     "linemode size"]; desc = "Sort by Size (reverse)"; }
-				{ on = ["," "S"]; run = ["sort size --dir-first --reverse=no"  "linemode size"]; desc = "Sort by Size"; }
-
-				# GOTOs:
-				# basic:
-				{ on = ["g" "/"]; run = "cd /"; }
-				#{ on = ["g" ""]; run = "cd /tmp"; }
-				{ on = ["g" "h"]; run = "cd ~"; }
-				# hidden:
-				{ on = ["g" "."]; run = "cd ~/.config/home-manager"; }
-				{ on = ["g" "T"]; run = "cd ~/.local/share/Trash/files"; }
-				# home:
-				{ on = ["g" "c"]; run = ["cd ~/projects" "sort mtime --reverse"]; }
-				{ on = ["g" "C" "g"]; run = "cd ~/projects/orbit-calculation"; }
-				#{ on = ["g" "C" "t"]; run = "cd ~/projects/touhou_unfathomable_calamity"; }
-				{ on = ["g" "o"]; run = "cd ~/Documents"; }
-				{ on = ["g" "d"]; run = ["cd ~/Downloads" "sort mtime --reverse"]; }
-				{ on = ["g" "t"]; run = ["cd '~/Downloads/Telegram Desktop'" "sort mtime --reverse"]; }
-				{ on = ["g" "r"]; run = "cd ~/Dropbox"; }
-				#{ on = ["g" "D"]; run = "cd ~/Dropbox/Docs"; }
-				{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2026_1_spring"; }
-				{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
-				{ on = ["g" "w"]; run = ["cd ~/Dropbox/Work" "sort natural --reverse"]; }
-				{ on = ["g" "P"]; run = ["cd ~/Dropbox/Work/papers" "sort natural"]; }
-				{ on = ["g" "m"]; run = "cd /run/media/myshko/"; }
-				{ on = ["g" "p"]; run = "cd ~/Pictures"; }
-				{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2026" "sort natural --reverse"]; }
-				{ on = ["g" "v"]; run = ["cd ~/Videos" "sort mtime --reverse"]; }
-				# games:
-				{ on = ["g" "a" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/374320/pfx/drive_c/users/steamuser/AppData/Roaming/DarkSoulsIII"; }
-				{ on = ["g" "a" "c"]; run = "cd ~/.local/share/Celeste/Saves"; }
-				{ on = ["g" "a" "e"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/AppData/Roaming/EldenRing"; }
-				{ on = ["g" "a" "t" "h" "6"]; run = "cd '~/Games/Touhou/Touhou 6 - The Embodiment of Scarlet Devil'"; }
-				{ on = ["g" "a" "t" "h" "7"]; run = "cd '~/Games/Touhou/Touhou 7 - Perfect Cherry Blossom'"; }
-				{ on = ["g" "a" "t" "h" "8"]; run = "cd '~/Games/Touhou/Touhou 8 - Imperishable Night'"; }
-				#{ on = ["g" "a" "t" "h" "9"]; run = "cd cd ~/.local/share/Steam/steamapps/common/th9"; }
-				{ on = ["g" "a" "t" "h" "1" "0"]; run = "cd ~/.local/share/Steam/steamapps/common/th10"; }
-				{ on = ["g" "a" "t" "h" "1" "1"]; run = "cd ~/.local/share/Steam/steamapps/common/th11"; }
-				{ on = ["g" "a" "t" "h" "1" "2"]; run = "cd ~/.local/share/Steam/steamapps/common/th12"; }
-				{ on = ["g" "a" "t" "h" "1" "3"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1043230/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th13"; }
-				{ on = ["g" "a" "t" "h" "1" "4"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1043240/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th14"; }
-				{ on = ["g" "a" "t" "h" "1" "5"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/937580/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th15"; }
-				{ on = ["g" "a" "t" "h" "1" "6"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/745880/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th16"; }
-				{ on = ["g" "a" "t" "h" "1" "7"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1079160/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th17"; }
-				{ on = ["g" "a" "t" "h" "1" "8"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/1566410/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th18"; }
-				#{ on = ["g" "a" "t" "h" "1" "9"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/2400340/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th19"; }
-				{ on = ["g" "a" "t" "m" "r"]; run = "cd ~/.local/share/Steam/steamapps/compatdata/11020/pfx/drive_c/users/steamuser/Documents/TrackMania/Tracks/Replays"; }
-				{ on = ["g" "a" "t" "m" "s"]; run = "cd '~/.local/share/Steam/steamapps/common/TrackMania Nations Forever/GameData/Painter/Stickers'"; }
-				{ on = ["g" "a" "t" "o"]; run = "cd ~/.t-engine/4.0/tome/save/"; }
-			];
-		};
-	};
-	theme = {
-		icon = {
-			prepend_rules = [
-				# TODO:
-				#{ name = "Cargo.lock"; text = ""; }
-				#{ name = "flake.lock"; text = ""; }
-				#{ name = "Documents"; text = "󰈙"; }
-				#{ name = "Music"; text = "󰎈"; }
-				#{ name = "Public"; text = "󰮮"; }
-				#{ name = "*.mp3"; text = "󰎈"; }
-				#{ name = "*.wav"; text = "󰎈"; }
-				#{ name = "*.yaml"; text = ""; }
-				#{ name = "*.tex"; text = ""; }
-			];
-		};
-	} // (
-		import ./yazi-theme-gruvbox.nix
-	);
 }

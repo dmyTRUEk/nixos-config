@@ -11,6 +11,8 @@
 		inputs.plasma-manager.homeModules.plasma-manager
 		# TODO(refactor): import files here
 		./kde-plasma-config.nix # NOTE: remember to remove `lastImageSaveLocation`
+		./desktop-entries/neovim-in-alacritty.nix
+		./desktop-entries/yazi-in-kitty.nix
 	];
 
 	home = {
@@ -85,12 +87,6 @@
 	xdg = {
 		enable = true;
 		mime.enable = true;
-
-		desktopEntries = {
-			neovim-in-alacritty = import ./desktop-entries/neovim-in-alacritty.nix;
-			yazi-in-kitty = import ./desktop-entries/yazi-in-kitty.nix;
-		};
-
 		mimeApps = {
 			enable = true;
 			# TODO: make yazi open "folders"
