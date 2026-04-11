@@ -898,215 +898,197 @@ require('lazy').setup({
 	--'Xuyuanp/scrollbar.nvim', -- scrollbar
 
 	{'nvim-treesitter/nvim-treesitter', -- Highlight, edit, and navigate code
+		branch = 'main',
 		lazy = false, -- Important: This plugin does not support lazy-loading.
 		build = ':TSUpdate',
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter-textobjects',
-			'nvim-treesitter/playground',
 			'nvim-treesitter/nvim-treesitter-context',
 		},
 		config = function()
-			require('nvim-treesitter.configs').setup {
-				ensure_installed = {
-					'c', 'lua', 'vim', 'vimdoc', 'query', -- these are reqired?
-					--'comment',
-					--'cpp',
-					--'kotlin',
-					--'latex',
-					'markdown',
-					'nix',
-					'python',
-					--'ron', -- Rust Object Notation
-					'rust',
-					--'wgsl',
-					--'yaml',
-				},
-				highlight = {
-					enable = true,
-					disable = function(lang, bufnr)
-						return vim.fn.getfsize(vim.api.nvim_buf_get_name(bufnr)) > 99999
-					end,
-					-- Setting this to true will run `:h syntax` and treesitter at the same time.
-					-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-					-- Using this option may slow down your editor, and you may see some duplicate highlights.
-					-- Instead of true it can also be a list of languages
-					additional_vim_regex_highlighting = false,
-				},
-				--indent = { enable = false, disable = { 'python', 'css' } },
-				--incremental_selection = {
-				--	enable = true,
-				--	keymaps = {
-				--		init_selection = '<c-space>',
-				--		node_incremental = '<c-space>',
-				--		scope_incremental = '<c-s>',
-				--		node_decremental = '<c-backspace>',
-				--	},
-				--},
-				textobjects = { -- `nvim-treesitter-textobjects` required for this
-					select = {
-						enable = true,
-						lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-						keymaps = {
-							-- You can use the capture groups defined in textobjects.scm
-							['aa'] = '@parameter.outer', -- a = Argument
-							['ia'] = '@parameter.inner', -- a = Argument
-							--['ab'] = '@block.outer',
-							--['ib'] = '@block.inner',
-							['ac'] = '@class.outer',
-							['ic'] = '@class.inner',
-							['af'] = '@function.outer',
-							['if'] = '@function.inner',
-							--ap   -- reserved for paragraph
-							--ip   -- reserved for paragraph
-							['ar'] = '@return.outer',
-							['ir'] = '@return.inner',
-							['as'] = '@assignment.outer', -- s = aSSignment
-							['is'] = '@assignment.rhs',   -- s = aSSignment
-						},
-					},
-					move = {
-						enable = true,
-						set_jumps = true, -- set jumps in jumplist
-						-- TODO: swap prev & next to confuse % motion less
-						goto_next_start = {
-							[']]'] = '@block.inner',
-							[']a'] = '@parameter.rhs', -- TODO: broken?
-							[']b'] = '@block.inner',
-							[']c'] = '@class.outer',
-							[']f'] = '@function.outer',
-							[']m'] = '@scopename.inner', -- TODO: test, maybe change
-							--]p   -- reserved for paragraph
-							[']r'] = '@return.inner',
-							--[']s'] = '@assignment.rhs', -- TODO: resolve conflict/overlap with next spelling
-						},
-						goto_previous_start = {
-							['[['] = '@block.inner',
-							['[a'] = '@parameter.rhs', -- TODO: broken?
-							['[b'] = '@block.inner',
-							['[c'] = '@class.outer',
-							['[f'] = '@function.outer',
-							['[m'] = '@scopename.inner', -- TODO: test, maybe change
-							--[p   -- reserved for paragraph
-							['[r'] = '@return.inner',
-							--['[s'] = '@assignment.rhs', -- TODO: resolve conflict/overlap with next spelling
-						},
-						goto_next_end = {
-							--[']}'] = todo,
-							[']A'] = '@parameter.rhs',
-							[']B'] = '@block.inner',
-							[']C'] = '@class.outer',
-							[']F'] = '@function.outer',
-							[']M'] = '@scopename.inner', -- TODO: test, maybe change
-							--[']P'] = '@parameter.inner',
-							[']R'] = '@return.inner',
-							[']S'] = '@assignment.rhs',
-							[']['] = '@block.inner',
-						},
-						goto_previous_end = {
-							--['[{'] = todo,
-							['[A'] = '@parameter.rhs',
-							['[B'] = '@block.inner',
-							['[C'] = '@class.outer',
-							['[F'] = '@function.outer',
-							['[M'] = '@scopename.inner', -- TODO: test, maybe change
-							--['[P'] = '@parameter.inner',
-							['[R'] = '@return.inner',
-							['[S'] = '@assignment.rhs',
-							['[]'] = '@block.inner',
-						},
-					},
-					swap = {
-						enable = true,
-						swap_next = {
-							['>a'] = '@parameter.inner',
-							-->p   -- reserved for paragraph
-						},
-						swap_previous = {
-							['<a'] = '@parameter.inner',
-							--<p   -- reserved for paragraph
-						},
-					},
-				},
-				--matchup = { -- for treesitter based % motion?, maybe related: https://github.com/nvim-treesitter/nvim-treesitter/issues/2769
-				--	enable = true,
-				--},
-				playground = {
-					enable = true,
-					disable = {},
-					updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-					persist_queries = false, -- Whether the query persists across vim sessions
-					keybindings = {
-						toggle_query_editor = 'o',
-						toggle_hl_groups = 'i',
-						toggle_injected_languages = 't',
-						toggle_anonymous_nodes = 'a',
-						toggle_language_display = 'I',
-						focus_language = 'f',
-						unfocus_language = 'F',
-						update = 'R',
-						goto_node = '<cr>',
-						show_help = '?',
-					},
-				},
-			}
+			--require('nvim-treesitter.configs').setup {
+			--	ensure_installed = { ... },
+			--	highlight = {
+			--		enable = true,
+			--		disable = function(lang, bufnr)
+			--			return vim.fn.getfsize(vim.api.nvim_buf_get_name(bufnr)) > 99999
+			--		end,
+			--		-- Setting this to true will run `:h syntax` and treesitter at the same time.
+			--		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+			--		-- Using this option may slow down your editor, and you may see some duplicate highlights.
+			--		-- Instead of true it can also be a list of languages
+			--		additional_vim_regex_highlighting = false,
+			--	},
+			--	--indent = { enable = false, disable = { 'python', 'css' } },
+			--	--incremental_selection = {
+			--	--	enable = true,
+			--	--	keymaps = {
+			--	--		init_selection = '<c-space>',
+			--	--		node_incremental = '<c-space>',
+			--	--		scope_incremental = '<c-s>',
+			--	--		node_decremental = '<c-backspace>',
+			--	--	},
+			--	--},
+			--	textobjects = { -- `nvim-treesitter-textobjects` required for this
+			--		select = {
+			--			enable = true,
+			--			lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+			--			keymaps = {
+			--				-- You can use the capture groups defined in textobjects.scm
+			--				['aa'] = '@parameter.outer', -- a = Argument
+			--				['ia'] = '@parameter.inner', -- a = Argument
+			--				--['ab'] = '@block.outer',
+			--				--['ib'] = '@block.inner',
+			--				['ac'] = '@class.outer',
+			--				['ic'] = '@class.inner',
+			--				['af'] = '@function.outer',
+			--				['if'] = '@function.inner',
+			--				--ap   -- reserved for paragraph
+			--				--ip   -- reserved for paragraph
+			--				['ar'] = '@return.outer',
+			--				['ir'] = '@return.inner',
+			--				['as'] = '@assignment.outer', -- s = aSSignment
+			--				['is'] = '@assignment.rhs',   -- s = aSSignment
+			--			},
+			--		},
+			--		move = {
+			--			enable = true,
+			--			set_jumps = true, -- set jumps in jumplist
+			--			-- TODO: swap prev & next to confuse % motion less
+			--			goto_next_start = {
+			--				[']]'] = '@block.inner',
+			--				[']a'] = '@parameter.rhs', -- TODO: broken?
+			--				[']b'] = '@block.inner',
+			--				[']c'] = '@class.outer',
+			--				[']f'] = '@function.outer',
+			--				[']m'] = '@scopename.inner', -- TODO: test, maybe change
+			--				--]p   -- reserved for paragraph
+			--				[']r'] = '@return.inner',
+			--				--[']s'] = '@assignment.rhs', -- TODO: resolve conflict/overlap with next spelling
+			--			},
+			--			goto_previous_start = {
+			--				['[['] = '@block.inner',
+			--				['[a'] = '@parameter.rhs', -- TODO: broken?
+			--				['[b'] = '@block.inner',
+			--				['[c'] = '@class.outer',
+			--				['[f'] = '@function.outer',
+			--				['[m'] = '@scopename.inner', -- TODO: test, maybe change
+			--				--[p   -- reserved for paragraph
+			--				['[r'] = '@return.inner',
+			--				--['[s'] = '@assignment.rhs', -- TODO: resolve conflict/overlap with next spelling
+			--			},
+			--			goto_next_end = {
+			--				--[']}'] = todo,
+			--				[']A'] = '@parameter.rhs',
+			--				[']B'] = '@block.inner',
+			--				[']C'] = '@class.outer',
+			--				[']F'] = '@function.outer',
+			--				[']M'] = '@scopename.inner', -- TODO: test, maybe change
+			--				--[']P'] = '@parameter.inner',
+			--				[']R'] = '@return.inner',
+			--				[']S'] = '@assignment.rhs',
+			--				[']['] = '@block.inner',
+			--			},
+			--			goto_previous_end = {
+			--				--['[{'] = todo,
+			--				['[A'] = '@parameter.rhs',
+			--				['[B'] = '@block.inner',
+			--				['[C'] = '@class.outer',
+			--				['[F'] = '@function.outer',
+			--				['[M'] = '@scopename.inner', -- TODO: test, maybe change
+			--				--['[P'] = '@parameter.inner',
+			--				['[R'] = '@return.inner',
+			--				['[S'] = '@assignment.rhs',
+			--				['[]'] = '@block.inner',
+			--			},
+			--		},
+			--		swap = {
+			--			enable = true,
+			--			swap_next = {
+			--				['>a'] = '@parameter.inner',
+			--				-->p   -- reserved for paragraph
+			--			},
+			--			swap_previous = {
+			--				['<a'] = '@parameter.inner',
+			--				--<p   -- reserved for paragraph
+			--			},
+			--		},
+			--	},
+			--	--matchup = { -- for treesitter based % motion?, maybe related: https://github.com/nvim-treesitter/nvim-treesitter/issues/2769
+			--	--	enable = true,
+			--	--},
+			--}
 
-			-- from new kickstart.nvim:
-			-- -- ensure basic parser are installed
-			-- local parsers = {
-			-- 	'c', 'lua', 'vim', 'vimdoc', 'query', -- these are reqired?
-			-- 	--'comment',
-			-- 	--'cpp',
-			-- 	--'kotlin',
-			-- 	--'latex',
-			-- 	'markdown',
-			-- 	'nix',
-			-- 	'python',
-			-- 	--'ron', -- Rust Object Notation
-			-- 	'rust',
-			-- 	--'wgsl',
-			-- 	--'yaml',
-			-- }
-			-- require('nvim-treesitter').install(parsers)
-			--
-			-- ---@param buf integer
-			-- ---@param language string
-			-- local function treesitter_try_attach(buf, language)
-			-- 	-- check if parser exists and load it
-			-- 	if not vim.treesitter.language.add(language) then return end
-			-- 	-- enables syntax highlighting and other treesitter features
-			-- 	vim.treesitter.start(buf, language)
-			--
-			-- 	-- enables treesitter based folds
-			-- 	-- for more info on folds see `:help folds`
-			-- 	-- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-			-- 	-- vim.wo.foldmethod = 'expr'
-			--
-			-- 	-- enables treesitter based indentation
-			-- 	vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-			-- end
-			--
-			-- local available_parsers = require('nvim-treesitter').get_available()
-			-- vim.api.nvim_create_autocmd('FileType', {
-			-- 	callback = function(args)
-			-- 		local buf, filetype = args.buf, args.match
-			--
-			-- 		local language = vim.treesitter.language.get_lang(filetype)
-			-- 		if not language then return end
-			--
-			-- 		local installed_parsers = require('nvim-treesitter').get_installed 'parsers'
-			--
-			-- 		if vim.tbl_contains(installed_parsers, language) then
-			-- 			-- enable the parser if it is installed
-			-- 			treesitter_try_attach(buf, language)
-			-- 		elseif vim.tbl_contains(available_parsers, language) then
-			-- 			-- if a parser is available in `nvim-treesitter` auto install it, and enable it after the installation is done
-			-- 			require('nvim-treesitter').install(language):await(function() treesitter_try_attach(buf, language) end)
-			-- 		else
-			-- 			-- try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
-			-- 			treesitter_try_attach(buf, language)
-			-- 		end
-			-- 	end,
-			-- })
+			local parsers = {
+				'c', 'lua', 'vim', 'vimdoc', 'query', -- these are reqired?
+				--'comment',
+				--'cpp',
+				--'kotlin',
+				--'latex',
+				'markdown',
+				'nix',
+				'python',
+				--'ron', -- Rust Object Notation
+				'rust',
+				--'wgsl',
+				--'yaml',
+			}
+			require('nvim-treesitter').install(parsers)
+
+			local function treesitter_try_attach(buf, language)
+				-- check if parser exists and load it
+				if not vim.treesitter.language.add(language) then return end
+				-- enables syntax highlighting and other treesitter features
+				vim.treesitter.start(buf, language)
+
+				-- TODO?
+				-- enables treesitter based folds; for more info on folds see `:help folds`
+				-- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+				-- vim.wo.foldmethod = 'expr'
+
+				-- enables treesitter based indentation
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end
+
+			local available_parsers = require('nvim-treesitter').get_available()
+			vim.api.nvim_create_autocmd('FileType', {
+				callback = function(args)
+					local buf, filetype = args.buf, args.match
+
+					local language = vim.treesitter.language.get_lang(filetype)
+					if not language then return end
+
+					local installed_parsers = require('nvim-treesitter').get_installed 'parsers'
+
+					if vim.tbl_contains(installed_parsers, language) then
+						-- enable the parser if it is installed
+						treesitter_try_attach(buf, language)
+					elseif vim.tbl_contains(available_parsers, language) then
+						-- if a parser is available in `nvim-treesitter` auto install it, and enable it after the installation is done
+						require('nvim-treesitter').install(language):await(function() treesitter_try_attach(buf, language) end)
+					else
+						-- try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
+						treesitter_try_attach(buf, language)
+					end
+				end,
+			})
+		end,
+	},
+	{'nvim-treesitter/nvim-treesitter-textobjects',
+		branch = "main",
+		init = function()
+			-- Disable entire built-in ftplugin mappings to avoid conflicts.
+			-- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+			vim.g.no_plugin_maps = true
+
+			-- Or, disable per filetype (add as you like)
+			-- vim.g.no_python_maps = true
+			-- vim.g.no_ruby_maps = true
+			-- vim.g.no_rust_maps = true
+			-- vim.g.no_go_maps = true
+		end,
+		config = function()
+			-- put your config here
 		end,
 	},
 	{'nvim-treesitter/nvim-treesitter-context',
