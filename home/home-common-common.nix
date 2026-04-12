@@ -195,6 +195,8 @@
 		#(haskellPackages.ghcWithPackages (haskell-pkgs: with haskell-pkgs; [
 		#	# haskell pkgs
 		#]))
+		tree-sitter # for tree-sitter in neovim
+		#luajitPackages.tree-sitter-cli
 
 		# LSPs:
 		lua-language-server # lua
