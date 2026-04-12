@@ -111,13 +111,22 @@
 	};
 
 	services = {
+		desktopManager = {
+			plasma6.enable = true;
+			#gnome.enable = true;
+			#cosmic.enable = true;
+		};
 		displayManager = {
 			defaultSession = "plasma";
-			sddm = {
+			plasma-login-manager = {
 				enable = true;
-				wayland.enable = true;
-				#theme = "chili";
+				#settings = {};
 			};
+			#sddm = {
+			#	enable = true;
+			#	wayland.enable = true;
+			#	#theme = "chili";
+			#};
 			#gdm = {
 			#	enable = true;
 			#	wayland = true;
@@ -125,11 +134,6 @@
 			#	#hiddenUsers = [];
 			#};
 			#cosmic-greeter.enable = true;
-		};
-		desktopManager = {
-			plasma6.enable = true;
-			#gnome.enable = true;
-			#cosmic.enable = true;
 		};
 		xserver = {
 			enable = true; # TODO: dont enable or why i need it?
