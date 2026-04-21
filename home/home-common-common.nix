@@ -25,11 +25,6 @@
 		# - DO NOT `.enable` programs that have dotfiles symlinks
 		# IMPORTANT!!!
 
-		neovim = {
-			enable = true;
-			defaultEditor = true;
-			#extraLuaConfig = builtins.readFile ./dotfiles/nvim/init.lua;
-		};
 		git = {
 			enable = true;
 			#extraConfig = {
