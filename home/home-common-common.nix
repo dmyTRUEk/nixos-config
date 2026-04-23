@@ -32,8 +32,12 @@
 			#		pkgs.git.override { withLibsecret = true; }
 			#	}/bin/git-credential-libsecret";
 			#};
+			signing.format = null; # adopt new behaviour from 25.05
 		};
-		zsh.enable = true; # only for rare tests
+		zsh = { # only for rare tests
+			enable = true;
+			dotDir = "${config.xdg.configHome}/zsh"; # adopt new behaviour from 26.05
+		};
 		#fish = {}; # -> ./programs/fish.nix   # (rust btw)
 		#alacritty = {}; # -> ./programs/alacritty.nix   # (rust btw)
 		firefox = {

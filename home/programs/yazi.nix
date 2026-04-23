@@ -6,6 +6,7 @@
 	programs.yazi = {
 		enable = true;
 		#enableFishIntegration = true; # it's just `yazi_with_cwd_memory`
+		shellWrapperName = "y"; # adopt new behavior from 26.05
 		settings = {
 			mgr = {
 				sort_by = "natural";

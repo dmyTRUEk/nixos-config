@@ -205,6 +205,8 @@
 		neovim = {
 			enable = true;
 			defaultEditor = true;
+			withRuby = false;    # adopt new behaviour from 26.05
+			withPython3 = false; # adopt new behaviour from 26.05
 		};
 
 		fish.enable = true;
@@ -212,6 +214,7 @@
 		git = {
 			enable = true;
 			config.init.defaultBranch = "main";
+			# signing.format = null; # adopt new behaviour from 25.05 # -> home-manager
 		};
 
 
