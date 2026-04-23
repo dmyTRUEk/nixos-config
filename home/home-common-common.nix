@@ -107,14 +107,11 @@
 		vulkan-tools # for vulkaninfo, gpu info
 		wev # wayland event viewer
 		wayland-utils
+		amdgpu_top
 
 		# "LIBS":
-		playerctl
-		gammastep
-		wl-clipboard
-		grim
-		slurp
-		libnotify # for notify-send
+		wl-clipboard # for wl-copy for cc in yazi
+		#libnotify # for notify-send
 
 		# CLI:
 		tree
@@ -169,6 +166,7 @@
 		zulip
 		#kdePackages.cantor
 		peeky.packages.${stdenv.hostPlatform.system}.default
+		#kdePackages.korganizer # TODO: show events from google calendar?
 
 		# LANGS/DEV/PROGRAMMING:
 		rustup # rust btw
