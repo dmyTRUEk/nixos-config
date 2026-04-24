@@ -148,11 +148,13 @@ local queries = {
 			-- 	) @body
 			-- ]],
 			-- { ... }
-			-- [[
-			-- 	(block
-			-- 		pattern: (identifier) @name
-			-- 	) @body
-			-- ]],
+			[[
+				(expression_statement
+					(block
+						(line_comment) @name
+					) @body
+				)
+			]],
 		},
 	},
 }
@@ -160,6 +162,14 @@ local queries = {
 local function get_text(node, bufnr)
 	local sr, sc, er, ec = node:range()
 	return vim.api.nvim_buf_get_text(bufnr, sr, sc, er, ec, {})[1]
+end
+
+local function remove_prefix(prefix, s)
+	local n = #prefix
+	if #s >= n and s:sub(1, n) == prefix then
+		return s:sub(n + 1)
+	end
+	return s
 end
 
 local parsed_queries = {}
@@ -242,6 +252,14 @@ for lang, qdef in pairs(queries) do
 		elseif query_code:find("loop_expression") then
 			q.format = function(name)
 				return "end of loop " .. name
+			end
+
+		elseif query_code:find("expression_statement") then
+			q.format = function(name)
+				-- TODO: change?
+				local name = remove_prefix("// ", name)
+				local name = remove_prefix("//", name)
+				return "end of block " .. name
 			end
 
 		-- TODO: lua for_statement
