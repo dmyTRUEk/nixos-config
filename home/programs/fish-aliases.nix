@@ -106,12 +106,15 @@
 		nic  = "nvim ~/.config/home-manager/os/configuration-common.nix";
 		nicp = "nvim ~/.config/home-manager/os/configuration-psyche.nix";
 		nick = "nvim ~/.config/home-manager/os/configuration-knight.nix";
+		nicw = "nvim ~/.config/home-manager/os/configuration-wiredg.nix";
 		nichp= "nvim ~/.config/home-manager/os/hardware-configuration-psyche.nix";
 		nichk= "nvim ~/.config/home-manager/os/hardware-configuration-knight.nix";
+		nichw= "nvim ~/.config/home-manager/os/hardware-configuration-wiredg.nix";
 		nih  = "nvim ~/.config/home-manager/home/home-common-common.nix";
 		nihm = "nvim ~/.config/home-manager/home/home-myshko-common.nix";
 		nihp = "nvim ~/.config/home-manager/home/home-myshko-psyche.nix";
 		nihk = "nvim ~/.config/home-manager/home/home-myshko-knight.nix";
+		nihw = "nvim ~/.config/home-manager/home/home-myshko-wiredg.nix";
 
 		nal = "nvim ~/.config/home-manager/home/programs/alacritty.nix";
 		nan = "nvim ~/.config/home-manager/home/programs/anyrun.nix";
