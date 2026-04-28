@@ -167,6 +167,7 @@
 		#kdePackages.cantor
 		peeky.packages.${stdenv.hostPlatform.system}.default
 		#kdePackages.korganizer # TODO: show events from google calendar?
+		#kdePackages.plasma-browser-integration # for kdeconnect # TODO?
 
 		# LANGS/DEV/PROGRAMMING:
 		rustup # rust btw
