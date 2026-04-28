@@ -6,6 +6,11 @@
 	pkgs_a85fc0a,
 	...
 }: {
+	imports = [
+		#inputs.plasma-manager.homeModules.plasma-manager # TODO(refactor): move to `kde-plasma-config-knight.nix`?
+		#./kde-plasma-config-knight.nix # TODO?
+	];
+
 	programs = {};
 
 	home.packages = with pkgs; [ # PKGS

@@ -2,7 +2,7 @@
   programs.plasma = {
     enable = true;
     shortcuts = {
-      ActivityManager.switch-to-activity-c0829c3a-aee1-4d39-8e84-779f2f1d0580 = [ ];
+      # ActivityManager.switch-to-activity-c0829c3a-aee1-4d39-8e84-779f2f1d0580 = [ ];
       "KDE Keyboard Layout Switcher"."Switch keyboard layout to English (US)" = [ ];
       "KDE Keyboard Layout Switcher"."Switch keyboard layout to Ukrainian" = [ ];
       "KDE Keyboard Layout Switcher"."Switch to Last-Used Keyboard Layout" = [ ];
@@ -517,7 +517,7 @@
       kwinrc.Xwayland.Scale = 1;
       kxkbrc.Layout.DisplayNames = "en,uk";
       kxkbrc.Layout.LayoutList = "us,ua";
-      kxkbrc.Layout.Options = "caps:swapescape,grp:shifts_toggle,grp:menu_toggle,ctrl:swap_lalt_lctl";
+      kxkbrc.Layout.Options = "caps:swapescape,ctrl:swap_lalt_lctl,grp:shifts_toggle,grp:menu_toggle";
       kxkbrc.Layout.ResetOldOptions = true;
       kxkbrc.Layout.SwitchMode = "Window";
       kxkbrc.Layout.Use = true;
@@ -530,9 +530,9 @@
       plasmanotifyrc.Notifications.LowPriorityHistory = true;
       plasmanotifyrc."Services/powerdevil".ShowPopupsInDndMode = true;
       plasmaparc.General.RaiseMaximumVolume = true;
-      spectaclerc.Annotations.annotationToolType = 2;
-      spectaclerc.Annotations.freehandStrokeColor = "0,0,0";
-      spectaclerc.Annotations.freehandStrokeWidth = 16;
+      # spectaclerc.Annotations.annotationToolType = 2;
+      # spectaclerc.Annotations.freehandStrokeColor = "0,0,0";
+      # spectaclerc.Annotations.freehandStrokeWidth = 16;
       spectaclerc.General.autoSaveImage = true;
       spectaclerc.General.clipboardGroup = "PostScreenshotCopyImage";
       spectaclerc.ImageSave.imageSaveLocation = "file:///home/myshko/Pictures/Screenshots/2026";

@@ -8,9 +8,9 @@
 	# TODO?: make `enable`/`enabled` function that sets enable=true.
 
 	imports = [
-		inputs.plasma-manager.homeModules.plasma-manager
-		# TODO(refactor): import files here
-		# ./kde-plasma-config.nix # NOTE: remember to remove `lastImageSaveLocation`
+		#inputs.plasma-manager.homeModules.plasma-manager # TODO(refactor): move to `kde-plasma-config-xxxxxx.nix`?
+		# TODO(refactor): import files here?
+		##./kde-plasma-config-xxxxxx.nix # specified in `-knight` & `-psyche` & `-wiredg`
 		./desktop-entries/neovim-in-alacritty.nix
 		./desktop-entries/yazi-in-kitty.nix
 	];
