@@ -14,6 +14,6 @@
 	programs = {};
 
 	home.packages = with pkgs; [ # PKGS
-		# pkgs_a85fc0a.mathematica # wolfram mathematica 14.1 # TODO
+		pkgs_a85fc0a.mathematica # wolfram mathematica 14.1
 	];
 }
