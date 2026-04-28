@@ -232,6 +232,8 @@
 			enable = true;
 			flake = "/home/myshko/.config/home-manager";
 		};
+
+		partition-manager.enable = true; # kde partition manager
 	};
 
 	environment.systemPackages = with pkgs; [ # PKGS
