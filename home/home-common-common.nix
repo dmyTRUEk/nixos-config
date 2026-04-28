@@ -42,10 +42,7 @@
 		#alacritty = {}; # -> ./programs/alacritty.nix   # (rust btw)
 		firefox = {
 			enable = true;
-			# TODO: enable somehow?
-			#profiles."default".settings = {
-			#	"browser.tabs.inTitlebar" = 0;
-			#};
+			configPath = "${config.xdg.configHome}/mozilla/firefox"; # adopt new behaviour from 26.05
 		};
 		btop = {
 			enable = true;
