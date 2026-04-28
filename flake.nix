@@ -45,6 +45,7 @@
 		nixosSystem = nixpkgs.lib.nixosSystem;
 		hostname_psyche = "psyche";
 		hostname_knight = "knight";
+		hostname_wiredg = "wiredg";
 		home-manager-module = home-manager.nixosModules.home-manager;
 		username_myshko = "myshko";
 		username_guest  = "guest";
@@ -120,6 +121,43 @@
 									./home/home-common-${hostname_knight}.nix
 									./home/home-${username_guest}-common.nix
 									./home/home-${username_guest}-${hostname_knight}.nix
+								];
+							};
+						};
+					}
+				];
+			};
+			${hostname_wiredg} = nixosSystem {
+				inherit system;
+				specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
+				modules = [
+					./os/configuration-common.nix
+					./os/configuration-${hostname_wiredg}.nix
+					home-manager-module {
+						home-manager = {
+							verbose = true;
+							useGlobalPkgs = true; # makes hm use nixos's pkgs value
+							useUserPackages = true; # ?
+							extraSpecialArgs = { # allows access to flake inputs in hm modules
+								inherit
+									inputs
+									pkgs_a85fc0a
+									peeky
+								;
+							};
+							backupFileExtension = "backup";
+							users = {
+								${username_myshko}.imports = [
+									./home/home-common-common.nix
+									./home/home-common-${hostname_wiredg}.nix
+									./home/home-${username_myshko}-common.nix
+									./home/home-${username_myshko}-${hostname_wiredg}.nix
+								];
+								${username_guest}.imports = [
+									./home/home-common-common.nix
+									./home/home-common-${hostname_wiredg}.nix
+									./home/home-${username_guest}-common.nix
+									./home/home-${username_guest}-${hostname_wiredg}.nix
 								];
 							};
 						};

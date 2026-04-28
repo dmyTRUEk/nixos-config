@@ -77,7 +77,7 @@
 	};
 
 	networking = {
-		##hostName = "noname"; # specified in `-knight` & `-psyche`
+		##hostName = "noname"; # specified in `-knight` & `-psyche` & `-wiredg`
 		networkmanager.enable = true;
 		firewall = rec {
 			allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # for kdeconnect
@@ -135,6 +135,7 @@
 			#};
 			#cosmic-greeter.enable = true;
 		};
+		# Enable the X11 windowing system. You can disable this if you're only using the Wayland session.
 		xserver = {
 			enable = true; # TODO: dont enable or why i need it?
 			videoDrivers = ["amdgpu"]; # TODO: why i need this? opencl/etc?
@@ -282,7 +283,7 @@
 	security = {
 		# TODO(refactor): move to HM?
 		rtkit.enable = true; # for audio, optional but recommended
-		polkit.enable = true;
+		polkit.enable = true; # ?
 	};
 
 	virtualisation = {
@@ -321,5 +322,6 @@
 	# Before changing this value read the documentation for this option
 	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 	# https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-	system.stateVersion = "24.11"; # Did you read the comment?
+	# https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
+	##system.stateVersion = "XX.XX"; # Did you read the comment? # specified in `-knight` & `-psyche` & `-wiredg`
 }

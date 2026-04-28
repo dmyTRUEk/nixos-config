@@ -59,7 +59,7 @@
 				#proc_tree = true;
 			};
 		};
-		jq.enable = true;
+		jq.enable = true; # TODO: remove?
 		ripgrep.enable = true; # (rust btw)
 		direnv = {
 			enable = true;
@@ -221,5 +221,6 @@
 	# Before changing this value read the documentation for this option
 	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 	# https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-	home.stateVersion = "24.11"; # Did you read the comment?
+	# https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
+	##home.stateVersion = "XX.XX"; # Did you read the comment? # specified in `-knight` & `-psyche` & `-wiredg`
 }

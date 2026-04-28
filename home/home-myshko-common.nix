@@ -10,7 +10,7 @@
 	imports = [
 		inputs.plasma-manager.homeModules.plasma-manager
 		# TODO(refactor): import files here
-		./kde-plasma-config.nix # NOTE: remember to remove `lastImageSaveLocation`
+		# ./kde-plasma-config.nix # NOTE: remember to remove `lastImageSaveLocation`
 		./desktop-entries/neovim-in-alacritty.nix
 		./desktop-entries/yazi-in-kitty.nix
 	];
