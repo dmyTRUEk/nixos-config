@@ -1015,7 +1015,7 @@ require('lazy').setup({
 			--		},
 			--	},
 			--	--matchup = { -- for treesitter based % motion?, maybe related: https://github.com/nvim-treesitter/nvim-treesitter/issues/2769
-			--	--	enable = true,
+			--	--	enable = true, -- TODO
 			--	--},
 			--}
 
