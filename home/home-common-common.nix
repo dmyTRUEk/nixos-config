@@ -125,6 +125,7 @@
 		nvd
 		#curlftpfs
 		wtype
+		rsync
 
 		# CLI fun:
 		fortune
