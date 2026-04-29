@@ -2,6 +2,7 @@
 
 from typing import Callable, Iterable, Iterator
 
+import sys
 from sys import argv as cli_args
 
 from time import sleep
@@ -38,6 +39,12 @@ from pipe import (
 	traverse as traverse_,
 	uniq as uniq_,
 )
+
+
+float_max = sys.float_info.max
+float_min = sys.float_info.min
+float_max_neg = -sys.float_info.max
+float_min_neg = -sys.float_info.min
 
 
 # abcdefghijklmnopqrstuvwxyz
