@@ -255,6 +255,8 @@
       "services/org.kde.plasma-systemmonitor.desktop"._launch = "Meta+Shift+F10";
       "services/org.kde.plasma.emojier.desktop"._launch = "Meta+.";
       "services/org.kde.spectacle.desktop".ActiveWindowScreenShot = [ ];
+      "services/org.kde.spectacle.desktop".CurrentMonitorScreenShot = [ ];
+      "services/org.kde.spectacle.desktop".OpenWithoutScreenshot = [ ];
       "services/org.kde.spectacle.desktop".RecordRegion = [ ];
       "services/org.kde.spectacle.desktop".RecordScreen = [ ];
       "services/org.kde.spectacle.desktop".RecordWindow = [ ];
@@ -267,7 +269,8 @@
       baloofilerc.General.dbVersion = 2;
       baloofilerc.General."exclude filters" = "*~,*.part,*.o,*.la,*.lo,*.loT,*.moc,moc_*.cpp,qrc_*.cpp,ui_*.h,cmake_install.cmake,CMakeCache.txt,CTestTestfile.cmake,libtool,config.status,confdefs.h,autom4te,conftest,confstat,Makefile.am,*.gcode,.ninja_deps,.ninja_log,build.ninja,*.csproj,*.m4,*.rej,*.gmo,*.pc,*.omf,*.aux,*.tmp,*.po,*.vm*,*.nvram,*.rcore,*.swp,*.swap,lzo,litmain.sh,*.orig,.histfile.*,.xsession-errors*,*.map,*.so,*.a,*.db,*.qrc,*.ini,*.init,*.img,*.vdi,*.vbox*,vbox.log,*.qcow2,*.vmdk,*.vhd,*.vhdx,*.sql,*.sql.gz,*.ytdl,*.tfstate*,*.class,*.pyc,*.pyo,*.elc,*.qmlc,*.jsc,*.fastq,*.fq,*.gb,*.fasta,*.fna,*.gbff,*.faa,po,CVS,.svn,.git,_darcs,.bzr,.hg,CMakeFiles,CMakeTmp,CMakeTmpQmake,.moc,.obj,.pch,.uic,.npm,.yarn,.yarn-cache,__pycache__,node_modules,node_packages,nbproject,.terraform,.venv,venv,core-dumps,lost+found";
       baloofilerc.General."exclude filters version" = 9;
-      baloofilerc.General."exclude folders[$e]" = "$HOME/";
+      baloofilerc.General."folders[$e]" = "$HOME/";
+      baloofilerc.General."only basic indexing" = true;
       dolphinrc.General.ViewPropsTimestamp = "2026,4,28,11,46,29.409";
       dolphinrc."KFileDialog Settings"."Places Icons Auto-resize" = false;
       dolphinrc."KFileDialog Settings"."Places Icons Static Size" = 22;
@@ -383,6 +386,7 @@
       plasmanotifyrc."Applications/firefox".Seen = true;
       plasmanotifyrc."Applications/org.telegram.desktop".Seen = true;
       plasmaparc.General.RaiseMaximumVolume = true;
+      spectaclerc.Annotations.annotationToolType = 3;
       spectaclerc.General.autoSaveImage = true;
       spectaclerc.General.clipboardGroup = "PostScreenshotCopyImage";
       spectaclerc.ImageSave.imageSaveLocation = "file:///home/myshko/Pictures/Screenshots/2026";
