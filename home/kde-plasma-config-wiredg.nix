@@ -337,6 +337,8 @@
       kwinrc.NightColor.Active = true;
       kwinrc.NightColor.NightTemperature = 3500;
       kwinrc.Plugins.shakecursorEnabled = false;
+      kwinrc.Plugins.translucencyEnabled = true;
+      kwinrc.Plugins.wobblywindowsEnabled = true;
       kwinrc.TabBox.ActivitiesMode = 0;
       kwinrc.TabBox.DesktopMode = 0;
       kwinrc."Tiling/024a269c-c117-43ed-beb4-677cb6ca0a7b/e07b0dc2-9f32-47a6-b13c-b12f788e37e5".padding = 4;
@@ -373,6 +375,7 @@
       kwinrc."Tiling/f56d7f5a-3f38-4c89-8af4-aba72d454313/e07b0dc2-9f32-47a6-b13c-b12f788e37e5".tiles = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       kwinrc.Windows.DelayFocusInterval = 0;
       kwinrc.Windows.FocusPolicy = "FocusFollowsMouse";
+      kwinrc.Windows.NextFocusPrefersMouse = true;
       kwinrc.Xwayland.Scale = 1;
       kxkbrc.Layout.DisplayNames = "en,uk";
       kxkbrc.Layout.LayoutList = "us,ua";
