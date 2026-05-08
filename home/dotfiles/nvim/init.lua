@@ -498,6 +498,8 @@ require('lazy').setup({
 	--'projekt0n/github-nvim-theme',
 	--'navarasu/onedark.nvim',
 	'folke/tokyonight.nvim',
+	'shaunsingh/solarized.nvim',
+	--'svrana/neosolarized.nvim',
 
 	-- MY CORE PLUGINS:
 	{'windwp/nvim-autopairs', -- close brackets automatically
