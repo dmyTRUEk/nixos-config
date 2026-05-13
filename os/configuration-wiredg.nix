@@ -101,7 +101,7 @@
 	#};
 
 	# minecraft server using nix-minecraft flake:
-	networking.firewall.allowedTCPPorts = [ 25565 ];
+	networking.firewall.allowedTCPPorts = [ 25565 ]; # for java
 	networking.firewall.allowedUDPPorts = [ 19132 ]; # for bedrock via geyser
 	services = {
 		minecraft-servers = {
@@ -109,68 +109,20 @@
 			eula = true;
 			openFirewall = true;
 			servers = {
-				lambda_1_21_11 = {
-					enable = true;
-					autoStart = false;
-					package = pkgs.fabricServers.fabric-1_21_11;
-					serverProperties = {
-						# src: https://minecraft.wiki/w/Server.properties
-						# server-port = 25565;
-						# "query.port" = 25565;
-						# "rcon.port" = 25565;
-						allow-flight = true;
-						difficulty = "hard";
-						enable-command-block = true;
-						gamemode = "survival";
-						level-seed = "42";
-						motd = "1$ donation would be appreciated :3";
-						pause-when-empty-seconds = 5 * 60;
-						spawn-protection = 0;
-						simulation-distance = 10; # TODO?: increase
-						view-distance = 32;
-						jvmOpts = "-Xms6144M -Xmx8192M";
-					};
-					files = { # mutable files
-						"ops.json".value = [{
-							name = "dmyTRUEk"; # TODO?: remove/change?
-							uuid = "54aaf78f-3981-4997-bd69-7b5025dacdcc";
-							level = 4;
-						}];
-					};
-					symlinks = {
-						mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
-							Lithium = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/Ow7wA0kG/lithium-fabric-0.21.4%2Bmc1.21.11.jar"; sha512 = "sha512-8UpcPS+teGNHyiUIP5AhOWlPYYt8EDlH8v0Genxe6Ipj4e+JJvfWk+p57X0A9XMXuud++cLWML9e0BrJenUrlA=="; };
-							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/wQ026mlb/geyser-fabric-Geyser-Fabric-2.9.5-b1109.jar"; sha512 = "sha512-HQjHErH5EA+vDNkjOj3z02ALM7zgYMixORBikJa96GpLA66IqLJqJPoywZ+4SP/BEiNYVf+BsR5oxnJH4YjOaw=="; };
-							Floodgate = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/wzwExuYr/Floodgate-Fabric-2.2.6-b54.jar"; sha512 = "sha512-qugW2Y4iMxZ2AsBTvstD/7aIBFEpb6svPGps1Mi9yCCJVdc+EIn5rN2MHczueDXAsz/EJBOrMX2an+7nsp3hrw=="; }; # TODO
-							# FerriteCore = fetchurl { url = "https://cdn.modrinth.com/data/uXXizFIs/versions/ULSumfl4/ferritecore-6.0.0-forge.jar"; sha512 = "e78ddd02cca0a4553eb135dbb3ec6cbc59200dd23febf3491d112c47a0b7e9fe2b97f97a3d43bb44d69f1a10aad01143dcd84dc575dfa5a9eaa315a3ec182b37"; };
-							# Krypton = fetchurl { url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/jiDwS0W1/krypton-0.2.3.jar"; sha512 = "92b73a70737cfc1daebca211bd1525de7684b554be392714ee29cbd558f2a27a8bdda22accbe9176d6e531d74f9bf77798c28c3e8559c970f607422b6038bc9e"; };
-							# LazyDFU = fetchurl { url = "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.3/lazydfu-0.1.3.jar"; sha512 = "dc3766352c645f6da92b13000dffa80584ee58093c925c2154eb3c125a2b2f9a3af298202e2658b039c6ee41e81ca9a2e9d4b942561f7085239dd4421e0cce0a"; };
-							# C2ME = fetchurl { url = "https://cdn.modrinth.com/data/VSNURh3q/versions/t4juSkze/c2me-fabric-mc1.20.1-0.2.0%2Balpha.10.91.jar"; sha512 = "562c87a50f380c6cd7312f90b957f369625b3cf5f948e7bee286cd8075694a7206af4d0c8447879daa7a3bfe217c5092a7847247f0098cb1f5417e41c678f0c1"; };
-							DistantHorizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/mVAIpNz9/DistantHorizons-3.0.2-b-1.21.11-fabric-neoforge.jar"; sha512 = "sha512-0pxYNbMSpsy4krTbgMK4yeyE8WHR68S82/MAD6S88buSQpVUpyWthjzR1CwFXM+q5TO0nEeHI0pLVmn8fPG7GQ=="; };
-							# deps:
-							FabricAPI = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar"; sha512 = "sha512-wgwBfiPW0ndGkNDdd0zshMFr+sVGHaLZNFoc2V7uSVsZVDM8Qh49HGYYYoTSSkM/awzO2AIfYuC/phfSOE0EcQ=="; }; # for TODO?
-						});
-					};
-				};
-
-				# lambda_26_1_2 = {
+				# lambda_1_21_11 = {
 				# 	enable = true;
 				# 	autoStart = false;
-				# 	package = pkgs.fabricServers.fabric-26_1_2.override {
-				# 		jre_headless = pkgs.temurin-jre-bin-25;
-				# 	};
+				# 	package = pkgs.fabricServers.fabric-1_21_11;
 				# 	serverProperties = {
 				# 		# src: https://minecraft.wiki/w/Server.properties
-				# 		# server-port = 25565;
-				# 		# "query.port" = 25565;
-				# 		# "rcon.port" = 25565;
 				# 		allow-flight = true;
 				# 		difficulty = "hard";
 				# 		enable-command-block = true;
 				# 		gamemode = "survival";
 				# 		level-seed = "42";
-				# 		motd = "stay silly~ :3";
+				# 		motd = "1$ donation would be appreciated :3";
 				# 		pause-when-empty-seconds = 5 * 60;
+				# 		spawn-protection = 0;
 				# 		simulation-distance = 10; # TODO?: increase
 				# 		view-distance = 32;
 				# 		jvmOpts = "-Xms6144M -Xmx8192M";
@@ -184,18 +136,75 @@
 				# 	};
 				# 	symlinks = {
 				# 		mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
-				# 			Lithium = pkgs.fetchurl { url = ""; sha512 = "sha512-/yyyUNFMe0Lz8WiBj+WvKP1EHSb2bixRRj+VF2UcjR7oJZDJZ0mrbJRmRq4mri0JGt1PsxIpjgwyMbOc/GwQHA=="; };
-				# 			# Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/wQ026mlb/geyser-fabric-Geyser-Fabric-2.9.5-b1109.jar"; sha512 = "sha512-HQjHErH5EA+vDNkjOj3z02ALM7zgYMixORBikJa96GpLA66IqLJqJPoywZ+4SP/BEiNYVf+BsR5oxnJH4YjOaw=="; };
-				# 			# Floodgate = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/wzwExuYr/Floodgate-Fabric-2.2.6-b54.jar"; sha512 = "sha512-qugW2Y4iMxZ2AsBTvstD/7aIBFEpb6svPGps1Mi9yCCJVdc+EIn5rN2MHczueDXAsz/EJBOrMX2an+7nsp3hrw=="; }; # TODO
+				# 			Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/wQ026mlb/geyser-fabric-Geyser-Fabric-2.9.5-b1109.jar"; sha512 = "sha512-HQjHErH5EA+vDNkjOj3z02ALM7zgYMixORBikJa96GpLA66IqLJqJPoywZ+4SP/BEiNYVf+BsR5oxnJH4YjOaw=="; };
+				# 			Floodgate = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/wzwExuYr/Floodgate-Fabric-2.2.6-b54.jar"; sha512 = "sha512-qugW2Y4iMxZ2AsBTvstD/7aIBFEpb6svPGps1Mi9yCCJVdc+EIn5rN2MHczueDXAsz/EJBOrMX2an+7nsp3hrw=="; }; # TODO
+				# 			DistantHorizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/mVAIpNz9/DistantHorizons-3.0.2-b-1.21.11-fabric-neoforge.jar"; sha512 = "sha512-0pxYNbMSpsy4krTbgMK4yeyE8WHR68S82/MAD6S88buSQpVUpyWthjzR1CwFXM+q5TO0nEeHI0pLVmn8fPG7GQ=="; };
+				# 			Lithium = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/Ow7wA0kG/lithium-fabric-0.21.4%2Bmc1.21.11.jar"; sha512 = "sha512-8UpcPS+teGNHyiUIP5AhOWlPYYt8EDlH8v0Genxe6Ipj4e+JJvfWk+p57X0A9XMXuud++cLWML9e0BrJenUrlA=="; };
 				# 			# FerriteCore = fetchurl { url = "https://cdn.modrinth.com/data/uXXizFIs/versions/ULSumfl4/ferritecore-6.0.0-forge.jar"; sha512 = "e78ddd02cca0a4553eb135dbb3ec6cbc59200dd23febf3491d112c47a0b7e9fe2b97f97a3d43bb44d69f1a10aad01143dcd84dc575dfa5a9eaa315a3ec182b37"; };
 				# 			# Krypton = fetchurl { url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/jiDwS0W1/krypton-0.2.3.jar"; sha512 = "92b73a70737cfc1daebca211bd1525de7684b554be392714ee29cbd558f2a27a8bdda22accbe9176d6e531d74f9bf77798c28c3e8559c970f607422b6038bc9e"; };
 				# 			# LazyDFU = fetchurl { url = "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.3/lazydfu-0.1.3.jar"; sha512 = "dc3766352c645f6da92b13000dffa80584ee58093c925c2154eb3c125a2b2f9a3af298202e2658b039c6ee41e81ca9a2e9d4b942561f7085239dd4421e0cce0a"; };
 				# 			# C2ME = fetchurl { url = "https://cdn.modrinth.com/data/VSNURh3q/versions/t4juSkze/c2me-fabric-mc1.20.1-0.2.0%2Balpha.10.91.jar"; sha512 = "562c87a50f380c6cd7312f90b957f369625b3cf5f948e7bee286cd8075694a7206af4d0c8447879daa7a3bfe217c5092a7847247f0098cb1f5417e41c678f0c1"; };
 				# 			# deps:
-				# 			FabricAPI = pkgs.fetchurl { url = ""; sha512 = "sha512-YJptq0nAWlcv9bUG9hjPiXsmZCt+q4bZRXWibO6XCnuX3TAnSc+7r5RGcbYY6R/+UMxyMnnb/ASNNCtlOWKyQw=="; }; # for TODO?
+				# 			FabricAPI = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar"; sha512 = "sha512-wgwBfiPW0ndGkNDdd0zshMFr+sVGHaLZNFoc2V7uSVsZVDM8Qh49HGYYYoTSSkM/awzO2AIfYuC/phfSOE0EcQ=="; }; # for TODO?
 				# 		});
 				# 	};
 				# };
+
+				lambda_26_1_2 = {
+					enable = true;
+					autoStart = false;
+					package = pkgs.fabricServers.fabric-26_1_2.override {
+						jre_headless = pkgs.temurin-jre-bin-25;
+					};
+					serverProperties = {
+						# src: https://minecraft.wiki/w/Server.properties
+						white-list = true;
+						allow-flight = true;
+						difficulty = "hard";
+						gamemode = "survival";
+						level-seed = "643f77bf396efdd1";
+						motd = "raising money to buy death stranding 2 for the admin friend"; # TODO?: rewrite
+						pause-when-empty-seconds = 5 * 60;
+						spawn-protection = 0;
+						simulation-distance = 20;
+						view-distance = 32;
+						enable-command-block = true;
+						jvmOpts = "-Xms6144M -Xmx8192M";
+					};
+					##whitelist = { ... };
+					files = { # mutable files
+						"ops.json".value = [
+							{
+								name = "miku__UwU";
+								uuid = "54aaf78f-3981-4997-bd69-7b5025dacdcc";
+								level = 4;
+								bypassesPlayerLimit = true;
+							}
+							{
+								name = ".mikuUwU3823";
+								uuid = "00000000-0000-0000-0009-01f0370fa1eb";
+								level = 4;
+								bypassesPlayerLimit = true;
+							}
+						];
+					};
+					symlinks = {
+						mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
+							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/q4Pg0AcC/Geyser-Fabric-2.10.0-b1138.jar"; sha512 = "sha512-SQsTTMr6OyUVSwmnh3F9b86+u5e44AMXrvw8IlfnbIiBgXk6dy2EtLu3K2U04XlXRRODrccdxogiaI8zXfwxmw=="; };
+							Floodgate = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/fD4J9lnX/Floodgate-Fabric-2.2.6-b63.jar"; sha512 = "sha512-VIdAMyNt9ojaFf1N19LZnQAuiVXLLXiNW6QJ11PrF2KfU6bpdpkt6MyoyN02Y8cLKD2oi1oS1yzvlkfQngSuYg=="; };
+							# DistantHorizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/FJrLlu3p/DistantHorizons-3.0.3-b-26.1.2-fabric-neoforge.jar"; sha512 = "sha512-EbJS3jMI1ymdNGJazmUiPZxdQuUqNAu5yF+gJQwMNUrVlLcvCoJ9nXwEa5XdF6XlAPk5VPFNA9qf2sdZbEG1FA=="; };
+							Terralith = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/FCzSjHeG/Terralith_26.1_v2.6.2_Fabric.jar"; sha512 = "sha512-WjvimGpiREbIKoh5405Mewn2+YoZN/1Nm89TVrgyHwuc67XlZ+jQCugWHSYbEI+3yagOvtYfLtuM2whSszy6zA=="; };
+							Lithium = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/R7MxYvuW/lithium-fabric-0.24.2%2Bmc26.1.2.jar"; sha512 = "sha512-kjGtBWZ9Tu8DSMcAv1Fgkp4Lcj2eFF/ZfH/O+Th6wubVJPsV2Z9H+Pg48dI1Mk/XUM3LZgO2OqtghdefvqqzGw=="; };
+							# FerriteCore = fetchurl { url = "https://cdn.modrinth.com/data/uXXizFIs/versions/ULSumfl4/ferritecore-6.0.0-forge.jar"; sha512 = "e78ddd02cca0a4553eb135dbb3ec6cbc59200dd23febf3491d112c47a0b7e9fe2b97f97a3d43bb44d69f1a10aad01143dcd84dc575dfa5a9eaa315a3ec182b37"; };
+							# Krypton = fetchurl { url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/jiDwS0W1/krypton-0.2.3.jar"; sha512 = "92b73a70737cfc1daebca211bd1525de7684b554be392714ee29cbd558f2a27a8bdda22accbe9176d6e531d74f9bf77798c28c3e8559c970f607422b6038bc9e"; };
+							# LazyDFU = fetchurl { url = "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.3/lazydfu-0.1.3.jar"; sha512 = "dc3766352c645f6da92b13000dffa80584ee58093c925c2154eb3c125a2b2f9a3af298202e2658b039c6ee41e81ca9a2e9d4b942561f7085239dd4421e0cce0a"; };
+							# C2ME = fetchurl { url = "https://cdn.modrinth.com/data/VSNURh3q/versions/t4juSkze/c2me-fabric-mc1.20.1-0.2.0%2Balpha.10.91.jar"; sha512 = "562c87a50f380c6cd7312f90b957f369625b3cf5f948e7bee286cd8075694a7206af4d0c8447879daa7a3bfe217c5092a7847247f0098cb1f5417e41c678f0c1"; };
+							# deps:
+							Lithostitched = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/XaDC71GB/versions/c15SCJb4/lithostitched-1.7.3-fabric-26.1.jar"; sha512 = "sha512-aIL2wmM7a7LGPxmrIUCSXlkIdY+TvkxubdogGHXwJWjr0294aORXjX4fauTaUoWOlIGu6WZtveZF/M9SbHWAGA=="; }; # for Terralith
+							FabricAPI = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/KAvhN1it/fabric-api-0.148.0%2B26.1.2.jar"; sha512 = "sha512-Tp05FQr0OGn2iwPpHFFhig0MNOx7/Ve1FakDE2TTXjkZhcoeI0naqo1vj8iOS5bPpXk7sPmJMs4LNoP+SiOM5A=="; }; # for Geyser & Floodgate
+						});
+					};
+				};
 			};
 		};
 	};
