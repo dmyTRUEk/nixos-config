@@ -238,11 +238,11 @@
 	};
 
 	environment.systemPackages = with pkgs; [ # PKGS
-		vim # -> neovim
+		vim
+		neovim
 		#wget
 		#curl
-
-		#sddm-chili-theme
+		eza # (rust btw)
 
 		home-manager
 		# everything else goes to home-manager (HM)
