@@ -166,6 +166,8 @@
 		gvfs.enable = true;
 	};
 
+	# TODO(refactor)?: swap `services = ...` and `users = ...`
+
 	users = {
 		defaultUserShell = pkgs.fish;
 		users = {
@@ -182,8 +184,7 @@
 					# "audio" ?
 					"dialout"        # for serial port/device (eg arduino on usb)
 				];
-				packages = with pkgs; [
-				];
+				packages = with pkgs; [];
 			};
 			guest = {
 				initialPassword = "1234";
@@ -217,7 +218,6 @@
 			config.init.defaultBranch = "main";
 			# signing.format = null; # adopt new behaviour from 25.05 # -> home-manager
 		};
-
 
 		# sadly, it have to be installed in root to work
 		steam = { # the meme

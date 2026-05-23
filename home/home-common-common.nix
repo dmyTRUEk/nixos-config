@@ -124,7 +124,15 @@
 		nix-tree
 		nvd
 		#curlftpfs
-		wtype
+		# wtype
+		# (wtype.overrideAttrs (oldAttrs: {
+		# 	src = fetchFromGitHub {
+		# 		owner = "atx";
+		# 		repo = "wtype";
+		# 		rev = "55fc0bb1a650a531b1a2064359f6bcb8d6fdfc8b";
+		# 		hash = "sha256-zsddZiot8Zz/RMM0pVfODKgS1Pd4+1lErZyndlFWePM=";
+		# 	};
+		# }))
 		rsync
 
 		# CLI fun:
