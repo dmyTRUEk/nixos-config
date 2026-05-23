@@ -115,6 +115,7 @@
 					package = pkgs.fabricServers.fabric-26_1_2.override {
 						jre_headless = pkgs.temurin-jre-bin-25;
 					};
+					jvmOpts = "-XX:+UseG1GC -Xms8G -Xmx12G -XX:MaxGCPauseMillis=200";
 					serverProperties = {
 						# src: https://minecraft.wiki/w/Server.properties
 						white-list = true;
@@ -128,7 +129,6 @@
 						simulation-distance = 20;
 						view-distance = 32;
 						enable-command-block = true;
-						jvmOpts = "-XX:+UseG1GC -Xms8G -Xmx12G -XX:MaxGCPauseMillis=200";
 					};
 					##whitelist = { ... };
 					files = { # mutable files
