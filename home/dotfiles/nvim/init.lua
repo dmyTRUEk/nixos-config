@@ -1210,11 +1210,11 @@ require('lazy').setup({
 					-- if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
 					-- 	vim.lsp.inlay_hint.enable()
 					-- end
-					map('<leader>th', function()
+					map('<leader>i', function()
 						if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
 						end
-					end, '[T]oggle Inlay [H]ints')
+					end, 'Toggle [I]nlay Hints')
 				end,
 			})
 
