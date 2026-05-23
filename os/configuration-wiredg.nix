@@ -149,18 +149,18 @@
 					};
 					symlinks = {
 						mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
-							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/tWdnw6uA/Geyser-Fabric-2.10.0-b1148.jar"; sha512 = "sha512-vX7thZm2nodYBbecbYcdOhCdK3Y6Uiz+33Rs8HTIRr1sAO8OBMjaST6qQHm/eDZmRneoZorZbDBiH1msjDDb2g=="; };
+							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/fpWINGUE/Geyser-Fabric-2.10.0-b1153.jar"; sha512 = "sha512-9sR/Hfi+a9EL1tJVFqkGJKTgdMNuzEB5msMSR0YKRSiU5NT6LMCXB8V4J8vjLHedOMrpxXhI4O1h3BZUUy5m0w=="; };
 							Floodgate = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/fD4J9lnX/Floodgate-Fabric-2.2.6-b63.jar"; sha512 = "sha512-VIdAMyNt9ojaFf1N19LZnQAuiVXLLXiNW6QJ11PrF2KfU6bpdpkt6MyoyN02Y8cLKD2oi1oS1yzvlkfQngSuYg=="; };
 							# DistantHorizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/FJrLlu3p/DistantHorizons-3.0.3-b-26.1.2-fabric-neoforge.jar"; sha512 = "sha512-EbJS3jMI1ymdNGJazmUiPZxdQuUqNAu5yF+gJQwMNUrVlLcvCoJ9nXwEa5XdF6XlAPk5VPFNA9qf2sdZbEG1FA=="; };
 							Terralith = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/FCzSjHeG/Terralith_26.1_v2.6.2_Fabric.jar"; sha512 = "sha512-WjvimGpiREbIKoh5405Mewn2+YoZN/1Nm89TVrgyHwuc67XlZ+jQCugWHSYbEI+3yagOvtYfLtuM2whSszy6zA=="; };
 							Lithium = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/R7MxYvuW/lithium-fabric-0.24.2%2Bmc26.1.2.jar"; sha512 = "sha512-kjGtBWZ9Tu8DSMcAv1Fgkp4Lcj2eFF/ZfH/O+Th6wubVJPsV2Z9H+Pg48dI1Mk/XUM3LZgO2OqtghdefvqqzGw=="; };
-							# C2ME = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/VSNURh3q/versions/utLSz8Lf/c2me-fabric-mc26.1.2-0.3.7%2Balpha.0.68.jar"; sha512 = "sha512-NN1gWqgf8ScPlpfPBFHKmmAj5X9Ic0aP8B/BniZNZDT7wMEI4ZSmpnWwJp3Rbtgp95oY6gbTLYms2j+/dnUwLw=="; };
+							# C2ME = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/VSNURh3q/versions/iFyIEVsG/c2me-fabric-mc26.1.2-0.3.7%2Balpha.0.69.jar"; sha512 = "sha512-NN1gWqgf8ScPlpfPBFHKmmAj5X9Ic0aP8B/BniZNZDT7wMEI4ZSmpnWwJp3Rbtgp95oY6gbTLYms2j+/dnUwLw=="; };
 							# FerriteCore = fetchurl { url = "https://cdn.modrinth.com/data/uXXizFIs/versions/ULSumfl4/ferritecore-6.0.0-forge.jar"; sha512 = "e78ddd02cca0a4553eb135dbb3ec6cbc59200dd23febf3491d112c47a0b7e9fe2b97f97a3d43bb44d69f1a10aad01143dcd84dc575dfa5a9eaa315a3ec182b37"; };
 							# Krypton = fetchurl { url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/jiDwS0W1/krypton-0.2.3.jar"; sha512 = "92b73a70737cfc1daebca211bd1525de7684b554be392714ee29cbd558f2a27a8bdda22accbe9176d6e531d74f9bf77798c28c3e8559c970f607422b6038bc9e"; };
 							# LazyDFU = fetchurl { url = "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.3/lazydfu-0.1.3.jar"; sha512 = "dc3766352c645f6da92b13000dffa80584ee58093c925c2154eb3c125a2b2f9a3af298202e2658b039c6ee41e81ca9a2e9d4b942561f7085239dd4421e0cce0a"; };
 							# deps:
 							Lithostitched = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/XaDC71GB/versions/dUL7i4Qf/lithostitched-1.7.7-fabric-26.1.jar"; sha512 = "sha512-2TgRMh1+GxFSXrzDJrq53sBjO4XvOw1CU9vima8JGzXTacXjrOX4pYrJenA9k1E4myLAepF8sATmXCaOWC0GbQ=="; }; # for Terralith
-							FabricAPI = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/Sy2Bq7Xc/fabric-api-0.149.0%2B26.1.2.jar"; sha512 = "sha512-x1iapN7qptvvwTJH614NTiV8FS7wOZN/VNbuKCgtPITMyWSD2cOVAob+1uPcxUZwmJjIpEarFD0WY7x9SWScVA=="; }; # for Geyser & Floodgate
+							FabricAPI = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/BLz7ETCw/fabric-api-0.149.1%2B26.1.2.jar"; sha512 = "sha512-R/+hg2kmDIjqhH9mlMy0MaWqkFHGTo02EYanZ7t2Ldn8+/R0KsZVBetghikAoaPxSQmU50NTdmB96BHquL5EYQ=="; }; # for Geyser & Floodgate
 						});
 					};
 				};
