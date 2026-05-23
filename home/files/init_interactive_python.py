@@ -8,7 +8,7 @@ from sys import argv as cli_args
 from time import sleep
 from math import *
 import itertools
-from random import randint, uniform as randf
+from random import randint, uniform as randf, choice, choices
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -100,6 +100,9 @@ def join(strs: Iterable[str], sep: str = '') -> str:
 
 def lerp[T](a: T, b: T, t: float) -> T:
 	return a*(1.-t) + b*t
+
+def random_hex(n: int) -> str:
+	return join(choices('0123456789abcdef', k=n))
 
 def split_at[T](l: list[T], index: int) -> tuple[list[T], list[T]]:
 	return ( l[:index], l[index:] )
