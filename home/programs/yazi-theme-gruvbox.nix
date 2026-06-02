@@ -101,8 +101,8 @@
 				{ mime = "application/x-rar";           fg = "#fe8019"; }
 
 				# Fallback
-				{ name = "*" ; fg = "#a89984"; }
-				{ name = "*/"; fg = "#83a598"; }
+				{ url = "*" ; fg = "#a89984"; }
+				{ url = "*/"; fg = "#83a598"; }
 			];
 		};
 	};

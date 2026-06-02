@@ -1,6 +1,6 @@
 { ... }: {
 	imports = [
-		./yazi-theme-gruvbox.nix
+		# ./yazi-theme-gruvbox.nix
 	];
 
 	programs.yazi = {
@@ -157,9 +157,9 @@
 					{ on = ["g" "."]; run = "cd ~/.config/home-manager"; }
 					{ on = ["g" "T"]; run = "cd ~/.local/share/Trash/files"; }
 					# home:
-					{ on = ["g" "c"]; run = ["cd ~/projects" "sort mtime --reverse"]; }
-					{ on = ["g" "C" "g"]; run = "cd ~/projects/orbit-calculation"; }
-					#{ on = ["g" "C" "t"]; run = "cd ~/projects/touhou_unfathomable_calamity"; }
+					{ on = ["g" "c"]; run = ["cd ~/Projects" "sort mtime --reverse"]; }
+					#{ on = ["g" "C" "g"]; run = "cd ~/Projects/orbit-calculation"; }
+					#{ on = ["g" "C" "t"]; run = "cd ~/Projects/touhou_unfathomable_calamity"; }
 					{ on = ["g" "o"]; run = "cd ~/Documents"; }
 					{ on = ["g" "d"]; run = ["cd ~/Downloads" "sort mtime --reverse"]; }
 					{ on = ["g" "t"]; run = ["cd '~/Downloads/Telegram Desktop'" "sort mtime --reverse"]; }
