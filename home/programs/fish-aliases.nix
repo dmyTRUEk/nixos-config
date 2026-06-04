@@ -34,7 +34,7 @@
 		"..3" = "cd ../../..";
 		"..4" = "cd ../../../..";
 		"..5" = "cd ../../../../..";
-		cdp = "cd ~/projects";
+		cdp = "cd ~/Projects";
 		cdv = "cd ~/Videos";
 		cdm = "cd ~/Music";
 

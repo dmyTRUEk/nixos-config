@@ -23,7 +23,7 @@
 		nixpkgs_a85fc0a.url = "github:NixOS/nixpkgs/a85fc0af456a898b7a4c459f38429e05df958907";
 
 		peeky = {
-			#url = "path:////home/myshko/projects/peeky";
+			#url = "path:////home/myshko/Projects/peeky";
 			url = "github:dmyTRUEk/peeky";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
