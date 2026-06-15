@@ -169,7 +169,7 @@
 		element-desktop
 		inkscape
 		godot
-		zulip
+		#zulip
 		#kdePackages.cantor
 		peeky.packages.${stdenv.hostPlatform.system}.default
 		#kdePackages.korganizer # TODO: show events from google calendar?
