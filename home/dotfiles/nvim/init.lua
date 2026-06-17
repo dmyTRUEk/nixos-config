@@ -495,10 +495,8 @@ require('lazy').setup({
 				['@lsp.typemod.comment.documentation.rust'] = { link = 'GruvboxOrange' },
 			},
 		},
-		init = function()
-			-- require 'dmytruek.colorschemes.gruvbox'
-		end,
 		config = function()
+			-- require 'dmytruek.colorschemes.gruvbox'
 			require('gruvbox').setup {
 				styles = {
 					-- comments = { italic = false }, -- Disable italics in comments
@@ -517,11 +515,16 @@ require('lazy').setup({
 
 	-- MY CORE PLUGINS:
 	{'windwp/nvim-autopairs', -- close brackets automatically
-		config = true,
-		init = function()
+		-- dir = '~/Projects/nvim-autopairs', -- tmp fix for pairing not working after entering insert mode after operator with count
+		event = 'InsertEnter',
+		config = function()
 			local nap = require('nvim-autopairs')
 			local rule = require('nvim-autopairs.rule')
+			nap.setup({
+				ignored_next_char = "",
+			})
 			nap.get_rules("'")[1].not_filetypes = {
+				-- disable pairing ' in filetypes:
 				'tex',
 				'text',
 			}
@@ -536,7 +539,7 @@ require('lazy').setup({
 		end
 	},
 	{'tpope/vim-surround', -- surround manager
-		init = function()
+		config = function()
 			-- disable default keybinds:
 			vim.g.surround_no_mappings = 1
 			-- set custom maps:
@@ -692,14 +695,14 @@ require('lazy').setup({
 		end
 	},
 	{'tommcdo/vim-exchange', -- exchange selections
-		init = function()
+		config = function()
 			keymap_v('x', '<Plug>(Exchange)')
 		end
 	},
 	'tpope/vim-repeat', -- enable repeat for plugins
 	{'unblevable/quick-scope', -- better find in line
 		-- TODO: remove?
-		init = function()
+		config = function()
 			vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
 		end
 	},
@@ -709,7 +712,7 @@ require('lazy').setup({
 	{'L3MON4D3/LuaSnip', -- snippets
 		version = '2.*',
 		-- opts = {},
-		init = function()
+		config = function()
 			require('luasnip.loaders.from_snipmate').lazy_load()
 			local ls = require 'luasnip'
 			keymap_i({'<F8>', '<F9>', '<F10>'}, function()
@@ -723,7 +726,7 @@ require('lazy').setup({
 	-- {'ThePrimeagen/harpoon', -- TODO: make it work
 	-- 	branch = 'harpoon2',
 	-- 	dependencies = { 'nvim-lua/plenary.nvim' },
-	-- 	init = function()
+	-- 	config = function()
 	-- 		local harpoon = require('harpoon')
 	-- 		harpoon:setup({ default = { -- `harpoon:setup()` is required
 	-- 			get_root_dir = function()
@@ -896,7 +899,7 @@ require('lazy').setup({
 		},
 	}},
 	{'preservim/nerdtree', -- file manager
-		init = function ()
+		config = function()
 			vim.g.NERDTreeSortOrder = { '[[extension]]' } -- TODO: change?
 			vim.g.NERDTreeNaturalSort = 1
 			vim.g.NERDTreeIgnore = {
@@ -1094,7 +1097,7 @@ require('lazy').setup({
 	},
 	{'nvim-treesitter/nvim-treesitter-textobjects',
 		branch = "main",
-		init = function()
+		config = function()
 			-- Disable entire built-in ftplugin mappings to avoid conflicts.
 			-- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
 			vim.g.no_plugin_maps = true
@@ -1104,9 +1107,6 @@ require('lazy').setup({
 			-- vim.g.no_ruby_maps = true
 			-- vim.g.no_rust_maps = true
 			-- vim.g.no_go_maps = true
-		end,
-		config = function()
-			-- put your config here
 		end,
 	},
 	{'nvim-treesitter/nvim-treesitter-context',
