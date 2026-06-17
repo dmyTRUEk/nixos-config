@@ -95,6 +95,7 @@
 		#mangohud.enable = true;
 		bat.enable = true;
 		lf.enable = true;
+		opencode.enable = true;
 	};
 
 	home.packages = with pkgs; [ # PKGS
