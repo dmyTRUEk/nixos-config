@@ -77,7 +77,7 @@ vim.o.scrolloff = 10 -- TODO: use relative
 --ttimeoutlen = 0,
 
 -- Decrease mapped sequence wait time
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 3000
 
 vim.o.redrawtime = 10000 -- for giant files
 
@@ -139,6 +139,7 @@ end
 
 keymap_n = function(keys, action) keymap('n', keys, action) end
 keymap_v = function(keys, action) keymap('v', keys, action) end
+keymap_x = function(keys, action) keymap('x', keys, action) end
 keymap_i = function(keys, action) keymap('i', keys, action) end
 keymap_nv = function(keys, action) keymap_n(keys, action) keymap_v(keys, action) end
 keymap_n_cmd = function(keys, cmd) keymap_n(keys, '<cmd>' .. cmd .. '<cr>') end
@@ -302,6 +303,11 @@ keymap_n({'<a-a>', '<a-ф>'}, 'ga')
 
 keymap_n({'<leader>z', '<leader>я'}, 'za') -- toggle fold/collapsed/expanded
 
+keymap_n({'<a-h>', '<a-р>'}, '<<')
+keymap_n({'<a-j>', '<a-о>'}, 'ddp==')
+keymap_n({'<a-k>', '<a-л>'}, 'ddkP==')
+keymap_n({'<a-l>', '<a-д>'}, '>>')
+
 
 
 keymap_n_cmd({'<leader>q', '<leader>й'}, 'q')
@@ -352,6 +358,14 @@ keymap_v({'S', 'І'}, ':sort<cr>')
 keymap_v('<c-n>', ':norm 0')
 
 keymap_v({'gp', 'пз'}, '"0p') -- paste without copy
+
+keymap_v({'<a-h>', '<a-р>'}, '<gv')
+keymap_v({'<a-l>', '<a-д>'}, '>gv')
+
+
+
+keymap_x({'<a-j>', '<a-о>'}, "dpV']=V']")
+keymap_x({'<a-k>', '<a-л>'}, "dkPV']=V']")
 
 
 
