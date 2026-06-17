@@ -95,7 +95,27 @@
 		#mangohud.enable = true;
 		bat.enable = true;
 		lf.enable = true;
-		opencode.enable = true;
+		opencode = {
+			enable = true;
+			settings = {
+				permission = {
+					"*" = "ask";
+					grep = "ask";
+					bash = {
+						"*" = "ask";
+						"cargo test 2>&1" = "allow";
+					};
+					read = {
+						"*" = "ask";
+						"src/*.rs" = "allow";
+					};
+					edit = {
+						"*" = "ask";
+						"src/*.rs" = "allow";
+					};
+				};
+			};
+		};
 	};
 
 	home.packages = with pkgs; [ # PKGS
