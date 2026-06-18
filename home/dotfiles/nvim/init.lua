@@ -71,7 +71,7 @@ vim.o.laststatus = 2 -- when/how to display status-bar: 0=never, 1={if > than 2 
 vim.o.virtualedit = 'block'
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10 -- TODO: use relative
+vim.o.scrolloff = 15 -- TODO: use relative
 
 --timeoutlen = 1000,
 --ttimeoutlen = 0,
@@ -95,8 +95,8 @@ vim.o.breakindent = true
 -- Save undo history
 vim.o.undofile = true
 
--- Keep signcolumn on by default
-vim.o.signcolumn = 'yes'
+-- Keep signcolumn only if needed
+vim.o.signcolumn = 'auto'
 
 -- Decrease update time
 vim.o.updatetime = 250
