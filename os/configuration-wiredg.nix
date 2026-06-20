@@ -149,12 +149,12 @@
 					};
 					symlinks = {
 						mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
-							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/fX32dAxA/Geyser-Fabric-2.10.1-b1168.jar"; sha512 = "sha512-nps/lckzY6wx3NWgcx+57QhDFjyDFw1vaGgMT789k3dZcoNhEV/q6Ho/WbZfN0vCfKPAz2rVc1rJf+bsEz2/mQ=="; };
+							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/EKHX0VqN/Geyser-Fabric-2.10.1-b1172.jar"; sha512 = "sha512-PD7muJjsvVkgnfduD3X7W4pPx4i92H6sV3wPGY4onxZydR8c5l1UVpit4bppfCFZMJwODKC5mQT3c0Fl7ncxqw=="; };
 							Floodgate = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/fD4J9lnX/Floodgate-Fabric-2.2.6-b63.jar"; sha512 = "sha512-VIdAMyNt9ojaFf1N19LZnQAuiVXLLXiNW6QJ11PrF2KfU6bpdpkt6MyoyN02Y8cLKD2oi1oS1yzvlkfQngSuYg=="; };
 							# DistantHorizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/FJrLlu3p/DistantHorizons-3.0.3-b-26.1.2-fabric-neoforge.jar"; sha512 = "sha512-EbJS3jMI1ymdNGJazmUiPZxdQuUqNAu5yF+gJQwMNUrVlLcvCoJ9nXwEa5XdF6XlAPk5VPFNA9qf2sdZbEG1FA=="; };
 							Terralith = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/FCzSjHeG/Terralith_26.1_v2.6.2_Fabric.jar"; sha512 = "sha512-WjvimGpiREbIKoh5405Mewn2+YoZN/1Nm89TVrgyHwuc67XlZ+jQCugWHSYbEI+3yagOvtYfLtuM2whSszy6zA=="; };
 							Lithium = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/fQBdPR1m/lithium-fabric-0.24.6%2Bmc26.1.2.jar"; sha512 = "sha512-+sNR9bYVCIm5NVoBiJw1tXmBR9S+2ykVlKWQotQZCeuNxJTvAFExe/VYhvL8f+E0q74udVCY3zhHPtsr9DNX6Q=="; };
-							# C2ME = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/VSNURh3q/versions/eB81jWsG/c2me-fabric-mc26.1.2-0.4.0-alpha.0.12.jar"; sha512 = "sha512-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"; };
+							# C2ME = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/VSNURh3q/versions/f4MeSe4D/c2me-fabric-mc26.1.2-0.4.0-alpha.0.13.jar"; sha512 = "sha512-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"; };
 							AntiXray = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/sml2FMaA/versions/AK313N9m/antixray-fabric-1.4.16%2B26.1.jar"; sha512 = "sha512-IT5l7gWEpmAhGPnm74Ydk/wJFgxbMrYn0pS5IKCNXPwlqDnyW/sqU73xreuNT9WMpnQ6PJk+h8+Ljis3G6Kp6w=="; };
 							# FerriteCore = fetchurl { url = "https://cdn.modrinth.com/data/uXXizFIs/versions/ULSumfl4/ferritecore-6.0.0-forge.jar"; sha512 = "e78ddd02cca0a4553eb135dbb3ec6cbc59200dd23febf3491d112c47a0b7e9fe2b97f97a3d43bb44d69f1a10aad01143dcd84dc575dfa5a9eaa315a3ec182b37"; };
 							# Krypton = fetchurl { url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/jiDwS0W1/krypton-0.2.3.jar"; sha512 = "92b73a70737cfc1daebca211bd1525de7684b554be392714ee29cbd558f2a27a8bdda22accbe9176d6e531d74f9bf77798c28c3e8559c970f607422b6038bc9e"; };
