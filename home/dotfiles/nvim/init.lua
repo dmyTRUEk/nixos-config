@@ -354,7 +354,7 @@ keymap_i({'<c-l>', '<c-д>'}, '<right>')
 
 
 keymap_v('-', '$h') -- better $
-keymap_v({'S', 'І'}, ':sort<cr>')
+keymap_v({'S', 'І'}, ':sort<cr>') -- TODO(fix): overridden by surround?
 keymap_v('<c-n>', ':norm 0')
 
 keymap_v({'gp', 'пз'}, '"0p') -- paste without copy
