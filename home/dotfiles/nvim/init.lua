@@ -372,9 +372,12 @@ keymap_x({'<a-k>', '<a-л>'}, "dkPV']=V']")
 
 
 keymap_n('<c-a-p>', function()
+	-- :RandomColorscheme
 	local colorschemes = vim.fn.getcompletion('', 'color')
 	-- math.randomseed(vim.uv.hrtime())
-	vim.cmd.colorscheme(colorschemes[math.random(#colorschemes)])
+	local random_colorscheme = colorschemes[math.random(#colorschemes)]
+	vim.cmd.colorscheme(random_colorscheme)
+	print('Random colorscheme: ' .. random_colorscheme)
 end)
 
 
@@ -515,13 +518,46 @@ require('lazy').setup({
 			vim.cmd.colorscheme 'gruvbox'
 		end,
 	},
-	'rebelot/kanagawa.nvim',
-	'catppuccin/nvim',
-	--'projekt0n/github-nvim-theme',
-	--'navarasu/onedark.nvim',
-	'folke/tokyonight.nvim',
 	'shaunsingh/solarized.nvim',
 	--'svrana/neosolarized.nvim',
+	-- src: neovimcraft.com
+	'folke/tokyonight.nvim',
+	'catppuccin/nvim',
+	'rebelot/kanagawa.nvim',
+	'sainnhe/everforest',
+	'EdenEast/nightfox.nvim',
+	'rose-pine/neovim',
+	'sainnhe/gruvbox-material',
+	'projekt0n/github-nvim-theme',
+	'navarasu/onedark.nvim',
+	'sainnhe/sonokai',
+	'rktjmp/lush.nvim',
+	'nyoom-engineering/oxocarbon.nvim',
+	'dracula/vim',
+	'scottmckendry/cyberdream.nvim',
+	'bluz71/vim-moonfly-colors',
+	'mhartington/oceanic-next',
+	-- 'zenbones-theme/zenbones.nvim', -- broken
+	'marko-cerovac/material.nvim',
+	'olimorris/onedarkpro.nvim',
+	'AlexvZyl/nordic.nvim',
+	'sainnhe/edge',
+	-- src: https://github.com/topics/neovim-colorscheme
+	'kepano/flexoki',
+	'nyoom-engineering/nyoom.nvim',
+	'jacoborus/tender.vim',
+	'vague-theme/vague.nvim',
+	'mcchrish/vim-no-color-collections',
+	'savq/melange-nvim',
+	'Shatur/neovim-ayu',
+	'slugbyte/lackluster.nvim',
+	'xero/miasma.nvim',
+	'olivercederborg/poimandres.nvim',
+	-- 'ribru17/bamboo.nvim', -- broken
+	-- 'uloco/bluloco.nvim', -- broken
+	'ramojus/mellifluous.nvim',
+	--
+	-- 'ray-x/starry.nvim', -- broken
 
 	-- MY CORE PLUGINS:
 	{'windwp/nvim-autopairs', -- close brackets automatically
