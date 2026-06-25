@@ -371,6 +371,16 @@ keymap_x({'<a-k>', '<a-л>'}, "dkPV']=V']")
 
 
 
+keymap_n('<c-a-p>', function()
+	local colorschemes = vim.fn.getcompletion('', 'color')
+	-- math.randomseed(vim.uv.hrtime())
+	vim.cmd.colorscheme(colorschemes[math.random(#colorschemes)])
+end)
+
+
+
+
+
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = {
 		'gitcommit',
