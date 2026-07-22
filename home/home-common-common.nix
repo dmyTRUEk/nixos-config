@@ -118,7 +118,16 @@
 				};
 			};
 		};
-		jujutsu.enable = true; # JJ (rust btw)
+		jujutsu = { # JJ (rust btw)
+			enable = true;
+			settings = {
+				ui.default-command = "log";
+				# revsets.log = "all()";
+				# ui.default-command = ["log"  "-r"  "all()"];
+				user.name = "dmyTRUEk";
+				user.email = "25669613+dmyTRUEk@users.noreply.github.com";
+			};
+		};
 	};
 
 	home.packages = with pkgs; [ # PKGS

@@ -193,5 +193,11 @@
 		nlm = "nvim lake-manifest.json";
 
 		ngi = "nvim .gitignore";
+
+		# JJ
+		jjc = "jj commit";
+		jjd = "jj diff";
+		jjl = "jj log -r 'all()'";
+		jjs = "jj status";
 	};
 }
