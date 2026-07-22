@@ -118,6 +118,7 @@
 				};
 			};
 		};
+		jujutsu.enable = true; # JJ (rust btw)
 	};
 
 	home.packages = with pkgs; [ # PKGS
