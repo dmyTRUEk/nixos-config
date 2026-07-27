@@ -4,30 +4,38 @@
 
 # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 snippet ab "above = overset{...}{...}"
-	\overset{$1}{$2} $0
+	\overset{$1}{$2} 
 snippet abs "|...|" i
-	\abs{$1}$0
+	\abs{$1}
 snippet abs2 "|...|^2" i
-	\abs{$1}^2$0
+	\abs{$1}^2
 snippet ang "Angstroms" i
 	\text{\r{A}}
 snippet avg "average" i
-	\left\langle $1 \right\rangle $0
+	\left\langle $1 \right\rangle 
 # BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+snippet ba "begin{align} ... end{}" b
+	\begin{align}
+		$1
+	\end{align}
 snippet be "begin{...} ... end{}" b
 	\begin{$1}
 		$2
-	\end{$1}$0
+	\end{$1}
 snippet bb "big brackets ( )" i
-	\qty($1)$0
-snippet bbc "big brackets { }" i
-	\qty\\{$1\\}$0
-snippet bbs "big brackets [ ]" i
-	\qty[$1]$0
+	\left( $1 \right)
+snippet bbc "big brackets curly { }" i
+	\left{ $1 \right}
+snippet bbl "big brackets | |" i
+	\left| $1 \right|
+snippet bbr "big brackets round ( )" i
+	\left( $1 \right)
+snippet bbs "big brackets square [ ]" i
+	\left[ $1 \right]
 snippet bbt "big brackets < > (avg)" i
-	\left<$1\right>$0
+	\left< $1 \right>
 snippet bel "below = underset{...}{...}" i
-	\underset{$1}{$2}$0
+	\underset{$1}{$2}
 # CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 snippet ca "cases = begin{cases} ... end{}"
 	\begin{cases}
@@ -36,34 +44,36 @@ snippet ca "cases = begin{cases} ... end{}"
 snippet ce "center = begin{center} ... end{}" b
 	\begin{center}
 		$1
-	\end{center}$0
+	\end{center}
 snippet comp "complex numbers symbol = C" i
 	\mathbb{C}
 # also named `vp`
 snippet cp "cross product = [A x B]" i
-	\left[ $1 \times $2 \right] $0
+	\left[ $1 \times $2 \right] 
 # DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+snippet da "\dagger" i
+	\dagger
 #snippet d "differential = dx" i
-#	\dd{$1}$0
+#	\dd{$1}
 snippet deg "degree symbol = ^o" i
-	\text{°}$0
+	\text{°}
 snippet det "matrix determinant" i
-	\mdet{$1}$0
+	\mdet{$1}
 #snippet div "divergence" i
 #	div
 snippet ds "displaystyle = make formuls big if they are small" i
-	\displaystyle $0
+	\displaystyle 
 # EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 snippet ec "equation+cases = begin{equation+cases} ... end{}" b
 	\begin{equation}
 	\begin{cases}
 		$1
 	\end{cases}
-	\end{equation}$0
+	\end{equation}
 snippet eq "equation = begin{equation} ... end{}" b
 	\begin{equation}
 		$1
-	\end{equation}$0
+	\end{equation}
 snippet equ "equivalent = ≡"
 	\equiv
 snippet eqbydef "equal by def = =_{def}"
@@ -73,9 +83,9 @@ snippet es "equation+split = begin{equation+split} ... end{}" b
 	\begin{split}
 		$1
 	\end{split}
-	\end{equation}$0
+	\end{equation}
 snippet ex "exp = e^{...}" i
-	\exp\qty($1)$0
+	\exp\qty($1)
 # FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 snippet fig "image = begin{figure} ... end{}" b
 	\begin{figure} [H]
@@ -83,9 +93,9 @@ snippet fig "image = begin{figure} ... end{}" b
 	\includegraphics[scale=.9]{$1}
 	\caption{$2}
 	\label{$3}
-	\end{figure}$0
+	\end{figure}
 snippet fo "small formula $...$" i
-	\$$1\$$0
+	\$$1\$
 snippet fol "follows = =>"
 	\quad\Rightarrow\quad
 snippet foll "long follows = ==>"
@@ -94,40 +104,46 @@ snippet fr "beamer frame"
 	\begin{frame} \frametitle{$1}
 	\begin{itemize}
 	\item
-		TODO$0
+		TODO$2
 	\end{itemize}
 	\end{frame}
 # GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 snippet grad "gradient = nabla vector" i
-	\overrightarrow{\nabla}$0
+	\overrightarrow{\nabla}
 # HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 snippet ha "hat (operator) = A^" i
-	\hat{$1}$0
+	\hat{$1}
 snippet hb "hbar = ℏ" i
 	\hbar
 snippet half "... / 2" i
-	\frac{$1}{2}$0
+	\frac{$1}{2}
 snippet hs "hspace"
-	\hspace{$1}$0
+	\hspace{$1}
 # IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 snippet i "\item ..."
-	\item $0
+	\item 
 snippet inf "infinity" i
 	\infty
 snippet ins "insertion"
-	\Bigg| \ $1 \ \Bigg| $0
+	\Bigg| \ $1 \ \Bigg| 
 snippet int "integral" i
-	\int\limits_{$1}^{$2}\dd{$3} $0
-snippet intii "integral" i
-	\int\limits_{-\infty}^{+\infty}\dd{$1} $0
-snippet intzi "integral" i
-	\int\limits_{0}^{+\infty}\dd{$1} $0
+	\int\limits_{$1}^{$2}\dd{$3} 
+snippet intc "integral over C" i
+	\int_{\mathbb{C}}\dd{$1} 
+snippet intii "integral from -oo to +oo" i
+	\int\limits_{-\infty}^{+\infty}\dd{$1} 
+snippet intr "integral over R" i
+	\int_{\mathbb{R}}\dd{$1} 
+snippet ints "integral over set" i
+	\int_{$1}\dd{$2} 
+snippet intzi "integral from 0 to oo" i
+	\int\limits_{0}^{+\infty}\dd{$1} 
 snippet inv "1 / ..." i
-	\frac{1}{$1}$0
+	\frac{1}{$1}
 snippet it "itemize = begin{itemize} ... end{}" b
 	\begin{itemize}
 	\item $1
-	\end{itemize}$0
+	\end{itemize}
 # JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
 # KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
 # LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
@@ -138,27 +154,29 @@ snippet le "left equation = begin{fleqn+eqn}" b
 	\begin{equation}
 		$1
 	\end{equation}
-	\end{fleqn}$0
+	\end{fleqn}
 snippet lim "limits when = ---...--->"
-	\underset{$1}{\rightarrow} $0
+	\underset{$1}{\rightarrow} 
 # MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 snippet ma "matrix" i
-	\mqty($1)$0
+	\mqty($1)
 snippet mas "matrix" i
-	\mqty[$1]$0
+	\mqty[$1]
 # NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 snippet en "enumerate = begin{enumerate} ... end{}" b
 	\begin{enumerate}
 	\item $1
-	\end{enumerate}$0
+	\end{enumerate}
 snippet np "newpage" b
 	\newpage
 snippet num "42.0 * 10^{76}" i
-	$1\cdot 10^{$2}$0
+	$1\cdot 10^{$2}
 # OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 # PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+snippet pa "\partial"
+	\partial
 snippet prod "product"
-	\prod_{$1}^{$2}$0
+	\prod_{$1}^{$2}
 # QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
 # RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 #snippet rot "rotor (curl)" i
@@ -171,7 +189,7 @@ snippet sp "split = begin{split} ... end{}" b
 	\begin{split}$1
 	\end{split}
 snippet sq "sqrt" i
-	\sqrt{$1}$0
+	\sqrt{$1}
 snippet ss "subsection{...}" b
 	\subsection{$1}
 	$0
@@ -179,7 +197,7 @@ snippet sss "subsubsection{...}" b
 	\subsubsection{$1}
 	$0
 snippet sum "sum" i
-	\sum\limits_{$1}^{$2} $0
+	\sum\limits_{$1}^{$2} 
 # TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 snippet table "table = begin{center+tabular} ... end{}" b
 	\begin{table} [H]
@@ -192,11 +210,11 @@ snippet table "table = begin{center+tabular} ... end{}" b
 	\caption{}
 	\label{}
 	\end{center}
-	\end{table}$0
+	\end{table}
 snippet tc "textcolor"
-	\textcolor{red!90!black}{$1}$0
+	\textcolor{red!90!black}{$1}
 snippet ti "tilde" i
-	\tilde$0
+	\tilde
 snippet tikz "TIKZ image" rb
 	\begin{figure} [H]
 	\begin{center}
@@ -205,45 +223,51 @@ snippet tikz "TIKZ image" rb
 	\end{tikzpicture}
 	\caption{}
 	\end{center}
-	\end{figure}$0
+	\end{figure}
 snippet to "\to" i
-	\to$0
+	\to
 snippet today "Today Date" i
 	`date +%4Y.%2m.%2d`
 snippet toi "-> ∞" i
-	\to\infty$0
+	\to\infty
 snippet to0 "-> 0" i
-	\to 0$0
+	\to 0
 snippet tp "tensor product" i
-	\bigotimes_{$1}^{$2}$0
+	\bigotimes_{$1}^{$2}
+snippet tr "\Tr[ ... ]" i
+	\Tr[$1]
+snippet trb "\Tr[ ... ]" i
+	\Tr \left[ $1 \right]
 snippet ts "tensor sum" i
-	\bigoplus_{$1}^{$2}$0
+	\bigoplus_{$1}^{$2}
 # UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
 # VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 snippet v "vector" i
-	\vec$0
+	\vec
 snippet ve "long vector" i
-	\overrightarrow{$1}$0
+	\overrightarrow{$1}
 # also named `cp`
 snippet vp "vector product = [A x B]" i
-	\left[ $1 \times $2 \right] $0
+	\left[ $1 \times $2 \right] 
 snippet vs "vspace" i
-	\vspace{$1}$0
+	\vspace{$1}
 # WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 # ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 # SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS SYMBOLS
+snippet / "\frac{}{}" i
+	\frac{$1}{$2}
+snippet /2 "/2 -> \frac{...}{2}" i
+	\frac{$1}{2}
 snippet 1/ "1 / ..." i
 	\frac{1}{$1}
 snippet 1/2 "1/2 -> \frac{1}{2}" i
 	\frac{1}{2}
 snippet 1/s2 "1/s2 -> \frac{1}{\sqrt{2}}" i
 	\frac{1}{\sqrt{2}}
-snippet /2 "/2 -> \frac{...}{2}" i
-	\frac{$1}{2}
-snippet / "\frac{}{}" i
-	\frac{$1}{$2}
+snippet 2/ "2 / ..." i
+	\frac{2}{$1}
 snippet + "\dagger" i
 	\dagger
 snippet * "\cdot" i
