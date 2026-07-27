@@ -425,6 +425,7 @@ vim.api.nvim_create_autocmd('FileType', {
 		-- TODO: refactor
 		require 'dmytruek.latex_autos'
 		vim.cmd('call SetupEverythingForLatex()')
+		vim.opt_local.indentkeys:remove({ "(", ")", "{", "}", "[", "]", "&" })
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
@@ -681,6 +682,7 @@ require('lazy').setup({
 				callback = function()
 					set_local('b', '\\textbf{\r}')
 					set_local('c', '\\textcolor{red!90!black}{\r}')
+					set_local('h', '\\hat{\r}')
 					set_local('i', '\\textit{\r}')
 					set_local('l', '\\\1Name: \1{\r}')
 					set_local('L', '\\begin{\1Environment: \1}\r\\end{\1\1}')
