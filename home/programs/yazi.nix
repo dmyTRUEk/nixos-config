@@ -33,15 +33,15 @@
 					#{ run = ''xdg-open %s''; } # TODO: fix
 				];
 				image_raster = [
-					{ run = ''swayimg %s''; }
 					{ run = ''peeky %s''; }
+					{ run = ''swayimg %s''; }
 					{ run = ''krita %s''; }
 					{ run = ''gwenview %s''; }
 					{ run = ''nvim %s''; block = true; }
 				];
 				image_vector = [
-					{ run = ''swayimg %s''; }
 					{ run = ''inkscape %s''; }
+					{ run = ''swayimg %s''; }
 					{ run = ''nvim %s''; block = true; }
 				];
 				video = [{ run = ''vlc %s''; }];
