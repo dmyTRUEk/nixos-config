@@ -9,6 +9,10 @@ snippet abs "|...|" i
 	\abs{$1}
 snippet abs2 "|...|^2" i
 	\abs{$1}^2
+snippet al "begin{align} ... end{}" b
+	\begin{align}
+		$1
+	\end{align}
 snippet ang "Angstroms" i
 	\text{\r{A}}
 snippet avg "average" i
@@ -241,6 +245,8 @@ snippet trb "\Tr[ ... ]" i
 snippet ts "tensor sum" i
 	\bigoplus_{$1}^{$2}
 # UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+snippet und "underset{...}{...}" i
+	\underset{$1}{$2}
 # VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 snippet v "vector" i
 	\vec
