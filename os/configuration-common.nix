@@ -164,6 +164,35 @@
 		udisks2.enable = true;
 		devmon.enable = true;
 		gvfs.enable = true;
+
+		keyd = {
+			enable = true;
+			keyboards.default = {
+				ids = [ "*" ];
+				settings = {
+					global = {
+						chord_timeout = 100;
+					};
+					main = {
+						# "leftshift+rightshift" = "f13"; # or make it `="tools"` ?   # for keyboard switching
+						"leftshift+rightshift" = "togglem(nonenglish, f13)";
+
+						rightbrace = "S-leftbrace";
+					};
+					shift = {
+						leftbrace = "rightbrace";
+						rightbrace = "S-rightbrace";
+					};
+					nonenglish = {
+						rightbrace = "rightbrace";
+					};
+					"nonenglish+shift" = {
+						leftbrace = "S-leftbrace";
+						rightbrace = "S-rightbrace";
+					};
+				};
+			};
+		};
 	};
 
 	# TODO(refactor)?: swap `services = ...` and `users = ...`
