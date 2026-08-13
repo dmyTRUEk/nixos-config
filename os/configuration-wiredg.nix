@@ -151,7 +151,7 @@
 					symlinks = {
 						mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
 							AntiXray = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/sml2FMaA/versions/AK313N9m/antixray-fabric-1.4.16%2B26.1.jar"; sha512 = "sha512-IT5l7gWEpmAhGPnm74Ydk/wJFgxbMrYn0pS5IKCNXPwlqDnyW/sqU73xreuNT9WMpnQ6PJk+h8+Ljis3G6Kp6w=="; };
-							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/9kk2wPeH/Geyser-Fabric-2.11.0-b1205.jar"; sha512 = "sha512-oRfuqDgVnPB/fhRuULdzteOk4n6+FaP8mrOB8CJ3nA8ddeE2IiRrEBliNIwCwqac5fl7z7AXaHpvLGDgU5bQPg=="; };
+							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/r1bzBuax/Geyser-Fabric-2.11.1-b1210.jar"; sha512 = "sha512-WiuCpNRJ+j66W0F6gTwKyrA465h4VsSRnmz/xDaJ6t7sGGYCvWnM1aCZVZDJU9rzqieNEIaY9jKK387P87kVfw=="; };
 							Floodgate = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/urOFTrVX/Floodgate-Fabric-2.2.6-b67.jar"; sha512 = "sha512-1uys+/HDEXExd5J4N1TE9YQUUIqP0aojuePaXan+RQpuboguOehiy18d840tl76EZaOYV/5LeMHPiZNCMKcSBQ=="; };
 							# DistantHorizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/FJrLlu3p/DistantHorizons-3.0.3-b-26.1.2-fabric-neoforge.jar"; sha512 = "sha512-EbJS3jMI1ymdNGJazmUiPZxdQuUqNAu5yF+gJQwMNUrVlLcvCoJ9nXwEa5XdF6XlAPk5VPFNA9qf2sdZbEG1FA=="; };
 							Terralith = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/OxfI2n80/Terralith_26.2_v2.6.4.jar"; sha512 = "sha512-CDD0YBZ0xOpY0kenG/3IIORnaQDhc8fW305Y40ignaQ7J5zqBg33tn5vdMhOKgW0AbLfeYNsN8/8jcmUhEqyUA=="; };
