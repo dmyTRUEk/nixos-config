@@ -316,6 +316,15 @@ keymap_n({'<a-j>', '<a-о>'}, 'ddp==')
 keymap_n({'<a-k>', '<a-л>'}, 'ddkP==')
 keymap_n({'<a-l>', '<a-д>'}, '>>')
 
+keymap_n('<c-a-p>', function()
+	-- :RandomColorscheme
+	local colorschemes = vim.fn.getcompletion('', 'color')
+	-- math.randomseed(vim.uv.hrtime())
+	local random_colorscheme = colorschemes[math.random(#colorschemes)]
+	vim.cmd.colorscheme(random_colorscheme)
+	print('Random colorscheme: ' .. random_colorscheme)
+end)
+
 
 
 keymap_n_cmd({'<leader>q', '<leader>й'}, 'q')
@@ -380,19 +389,6 @@ keymap_x({'gp', 'пз'}, '"_c<C-r>0<esc>') -- paste without copy
 
 keymap_x({'<a-j>', '<a-о>'}, "dpV']=V']")
 keymap_x({'<a-k>', '<a-л>'}, "dkPV']=V']")
-
-
-
-
-
-keymap_n('<c-a-p>', function()
-	-- :RandomColorscheme
-	local colorschemes = vim.fn.getcompletion('', 'color')
-	-- math.randomseed(vim.uv.hrtime())
-	local random_colorscheme = colorschemes[math.random(#colorschemes)]
-	vim.cmd.colorscheme(random_colorscheme)
-	print('Random colorscheme: ' .. random_colorscheme)
-end)
 
 
 
