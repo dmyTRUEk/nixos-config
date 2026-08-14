@@ -66,8 +66,13 @@ in
 		enable = true;
 		keyboards.default = {
 			ids = [ "*" ];
-			settings.main = {
-				"leftshift+rightshift" = "f13"; # or make it `="tools"` ?   # for keyboard switching
+			settings = {
+				global = {
+					chord_timeout = 100;
+				};
+				main = {
+					"leftshift+rightshift" = "f13"; # or make it `="tools"` ?   # for keyboard switching
+				};
 			};
 		};
 	};
