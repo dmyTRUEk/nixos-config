@@ -377,7 +377,7 @@ keymap_i('}', '}')
 
 
 keymap_v('-', '$h') -- better $
-keymap_v({'S', 'І'}, ':sort<cr>') -- TODO(fix): overridden by surround?
+---keymap_v({'S', 'І'}, ':sort<cr>') -- disabled here, enabled in the end #a484a5
 keymap_v('<c-n>', ':norm 0')
 
 keymap_v({'<a-h>', '<a-р>'}, '<gv')
@@ -601,7 +601,8 @@ require('lazy').setup({
 		config = function()
 			-- disable default keybinds:
 			vim.g.surround_no_mappings = 1
-			-- set custom maps:
+			-- src: https://github.com/tpope/vim-surround/blob/master/plugin/surround.vim
+			-- set "custom" maps:
 			keymap_n({'ds', 'ві'}, '<Plug>Dsurround')
 			keymap_n({'cs', 'сі'}, '<Plug>Csurround')
 			keymap_n({'cS', 'сІ'}, '<Plug>CSurround')
@@ -610,7 +611,8 @@ require('lazy').setup({
 			keymap_n({'yss', 'ніі'}, '<Plug>Yssurround')
 			keymap_n({'ySs', 'нІі'}, '<Plug>YSsurround')
 			keymap_n({'ySS', 'нІІ'}, '<Plug>YSsurround')
-			keymap_v({'s', 'і'}, '<Plug>VSurround')
+			-- TODO?: use `keymap_x`?
+			keymap_v({'s', 'і'}, '<Plug>VSurround') -- instead of `S` #a484a5
 			keymap_v({'gs', 'пі'}, '<Plug>VgSurround')
 			local function set(scope, char, surround_expression)
 				vim[scope]['surround_'..vim.fn.char2nr(char)] = surround_expression
@@ -1511,4 +1513,8 @@ require 'dmytruek.blockmarks'
 -- highlight MyTodo guifg=black guibg=orange
 -- au VimEnter * syntax match MyTodo /TODO/
 -- ]])
+
+
+
+keymap_v({'S', 'І'}, ':sort<cr>') -- its here to override map by surround #a484a5
 
