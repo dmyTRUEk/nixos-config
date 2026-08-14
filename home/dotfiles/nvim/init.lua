@@ -156,7 +156,15 @@ keymap_swap_nv("'", '`')
 keymap_nv({'<c-j>', '<c-о>'}, '<c-d>zz') -- better move half-page down
 keymap_nv({'<c-k>', '<c-л>'}, '<c-u>zz') -- better move half-page up
 keymap_nv({'<c-m>', '<c-ь>'}, '%')
--- keymap_nv('<c-/>', 'gc' or search?) -- TODO
+--keymap_nv('<c-/>', 'gc' or search?) -- TODO
+
+-- src: `:h section`
+--keymap_nv('[[', '?{<CR>w99[{')
+--keymap_nv('][', '/}<CR>b99]}')
+--keymap_nv(']]', 'j0[[%/{<CR>')
+--keymap_nv('[]', 'k$][%?}<CR>')
+
+
 
 keymap_n('Q', '') -- unmap ex mode
 keymap_n({'U', 'Г'}, '<c-r>') -- better redo
@@ -350,6 +358,12 @@ keymap_i({'<c-h>', '<c-р>'}, '<left>')
 keymap_i({'<c-j>', '<c-о>'}, '<down>')
 keymap_i({'<c-k>', '<c-л>'}, '<up>')
 keymap_i({'<c-l>', '<c-д>'}, '<right>')
+
+-- brackets-braces swap #dcd00a
+keymap_i('[', '[]<left>')
+keymap_i(']', '{}<left>')
+keymap_i('{', ']')
+keymap_i('}', '}')
 
 
 
@@ -575,11 +589,13 @@ require('lazy').setup({
 				'tex',
 				'text',
 			}
+			nap.clear_rules()
 			nap.add_rules {
 				rule('$', '$', {'tex', 'typst'}),
 				rule('(', ')'),
-				rule('[', ']'),
-				rule('{', '}'),
+				-- rule('[', ']'), -- disabled bc of brackets-braces swap #dcd00a
+				-- rule('{', '}'), -- disabled bc of brackets-braces swap #dcd00a
+				rule("'", "'"),
 				rule('"', '"'),
 				rule('`', '', {'lean'}),
 			}
