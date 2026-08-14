@@ -121,11 +121,32 @@
 		jujutsu = { # JJ (rust btw)
 			enable = true;
 			settings = {
-				ui.default-command = "log";
+				ui.default-command = ["log" "-T" "my_log"];
 				# revsets.log = "all()";
 				# ui.default-command = ["log"  "-r"  "all()"];
 				user.name = "dmyTRUEk";
 				user.email = "25669613+dmyTRUEk@users.noreply.github.com";
+				# src: https://github.com/jj-vcs/jj/blob/main/cli/src/config/templates.toml , https://docs.jj-vcs.dev/latest/templates/
+				template-aliases.my_log = ''
+					separate(' ',
+						change_id.shortest(6),
+						commit_timestamp(self).format("%Y-%m-%d %H:%M:%S"),
+						commit_id.shortest(7),
+						bookmarks,
+						tags,
+						coalesce(
+							description.first_line(),
+							label(
+								"my_no_desc_color",
+								if(!self.root(),
+									if(!empty, "", "(empty) ") ++ "(no description set)",
+									"(root)"
+								)
+							)
+						),
+					)
+				'';
+				colors.my_no_desc_color = "bright black";
 			};
 		};
 	};

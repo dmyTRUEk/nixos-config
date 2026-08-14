@@ -197,7 +197,7 @@
 		# JJ
 		jjc = "jj commit";
 		jjd = "jj diff";
-		jjl = "jj log -r 'all()'";
+		jjl = "jj log -r 'all()' -T my_log";
 		jjs = "jj status";
 	};
 }
