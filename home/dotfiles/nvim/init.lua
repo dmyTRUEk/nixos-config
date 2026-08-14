@@ -558,7 +558,7 @@ require('lazy').setup({
 	'navarasu/onedark.nvim',
 	'sainnhe/sonokai',
 	'rktjmp/lush.nvim',
-	'nyoom-engineering/oxocarbon.nvim',
+	-- 'nyoom-engineering/oxocarbon.nvim', -- broken
 	'dracula/vim',
 	'scottmckendry/cyberdream.nvim',
 	'bluz71/vim-moonfly-colors',
