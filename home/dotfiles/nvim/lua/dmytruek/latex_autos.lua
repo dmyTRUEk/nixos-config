@@ -52,6 +52,7 @@ func! SetupEverythingForLatex()
 
     nnoremap 0 g^
     nnoremap - g$
+    nnoremap _ $
 
     let g:tex_flavor = 'latex'
 

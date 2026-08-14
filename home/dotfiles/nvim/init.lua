@@ -170,6 +170,7 @@ keymap_n('Q', '') -- unmap ex mode
 keymap_n({'U', 'Г'}, '<c-r>') -- better redo
 keymap_n({'Y', 'Н'}, 'y$') -- better copy till end of line
 keymap_n('-', '$') -- better $
+keymap_n('_', 'g$')
 keymap_n({'<c-p>', '<c-з>'}, '$p') -- paste at end of line
 keymap_n({'<a-p>', '<a-з>'}, '^P') -- paste at begin of line
 
