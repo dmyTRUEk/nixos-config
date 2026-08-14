@@ -476,6 +476,17 @@ vim.api.nvim_create_autocmd('WinEnter', {
 		end, 10)
 	end
 })
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = {
+		'bib',
+		'tex',
+		'typst',
+	},
+	callback = function()
+		vim.cmd.colorscheme 'kanagawa'
+		vim.cmd 'set background=light'
+	end
+})
 
 
 
