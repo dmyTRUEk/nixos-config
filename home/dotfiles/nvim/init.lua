@@ -594,20 +594,15 @@ require('lazy').setup({
 			nap.setup({
 				ignored_next_char = "",
 			})
-			nap.get_rules("'")[1].not_filetypes = {
-				-- disable pairing ' in filetypes:
-				'tex',
-				'text',
-			}
 			nap.clear_rules()
 			nap.add_rules {
 				rule('$', '$', {'tex', 'typst'}),
 				rule('(', ')'),
 				-- rule('[', ']'), -- disabled bc of brackets-braces swap #dcd00a
 				-- rule('{', '}'), -- disabled bc of brackets-braces swap #dcd00a
-				rule("'", "'"),
-				rule('"', '"'),
-				rule('`', '', {'lean'}),
+				rule("'", "'", {'-tex', '-text'}),
+				rule('"', '"', {'-tex'}),
+				rule('`', '`', {'-lean'}),
 			}
 		end
 	},
