@@ -360,6 +360,9 @@ keymap_n_cmd('<c-q>', 'cclose')
 keymap_n_cmd({'<c-t>', '<c-е>'}, 'tabnext')
 -- keymap_n_cmd({'<c-y>', '<c-н>'}, 'tabprev')
 
+keymap_n_cmd({'[c', '[с'}, 'Gitsigns nav_hunk prev')
+keymap_n_cmd({']c', ']с'}, 'Gitsigns nav_hunk next')
+
 
 
 keymap_i({'<c-;>', '<c-ж>'}, '')
