@@ -1470,20 +1470,19 @@ require('lazy').setup({
 	-- 	lazy = true,
 	-- },
 
-	-- {'Julian/lean.nvim',
-	-- 	event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
-	-- 	dependencies = {
-	-- 		'neovim/nvim-lspconfig',
-	-- 		'nvim-lua/plenary.nvim',
-	-- 		-- you also will likely want nvim-cmp or some completion engine
-	-- 		'hrsh7th/nvim-cmp',
-	-- 	},
-	-- 	-- see details below for full configuration options
-	-- 	opts = {
-	-- 		lsp = {},
-	-- 		mappings = true,
-	-- 	}
-	-- },
+	{'Julian/lean.nvim',
+		event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+		dependencies = {
+			-- optional dependencies:
+			-- 'nvim-telescope/telescope.nvim', -- for Lean-specific pickers
+			-- 'andymass/vim-matchup',          -- for enhanced % motion behavior
+			-- 'andrewradev/switch.vim',        -- for switch support
+			-- 'tomtom/tcomment_vim',           -- for commenting
+		},
+		opts = { -- see the manual for full configuration options
+			mappings = true,
+		},
+	},
 
 }, {
 	ui = {
