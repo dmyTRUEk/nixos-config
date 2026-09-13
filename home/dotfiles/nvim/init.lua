@@ -373,10 +373,10 @@ keymap_i({'<c-k>', '<c-л>'}, '<up>')
 keymap_i({'<c-l>', '<c-д>'}, '<right>')
 
 -- brackets-braces swap #dcd00a
-keymap_i('[', '[]<left>')
-keymap_i(']', '{}<left>')
-keymap_i('{', ']')
-keymap_i('}', '}')
+--keymap_i('[', '[]<left>')
+--keymap_i(']', '{}<left>')
+--keymap_i('{', ']')
+--keymap_i('}', '}')
 
 
 
@@ -599,8 +599,8 @@ require('lazy').setup({
 			nap.add_rules {
 				rule('$', '$', {'tex', 'typst'}),
 				rule('(', ')'),
-				-- rule('[', ']'), -- disabled bc of brackets-braces swap #dcd00a
-				-- rule('{', '}'), -- disabled bc of brackets-braces swap #dcd00a
+				rule('[', ']'), -- disabled bc of brackets-braces swap #dcd00a
+				rule('{', '}'), -- disabled bc of brackets-braces swap #dcd00a
 				rule("'", "'", {'-tex', '-text'}),
 				rule('"', '"', {'-tex'}),
 				rule('`', '`', {'-lean'}),
