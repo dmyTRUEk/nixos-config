@@ -242,7 +242,7 @@
 		]))
 		texliveFull
 		gcc
-		#lean4
+		lean4
 		#android-studio   # -> in home-common-psyche
 		#android-tools  # for `adb`   # -> in home-common-psyche
 		#(julia.withPackages [
