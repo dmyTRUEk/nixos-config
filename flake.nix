@@ -5,6 +5,9 @@
 		#nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+		# nixpkgs at 2025-01-24, for wolfram mathematica 14.1
+		nixpkgs_for_wm.url = "github:NixOS/nixpkgs/a85fc0af456a898b7a4c459f38429e05df958907";
+
 		home-manager = {
 			#url = "github:nix-community/home-manager/release-23.11";
 			#url = "github:nix-community/home-manager/master";
@@ -18,9 +21,6 @@
 			url = "github:Infinidoge/nix-minecraft";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-
-		# nixpkgs at 2025-01-24, for wolfram mathematica 14.1.0
-		nixpkgs_a85fc0a.url = "github:NixOS/nixpkgs/a85fc0af456a898b7a4c459f38429e05df958907";
 
 		peeky = {
 			#url = "path:////home/myshko/Projects/peeky";
@@ -49,7 +49,7 @@
 		home-manager-module = home-manager.nixosModules.home-manager;
 		username_myshko = "myshko";
 		username_guest  = "guest";
-		pkgs_a85fc0a = import inputs.nixpkgs_a85fc0a { inherit system; config.allowUnfree = true; };
+		pkgs_for_wm = import inputs.nixpkgs_for_wm { inherit system; config.allowUnfree = true; };
 	in {
 		# src: https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nixos-module
 		nixosConfigurations = {
@@ -67,7 +67,7 @@
 							extraSpecialArgs = { # allows access to flake inputs in hm modules
 								inherit
 									inputs
-									pkgs_a85fc0a
+									pkgs_for_wm
 									peeky
 								;
 							};
@@ -104,7 +104,7 @@
 							extraSpecialArgs = { # allows access to flake inputs in hm modules
 								inherit
 									inputs
-									pkgs_a85fc0a
+									pkgs_for_wm
 									peeky
 								;
 							};
@@ -141,7 +141,7 @@
 							extraSpecialArgs = { # allows access to flake inputs in hm modules
 								inherit
 									inputs
-									pkgs_a85fc0a
+									pkgs_for_wm
 									peeky
 								;
 							};

@@ -3,7 +3,7 @@
 	lib,
 	config,
 	pkgs,
-	pkgs_a85fc0a,
+	pkgs_for_wm,
 	...
 }: {
 	imports = [
@@ -14,6 +14,6 @@
 	programs = {};
 
 	home.packages = with pkgs; [ # PKGS
-		pkgs_a85fc0a.mathematica # wolfram mathematica 14.1
+		pkgs_for_wm.mathematica # wolfram mathematica 14.1
 	];
 }
