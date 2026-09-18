@@ -5,6 +5,7 @@
 	lib,
 	config,
 	pkgs,
+	pkgs_for_lean,
 	peeky,
 	...
 }: {
@@ -243,6 +244,9 @@
 		texliveFull
 		gcc
 		# lean4
+		# leanPackages.mathlib
+		# leanPackages.batteries
+		pkgs_for_lean.lean4
 		#android-studio   # -> in home-common-psyche
 		#android-tools  # for `adb`   # -> in home-common-psyche
 		#(julia.withPackages [

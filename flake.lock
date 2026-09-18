@@ -90,6 +90,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_for_lean": {
+      "locked": {
+        "lastModified": 1783667548,
+        "narHash": "sha256-GeigQvFU8ibi9lWKPoJVohyj+QgfnOrGM07lxEnXEPI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0f9a3c53a31c80fdff0f7aa7fc6b808d4327d333",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0f9a3c53a31c80fdff0f7aa7fc6b808d4327d333",
+        "type": "github"
+      }
+    },
     "nixpkgs_for_wm": {
       "locked": {
         "lastModified": 1737724520,
@@ -132,6 +148,7 @@
         "home-manager": "home-manager",
         "nix-minecraft": "nix-minecraft",
         "nixpkgs": "nixpkgs",
+        "nixpkgs_for_lean": "nixpkgs_for_lean",
         "nixpkgs_for_wm": "nixpkgs_for_wm",
         "peeky": "peeky"
       }
