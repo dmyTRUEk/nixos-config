@@ -113,7 +113,7 @@
 					enable = true;
 					autoStart = false;
 					package = pkgs.fabricServers.fabric-26_2.override {
-						loaderVersion = "0.19.3";
+						loaderVersion = "0.19.5";
 						jre_headless = pkgs.openjdk25_headless; # src: ?
 					};
 					jvmOpts = "-XX:+UseG1GC -Xms8G -Xmx16G -XX:MaxGCPauseMillis=200";
@@ -151,17 +151,17 @@
 					symlinks = {
 						mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
 							AntiXray = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/sml2FMaA/versions/AK313N9m/antixray-fabric-1.4.16%2B26.1.jar"; sha512 = "sha512-IT5l7gWEpmAhGPnm74Ydk/wJFgxbMrYn0pS5IKCNXPwlqDnyW/sqU73xreuNT9WMpnQ6PJk+h8+Ljis3G6Kp6w=="; };
-							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/SansJdt3/Geyser-Fabric-2.11.1-b1223.jar"; sha512 = "sha512-FKzkHgeWEfuBWttFzj7kCVC/IjjZWyevM6xqbmjVPcJjB2TxscEWiubgSSxcapyb8s2IuyuPqmccV3H0zw+G+g=="; };
+							Geyser = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/nLCrc5xN/Geyser-Fabric-2.11.3-b1245.jar"; sha512 = "sha512-DlLZ/r9cJHUMw1fI4Cv/aagtRn8fuEsqoWFMFi6Tp/M8uhUZLM/r/AVBUs0QllVFs1kUS9uLjXHaeD9Fzgxvww=="; };
 							Floodgate = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/urOFTrVX/Floodgate-Fabric-2.2.6-b67.jar"; sha512 = "sha512-1uys+/HDEXExd5J4N1TE9YQUUIqP0aojuePaXan+RQpuboguOehiy18d840tl76EZaOYV/5LeMHPiZNCMKcSBQ=="; };
 							# DistantHorizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/FJrLlu3p/DistantHorizons-3.0.3-b-26.1.2-fabric-neoforge.jar"; sha512 = "sha512-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"; };
 							Terralith = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/OxfI2n80/Terralith_26.2_v2.6.4.jar"; sha512 = "sha512-CDD0YBZ0xOpY0kenG/3IIORnaQDhc8fW305Y40ignaQ7J5zqBg33tn5vdMhOKgW0AbLfeYNsN8/8jcmUhEqyUA=="; };
 							Lithium = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/f7vZ0VWU/lithium-fabric-0.25.3%2Bmc26.2.jar"; sha512 = "sha512-FItjjzxiKfuvSHEgojRKCvXkEaWqZTPV25112gqMDYME9j60zKE/TQOyybTCPVWd10wdgyQi74owh70AXmKovQ=="; };
-							C2ME = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/VSNURh3q/versions/jSMMstCy/c2me-fabric-mc26.2-0.4.2-alpha.0.43.jar"; sha512 = "sha512-ycnJur5NlOBqv3LJLkU6qjnIJjSnrmRtEEH2c+Eu/z2Z534gWmhupT0KWuFD6eHm7VlbPM/K6v5ky/tjJ+LzdQ=="; };
+							C2ME = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/VSNURh3q/versions/LmKTn6Yc/c2me-fabric-mc26.2-0.4.2-alpha.0.52.jar"; sha512 = "sha512-dqfFLqmyIpXBXQK+fxykto/Gc2hGXxvTz/tHzTa/O/a53ZJbygLMssfLLCbfEjVTjZjdusQ/hZhcOf0YPJ80aA=="; };
 							# FerriteCore = fetchurl { url = "https://cdn.modrinth.com/data/uXXizFIs/versions/d5ddUdiB/ferritecore-9.0.0-fabric.jar"; sha512 = "sha512-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"; };
 							# Krypton = fetchurl { url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/5WeL0Nkz/krypton-0.3.1.jar"; sha512 = "sha512-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"; };
 							# deps:
-							Lithostitched = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/XaDC71GB/versions/V3XWhM8r/lithostitched-1.8.0%2Bbeta3-fabric-26.2.jar"; sha512 = "sha512-Mvm3R7gMm1rAHumOFnSR1OpDMVjCJGL4DjAfsyI4weAfXFXd7S+yDgdFcg3n84gZcfId/vA8E1wf7VqK+y6oow=="; }; # for Terralith
-							FabricAPI = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/vmQp7ixA/fabric-api-0.157.0%2B26.2.jar"; sha512 = "sha512-Tr7EifKyzmIevrstG36XFLb9KI69tOKH12fN5XYSzx09HU9R2vfn7JVB+hRt9r3kl4q5iiljfO1tm8LzxCF2UA=="; }; # for Geyser & Floodgate
+							Lithostitched = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/XaDC71GB/versions/3MjBSbla/lithostitched-1.8.0%2Bbeta6-fabric-26.2.jar"; sha512 = "sha512-hj6o0rB9BBXEmGecaCNyKFEsyirDa16lf4g0t+rV9AOD8ASgziUdA3z7e4GqcnpGnmrRw+qAemzox3v72/z5Pg=="; }; # for Terralith
+							FabricAPI = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/ewUK83HI/fabric-api-0.161.0%2B26.2.jar"; sha512 = "sha512-JQL6Wt546aEgs3R7wamiFn1mcXQ76kW/EV0xdMlBIa7ah8VJRG0aYEqcEfuCjeF6VR41FM5C8+kwad0Uva7lWw=="; }; # for Geyser & Floodgate
 						});
 					};
 				};
