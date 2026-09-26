@@ -425,12 +425,21 @@ vim.api.nvim_create_autocmd('FileType', {
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
-	-- set tabs EVERYWHERE EXCEPT haskell
+	-- set tabs EVERYWHERE EXCEPT (tab = 2 spaces)
 	pattern = 'haskell',
 	callback = function()
 		vim.opt_local.expandtab = true
 		vim.opt_local.tabstop = 2
 		vim.opt_local.shiftwidth = 2
+	end
+})
+vim.api.nvim_create_autocmd('FileType', {
+	-- set tabs EVERYWHERE EXCEPT (tab = 4 spaces)
+	pattern = 'lean',
+	callback = function()
+		vim.opt_local.expandtab = true
+		vim.opt_local.tabstop = 4
+		vim.opt_local.shiftwidth = 4
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
@@ -601,7 +610,7 @@ require('lazy').setup({
 				rule('(', ')'),
 				rule('[', ']'), -- disabled bc of brackets-braces swap #dcd00a
 				rule('{', '}'), -- disabled bc of brackets-braces swap #dcd00a
-				rule("'", "'", {'-tex', '-text'}),
+				rule("'", "'", {'-tex', '-text', '-lean'}),
 				rule('"', '"', {'-tex'}),
 				rule('`', '`', {'-lean'}),
 			}
@@ -1470,7 +1479,7 @@ require('lazy').setup({
 	-- 	lazy = true,
 	-- },
 
-	{'Julian/lean.nvim',
+	{'Julian/lean.nvim', -- Lean4
 		event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
 		dependencies = {
 			-- optional dependencies:
@@ -1480,7 +1489,7 @@ require('lazy').setup({
 			-- 'tomtom/tcomment_vim',           -- for commenting
 		},
 		opts = { -- see the manual for full configuration options
-			mappings = true,
+			mappings = false,
 		},
 	},
 
