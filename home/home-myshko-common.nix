@@ -25,8 +25,9 @@
 	let
 		inherit (builtins) foldl' elemAt;
 		inherit (config.lib.file) mkOutOfStoreSymlink;
-		config_path = "${config.home.homeDirectory}/.config"; # TODO(refactor)?: use /.
-		dotfiles_path = "${config.home.homeDirectory}/.config/home-manager/home/dotfiles";
+		home_path = "${config.home.homeDirectory}";
+		config_path = "${home_path}/.config"; # TODO(refactor)?: use /.
+		dotfiles_path = "${home_path}/.config/home-manager/home/dotfiles";
 		setup_simple_symlinks = foldl' (acc: elem: acc // {
 			"${config_path}/${elem}".source = mkOutOfStoreSymlink "${dotfiles_path}/${elem}";
 		}) {};
@@ -42,10 +43,10 @@
 			"zathura"
 		]
 		// setup_complex_symlinks [
-			#[ "${config.home.homeDirectory}/mnt" "/run/media/${config.home.username}" ]
+			#[ "${home_path}/mnt" "/run/media/${config.home.username}" ]
+			[ "${home_path}/.ideavimrc" "${dotfiles_path}/.ideavimrc" ]
 		]
-		#//
-		#{
+		#// {
 		#	#"${config_path}/anyrun/style.css".source = lib.mkForce (mkOutOfStoreSymlink "${dotfiles_path}/../programs/anyrun-style.css");
 		#}
 		#; in builtins.trace tmp tmp # for dbg
