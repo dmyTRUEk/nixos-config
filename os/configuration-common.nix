@@ -154,10 +154,12 @@
 			# This creates a systemd unit ollama-model-loader.service.
 			# Search for models of your choice from: https://ollama.com/library
 			loadModels = [
-				"llama3.2:1b"
-				"llama3.2:3b"
-				"llama3.1:8b"
-				"gpt-oss:20b"
+				#"llama3.2:1b"
+				#"llama3.2:3b"
+				#"llama3.1:8b"
+				#"gpt-oss:20b"
+				#"gemma4:26b"
+				#"qwen3.8:27b"
 			];
 		};
 
