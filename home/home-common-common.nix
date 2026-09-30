@@ -189,6 +189,7 @@
 		# 	};
 		# }))
 		rsync
+		rink
 
 		# CLI fun:
 		fortune
