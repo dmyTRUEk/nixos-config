@@ -8,10 +8,6 @@
 		# nixpkgs at 2025-01-24, for wolfram mathematica 14.1
 		nixpkgs_for_wm.url = "github:NixOS/nixpkgs/a85fc0af456a898b7a4c459f38429e05df958907";
 
-		# nixpkgs at 2026-08-01, tmp for lean4
-		#nixpkgs_for_lean.url = "github:NixOS/nixpkgs/8479b32a9fa421bf79a2e143f367d11a304f14f8"; # not working commit
-		nixpkgs_for_lean.url = "github:NixOS/nixpkgs/0f9a3c53a31c80fdff0f7aa7fc6b808d4327d333"; # working commit
-
 		home-manager = {
 			#url = "github:nix-community/home-manager/release-23.11";
 			#url = "github:nix-community/home-manager/master";
@@ -54,7 +50,6 @@
 		username_myshko = "myshko";
 		username_guest  = "guest";
 		pkgs_for_wm = import inputs.nixpkgs_for_wm { inherit system; config.allowUnfree = true; };
-		pkgs_for_lean = import inputs.nixpkgs_for_lean { inherit system; };
 	in {
 		# src: https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nixos-module
 		nixosConfigurations = {
@@ -73,7 +68,6 @@
 								inherit
 									inputs
 									pkgs_for_wm
-									pkgs_for_lean
 									peeky
 								;
 							};
@@ -111,7 +105,6 @@
 								inherit
 									inputs
 									pkgs_for_wm
-									pkgs_for_lean
 									peeky
 								;
 							};
@@ -149,7 +142,6 @@
 								inherit
 									inputs
 									pkgs_for_wm
-									pkgs_for_lean
 									peeky
 								;
 							};
