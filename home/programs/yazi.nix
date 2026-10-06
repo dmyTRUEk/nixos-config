@@ -87,6 +87,7 @@
 					{ url = "*.rtf"; use = "libreoffice"; }
 
 					{ url = "*.srt"; use = "text"; }
+					{ url = "*.json"; use = "text"; }
 
 					# Multiple openers for a single rule
 					#{ url = "*.html", use = [ "browser", "text" ] },
