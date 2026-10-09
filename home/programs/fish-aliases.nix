@@ -200,5 +200,7 @@
 		jjl = "jj log -r 'all()' -T my_log";
 		jjll = "jj log -r 'all()' -T builtin_log_detailed";
 		jjs = "jj status";
+
+		hf = "hyperfine";
 	};
 }
