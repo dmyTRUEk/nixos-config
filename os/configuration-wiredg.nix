@@ -27,10 +27,17 @@
 		#edk2-uefi-shell.enable = true;
 	};
 
+	hardware.graphics = {
+		enable = true;
+		extraPackages = with pkgs; [
+			rocmPackages.clr.icd # opencl, src: https://nixos.wiki/wiki/AMD_GPU#OpenCL
+		];
+	};
+
 	# Enable sound with pipewire.
 	services.pulseaudio.enable = false;
 
-	# Enable touchpad support (enabled default in most desktopManager).
+	# Enable touchpad support (enabled by default in most desktopManager).
 	#services.xserver.libinput.enable = true;
 
 	# Enable the OpenSSH daemon.
