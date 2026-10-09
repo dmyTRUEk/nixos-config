@@ -617,7 +617,6 @@ require('lazy').setup({
 
 	-- MY CORE PLUGINS:
 	{'windwp/nvim-autopairs', -- close brackets automatically
-		-- dir = '~/Projects/nvim-autopairs', -- tmp fix for pairing not working after entering insert mode after operator with count
 		event = 'InsertEnter',
 		config = function()
 			local nap = require('nvim-autopairs')
