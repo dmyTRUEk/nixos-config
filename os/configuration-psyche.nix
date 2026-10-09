@@ -29,6 +29,13 @@
 		"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
 	];
 
+	hardware.graphics = {
+		enable = true;
+		extraPackages = with pkgs; [
+			rocmPackages.clr.icd # opencl, src: https://nixos.wiki/wiki/AMD_GPU#OpenCL
+		];
+	}
+
 	#services.ollama.acceleration = "rocm"; # or cuda
 
 	programs = {

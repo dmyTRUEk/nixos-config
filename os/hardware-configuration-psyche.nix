@@ -20,9 +20,7 @@
 		"sd_mod"
 		"rtsx_pci_sdmmc"
 	];
-	boot.initrd.kernelModules = [
-		"amdgpu"
-	];
+	boot.initrd.kernelModules = [];
 	boot.kernelModules = [
 		"kvm-amd"
 	];
@@ -52,13 +50,5 @@
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 	hardware = {
 		cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-		# TODO?: move this to just conf.nix?
-		graphics = {
-			enable = true;
-			extraPackages = with pkgs; [
-				# src: https://nixos.wiki/wiki/AMD_GPU#OpenCL
-				rocmPackages.clr.icd
-			];
-		};
 	};
 }
