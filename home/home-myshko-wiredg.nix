@@ -27,5 +27,10 @@
 			foldl # foldl
 		]))
 		haskell-language-server
+
+		ocaml
+		ocamlPackages.utop # better repl
+		#dune # pkg manager
+		#opam # project manager
 	];
 }
