@@ -398,6 +398,17 @@ keymap_x({'<a-k>', '<a-л>'}, "dkPV']=V']")
 
 
 
+-- "custom" filetype
+vim.filetype.add({
+	extension = {
+		fut = 'futhark',
+	},
+})
+
+
+
+
+
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = {
 		'gitcommit',
@@ -435,7 +446,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 vim.api.nvim_create_autocmd('FileType', {
 	-- set tabs EVERYWHERE EXCEPT (tab = 4 spaces)
-	pattern = 'lean',
+	pattern = {'lean', 'futhark'},
 	callback = function()
 		vim.opt_local.expandtab = true
 		vim.opt_local.tabstop = 4
@@ -495,6 +506,16 @@ vim.api.nvim_create_autocmd('FileType', {
 	callback = function()
 		vim.cmd.colorscheme 'kanagawa'
 		vim.cmd 'set background=light'
+	end
+})
+vim.api.nvim_create_autocmd('BufEnter', {
+	pattern = '*.fut',
+	callback = function()
+		-- vim.cmd('setlocal syntax=ocaml') -- bad for (*)
+		-- vim.cmd('setlocal syntax=haskell') -- almost none SH
+		vim.cmd('setlocal syntax=gleam')
+		-- vim.cmd('setlocal syntax=elm')
+		-- vim.cmd('setlocal syntax=sml') -- bad for (*)
 	end
 })
 
@@ -610,7 +631,7 @@ require('lazy').setup({
 				rule('(', ')'),
 				rule('[', ']'), -- disabled bc of brackets-braces swap #dcd00a
 				rule('{', '}'), -- disabled bc of brackets-braces swap #dcd00a
-				rule("'", "'", {'-tex', '-text', '-lean'}),
+				rule("'", "'", {'-tex', '-text', '-lean', '-futhark'}),
 				rule('"', '"', {'-tex'}),
 				rule('`', '`', {'-lean'}),
 			}
@@ -1122,9 +1143,11 @@ require('lazy').setup({
 			--}
 
 			local parsers = {
+				-- src: https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
 				'c', 'lua', 'vim', 'vimdoc', 'query', -- these are reqired?
 				--'comment',
 				--'cpp',
+				----'futhark', -- unsupported :c
 				--'kotlin',
 				--'latex',
 				'markdown',
@@ -1374,6 +1397,17 @@ require('lazy').setup({
 			--'hls' -- haskell
 			--'gdscript' -- godot script
 			--'gdshader_lsp' -- godot shader
+
+			vim.lsp.config('futhark_lsp', {
+				-- workspace_required = false,
+				on_attach = function(client, bufnr)
+					vim.lsp.semantic_tokens.enable(false, {
+						bufnr = bufnr,
+						client_id = client.id,
+					})
+				end,
+			})
+			vim.lsp.enable('futhark_lsp')
 		end,
 	},
 
