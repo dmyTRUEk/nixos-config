@@ -1147,10 +1147,12 @@ require('lazy').setup({
 				--'comment',
 				--'cpp',
 				----'futhark', -- unsupported :c
+				'haskell',
 				--'kotlin',
 				--'latex',
 				'markdown',
 				'nix',
+				'ocaml',
 				'python',
 				--'ron', -- Rust Object Notation
 				'rust',
