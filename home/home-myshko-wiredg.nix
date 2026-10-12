@@ -6,11 +6,6 @@
 	pkgs_for_wm,
 	...
 }: {
-	imports = [
-		#inputs.plasma-manager.homeModules.plasma-manager # TODO(refactor): move to `kde-plasma-config-wiredg.nix`?
-		#./kde-plasma-config-wiredg.nix # TODO?
-	];
-
 	programs = {};
 
 	home.packages = with pkgs; [ # PKGS
