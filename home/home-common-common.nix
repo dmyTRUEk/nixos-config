@@ -9,10 +9,11 @@
 	...
 }: {
 	imports = [
-		./programs/fish.nix      # (rust btw)
 		./programs/alacritty.nix # (rust btw)
-		./programs/yazi.nix      # (rust btw)
 		./programs/anyrun.nix    # (rust btw)
+		./programs/fish.nix      # (rust btw)
+		./programs/libreoffice.nix
+		./programs/yazi.nix      # (rust btw)
 	];
 
 	services.kdeconnect = {
@@ -95,29 +96,7 @@
 		#mangohud.enable = true;
 		bat.enable = true;
 		lf.enable = true;
-		opencode = {
-			enable = true;
-			settings = {
-				permission = {
-					"*" = "ask";
-					grep = "ask";
-					todowrite = "allow"; # manage todo lists (in opencode itself)
-					bash = {
-						"*" = "ask";
-						"cargo test 2>&1" = "allow";
-						"cargo build 2>&1" = "allow";
-					};
-					read = {
-						"*" = "ask";
-						"src/*.rs" = "allow";
-					};
-					edit = {
-						"*" = "ask";
-						"src/*.rs" = "allow";
-					};
-				};
-			};
-		};
+		##opencode = { ... }; # -> opencode.nix
 		jujutsu = { # JJ (rust btw)
 			enable = true;
 			settings = {
@@ -178,15 +157,15 @@
 		nix-tree
 		nvd
 		#curlftpfs
-		# wtype
-		# (wtype.overrideAttrs (oldAttrs: {
-		# 	src = fetchFromGitHub {
-		# 		owner = "atx";
-		# 		repo = "wtype";
-		# 		rev = "55fc0bb1a650a531b1a2064359f6bcb8d6fdfc8b";
-		# 		hash = "sha256-zsddZiot8Zz/RMM0pVfODKgS1Pd4+1lErZyndlFWePM=";
-		# 	};
-		# }))
+		#wtype
+		#(wtype.overrideAttrs (oldAttrs: {
+		#	src = fetchFromGitHub {
+		#		owner = "atx";
+		#		repo = "wtype";
+		#		rev = "55fc0bb1a650a531b1a2064359f6bcb8d6fdfc8b";
+		#		hash = "sha256-zsddZiot8Zz/RMM0pVfODKgS1Pd4+1lErZyndlFWePM=";
+		#	};
+		#}))
 		rsync
 		rink
 
@@ -205,24 +184,21 @@
 		kitty
 		telegram-desktop
 		swayimg
-		krita
-		gnome-boxes
-		libreoffice-fresh
-		hunspell
-		hunspellDicts.en_US-large # for libreoffice ENG spellcheck
-		hunspellDicts.uk_UA       # for libreoffice UKR spellcheck
+		##krita # -> krita.nix
+		##gnome-boxes # -> gnome-boxes.nix
+		##libreoffice-fresh # -> libreoffice.nix
 		zathura
-		kdePackages.kdenlive
+		##kdePackages.kdenlive # -> kdenlive.nix
 		vlc
 		transmission_4-gtk
 		zoom-us
 		discord
 		kdePackages.gwenview
 		#helvum
-		audacity
+		##audacity # -> audacity.nix
 		#amberol # gnome music player
 		element-desktop
-		inkscape
+		##inkscape # -> inkscape.nix
 		godot
 		#zulip
 		#kdePackages.cantor
@@ -241,21 +217,14 @@
 			scipy
 			#jupyter # jupyterlab
 		]))
-		texliveFull
+		##texliveFull # -> latex.nix
 		gcc
-		lean4
-		# leanPackages.mathlib
-		# leanPackages.batteries
-		#android-studio   # -> in home-common-psyche
-		#android-tools  # for `adb`   # -> in home-common-psyche
-		#(julia.withPackages [
-		#	"IJulia" # for jupyter
-		#	"Symbolics"
-		#])
+		##lean4 # -> lean4.nix
+		##android-studio # -> android-studio.nix
+		#android-tools # for `adb`
+		##julia # -> julia.nix
 		typst
-		#(haskellPackages.ghcWithPackages (haskell-pkgs: with haskell-pkgs; [
-		#	# haskell pkgs
-		#]))
+		##haskell # -> haskell.nix
 		tree-sitter # for tree-sitter in neovim
 		#luajitPackages.tree-sitter-cli
 
@@ -263,7 +232,6 @@
 		lua-language-server # lua
 		pyright # python
 		#ruff-lsp # python # TODO: setup it for lints, cs it's fast (rust btw)
-		#haskell-language-server
 
 		# GAMES:
 		#luanti
