@@ -84,7 +84,9 @@ vim.o.redrawtime = 10000 -- for giant files
 --cmdheight = 0, -- TODO: enable
 
 -- use ukr in normal mode
-vim.o.langmap = [[йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ї],фa,іs,вd,аf,пg,рh,оj,лk,дl,ж\;,є',яz,чx,сc,мv,иb,тn,ьm,б\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ї},ФA,ІS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Є",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>]]
+langmap = [[йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ї],фa,іs,вd,аf,пg,рh,оj,лk,дl,ж\;,є',яz,чx,сc,мv,иb,тn,ьm,б\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ї},ФA,ІS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Є",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>]]
+langmap = langmap .. "[{,]},{[,}]"
+vim.o.langmap = langmap
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = true
