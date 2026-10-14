@@ -14,7 +14,6 @@
 	programs = {};
 
 	home.packages = with pkgs; [ # PKGS
-		# LANGS:
 		android-tools # for `adb`
 	];
 

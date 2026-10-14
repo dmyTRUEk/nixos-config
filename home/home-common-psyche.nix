@@ -1,16 +1,8 @@
-{
-	inputs,
-	lib,
-	config,
-	pkgs,
-	...
-}: {
+{ pkgs, ... }: {
 	programs = {};
 
 	home.packages = with pkgs; [ # PKGS
-		# LANGS:
-		#android-studio
-		android-tools  # for `adb`
+		android-tools # for `adb`
 	];
 
 	# This value determines the NixOS release from which the default

@@ -1,10 +1,4 @@
-{
-	inputs,
-	lib,
-	config,
-	pkgs,
-	...
-}: {
+{ pkgs, ... }: {
 	programs = {};
 
 	home.packages = with pkgs; [ # PKGS

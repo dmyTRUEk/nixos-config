@@ -1,10 +1,4 @@
-{
-	inputs,
-	lib,
-	config,
-	pkgs,
-	...
-}: {
+{ pkgs, ... }: {
 	home = {
 		# TODO: refactor to not write username manually?
 		username = "guest";
