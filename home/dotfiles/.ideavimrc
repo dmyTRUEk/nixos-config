@@ -207,3 +207,4 @@ map <leader>z <Action>(ToggleDistractionFreeMode)
 "imap <s-tab> <c-p>
 " it doesnt work TwT
 
+map <C-m> %
