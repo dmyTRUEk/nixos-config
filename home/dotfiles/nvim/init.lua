@@ -448,7 +448,11 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 vim.api.nvim_create_autocmd('FileType', {
 	-- set tabs EVERYWHERE EXCEPT (tab = 4 spaces)
-	pattern = {'lean', 'futhark'},
+	pattern = {
+		'futhark',
+		'kotlin',
+		'lean',
+	},
 	callback = function()
 		vim.opt_local.expandtab = true
 		vim.opt_local.tabstop = 4
