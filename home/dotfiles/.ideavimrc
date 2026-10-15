@@ -43,16 +43,16 @@ noremap ^ 0
 noremap ` '
 noremap ' `
 
-noremap <C-j> <C-d>zz
-noremap <C-k> <C-u>zz
-noremap <C-n> %
+noremap <c-j> <c-d>zz
+noremap <c-k> <c-u>zz
+noremap <c-n> %
 
 map Q <nop>
-nnoremap U <C-r>
+nnoremap U <c-r>
 nnoremap Y y$
 noremap - $
-nnoremap <C-p> $p
-nnoremap <A-p> ^P
+nnoremap <c-p> $p
+nnoremap <a-p> ^P
 
 nnoremap ch lc2h
 nnoremap cl c2l
@@ -121,12 +121,12 @@ nnoremap <esc> :nohlsearch <cr>
 
 
 
-" TODO: <C-;>
-inoremap <C-;> <nop>
-inoremap <C-h> <left>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-l> <right>
+" TODO?: <c-;>
+inoremap <c-;> <nop>
+inoremap <c-h> <left>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+inoremap <c-l> <right>
 
 
 
@@ -180,13 +180,13 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " Android Studio specific:
 
-map <C-o> <Action>(Back)
-map <C-i> <Action>(Forward)
-map <A-o> <Action>(Back)
-map <A-i> <Action>(Forward)
+map <c-o> <Action>(Back)
+map <c-i> <Action>(Forward)
+map <a-o> <Action>(Back)
+map <a-i> <Action>(Forward)
 
-map <C-H> <Action>(GotoPreviousError)
-map <C-L> <Action>(GotoNextError)
+map <c-h> <Action>(GotoPreviousError)
+map <c-l> <Action>(GotoNextError)
 map gd <Action>(GotoDeclaration)
 "map gi <Action>(GotoImplementation)
 map <leader>r <Action>(RenameElement)
@@ -207,4 +207,4 @@ map <leader>z <Action>(ToggleDistractionFreeMode)
 "imap <s-tab> <c-p>
 " it doesnt work TwT
 
-map <C-m> %
+map <c-m> %
