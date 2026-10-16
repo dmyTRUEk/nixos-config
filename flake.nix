@@ -27,6 +27,11 @@
 			url = "github:dmyTRUEk/peeky";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		futhark = {
+			url = "github:diku-dk/futhark";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = inputs @ {
@@ -38,11 +43,13 @@
 	let
 		system = "x86_64-linux";
 		nixosSystem = nixpkgs.lib.nixosSystem;
+		# TODO: remove them?
 		hostname_psyche = "psyche";
 		hostname_knight = "knight";
 		hostname_wiredg = "wiredg";
 		home-manager-module = home-manager.nixosModules.home-manager;
-		username_myshko = "myshko";
+		# TODO: remove them?
+		username_myshko = "myshko";  # TODO: change to just `m`
 		username_guest  = "guest";
 		pkgs_for_wm = import inputs.nixpkgs_for_wm { inherit system; config.allowUnfree = true; };
 	in {

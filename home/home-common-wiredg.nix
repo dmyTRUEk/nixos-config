@@ -1,6 +1,7 @@
 { pkgs, ... }: {
 	imports = [
 		./programs/android-studio.nix
+		./programs/futhark.nix
 		./programs/gnome-boxes.nix
 		./programs/haskell.nix
 		#./programs/julia.nix

@@ -16,6 +16,26 @@
         "type": "github"
       }
     },
+    "futhark": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792068239,
+        "narHash": "sha256-D/rg09Y+qwOezVPsRhsGLR98Wg4Mxm4rAwN5twFrgYg=",
+        "owner": "diku-dk",
+        "repo": "futhark",
+        "rev": "b362dbe49fb2a79206206e982d359687b7d70171",
+        "type": "github"
+      },
+      "original": {
+        "owner": "diku-dk",
+        "repo": "futhark",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -129,6 +149,7 @@
     },
     "root": {
       "inputs": {
+        "futhark": "futhark",
         "home-manager": "home-manager",
         "nix-minecraft": "nix-minecraft",
         "nixpkgs": "nixpkgs",
