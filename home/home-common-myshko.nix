@@ -13,9 +13,9 @@
 	];
 
 	home = {
-		# TODO: refactor to not write username manually?
-		username = "myshko";
-		homeDirectory = "/home/myshko"; # remove bc not needed?
+		# TODO?: refactor to not write username manually
+		##username = "myshko";  # -> `home-<machine>-<user>.nix`
+		##homeDirectory = "/home/myshko";  # remove bc not needed?  # -> `home-<machine>-<user>.nix`
 	};
 
 	home.file =

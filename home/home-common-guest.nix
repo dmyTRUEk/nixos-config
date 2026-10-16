@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 	home = {
-		# TODO: refactor to not write username manually?
+		# TODO?: refactor to not write username manually
 		username = "guest";
-		# homeDirectory = "/home/guest";
+		homeDirectory = "/home/guest";
 	};
 }
