@@ -636,7 +636,7 @@ require('lazy').setup({
 				rule('(', ')'),
 				rule('[', ']'), -- disabled bc of brackets-braces swap #dcd00a
 				rule('{', '}'), -- disabled bc of brackets-braces swap #dcd00a
-				rule("'", "'", {'-tex', '-text', '-lean', '-futhark'}),
+				rule("'", "'", {'-tex', '-text', '-lean', '-futhark', '-gitcommit'}),
 				rule('"', '"', {'-tex'}),
 				rule('`', '`', {'-lean'}),
 			}
