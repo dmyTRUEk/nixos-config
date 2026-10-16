@@ -43,24 +43,18 @@
 	let
 		system = "x86_64-linux";
 		nixosSystem = nixpkgs.lib.nixosSystem;
-		# TODO: remove them?
-		hostname_psyche = "psyche";
-		hostname_knight = "knight";
-		hostname_wiredg = "wiredg";
 		home-manager-module = home-manager.nixosModules.home-manager;
-		# TODO: remove them?
-		username_myshko = "myshko";  # TODO: change to just `m`
-		username_guest  = "guest";
+		#username_myshko = "myshko";  # TODO: change to just `m`
 		pkgs_for_wm = import inputs.nixpkgs_for_wm { inherit system; config.allowUnfree = true; };
 	in {
 		# src: https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nixos-module
 		nixosConfigurations = {
-			${hostname_psyche} = nixosSystem {
+			psyche = nixosSystem {
 				inherit system;
 				specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
 				modules = [
 					./os/configuration-common.nix
-					./os/configuration-${hostname_psyche}.nix
+					./os/configuration-psyche.nix
 					home-manager-module {
 						home-manager = {
 							verbose = true;
@@ -75,29 +69,31 @@
 							};
 							backupFileExtension = "backup";
 							users = {
-								${username_myshko}.imports = [
+								myshko.imports = [
+									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-${hostname_psyche}.nix
-									./home/home-${username_myshko}-common.nix
-									./home/home-${username_myshko}-${hostname_psyche}.nix
+									./home/home-common-psyche.nix
+									./home/home-myshko-common.nix
+									./home/home-myshko-psyche.nix
 								];
-								${username_guest}.imports = [
+								guest.imports = [
+									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-${hostname_psyche}.nix
-									./home/home-${username_guest}-common.nix
-									./home/home-${username_guest}-${hostname_psyche}.nix
+									./home/home-common-psyche.nix
+									./home/home-guest-common.nix
+									./home/home-guest-psyche.nix
 								];
 							};
 						};
 					}
 				];
 			};
-			${hostname_knight} = nixosSystem {
+			knight = nixosSystem {
 				inherit system;
 				specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
 				modules = [
 					./os/configuration-common.nix
-					./os/configuration-${hostname_knight}.nix
+					./os/configuration-knight.nix
 					home-manager-module {
 						home-manager = {
 							verbose = true;
@@ -112,29 +108,31 @@
 							};
 							backupFileExtension = "backup";
 							users = {
-								${username_myshko}.imports = [
+								myshko.imports = [
+									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-${hostname_knight}.nix
-									./home/home-${username_myshko}-common.nix
-									./home/home-${username_myshko}-${hostname_knight}.nix
+									./home/home-common-knight.nix
+									./home/home-myshko-common.nix
+									./home/home-myshko-knight.nix
 								];
-								${username_guest}.imports = [
+								guest.imports = [
+									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-${hostname_knight}.nix
-									./home/home-${username_guest}-common.nix
-									./home/home-${username_guest}-${hostname_knight}.nix
+									./home/home-common-knight.nix
+									./home/home-guest-common.nix
+									./home/home-guest-knight.nix
 								];
 							};
 						};
 					}
 				];
 			};
-			${hostname_wiredg} = nixosSystem {
+			wiredg = nixosSystem {
 				inherit system;
 				specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
 				modules = [
 					./os/configuration-common.nix
-					./os/configuration-${hostname_wiredg}.nix
+					./os/configuration-wiredg.nix
 					home-manager-module {
 						home-manager = {
 							verbose = true;
@@ -149,17 +147,19 @@
 							};
 							backupFileExtension = "backup";
 							users = {
-								${username_myshko}.imports = [
+								myshko.imports = [
+									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-${hostname_wiredg}.nix
-									./home/home-${username_myshko}-common.nix
-									./home/home-${username_myshko}-${hostname_wiredg}.nix
+									./home/home-common-wiredg.nix
+									./home/home-myshko-common.nix
+									./home/home-myshko-wiredg.nix
 								];
-								${username_guest}.imports = [
+								guest.imports = [
+									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-${hostname_wiredg}.nix
-									./home/home-${username_guest}-common.nix
-									./home/home-${username_guest}-${hostname_wiredg}.nix
+									./home/home-common-wiredg.nix
+									./home/home-guest-common.nix
+									./home/home-guest-wiredg.nix
 								];
 							};
 						};
