@@ -85,6 +85,7 @@ vim.o.redrawtime = 10000 -- for giant files
 
 -- use ukr in normal mode
 langmap = [[йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ї],фa,іs,вd,аf,пg,рh,оj,лk,дl,ж\;,є',яz,чx,сc,мv,иb,тn,ьm,б\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ї},ФA,ІS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Є",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>]]
+-- brackets-braces swap #dcd00a
 langmap = langmap .. "[{,]},{[,}]"
 vim.o.langmap = langmap
 
@@ -412,6 +413,7 @@ vim.filetype.add({
 
 
 vim.api.nvim_create_autocmd('FileType', {
+	desc = 'enable spelling in specified filetypes',
 	pattern = {
 		'gitcommit',
 		'markdown', -- .md
@@ -427,7 +429,7 @@ vim.api.nvim_create_autocmd('FileType', {
 --	end
 --})
 vim.api.nvim_create_autocmd('FileType', {
-	-- set tabs EVERYWHERE
+	desc = 'set tabs EVERYWHERE',
 	pattern = '*',
 	callback = function()
 		vim.opt_local.expandtab = false
@@ -438,7 +440,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
-	-- set tabs EVERYWHERE EXCEPT (tab = 2 spaces)
+	desc = 'set tabs EVERYWHERE EXCEPT (tab = 2 spaces)',
 	pattern = 'haskell',
 	callback = function()
 		vim.opt_local.expandtab = true
@@ -447,7 +449,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
-	-- set tabs EVERYWHERE EXCEPT (tab = 4 spaces)
+	desc = 'set tabs EVERYWHERE EXCEPT (tab = 4 spaces)',
 	pattern = {
 		'futhark',
 		'kotlin',
@@ -460,6 +462,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
+	desc = 'set up stuff for latex',
 	pattern = 'tex',
 	callback = function()
 		-- TODO: refactor
@@ -490,7 +493,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end
 })
 vim.api.nvim_create_autocmd('WinEnter', {
-	-- minimize quickfix list window height
+	desc = 'minimize quickfix list window height',
 	callback = function()
 		local win = vim.api.nvim_get_current_win()
 		vim.defer_fn(function()
@@ -504,6 +507,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
+	desc = 'set light kanagawa theme for docs (latex, typst)',
 	pattern = {
 		'bib',
 		'tex',
@@ -515,6 +519,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	end
 })
 vim.api.nvim_create_autocmd('BufEnter', {
+	desc = 'set syntax highlight for futhark',
 	pattern = '*.fut',
 	callback = function()
 		-- vim.cmd('setlocal syntax=ocaml') -- bad for (*)
@@ -634,8 +639,8 @@ require('lazy').setup({
 			nap.add_rules {
 				rule('$', '$', {'tex', 'typst'}),
 				rule('(', ')'),
-				rule('[', ']'), -- disabled bc of brackets-braces swap #dcd00a
-				rule('{', '}'), -- disabled bc of brackets-braces swap #dcd00a
+				rule('[', ']'),
+				rule('{', '}'),
 				rule("'", "'", {'-tex', '-text', '-lean', '-futhark', '-gitcommit'}),
 				rule('"', '"', {'-tex'}),
 				rule('`', '`', {'-lean'}),
