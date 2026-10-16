@@ -64,24 +64,24 @@
 								inherit
 									inputs
 									pkgs_for_wm
-									peeky
+									peeky  # TODO: remove, and use `inputs. ...`
 								;
 							};
 							backupFileExtension = "backup";
 							users = {
 								myshko.imports = [
-									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
+									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-psyche.nix
-									./home/home-myshko-common.nix
-									./home/home-myshko-psyche.nix
+									./home/home-common-myshko.nix
+									./home/home-psyche-common.nix
+									./home/home-psyche-myshko.nix
 								];
 								guest.imports = [
-									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
+									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-psyche.nix
-									./home/home-guest-common.nix
-									./home/home-guest-psyche.nix
+									./home/home-common-guest.nix
+									./home/home-psyche-common.nix
+									./home/home-psyche-guest.nix
 								];
 							};
 						};
@@ -103,24 +103,24 @@
 								inherit
 									inputs
 									pkgs_for_wm
-									peeky
+									peeky  # TODO: remove, and use `inputs. ...`
 								;
 							};
 							backupFileExtension = "backup";
 							users = {
 								myshko.imports = [
-									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
+									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-knight.nix
-									./home/home-myshko-common.nix
-									./home/home-myshko-knight.nix
+									./home/home-common-myshko.nix
+									./home/home-knight-common.nix
+									./home/home-knight-myshko.nix
 								];
 								guest.imports = [
-									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
+									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-knight.nix
-									./home/home-guest-common.nix
-									./home/home-guest-knight.nix
+									./home/home-common-guest.nix
+									./home/home-knight-common.nix
+									./home/home-knight-guest.nix
 								];
 							};
 						};
@@ -142,24 +142,24 @@
 								inherit
 									inputs
 									pkgs_for_wm
-									peeky
+									peeky  # TODO: remove, and use `inputs. ...`
 								;
 							};
 							backupFileExtension = "backup";
 							users = {
 								myshko.imports = [
-									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
+									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-wiredg.nix
-									./home/home-myshko-common.nix
-									./home/home-myshko-wiredg.nix
+									./home/home-common-myshko.nix
+									./home/home-wiredg-common.nix
+									./home/home-wiredg-myshko.nix
 								];
 								guest.imports = [
-									# TODO: rename to `home-<machine>-<user>`, use `any` (or `all`?) instead of `common`
+									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-wiredg.nix
-									./home/home-guest-common.nix
-									./home/home-guest-wiredg.nix
+									./home/home-common-guest.nix
+									./home/home-wiredg-common.nix
+									./home/home-wiredg-guest.nix
 								];
 							};
 						};
