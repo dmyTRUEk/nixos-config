@@ -221,7 +221,7 @@
 		##android-studio # -> android-studio.nix
 		#android-tools # for `adb`
 		##julia # -> julia.nix
-		typst
+		typst # (rust btw)
 		##haskell # -> haskell.nix
 		tree-sitter # for tree-sitter in neovim
 		#luajitPackages.tree-sitter-cli
@@ -230,6 +230,7 @@
 		lua-language-server # lua
 		pyright # python
 		#ruff-lsp # python # TODO: setup it for lints, cs it's fast (rust btw)
+		tinymist # typst # (rust btw)
 
 		# GAMES:
 		#luanti
