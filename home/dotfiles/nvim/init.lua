@@ -1420,6 +1420,8 @@ require('lazy').setup({
 				end,
 			})
 			vim.lsp.enable('futhark_lsp')
+
+			vim.lsp.enable('tinymist')
 		end,
 	},
 
