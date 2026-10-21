@@ -52,6 +52,10 @@
 	#	enableSSHSupport = true;
 	#};
 
+	programs = {
+		nh.flake = "/home/myshko/.config/home-manager";
+	};
+
 	environment.systemPackages = with pkgs; [ # PKGS
 		#ngrok
 	];

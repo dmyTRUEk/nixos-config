@@ -20,7 +20,7 @@
 		ll = "eza -al";
 
 		mkdir = "mkdir -p";
-		#mkcd = ""; ---> ./fish-extra-shell-init.fish
+		#mkcd = "";  # -> `./fish-extra-shell-init.fish`
 
 		cl = "clear ; git status || clear";
 

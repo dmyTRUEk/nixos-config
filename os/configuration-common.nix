@@ -233,7 +233,7 @@
 
 		nh = { # (rust btw)
 			enable = true;
-			flake = "/home/myshko/.config/home-manager";
+			##flake = "/home/myshko/.config/home-manager";  # -> in conf-<machine>.nix
 		};
 
 		partition-manager.enable = true; # kde partition manager

@@ -41,7 +41,9 @@
 
 	#services.ollama.acceleration = "rocm"; # or cuda
 
-	programs = {};
+	programs = {
+		nh.flake = "/home/myshko/.config/home-manager";
+	};
 
 	environment.systemPackages = with pkgs; [ # PKGS
 	];
