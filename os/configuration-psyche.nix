@@ -38,6 +38,27 @@
 
 	#services.ollama.acceleration = "rocm"; # or cuda
 
+	users = {
+		users = {
+			myshko = {
+				#initialPassword = "12";
+				isNormalUser = true;
+				description = "myshko";
+				extraGroups = [
+					"wheel"          # for sudo
+					"networkmanager" # for network
+					"video"          # for brightness/light
+					"libvirtd"       # for virtualisation/VMs/gnome-boxes
+					"docker"         # for docker (yeah, i know)
+					# "audio" ?
+					"dialout"        # for serial port/device (eg arduino on usb)
+				];
+				packages = with pkgs; [];
+			};
+			##guest = { ... };  # -> `conf-common.nix`
+		};
+	};
+
 	programs = {
 		nh.flake = "/home/myshko/.config/home-manager";
 	};

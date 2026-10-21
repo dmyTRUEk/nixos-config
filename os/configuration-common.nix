@@ -173,21 +173,7 @@
 	users = {
 		defaultUserShell = pkgs.fish;
 		users = {
-			myshko = {
-				#initialPassword = "12";
-				isNormalUser = true;
-				description = "myshko";
-				extraGroups = [
-					"wheel"          # for sudo
-					"networkmanager" # for network
-					"video"          # for brightness/light
-					"libvirtd"       # for virtualisation/VMs/gnome-boxes
-					"docker"         # for docker (yeah, i know)
-					# "audio" ?
-					"dialout"        # for serial port/device (eg arduino on usb)
-				];
-				packages = with pkgs; [];
-			};
+			##myshko = { ... };  # -> `conf-<machine>.nix`
 			guest = {
 				initialPassword = "1234";
 				isNormalUser = true;
