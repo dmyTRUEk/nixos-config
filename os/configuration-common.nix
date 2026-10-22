@@ -173,7 +173,21 @@
 	users = {
 		defaultUserShell = pkgs.fish;
 		users = {
-			##m = { ... };  # -> `conf-<machine>.nix`
+			m = {
+				#initialPassword = "12";
+				isNormalUser = true;
+				description = "m";
+				extraGroups = [
+					"wheel"          # for sudo
+					"networkmanager" # for network
+					"video"          # for brightness/light
+					"libvirtd"       # for virtualisation/VMs/gnome-boxes
+					"docker"         # for docker (yeah, i know)
+					# "audio" ?
+					"dialout"        # for serial port/device (eg arduino on usb)
+				];
+				packages = with pkgs; [];
+			};
 			guest = {
 				initialPassword = "1234";
 				isNormalUser = true;
@@ -219,7 +233,7 @@
 
 		nh = { # (rust btw)
 			enable = true;
-			##flake = "/home/m/.config/home-manager";  # -> in conf-<machine>.nix
+			flake = "/home/m/.config/home-manager";
 		};
 
 		partition-manager.enable = true; # kde partition manager
