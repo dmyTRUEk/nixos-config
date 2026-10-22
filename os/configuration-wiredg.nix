@@ -47,10 +47,10 @@
 
 	users = {
 		users = {
-			myshko = {
+			m = {
 				#initialPassword = "12";
 				isNormalUser = true;
-				description = "myshko";
+				description = "m";
 				extraGroups = [
 					"wheel"          # for sudo
 					"networkmanager" # for network
@@ -74,7 +74,7 @@
 	#};
 
 	programs = {
-		nh.flake = "/home/myshko/.config/home-manager";
+		nh.flake = "/home/m/.config/home-manager";
 	};
 
 	environment.systemPackages = with pkgs; [ # PKGS
@@ -103,7 +103,7 @@
 
 	networking.wg-quick.interfaces.wg0 = {
 		autostart = false;
-		configFile = "/home/myshko/.config/stuffs/wg0.conf";
+		configFile = "/home/m/.config/stuffs/wg0.conf";
 	};
 
 	# minecraft server using nixpkgs:

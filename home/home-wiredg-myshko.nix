@@ -5,8 +5,8 @@
 
 	home = {
 		# TODO?: refactor to not write username manually
-		username = "myshko";
-		homeDirectory = "/home/myshko";  # remove bc not needed?
+		username = "m";
+		homeDirectory = "/home/m";  # remove bc not needed?
 	};
 
 	programs = {};
