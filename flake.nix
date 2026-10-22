@@ -108,7 +108,7 @@
 							};
 							backupFileExtension = "backup";
 							users = {
-								myshko.imports = [
+								m.imports = [
 									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
 									./home/home-common-myshko.nix
