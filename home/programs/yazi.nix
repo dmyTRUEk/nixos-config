@@ -170,7 +170,7 @@
 					{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
 					{ on = ["g" "w"]; run = ["cd ~/Dropbox/Work" "sort natural --reverse"]; }
 					{ on = ["g" "P"]; run = ["cd ~/Dropbox/Work/papers" "sort natural"]; }
-					{ on = ["g" "m"]; run = "cd /run/media/myshko/"; }
+					{ on = ["g" "m"]; run = "cd /run/media/m/"; }
 					{ on = ["g" "p"]; run = "cd ~/Pictures"; }
 					{ on = ["g" "s"]; run = ["cd ~/Pictures/Screenshots/2026" "sort natural --reverse"]; }
 					{ on = ["g" "v"]; run = ["cd ~/Videos" "sort mtime --reverse"]; }

@@ -173,7 +173,7 @@
 	users = {
 		defaultUserShell = pkgs.fish;
 		users = {
-			##myshko = { ... };  # -> `conf-<machine>.nix`
+			##m = { ... };  # -> `conf-<machine>.nix`
 			guest = {
 				initialPassword = "1234";
 				isNormalUser = true;
@@ -219,7 +219,7 @@
 
 		nh = { # (rust btw)
 			enable = true;
-			##flake = "/home/myshko/.config/home-manager";  # -> in conf-<machine>.nix
+			##flake = "/home/m/.config/home-manager";  # -> in conf-<machine>.nix
 		};
 
 		partition-manager.enable = true; # kde partition manager

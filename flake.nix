@@ -23,7 +23,7 @@
 		};
 
 		peeky = {
-			#url = "path:////home/myshko/Projects/peeky";
+			#url = "path:////home/m/Projects/peeky";
 			url = "github:dmyTRUEk/peeky";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
@@ -44,7 +44,6 @@
 		system = "x86_64-linux";
 		nixosSystem = nixpkgs.lib.nixosSystem;
 		home-manager-module = home-manager.nixosModules.home-manager;
-		#username_myshko = "myshko";  # TODO: change to just `m`
 		pkgs_for_wm = import inputs.nixpkgs_for_wm { inherit system; config.allowUnfree = true; };
 	in {
 		# src: https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nixos-module
@@ -72,9 +71,9 @@
 								m.imports = [
 									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-myshko.nix
+									./home/home-common-m.nix
 									./home/home-psyche-common.nix
-									./home/home-psyche-myshko.nix
+									./home/home-psyche-m.nix
 								];
 								guest.imports = [
 									# TODO?: use `any` (or `all`?) instead of `common`
@@ -111,9 +110,9 @@
 								m.imports = [
 									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-myshko.nix
+									./home/home-common-m.nix
 									./home/home-knight-common.nix
-									./home/home-knight-myshko.nix
+									./home/home-knight-m.nix
 								];
 								guest.imports = [
 									# TODO?: use `any` (or `all`?) instead of `common`
@@ -150,9 +149,9 @@
 								m.imports = [
 									# TODO?: use `any` (or `all`?) instead of `common`
 									./home/home-common-common.nix
-									./home/home-common-myshko.nix
+									./home/home-common-m.nix
 									./home/home-wiredg-common.nix
-									./home/home-wiredg-myshko.nix
+									./home/home-wiredg-m.nix
 								];
 								guest.imports = [
 									# TODO?: use `any` (or `all`?) instead of `common`
