@@ -797,6 +797,7 @@ require('lazy').setup({
 					set_local('c', '#text(red)[\r]')
 					set_local('d', 'display(\r)')
 					set_local('f', '\1Name: \1(\r)')
+					set_local('F', '\1Name: \1[\r]')
 					set_local('i', '#text(style: "italic")[\r]')
 					set_local('t', '#text[\r]')
 					set_local('u', '#underline[\r]')
