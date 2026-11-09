@@ -793,12 +793,12 @@ require('lazy').setup({
 			vim.api.nvim_create_autocmd('FileType', {
 				pattern = 'typst',
 				callback = function()
-					set_local('b', '#text(weight: "bold")[\r]')
+					set_local('b', '#strong[\r]')
 					set_local('c', '#text(red)[\r]')
 					set_local('d', 'display(\r)')
 					set_local('f', '\1Name: \1(\r)')
 					set_local('F', '\1Name: \1[\r]')
-					set_local('i', '#text(style: "italic")[\r]')
+					set_local('i', '#emph[\r]')
 					set_local('t', '#text[\r]')
 					set_local('u', '#underline[\r]')
 					set_local('v', 'va(\r)')
