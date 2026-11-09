@@ -8,7 +8,7 @@
 		./programs/latex.nix
 		./programs/lean4.nix
 		./programs/media-editors.nix
-		./programs/ocaml.nix
+		#./programs/ocaml.nix
 		#./programs/opencode.nix
 	];
 
