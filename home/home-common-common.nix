@@ -45,6 +45,7 @@
 		};
 		btop = {
 			enable = true;
+			package = pkgs.btop-rocm; # enable gpu support (for amd duh)
 			settings = {
 				vim_keys = true;
 				color_theme = "gruvbox_dark_v2";
