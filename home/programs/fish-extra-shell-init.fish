@@ -122,6 +122,7 @@ function nm
 	set MAIN_FILE_RUST_IN_SRC 'main.rs'
 	set MAIN_FILE_RUST_LIB 'src/lib.rs'
 	set MAIN_FILE_RUST_LIB_IN_SRC 'lib.rs'
+	set MAIN_FILE_TEXT 'main.txt'
 	set MAIN_FILE_TYPST 'main.typ'
 	set MAIN_FILE_TYPST_PRESENTATION 'presentation.typ'
 
@@ -163,6 +164,9 @@ function nm
 
 	else if test -f $MAIN_FILE_RUST_LIB_IN_SRC
 		nvim "$MAIN_FILE_RUST_LIB_IN_SRC" $argv
+
+	else if test -f $MAIN_FILE_TEXT
+		nvim "$MAIN_FILE_TEXT" $argv
 
 	else if test -f $MAIN_FILE_TYPST
 		nvim "$MAIN_FILE_TYPST" $argv
