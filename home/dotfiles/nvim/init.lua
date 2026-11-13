@@ -809,7 +809,7 @@ require('lazy').setup({
 	},
 	{'tommcdo/vim-exchange', -- exchange selections
 		config = function()
-			keymap_v('x', '<Plug>(Exchange)')
+			keymap_v({'x', 'ч'}, '<Plug>(Exchange)')
 		end
 	},
 	'tpope/vim-repeat', -- enable repeat for plugins
