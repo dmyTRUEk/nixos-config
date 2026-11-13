@@ -56,7 +56,7 @@
 		gcane = "git commit --amend --no-edit"; # add changes to last commit
 		gcm = "git commit -m";
 		gch = "git checkout"; # delete changes
-		gchb = "git checkout -b"; # change branch?
+		#gchb = "git checkout -b"; # change branch. NOTE: better to use `switch -c`
 		gchp = "git checkout -p"; # delete changes patch (interactively)
 		"gchp." = "git checkout -p ."; # delete changes patch (interactively) here (in this folder)
 		gcl = "git clone";
@@ -89,6 +89,8 @@
 		gstash-drop = "git stash drop";
 		gstash-list = "git stash list";
 		gsw = "git switch";
+		gswc = "git switch -c";
+		gswC = "git switch -C";
 
 		whatismyip = "curl -s https://icanhazip.com";
 		whatismylocalip = "ip addr | grep -oE '192\.168\.[0-9]{1,3}\.[0-9]{1,3}' | head -n 1";
