@@ -641,7 +641,7 @@ require('lazy').setup({
 				rule('(', ')'),
 				rule('[', ']'),
 				rule('{', '}'),
-				rule("'", "'", {'-tex', '-text', '-lean', '-futhark', '-gitcommit'}),
+				rule("'", "'", {'-futhark', '-gitcommit', '-lean', '-tex', '-text', '-typst'}),
 				rule('"', '"', {'-tex'}),
 				rule('`', '`', {'-lean'}),
 			}
