@@ -16,8 +16,9 @@
 		ls = "ls"; # to exclude possibility of aliasing real ls
 		# better ls: eza (community maintained fork of exa)
 		l  = "eza";
-		la = "eza -a";
-		ll = "eza -al";
+		la = "eza -a"; # list
+		ll = "eza -la"; # list all
+		lla = "eza -laa"; # list all all
 
 		mkdir = "mkdir -p";
 		#mkcd = "";  # -> `./fish-extra-shell-init.fish`
