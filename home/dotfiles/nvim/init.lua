@@ -87,7 +87,7 @@ vim.o.redrawtime = 10000 -- for giant files
 -- use ukr in normal mode
 langmap = [[йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ї],фa,іs,вd,аf,пg,рh,оj,лk,дl,ж\;,є',яz,чx,сc,мv,иb,тn,ьm,б\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ї},ФA,ІS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Є",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>]]
 -- brackets-braces swap #dcd00a
-langmap = langmap .. "[{,]},{[,}]"
+langmap = langmap .. '[{,]},{[,}]'
 vim.o.langmap = langmap
 
 -- Don't show the mode, since it's already in the status line
@@ -476,7 +476,7 @@ vim.api.nvim_create_autocmd('FileType', {
 		-- TODO: refactor
 		require 'dmytruek.latex_autos'
 		vim.cmd('call SetupEverythingForLatex()')
-		vim.opt_local.indentkeys:remove({ "(", ")", "{", "}", "[", "]", "&" })
+		vim.opt_local.indentkeys:remove({ '(', ')', '{', '}', '[', ']', '&' })
 	end
 })
 vim.api.nvim_create_autocmd('FileType', {
@@ -648,7 +648,7 @@ require('lazy').setup({
 			local nap = require('nvim-autopairs')
 			local rule = require('nvim-autopairs.rule')
 			nap.setup({
-				ignored_next_char = "",
+				ignored_next_char = '',
 			})
 			nap.clear_rules()
 			nap.add_rules {
@@ -1229,7 +1229,7 @@ require('lazy').setup({
 		end,
 	},
 	{'nvim-treesitter/nvim-treesitter-textobjects',
-		branch = "main",
+		branch = 'main',
 		config = function()
 			-- Disable entire built-in ftplugin mappings to avoid conflicts.
 			-- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
