@@ -49,6 +49,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- TODO: disable?
 vim.o.linebreak = true -- wrap on words (wrap on chars in `breakat`)
+vim.opt.diffopt:append('followwrap') -- enable wrapping in diff mode
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -366,6 +367,7 @@ keymap_n_cmd({'<c-t>', '<c-е>'}, 'tabnext')
 
 keymap_n_cmd({'<c-[>', '<c-х>'}, 'Gitsigns nav_hunk prev')
 keymap_n_cmd({'<c-]>', '<c-ї>'}, 'Gitsigns nav_hunk next')
+-- TODO: same for `nvim diff`
 
 
 
@@ -411,6 +413,12 @@ vim.filetype.add({
 
 
 
+
+local function enable_diff_wrap()
+	if vim.wo.diff then
+		vim.cmd('windo setlocal wrap linebreak')
+	end
+end
 
 vim.api.nvim_create_autocmd('FileType', {
 	desc = 'enable spelling in specified filetypes',
@@ -528,6 +536,13 @@ vim.api.nvim_create_autocmd('BufEnter', {
 		-- vim.cmd('setlocal syntax=elm')
 		-- vim.cmd('setlocal syntax=sml') -- bad for (*)
 	end
+})
+vim.api.nvim_create_autocmd('VimEnter', {
+	callback = enable_diff_wrap,
+})
+vim.api.nvim_create_autocmd('OptionSet', {
+	pattern = 'diff',
+	callback = enable_diff_wrap,
 })
 
 
