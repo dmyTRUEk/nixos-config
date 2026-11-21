@@ -43,7 +43,6 @@ local function setup(_, opts)
 		default = { key = "natural", reverse = false }
 	end
 
-	-- sorted names -> deterministic error order
 	local names = {}
 	for name in pairs(opts.rules or {}) do names[#names + 1] = name end
 	table.sort(names)
@@ -66,7 +65,7 @@ local function setup(_, opts)
 	end
 
 	local reported = false
-	ps.sub("cd", function()
+	ps.sub("ind-sort", function(opt)
 		if #errors > 0 and not reported then
 			reported = true
 			ya.notify {
@@ -79,9 +78,9 @@ local function setup(_, opts)
 
 		local cwd = normalize(tostring(cx.active.current.cwd), home)
 		local r = by_path[cwd] or default
-		ya.emit("sort", { r.key, reverse = r.reverse, dir_first = dir_first })
+		opt.by, opt.reverse, opt.dir_first = r.key, r.reverse, dir_first
+		return opt
 	end)
 end
 
 return { setup = setup }
-
