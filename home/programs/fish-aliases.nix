@@ -126,8 +126,8 @@
 		nfe = "nvim ~/.config/home-manager/home/programs/fish-extra-shell-init.fish";
 		ny  = "nvim ~/.config/home-manager/home/programs/yazi.nix";
 
-		nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua +'set autochdir'";
-		nns = "nvim ~/.config/home-manager/home/dotfiles/nvim/snippets/ +'set autochdir'";
+		nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua";
+		nns = "nvim ~/.config/home-manager/home/dotfiles/nvim/snippets/";
 		nz  = "nvim ~/.config/home-manager/home/dotfiles/zathura/zathurarc";
 
 		nipy= "nvim ~/.config/home-manager/home/files/init_interactive_python.py";
