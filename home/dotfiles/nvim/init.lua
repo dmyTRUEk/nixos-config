@@ -20,7 +20,7 @@ vim.o.cursorline = true -- highlight cursor line
 --'cursorcolumn' -- highlight cursor column
 --'termguicolors' -- ?
 --'showmatch' -- shows matching brackets
---'autochdir' -- change current dir to file's dir (folder directory)
+vim.o.autochdir = true -- change current dir to file's dir (folder directory)
 --'showcmd' -- ? show last command (if you pressed 'j' then 'j' will be showed)
 
 --'incsearch',
