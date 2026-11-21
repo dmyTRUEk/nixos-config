@@ -1,0 +1,168 @@
+[mgr]
+linemode = "size"
+scrolloff = 10
+show_hidden = false
+show_symlink = true
+sort_by = "natural"
+sort_dir_first = true
+sort_sensitive = false
+
+[[open.rules]]
+url = "*.nb"
+use = "wolfram_mathematica"
+
+[[open.rules]]
+url = "*.kdenlive"
+use = "kdenlive"
+
+[[open.rules]]
+url = "*.kra"
+use = "krita_project"
+
+[[open.rules]]
+url = "*.djvu"
+use = "djvu"
+
+[[open.rules]]
+url = "*.svg"
+use = "image_vector"
+
+[[open.rules]]
+url = "*.mp3"
+use = "audio"
+
+[[open.rules]]
+url = "*.wav"
+use = "audio"
+
+[[open.rules]]
+url = "*.ogg"
+use = "audio"
+
+[[open.rules]]
+url = "*.odt"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.odp"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.ods"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.doc"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.docx"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.ppt"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.pptx"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.xls"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.xlsx"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.rtf"
+use = "libreoffice"
+
+[[open.rules]]
+url = "*.srt"
+use = "text"
+
+[[open.rules]]
+url = "*.json"
+use = "text"
+
+[[open.rules]]
+mime = "text/*"
+use = "text"
+
+[[open.rules]]
+mime = "image/*"
+use = "image_raster"
+
+[[open.rules]]
+mime = "video/*"
+use = "video"
+
+[[open.rules]]
+mime = "application/pdf"
+use = "pdf"
+
+[[opener.audio]]
+run = "vlc %s"
+
+[[opener.djvu]]
+run = "zathura %s"
+
+[[opener.image_raster]]
+run = "peeky %s"
+
+[[opener.image_raster]]
+run = "swayimg %s"
+
+[[opener.image_raster]]
+run = "krita %s"
+
+[[opener.image_raster]]
+run = "gwenview %s"
+
+[[opener.image_raster]]
+block = true
+run = "nvim %s"
+
+[[opener.image_vector]]
+run = "inkscape %s"
+
+[[opener.image_vector]]
+run = "swayimg %s"
+
+[[opener.image_vector]]
+block = true
+run = "nvim %s"
+
+[[opener.kdenlive]]
+run = "kdenlive %s"
+
+[[opener.krita_project]]
+run = "krita %s"
+
+[[opener.libreoffice]]
+run = "libreoffice %s"
+
+[[opener.pdf]]
+run = "zathura %s"
+
+[[opener.pdf]]
+run = "firefox %s"
+
+[[opener.text]]
+block = true
+run = "nvim %s"
+
+[[opener.video]]
+run = "vlc %s"
+
+[[opener.wolfram_mathematica]]
+run = "wolframnb %s"
+
+[preview]
+image_filter = "triangle"
+image_quality = 50
+max_height = 4000
+max_width = 4000
+tab_size = 4

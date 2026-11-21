@@ -1,0 +1,289 @@
+[[mgr.prepend_keymap]]
+desc = "Open help..."
+on = ["?"]
+run = "help"
+
+[[mgr.prepend_keymap]]
+desc = "Quit"
+on = ["Q"]
+run = "quit"
+
+[[mgr.prepend_keymap]]
+desc = "Close current tab or quit if last"
+on = ["q"]
+run = "close"
+
+[[mgr.prepend_keymap]]
+desc = "Create a directory"
+on = ["o"]
+run = "create --dir"
+
+[[mgr.prepend_keymap]]
+desc = "Create a file (append / for directory)"
+on = ["O"]
+run = "create"
+
+[[mgr.prepend_keymap]]
+desc = "Rename, cursor at start"
+on = ["i"]
+run = "rename --cursor=start"
+
+[[mgr.prepend_keymap]]
+desc = "Rename, cursor before extension"
+on = ["a"]
+run = "rename --cursor=before_ext"
+
+[[mgr.prepend_keymap]]
+desc = "Rename, cursor at end"
+on = ["A"]
+run = "rename --cursor=end"
+
+[[mgr.prepend_keymap]]
+desc = "Rename, leave extension"
+on = ["r"]
+run = "rename --empty=stem --cursor=start"
+
+[[mgr.prepend_keymap]]
+desc = "Rename"
+on = ["R"]
+run = "rename --empty=all"
+
+[[mgr.prepend_keymap]]
+desc = "Exit visual mode, clear selected, or cancel search"
+on = ["<Esc>"]
+run = ["escape", "unyank"]
+
+[[mgr.prepend_keymap]]
+desc = "Open shell here"
+on = ["<C-d>"]
+run = 'shell "$SHELL" --block --confirm'
+
+[[mgr.prepend_keymap]]
+desc = "Move cursor half page down"
+on = ["<C-j>"]
+run = "arrow  50%"
+
+[[mgr.prepend_keymap]]
+desc = "Move cursor half page up"
+on = ["<C-k>"]
+run = "arrow -50%"
+
+[[mgr.prepend_keymap]]
+desc = "Switch to previous tab"
+on = ["J"]
+run = "tab_switch -1 --relative"
+
+[[mgr.prepend_keymap]]
+desc = "Switch to next tab"
+on = ["K"]
+run = "tab_switch  1 --relative"
+
+[[mgr.prepend_keymap]]
+desc = "Disk Usage (dua i)"
+on = ["u"]
+run = "shell 'dua i' --block --confirm"
+
+[[mgr.prepend_keymap]]
+desc = "Copy file using URI (file://)"
+on = ["c", "c"]
+run = """shell 'filename="$1" && wl-copy "file://$filename" --type text/uri-list' --confirm"""
+
+[[mgr.prepend_keymap]]
+desc = "Copy Absolute path"
+on = ["c", "a"]
+run = "copy path"
+
+[[mgr.prepend_keymap]]
+desc = "Copy path of parent Directory"
+on = ["c", "d"]
+run = "copy dirname"
+
+[[mgr.prepend_keymap]]
+desc = "Copy name of file without Extension"
+on = ["c", "e"]
+run = "copy name_without_ext"
+
+[[mgr.prepend_keymap]]
+desc = "Copy Name of file"
+on = ["c", "n"]
+run = "copy filename"
+
+[[mgr.prepend_keymap]]
+desc = "Sort by Birth time (reverse)"
+on = [",", "b"]
+run = ["sort btime --dir-first --reverse", "linemode btime"]
+
+[[mgr.prepend_keymap]]
+desc = "Sort by Birth time"
+on = [",", "B"]
+run = ["sort btime --dir-first --reverse=no", "linemode btime"]
+
+[[mgr.prepend_keymap]]
+desc = "Sort by Modified time (reverse)"
+on = [",", "m"]
+run = ["sort mtime --dir-first --reverse", "linemode mtime"]
+
+[[mgr.prepend_keymap]]
+desc = "Sort by Modified time"
+on = [",", "M"]
+run = ["sort mtime --dir-first --reverse=no", "linemode mtime"]
+
+[[mgr.prepend_keymap]]
+desc = "Sort by Size (reverse)"
+on = [",", "s"]
+run = ["sort size --dir-first --reverse", "linemode size"]
+
+[[mgr.prepend_keymap]]
+desc = "Sort by Size"
+on = [",", "S"]
+run = ["sort size --dir-first --reverse=no", "linemode size"]
+
+[[mgr.prepend_keymap]]
+desc = "eXtract from Zip"
+on = ["z", "x", "z"]
+run = """shell --confirm 'unzip "$1"' """
+
+[[mgr.prepend_keymap]]
+desc = "eXtract from Zip"
+on = ["z", "z", "x"]
+run = """shell --confirm 'unzip "$1"' """
+
+[[mgr.prepend_keymap]]
+on = ["g", "/"]
+run = "cd /"
+
+[[mgr.prepend_keymap]]
+on = ["g", "h"]
+run = "cd ~"
+
+[[mgr.prepend_keymap]]
+on = ["g", "."]
+run = "cd ~/.config/home-manager"
+
+[[mgr.prepend_keymap]]
+on = ["g", "T"]
+run = "cd ~/.local/share/Trash/files"
+
+[[mgr.prepend_keymap]]
+on = ["g", "c"]
+run = ["cd ~/Projects", "sort mtime --reverse"]
+
+[[mgr.prepend_keymap]]
+on = ["g", "o"]
+run = "cd ~/Documents"
+
+[[mgr.prepend_keymap]]
+on = ["g", "d"]
+run = ["cd ~/Downloads", "sort mtime --reverse"]
+
+[[mgr.prepend_keymap]]
+on = ["g", "t"]
+run = ["cd '~/Downloads/Telegram Desktop'", "sort mtime --reverse"]
+
+[[mgr.prepend_keymap]]
+on = ["g", "r"]
+run = "cd ~/Dropbox"
+
+[[mgr.prepend_keymap]]
+on = ["g", "u"]
+run = "cd ~/Dropbox/PhD/2026_1_spring"
+
+[[mgr.prepend_keymap]]
+on = ["g", "i"]
+run = "cd ~/Dropbox/University/Master_Thesis"
+
+[[mgr.prepend_keymap]]
+on = ["g", "w"]
+run = ["cd ~/Dropbox/Work"]
+
+[[mgr.prepend_keymap]]
+on = ["g", "P"]
+run = ["cd ~/Dropbox/Work/papers", "sort natural"]
+
+[[mgr.prepend_keymap]]
+on = ["g", "m"]
+run = "cd /run/media/m/"
+
+[[mgr.prepend_keymap]]
+on = ["g", "p"]
+run = "cd ~/Pictures"
+
+[[mgr.prepend_keymap]]
+on = ["g", "s"]
+run = ["cd ~/Pictures/Screenshots/2026", "sort natural --reverse"]
+
+[[mgr.prepend_keymap]]
+on = ["g", "v"]
+run = ["cd ~/Videos", "sort mtime --reverse"]
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "3"]
+run = "cd ~/.local/share/Steam/steamapps/compatdata/374320/pfx/drive_c/users/steamuser/AppData/Roaming/DarkSoulsIII"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "c"]
+run = "cd ~/.local/share/Celeste/Saves"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "e"]
+run = "cd ~/.local/share/Steam/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/AppData/Roaming/EldenRing"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "6"]
+run = "cd '~/Games/Touhou/Touhou 6 - The Embodiment of Scarlet Devil'"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "7"]
+run = "cd '~/Games/Touhou/Touhou 7 - Perfect Cherry Blossom'"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "8"]
+run = "cd '~/Games/Touhou/Touhou 8 - Imperishable Night'"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "1", "0"]
+run = "cd ~/.local/share/Steam/steamapps/common/th10"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "1", "1"]
+run = "cd ~/.local/share/Steam/steamapps/common/th11"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "1", "2"]
+run = "cd ~/.local/share/Steam/steamapps/common/th12"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "1", "3"]
+run = "cd ~/.local/share/Steam/steamapps/compatdata/1043230/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th13"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "1", "4"]
+run = "cd ~/.local/share/Steam/steamapps/compatdata/1043240/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th14"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "1", "5"]
+run = "cd ~/.local/share/Steam/steamapps/compatdata/937580/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th15"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "1", "6"]
+run = "cd ~/.local/share/Steam/steamapps/compatdata/745880/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th16"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "1", "7"]
+run = "cd ~/.local/share/Steam/steamapps/compatdata/1079160/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th17"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "h", "1", "8"]
+run = "cd ~/.local/share/Steam/steamapps/compatdata/1566410/pfx/drive_c/users/steamuser/AppData/Roaming/ShanghaiAlice/th18"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "m", "r"]
+run = "cd ~/.local/share/Steam/steamapps/compatdata/11020/pfx/drive_c/users/steamuser/Documents/TrackMania/Tracks/Replays"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "m", "s"]
+run = "cd '~/.local/share/Steam/steamapps/common/TrackMania Nations Forever/GameData/Painter/Stickers'"
+
+[[mgr.prepend_keymap]]
+on = ["g", "a", "t", "o"]
+run = "cd ~/.t-engine/4.0/tome/save/"

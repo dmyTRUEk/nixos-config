@@ -1,3 +1,4 @@
+# -> dotfiles/yazi
 { ... }: {
 	imports = [
 		# ./yazi-theme-gruvbox.nix
@@ -168,7 +169,7 @@
 					#{ on = ["g" "D"]; run = "cd ~/Dropbox/Docs"; }
 					{ on = ["g" "u"]; run = "cd ~/Dropbox/PhD/2026_1_spring"; }
 					{ on = ["g" "i"]; run = "cd ~/Dropbox/University/Master_Thesis"; }
-					{ on = ["g" "w"]; run = ["cd ~/Dropbox/Work" "sort natural --reverse"]; }
+					{ on = ["g" "w"]; run = ["cd ~/Dropbox/Work"]; }
 					{ on = ["g" "P"]; run = ["cd ~/Dropbox/Work/papers" "sort natural"]; }
 					{ on = ["g" "m"]; run = "cd /run/media/m/"; }
 					{ on = ["g" "p"]; run = "cd ~/Pictures"; }

@@ -32,11 +32,12 @@
 			"${elemAt elem_pair 0}".source = mkOutOfStoreSymlink "${elemAt elem_pair 1}";
 		}) {};
 	in (
-		#let tmp = # for dbg
+		#let tmp =   # for dbg
 		setup_simple_symlinks [
 			"kitty"
 			"nvim"
 			"swayimg"
+			"yazi"
 			"zathura"
 		]
 		// setup_complex_symlinks [
@@ -46,7 +47,7 @@
 		#// {
 		#	#"${config_path}/anyrun/style.css".source = lib.mkForce (mkOutOfStoreSymlink "${dotfiles_path}/../programs/anyrun-style.css");
 		#}
-		#; in builtins.trace tmp tmp # for dbg
+		#; in builtins.trace tmp tmp   # for dbg
 	);
 
 	programs = {

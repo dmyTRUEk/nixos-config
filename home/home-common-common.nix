@@ -11,7 +11,7 @@
 		./programs/anyrun.nix    # (rust btw)
 		./programs/fish.nix      # (rust btw)
 		./programs/libreoffice.nix
-		./programs/yazi.nix      # (rust btw)
+		#./programs/yazi.nix      # (rust btw)
 	];
 
 	services.kdeconnect = {
@@ -66,7 +66,10 @@
 		#	enable = true;
 		#	enableFishIntegration = true;
 		#};
-		#yazi = {}; # -> ./programs/yazi.nix   # (rust btw)
+		yazi = { # (rust btw)
+			enable = true;
+			shellWrapperName = "y"; # adopt new behaviour from 26.05
+		};
 		yt-dlp.enable = true;
 		#texlive = {
 		#	enable = true;
