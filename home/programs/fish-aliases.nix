@@ -124,7 +124,9 @@
 		nans= "nvim ~/.config/home-manager/home/programs/anyrun.symbols.ron";
 		nfa = "nvim ~/.config/home-manager/home/programs/fish-aliases.nix";
 		nfe = "nvim ~/.config/home-manager/home/programs/fish-extra-shell-init.fish";
-		ny  = "nvim ~/.config/home-manager/home/programs/yazi.nix";
+		nyi = "nvim ~/.config/home-manager/home/dotfiles/yazi/init.lua";
+		nyk = "nvim ~/.config/home-manager/home/dotfiles/yazi/keymap.toml";
+		nyy = "nvim ~/.config/home-manager/home/dotfiles/yazi/yazi.toml";
 
 		nn  = "nvim ~/.config/home-manager/home/dotfiles/nvim/init.lua";
 		nns = "nvim ~/.config/home-manager/home/dotfiles/nvim/snippets/";
