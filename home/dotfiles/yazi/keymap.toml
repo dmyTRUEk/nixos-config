@@ -166,7 +166,7 @@ run = "cd ~/.local/share/Trash/files"
 
 [[mgr.prepend_keymap]]
 on = ["g", "c"]
-run = ["cd ~/Projects", "sort mtime --reverse"]
+run = "cd ~/Projects"
 
 [[mgr.prepend_keymap]]
 on = ["g", "o"]
@@ -174,11 +174,11 @@ run = "cd ~/Documents"
 
 [[mgr.prepend_keymap]]
 on = ["g", "d"]
-run = ["cd ~/Downloads", "sort mtime --reverse"]
+run = "cd ~/Downloads"
 
 [[mgr.prepend_keymap]]
 on = ["g", "t"]
-run = ["cd '~/Downloads/Telegram Desktop'", "sort mtime --reverse"]
+run = "cd '~/Downloads/Telegram Desktop'"
 
 [[mgr.prepend_keymap]]
 on = ["g", "r"]
@@ -198,7 +198,7 @@ run = ["cd ~/Dropbox/Work"]
 
 [[mgr.prepend_keymap]]
 on = ["g", "P"]
-run = ["cd ~/Dropbox/Work/papers", "sort natural"]
+run = "cd ~/Dropbox/Work/papers"
 
 [[mgr.prepend_keymap]]
 on = ["g", "m"]
@@ -210,11 +210,11 @@ run = "cd ~/Pictures"
 
 [[mgr.prepend_keymap]]
 on = ["g", "s"]
-run = ["cd ~/Pictures/Screenshots/2026", "sort natural --reverse"]
+run = "cd ~/Pictures/Screenshots/2026"
 
 [[mgr.prepend_keymap]]
 on = ["g", "v"]
-run = ["cd ~/Videos", "sort mtime --reverse"]
+run = "cd ~/Videos"
 
 [[mgr.prepend_keymap]]
 on = ["g", "a", "3"]
