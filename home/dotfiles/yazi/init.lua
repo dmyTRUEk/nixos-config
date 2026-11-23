@@ -8,11 +8,16 @@ require("sort-rules"):setup {
 			"Downloads",
 			"Downloads/Telegram Desktop",
 			"Projects",
-			"Videos"
+			"Videos",
 			--"/nix/store", -- start with `/` for abs path
+			--"Music/", -- end with `/` for all deeper paths too
 		},
 		natural_reverse = {
 			"Pictures/Screenshots/2026",
+			"Dropbox/Work/docs/",
+			"Dropbox/Work/files/",
+			"Dropbox/Work/my_files/",
+			"Dropbox/Work/wolfram_mathematica/",
 		},
 	},
 }

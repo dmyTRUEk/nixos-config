@@ -35,12 +35,24 @@ end
 local function setup(_, opts)
 	local home = os.getenv("HOME")
 	local dir_first = opts.dir_first ~= false
-	local errors, by_path = {}, {}
+	local errors = {}
+	local exact, tree = {}, {} -- "Downloads" -> exact, "Downloads/" -> tree
 
 	local default, derr = parse(opts.default or "natural")
 	if not default then
 		errors[#errors + 1] = "default: " .. derr
 		default = { key = "natural", reverse = false }
+	end
+
+	local function add(tbl, abs, label, rule)
+		local prev = tbl[abs]
+		if prev then
+			errors[#errors + 1] = prev.name == rule.name
+				and ("'%s' is listed twice in '%s'"):format(label, rule.name)
+				or ("'%s' is in both '%s' and '%s'"):format(label, prev.name, rule.name)
+		else
+			tbl[abs] = rule
+		end
 	end
 
 	local names = {}
@@ -54,13 +66,26 @@ local function setup(_, opts)
 		else
 			for _, p in ipairs(opts.rules[name]) do
 				local abs = normalize(p, home)
-				if by_path[abs] then
-					errors[#errors + 1] = ("'%s' is in both '%s' and '%s'")
-						:format(abs, by_path[abs].name, name)
+				if p:sub(-1) == "/" then
+					add(tree, abs, abs == "/" and "/" or abs .. "/", rule)
 				else
-					by_path[abs] = rule
+					add(exact, abs, abs, rule)
 				end
 			end
+		end
+	end
+
+	-- exact match first, then walk up from cwd to "/" and take the deepest "dir/" rule
+	local function lookup(cwd)
+		local r = exact[cwd]
+		if r then return r end
+		local p = cwd
+		while true do
+			r = tree[p]
+			if r then return r end
+			if p == "/" then return nil end
+			p = p:match("^(.*)/[^/]*$")
+			if p == "" then p = "/" end
 		end
 	end
 
@@ -77,7 +102,7 @@ local function setup(_, opts)
 		end
 
 		local cwd = normalize(tostring(cx.active.current.cwd), home)
-		local r = by_path[cwd] or default
+		local r = lookup(cwd) or default
 		opt.by, opt.reverse, opt.dir_first = r.key, r.reverse, dir_first
 		return opt
 	end)
