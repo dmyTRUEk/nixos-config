@@ -4,8 +4,8 @@ function fish_greeting
 end
 
 # low priority first, high -- last
-fish_add_path -m ~/.cargo/bin
-fish_add_path -m ~/.local/bin
+#fish_add_path -m ~/.cargo/bin
+#fish_add_path -m ~/.local/bin
 
 set __fish_git_prompt_showdirtystate true
 set __fish_git_prompt_showcolorhints true
